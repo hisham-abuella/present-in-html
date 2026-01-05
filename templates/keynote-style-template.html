@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{TITLE}}</title>
+
+    <link rel="stylesheet" href="reveal.js/dist/reset.css">
+    <link rel="stylesheet" href="reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="reveal.js/dist/theme/white.css" id="theme">
+    <link rel="stylesheet" href="reveal.js/plugin/highlight/github.css">
+
+    <!-- Google Fonts - Playfair Display for Keynote-style titles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+      :root {
+        --title-font: 'Playfair Display', Georgia, serif;
+        --body-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        --accent-color: #007AFF;
+        --text-primary: #1d1d1f;
+        --text-secondary: #86868b;
+        --bg-light: #f5f5f7;
+        --border-color: #d2d2d7;
+      }
+
+      .reveal {
+        font-family: var(--body-font);
+        font-weight: 400;
+        color: var(--text-primary);
+      }
+
+      .reveal h1, .reveal h2, .reveal h3 {
+        font-family: var(--title-font);
+        font-weight: 700;
+        color: var(--text-primary);
+        letter-spacing: -0.02em;
+      }
+
+      .reveal h1 {
+        font-size: 3.5em;
+        font-weight: 900;
+      }
+
+      .reveal h2 {
+        font-size: 2.2em;
+      }
+
+      .reveal h3 {
+        font-size: 1.5em;
+        font-weight: 600;
+        font-family: var(--body-font);
+      }
+
+      .reveal p {
+        line-height: 1.6;
+      }
+
+      .reveal .slides section {
+        height: 100%;
+        padding: 40px 60px;
+        box-sizing: border-box;
+      }
+
+      /* ============================== */
+      /* SLIDE TYPE: Title              */
+      /* ============================== */
+      .reveal .slide-title {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .reveal .slide-title h1 {
+        margin-bottom: 0.3em;
+      }
+
+      .reveal .slide-title h3 {
+        font-weight: 500;
+        color: var(--text-primary);
+        margin-bottom: 2em;
+      }
+
+      .reveal .slide-title .author {
+        position: absolute;
+        bottom: 60px;
+        left: 0;
+        right: 0;
+        font-size: 0.9em;
+        color: var(--text-secondary);
+        border-top: 1px solid var(--border-color);
+        padding-top: 20px;
+        margin: 0 60px;
+      }
+
+      /* ============================== */
+      /* SLIDE TYPE: Title & Photo      */
+      /* ============================== */
+      .reveal .slide-title-photo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        padding: 0 !important;
+        align-items: stretch;
+      }
+
+      .reveal .slide-title-photo .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 60px;
+      }
+
+      .reveal .slide-title-photo .photo {
+        background-size: cover;
+        background-position: center;
+        min-height: 100%;
+      }
+
+      .reveal .slide-title-photo .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* ============================== */
+      /* SLIDE TYPE: Title & Photo Alt  */
+      /* ============================== */
+      .reveal .slide-title-photo-alt {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        padding: 0 !important;
+      }
+
+      .reveal .slide-title-photo-alt .photo {
+        order: -1;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .reveal .slide-title-photo-alt .content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 60px;
+      }
+
+      /* ============================== */
+      /* SLIDE TYPE: Title & Bullets    */
+      /* ============================== */
+      .reveal .slide-title-bullets {
+        text-align: left;
+      }
+
+      .reveal .slide-title-bullets h2 {
+        text-align: left;
+        margin-bottom: 1em;
+      }
+
+      .reveal .slide-title-bullets ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .reveal .slide-title-bullets li {
+        padding: 0.6em 0;
+        padding-left: 1.5em;
+        position: relative;
+        font-size: 1.1em;
+      }
+
+      .reveal .slide-title-bullets li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 1em;
+        width: 8px;
+        height: 8px;
+        background: var(--accent-color);
+        border-radius: 50%;
+      }
+
+      /* ============================== */
+      /* SLIDE TYPE: Bullets Only       */
+      /* ============================== */
+      .reveal .slide-bullets {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .reveal .slide-bullets ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        max-width: 80%;
+      }
+
+      .reveal .slide-bullets li {
+        padding: 0.8em 0;
+        padding-left: 2em;
+        position: relative;
+        font-size: 1.3em;
+      }
+
+      .reveal .slide-bullets li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 1.1em;
+        width: 10px;
+        height: 10px;
+        background: var(--accent-color);
+        border-radius: 50%;
+      }
+
+      /* ============================== */
+      /* SLIDE TYPE: Title, Bullets & Photo */
+      /* ============================== */
+      .reveal .slide-title-bullets-photo {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .reveal .slide-title-bullets-photo .content {
+        text-align: left;
+      }
+
+      .reveal .slide-title-bullets-photo h2 {
+        text-align: left;
+        margin-bottom: 0.8em;
+      }
+
+      .reveal .slide-title-bullets-photo ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .reveal .slide-title-bullets-photo li {
+        padding: 0.5em 0;
+        padding-left: 1.5em;
+        position: relative;
+      }
+
+      .reveal .slide-title-bullets-photo li::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0.8em;
+        width: 8px;
+        height: 8px;
+        background: var(--accent-color);
+        border-radius: 50%;
+      }
+
+      .reveal .slide-title-bullets-photo .photo img {
+        width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      }
+
+      /* ============================== */
+      /* SLIDE TYPE: Section            */
+      /* ============================== */
+      .reveal .slide-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: var(--text-primary);
+        color: white;
+      }
+
+      .reveal .slide-section h2 {
+        color: white;
+        font-size: 3em;
+        margin: 0;
+      }
+
+      /* ============================== */
+      /* SLIDE TYPE: Title Only         */
+      /* ============================== */
+      .reveal .slide-title-only {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        text-align: left;
+      }
+
+      .reveal .slide-title-only h2 {
+        font-size: 2.8em;
+        text-align: left;
+        max-width: 70%;
+      }
+
+      /* ============================== */
+      /* SLIDE TYPE: Agenda             */
+      /* ============================== */
+      .reveal .slide-agenda {
+        text-align: left;
+      }
+
+      .reveal .slide-agenda h2 {
+        text-align: left;
+        margin-bottom: 1em;
+        font-size: 1.8em;
+      }
+
+      .reveal .slide-agenda ol {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        counter-reset: agenda;
+      }
+
+      .reveal .slide-agenda li {
+        padding: 0.8em 0;
+        padding-left: 3em;
+        position: relative;
+        font-size: 1.2em;
+        border-bottom: 1px solid var(--border-color);
+        counter-increment: agenda;
+      }
+
+      .reveal .slide-agenda li:last-child {
+        border-bottom: none;
+      }
+
+      .reveal .slide-agenda li::before {
+        content: counter(agenda);
+        position: absolute;
+        left: 0;
+        top: 0.7em;
+        width: 32px;
+        height: 32px;
+        background: var(--accent-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8em;
+        font-weight: 600;
+      }
+
+      /* ============================== */
+      /* SLIDE TYPE: Statement          */
+      /* ============================== */
+      .reveal .slide-statement {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 80px !important;
+      }
+
+      .reveal .slide-statement p {
+        font-family: var(--title-font);
+        font-size: 2.2em;
+        font-weight: 500;
+        line-height: 1.4;
+        max-width: 80%;
+        color: var(--text-primary);
+      }
+
+      /* ============================== */
+      /* SLIDE TYPE: Big Fact           */
+      /* ============================== */
+      .reveal .slide-big-fact {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .reveal .slide-big-fact .big-number {
+        font-family: var(--title-font);
+        font-size: 8em;
+        font-weight: 900;
+        color: var(--text-primary);
+        line-height: 1;
+        margin-bottom: 0.1em;
+      }
+
+      .reveal .slide-big-fact .fact-label {
+        font-size: 1.3em;
+        color: var(--text-secondary);
+        max-width: 60%;
+      }
+
+      /* ============================== */
+      /* SLIDE TYPE: Quote              */
+      /* ============================== */
+      .reveal .slide-quote {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 80px !important;
+      }
+
+      .reveal .slide-quote blockquote {
+        border: none;
+        background: none;
+        padding: 0;
+        margin: 0;
+        max-width: 80%;
+      }
+
+      .reveal .slide-quote blockquote p {
+        font-family: var(--title-font);
+        font-size: 2em;
+        font-style: italic;
+        line-height: 1.5;
+        color: var(--text-primary);
+        margin-bottom: 1em;
+      }
+
+      .reveal .slide-quote blockquote p::before {
+        content: '"';
+        font-size: 1.5em;
+        color: var(--text-secondary);
+      }
+
+      .reveal .slide-quote blockquote p::after {
+        content: '"';
+        font-size: 1.5em;
+        color: var(--text-secondary);
+      }
+
+      .reveal .slide-quote cite {
+        font-style: normal;
+        font-size: 1em;
+        color: var(--text-secondary);
+      }
+
+      /* ============================== */
+      /* SLIDE TYPE: Photo - 3 Up       */
+      /* ============================== */
+      .reveal .slide-photo-3up {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .reveal .slide-photo-3up h2 {
+        text-align: left;
+        margin-bottom: 1em;
+      }
+
+      .reveal .slide-photo-3up .photos {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .reveal .slide-photo-3up .photos img {
+        width: 100%;
+        aspect-ratio: 16/10;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+      }
+
+      .reveal .slide-photo-3up .photos figcaption {
+        text-align: center;
+        font-size: 0.85em;
+        color: var(--text-secondary);
+        margin-top: 0.5em;
+      }
+
+      /* ============================== */
+      /* SLIDE TYPE: Photo (Full)       */
+      /* ============================== */
+      .reveal .slide-photo {
+        padding: 0 !important;
+      }
+
+      .reveal .slide-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .reveal .slide-photo .caption {
+        position: absolute;
+        bottom: 40px;
+        left: 60px;
+        right: 60px;
+        background: rgba(255,255,255,0.95);
+        padding: 20px 30px;
+        border-radius: 8px;
+        font-size: 0.9em;
+      }
+
+      /* ============================== */
+      /* SLIDE TYPE: Blank              */
+      /* ============================== */
+      .reveal .slide-blank {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* ============================== */
+      /* SLIDE TYPE: Video              */
+      /* ============================== */
+      .reveal .slide-video {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .reveal .slide-video.video-large {
+        grid-template-columns: 1fr;
+      }
+
+      .reveal .slide-video .content {
+        text-align: left;
+      }
+
+      .reveal .slide-video h2 {
+        text-align: left;
+        margin-bottom: 0.8em;
+      }
+
+      .reveal .slide-video .video-placeholder {
+        background: var(--bg-light);
+        border-radius: 12px;
+        aspect-ratio: 16/9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-secondary);
+        font-size: 0.9em;
+        border: 2px dashed var(--border-color);
+      }
+
+      .reveal .slide-video.video-large .video-placeholder {
+        max-width: 80%;
+        margin: 0 auto;
+      }
+
+      /* ============================== */
+      /* UTILITY CLASSES                */
+      /* ============================== */
+      .reveal .text-muted {
+        color: var(--text-secondary);
+      }
+
+      .reveal .text-accent {
+        color: var(--accent-color);
+      }
+
+      .reveal .mb-1 { margin-bottom: 0.5em; }
+      .reveal .mb-2 { margin-bottom: 1em; }
+      .reveal .mb-3 { margin-bottom: 1.5em; }
+
+      .reveal .image-placeholder {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 0.8em;
+        min-height: 300px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <!-- ============================================ -->
+        <!-- SLIDE TYPE: Title                           -->
+        <!-- ============================================ -->
+        <section class="slide-title">
+          <h1>Presentation Title</h1>
+          <h3>Presentation Subtitle</h3>
+          <div class="author">Author and Date</div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SLIDE TYPE: Title & Photo                   -->
+        <!-- ============================================ -->
+        <section class="slide-title-photo">
+          <div class="content">
+            <h2>Title & Photo</h2>
+            <p>Supporting text that provides context for the image on the right side of the slide.</p>
+          </div>
+          <div class="photo image-placeholder">
+            [Photo]
+          </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SLIDE TYPE: Title & Photo Alt               -->
+        <!-- ============================================ -->
+        <section class="slide-title-photo-alt">
+          <div class="photo image-placeholder">
+            [Photo]
+          </div>
+          <div class="content">
+            <h2>Title & Photo Alt</h2>
+            <p>Photo on the left, content on the right. Use for variety in your presentation flow.</p>
+          </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SLIDE TYPE: Title & Bullets                 -->
+        <!-- ============================================ -->
+        <section class="slide-title-bullets">
+          <h2>Title & Bullets</h2>
+          <ul>
+            <li class="fragment">First key point with supporting detail</li>
+            <li class="fragment">Second important concept to convey</li>
+            <li class="fragment">Third item that builds on previous points</li>
+            <li class="fragment">Final takeaway for your audience</li>
+          </ul>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SLIDE TYPE: Bullets Only                    -->
+        <!-- ============================================ -->
+        <section class="slide-bullets">
+          <ul>
+            <li class="fragment">First bullet point without a title</li>
+            <li class="fragment">Second point for emphasis</li>
+            <li class="fragment">Third key message</li>
+          </ul>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SLIDE TYPE: Title, Bullets & Photo          -->
+        <!-- ============================================ -->
+        <section class="slide-title-bullets-photo">
+          <div class="content">
+            <h2>Title, Bullets & Photo</h2>
+            <ul>
+              <li class="fragment">Key feature one</li>
+              <li class="fragment">Key feature two</li>
+              <li class="fragment">Key feature three</li>
+            </ul>
+          </div>
+          <div class="photo">
+            <div class="image-placeholder" style="border-radius: 12px; min-height: 350px;">
+              [Photo]
+            </div>
+          </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SLIDE TYPE: Title, Bullets & Video Small    -->
+        <!-- ============================================ -->
+        <section class="slide-video">
+          <div class="content">
+            <h2>Title, Bullets & Live Video</h2>
+            <ul>
+              <li>Point one with video support</li>
+              <li>Point two explaining the video</li>
+              <li>Point three for context</li>
+            </ul>
+          </div>
+          <div class="video-placeholder">
+            [Live Video / Demo]
+          </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SLIDE TYPE: Title, Bullets & Video Large    -->
+        <!-- ============================================ -->
+        <section class="slide-video video-large">
+          <h2 style="text-align: center; margin-bottom: 0.5em;">Title, Bullets & Live Video Large</h2>
+          <div class="video-placeholder">
+            [Live Video / Demo - Full Width]
+          </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SLIDE TYPE: Section                         -->
+        <!-- ============================================ -->
+        <section class="slide-section" data-background="#1d1d1f">
+          <h2>Section Title</h2>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SLIDE TYPE: Title Only                      -->
+        <!-- ============================================ -->
+        <section class="slide-title-only">
+          <h2>A compelling title that stands alone</h2>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SLIDE TYPE: Agenda                          -->
+        <!-- ============================================ -->
+        <section class="slide-agenda">
+          <h2>Agenda</h2>
+          <ol>
+            <li class="fragment">Introduction and Overview</li>
+            <li class="fragment">Main Topic Discussion</li>
+            <li class="fragment">Key Findings and Analysis</li>
+            <li class="fragment">Recommendations</li>
+            <li class="fragment">Q&A and Next Steps</li>
+          </ol>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SLIDE TYPE: Statement                       -->
+        <!-- ============================================ -->
+        <section class="slide-statement">
+          <p>A powerful statement that captures the essence of your message and resonates with your audience.</p>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SLIDE TYPE: Big Fact                        -->
+        <!-- ============================================ -->
+        <section class="slide-big-fact">
+          <div class="big-number">100%</div>
+          <div class="fact-label">Of successful presentations tell a compelling story</div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SLIDE TYPE: Quote                           -->
+        <!-- ============================================ -->
+        <section class="slide-quote">
+          <blockquote>
+            <p>Notable Quote</p>
+            <cite>— Attribution</cite>
+          </blockquote>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SLIDE TYPE: Photo - 3 Up                    -->
+        <!-- ============================================ -->
+        <section class="slide-photo-3up">
+          <h2>Photo - 3 Up</h2>
+          <div class="photos">
+            <figure>
+              <div class="image-placeholder" style="aspect-ratio: 16/10; border-radius: 8px;">[Photo 1]</div>
+              <figcaption>Caption One</figcaption>
+            </figure>
+            <figure>
+              <div class="image-placeholder" style="aspect-ratio: 16/10; border-radius: 8px;">[Photo 2]</div>
+              <figcaption>Caption Two</figcaption>
+            </figure>
+            <figure>
+              <div class="image-placeholder" style="aspect-ratio: 16/10; border-radius: 8px;">[Photo 3]</div>
+              <figcaption>Caption Three</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SLIDE TYPE: Photo (Full Bleed)              -->
+        <!-- ============================================ -->
+        <section class="slide-photo">
+          <div class="image-placeholder" style="width: 100%; height: 100%;">
+            [Full Bleed Photo]
+          </div>
+          <div class="caption">
+            <strong>Photo Caption</strong> — Optional description text for the image
+          </div>
+        </section>
+
+        <!-- ============================================ -->
+        <!-- SLIDE TYPE: Blank                           -->
+        <!-- ============================================ -->
+        <section class="slide-blank">
+          <!-- Blank slide for custom content -->
+        </section>
+
+        <!-- ============================================ -->
+        <!-- CLOSING SLIDE                               -->
+        <!-- ============================================ -->
+        <section class="slide-title">
+          <h1>Thank You</h1>
+          <h3>Questions?</h3>
+          <div class="author">Contact Information</div>
+        </section>
+
+      </div>
+    </div>
+
+    <script src="reveal.js/dist/reveal.js"></script>
+    <script src="reveal.js/plugin/notes/notes.js"></script>
+    <script src="reveal.js/plugin/markdown/markdown.js"></script>
+    <script src="reveal.js/plugin/highlight/highlight.js"></script>
+    <script src="reveal.js/plugin/zoom/zoom.js"></script>
+
+    <script>
+      Reveal.initialize({
+        width: 1280,
+        height: 720,
+        margin: 0,
+        controls: true,
+        progress: true,
+        slideNumber: 'c/t',
+        hash: true,
+        transition: 'slide',
+        transitionSpeed: 'default',
+        backgroundTransition: 'fade',
+        center: false,
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
+      });
+    </script>
+  </body>
+</html>
