@@ -6,7 +6,7 @@
 set -e
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-REVEAL_SOURCE="/Users/hishamabuella/Work/Tools/reveal.js"
+REVEAL_SOURCE="${REVEAL_JS_PATH:-$HOME/Tools/reveal.js}"
 
 echo "==================================="
 echo "Presentation Skill Setup"
