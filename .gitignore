@@ -1,24 +1,16 @@
 # macOS
 .DS_Store
-.AppleDouble
-.LSOverride
 
-# Thumbnails
-._*
+# Playwright MCP screenshots
+.playwright-mcp/
 
-# Presentations directory (user-generated content)
-presentations/
+# Claude settings (local)
+.claude/
 
-# reveal.js local copies (each presentation should have its own)
-reveal.js/
-
-# Editor directories
-.idea/
-.vscode/
+# Editor files
 *.swp
 *.swo
 *~
 
-# Environment variables
-.env
-.env.local
+# Node modules (if any)
+node_modules/
