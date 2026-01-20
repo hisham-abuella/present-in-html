@@ -1,6 +1,6 @@
 # Presentation Skill
 
-Create professional HTML presentations using reveal.js. This skill enables Claude to create beautiful, interactive slide decks with animations, transitions, code highlighting, and more.
+Create professional, self-contained HTML presentations. Works offline with no external dependencies - perfect for presenting anywhere without internet access.
 
 ## Usage
 
@@ -8,447 +8,206 @@ Invoke this skill with: `/presentation`
 
 ## Quick Commands
 
-- `/presentation create "Title"` - Create a new presentation with a title
-- `/presentation add slide` - Add a new slide to the presentation
-- `/presentation add section` - Add a vertical slide section
-- `/presentation set theme <theme>` - Change the presentation theme
-- `/presentation preview` - Instructions to preview the presentation
+- `/presentation create "Title"` - Create a new presentation
+- `/presentation` - Start creating a presentation interactively
+
+## Features
+
+All presentations are **self-contained** (no CDN, no server required) and include:
+- 16:9 aspect ratio widescreen format
+- Touch/swipe navigation for mobile devices
+- Keyboard shortcuts (O=outline, D=draw, M=marker, T=theme, F=fullscreen)
+- Drawing/annotation canvas
+- Slide outline panel
+- Dark/Light theme toggle
+- PDF export via print
+- Markdown-based slide content
 
 ## Creating a New Presentation
 
-When asked to create a presentation, follow these steps:
+When asked to create a presentation:
 
-1. **Determine the presentation topic and structure** from the user's request
-2. **Choose an appropriate theme** (default: black)
-3. **Create the HTML file** using the base template structure
-4. **Copy reveal.js assets** to the presentation directory
+1. **Copy the template** from `index.html`
+2. **Edit the slide content** in the `<script id="slides-markdown">` section
+3. **Update the title** in the `<title>` tag
+4. **Customize theme colors** in CSS `:root` variables if needed
 
-### Base Template Structure
+## Slide Content Format
 
-```html
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PRESENTATION_TITLE</title>
-    <link rel="stylesheet" href="reveal.js/dist/reset.css">
-    <link rel="stylesheet" href="reveal.js/dist/reveal.css">
-    <link rel="stylesheet" href="reveal.js/dist/theme/THEME_NAME.css">
-    <link rel="stylesheet" href="reveal.js/plugin/highlight/monokai.css">
-    <style>
-      /* Custom styles */
-      .reveal .slides section {
-        text-align: left;
-      }
-      .reveal h1, .reveal h2 {
-        text-align: center;
-      }
-      .reveal .title-slide {
-        text-align: center;
-      }
-      .reveal .two-column {
-        display: flex;
-        gap: 2rem;
-      }
-      .reveal .two-column > div {
-        flex: 1;
-      }
-      .reveal .highlight-box {
-        background: rgba(255,255,255,0.1);
-        padding: 1rem;
-        border-radius: 0.5rem;
-        margin: 1rem 0;
-      }
-      .reveal blockquote {
-        width: 90%;
-        padding: 1rem;
-        background: rgba(255,255,255,0.05);
-        border-left: 4px solid #42affa;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="reveal">
-      <div class="slides">
-        <!-- SLIDES GO HERE -->
-      </div>
-    </div>
-    <script src="reveal.js/dist/reveal.js"></script>
-    <script src="reveal.js/plugin/notes/notes.js"></script>
-    <script src="reveal.js/plugin/markdown/markdown.js"></script>
-    <script src="reveal.js/plugin/highlight/highlight.js"></script>
-    <script src="reveal.js/plugin/zoom/zoom.js"></script>
-    <script>
-      Reveal.initialize({
-        hash: true,
-        progress: true,
-        center: false,
-        transition: 'slide',
-        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealZoom ]
-      });
-    </script>
-  </body>
-</html>
+Edit content inside `<script id="slides-markdown" type="text/markdown">`:
+
+### Basic Structure
+
+```markdown
+class: center-content
+
+# Presentation Title
+### Subtitle
+
+Author Name
+
+<div class="contact-links"><a href="mailto:email@example.com" class="contact-link">📧 Email</a></div>
+
+---
+
+## Slide Title
+
+- Bullet point one
+- Bullet point two
+
+---
+
+## Code Example
+
+```python
+def hello(name):
+    return f"Hello, {name}!"
 ```
 
-## Slide Types and Components
+---
+class: center-content
 
-### Title Slide
-```html
-<section class="title-slide">
-  <h1>Presentation Title</h1>
-  <h3>Subtitle or Tagline</h3>
-  <p>Author Name • Date</p>
-</section>
+# Thank You!
+### Questions?
 ```
 
-### Basic Content Slide
-```html
-<section>
-  <h2>Slide Title</h2>
-  <p>Content paragraph with explanatory text.</p>
-</section>
-```
+### Slide Separators
 
-### Bullet Points with Fragments (Progressive Reveal)
-```html
-<section>
-  <h2>Key Points</h2>
-  <ul>
-    <li class="fragment">First point appears on click</li>
-    <li class="fragment">Second point follows</li>
-    <li class="fragment">Third point concludes</li>
-  </ul>
-</section>
-```
+Use `---` on its own line to separate slides.
 
-### Numbered List
-```html
-<section>
-  <h2>Step-by-Step Process</h2>
-  <ol>
-    <li class="fragment">First step</li>
-    <li class="fragment">Second step</li>
-    <li class="fragment">Third step</li>
-  </ol>
-</section>
-```
+### Slide Classes
 
-### Two-Column Layout
-```html
-<section>
-  <h2>Comparison</h2>
-  <div class="two-column">
-    <div>
-      <h3>Option A</h3>
-      <ul>
-        <li>Feature 1</li>
-        <li>Feature 2</li>
-      </ul>
-    </div>
-    <div>
-      <h3>Option B</h3>
-      <ul>
-        <li>Feature 1</li>
-        <li>Feature 2</li>
-      </ul>
-    </div>
-  </div>
-</section>
-```
-
-### Code Block with Syntax Highlighting
-```html
-<section>
-  <h2>Code Example</h2>
-  <pre><code class="language-javascript" data-trim data-line-numbers>
-function greet(name) {
-  return `Hello, ${name}!`;
-}
-
-console.log(greet("World"));
-  </code></pre>
-</section>
-```
-
-### Code with Line Highlighting
-```html
-<section>
-  <h2>Code with Highlights</h2>
-  <pre><code class="language-python" data-trim data-line-numbers="1-2|4-5|7">
-# Define a function
-def calculate(x, y):
-
-    # Perform calculation
-    result = x + y
-
-    return result
-  </code></pre>
-</section>
-```
-
-### Image Slide
-```html
-<section>
-  <h2>Visual Diagram</h2>
-  <img src="assets/diagram.png" alt="Description" style="max-height: 500px;">
-</section>
-```
-
-### Image with Caption
-```html
-<section>
-  <h2>Architecture Overview</h2>
-  <figure>
-    <img src="assets/architecture.png" alt="System architecture" style="max-height: 450px;">
-    <figcaption style="font-size: 0.7em; color: #888;">Figure 1: System Architecture</figcaption>
-  </figure>
-</section>
-```
-
-### Quote/Blockquote Slide
-```html
-<section>
-  <h2>Inspiration</h2>
-  <blockquote>
-    "The best way to predict the future is to invent it."
-    <footer style="margin-top: 1rem; font-size: 0.8em;">— Alan Kay</footer>
-  </blockquote>
-</section>
-```
-
-### Vertical Slides (Section with Sub-slides)
-```html
-<section>
-  <section>
-    <h2>Main Topic</h2>
-    <p>Introduction to this section</p>
-    <p style="font-size: 0.7em; color: #888;">↓ Press down for details</p>
-  </section>
-  <section>
-    <h2>Detail 1</h2>
-    <p>Expanded information</p>
-  </section>
-  <section>
-    <h2>Detail 2</h2>
-    <p>More details</p>
-  </section>
-</section>
-```
-
-### Slide with Speaker Notes
-```html
-<section>
-  <h2>Important Point</h2>
-  <p>Key information for the audience</p>
-
-  <aside class="notes">
-    Speaker notes: Remember to:
-    - Emphasize the importance of this topic
-    - Provide real-world example
-    - Ask if there are questions
-  </aside>
-</section>
-```
-
-### Slide with Background Color
-```html
-<section data-background="#2d3436">
-  <h2>Dark Background</h2>
-  <p>Content stands out on colored background</p>
-</section>
-```
-
-### Slide with Gradient Background
-```html
-<section data-background-gradient="linear-gradient(135deg, #667eea 0%, #764ba2 100%)">
-  <h2>Gradient Background</h2>
-  <p>Modern, eye-catching design</p>
-</section>
-```
-
-### Slide with Image Background
-```html
-<section data-background="assets/background.jpg" data-background-opacity="0.3">
-  <h2>Image Background</h2>
-  <p>Text over subtle background image</p>
-</section>
-```
-
-### Highlight Box / Callout
-```html
-<section>
-  <h2>Key Takeaway</h2>
-  <div class="highlight-box">
-    <strong>Important:</strong> This is the critical point to remember.
-  </div>
-</section>
-```
-
-### Table Slide
-```html
-<section>
-  <h2>Data Comparison</h2>
-  <table style="font-size: 0.8em;">
-    <thead>
-      <tr>
-        <th>Feature</th>
-        <th>Option A</th>
-        <th>Option B</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Performance</td>
-        <td>High</td>
-        <td>Medium</td>
-      </tr>
-      <tr>
-        <td>Cost</td>
-        <td>$$$</td>
-        <td>$$</td>
-      </tr>
-    </tbody>
-  </table>
-</section>
-```
-
-### Thank You / Closing Slide
-```html
-<section class="title-slide">
-  <h1>Thank You!</h1>
-  <h3>Questions?</h3>
-  <p style="margin-top: 2rem;">
-    Contact: email@example.com<br>
-    Website: example.com
-  </p>
-</section>
-```
-
-## Fragment Animation Styles
-
-Use these classes for different reveal animations:
+Add `class:` at the start of a slide:
 
 | Class | Effect |
 |-------|--------|
-| `fragment` | Fade in |
-| `fragment fade-up` | Fade in from bottom |
-| `fragment fade-down` | Fade in from top |
-| `fragment fade-left` | Fade in from right |
-| `fragment fade-right` | Fade in from left |
-| `fragment grow` | Grow effect |
-| `fragment shrink` | Shrink effect |
-| `fragment zoom-in` | Zoom in |
-| `fragment fade-out` | Fade out |
-| `fragment highlight-red` | Highlight in red |
-| `fragment highlight-blue` | Highlight in blue |
-| `fragment highlight-green` | Highlight in green |
-| `fragment strike` | Strikethrough |
+| `center-content` | Center content vertically and horizontally |
+| `section-slide` | Dark background section divider |
 
-### Custom Fragment Order
+## Supported Content
+
+### Text
+- `# H1` - Main title (use for title slides)
+- `## H2` - Slide titles
+- `### H3` - Subtitles
+- `- item` - Bullet lists
+- `1. item` - Numbered lists
+- `` `code` `` - Inline code as keyboard key style
+
+### Code Blocks
+````markdown
+```python
+def example():
+    print("Hello")
+```
+````
+
+### Feature Grid (2 columns)
 ```html
-<p class="fragment" data-fragment-index="2">Appears second</p>
-<p class="fragment" data-fragment-index="1">Appears first</p>
+<div class="feature-grid"><div class="feature-card"><div class="feature-icon">🚀</div><div class="feature-content"><strong>Feature</strong><span>Description</span></div></div><div class="feature-card"><div class="feature-icon">⚡</div><div class="feature-content"><strong>Feature</strong><span>Description</span></div></div></div>
 ```
 
-## Available Themes
+**IMPORTANT:** Keep feature-grid HTML on a single line to avoid markdown parsing issues!
 
-| Theme | Description |
-|-------|-------------|
-| `black` | Dark background, white text (default) |
-| `white` | Light background, dark text |
-| `league` | Dark blue/gray |
-| `sky` | Light blue |
-| `beige` | Light beige |
-| `simple` | Minimal white |
-| `serif` | Serif typography |
-| `blood` | Dark red |
-| `night` | Very dark with blue accents |
-| `moon` | Dark with blue/purple |
-| `solarized` | Solarized color scheme |
-| `dracula` | Dracula dark theme |
-
-## Transition Effects
-
-Configure transitions in the Reveal.initialize() call:
-
-```javascript
-Reveal.initialize({
-  transition: 'slide', // none, fade, slide, convex, concave, zoom
-  transitionSpeed: 'default' // default, fast, slow
-});
-```
-
-Per-slide transition:
+### Comparison Table
 ```html
-<section data-transition="zoom">
-  <h2>This slide zooms in</h2>
-</section>
-
-<section data-transition="fade-in slide-out">
-  <h2>Fade in, slide out</h2>
-</section>
+<table class="comparison-table">
+<tr class="compare-row header"><td class="compare-cell">Feature</td><td class="compare-cell">A</td><td class="compare-cell highlight">B</td></tr>
+<tr class="compare-row"><td class="compare-cell">Speed</td><td class="compare-cell">Fast</td><td class="compare-cell highlight">Faster</td></tr>
+</table>
 ```
 
-## Auto-Animate
-
-Automatically animate elements between consecutive slides:
-
+### Contact Links
 ```html
-<section data-auto-animate>
-  <h2 data-id="title">Title</h2>
-  <p data-id="text">Initial state</p>
-</section>
-<section data-auto-animate>
-  <h2 data-id="title" style="color: #42affa;">Title</h2>
-  <p data-id="text" style="font-size: 2em;">Animated state</p>
-</section>
+<div class="contact-links"><a href="mailto:email@example.com" class="contact-link">📧 Email</a><a href="https://linkedin.com" class="contact-link">💼 LinkedIn</a></div>
 ```
 
-## Setup Instructions
+## Keyboard Shortcuts
 
-When creating a presentation, provide these instructions to the user:
+| Key | Action |
+|-----|--------|
+| ← → | Navigate slides |
+| O | Toggle outline |
+| M | Marker mode |
+| D | Drawing mode |
+| C | Clear drawings |
+| T | Toggle dark/light theme |
+| F | Fullscreen |
+| P | Export to PDF |
+| Esc | Exit current mode |
 
-1. **Copy reveal.js library:**
-   ```bash
-   cp -r /path/to/reveal.js ./presentation-name/reveal.js
-   ```
+## Theme Customization
 
-2. **Open the presentation:**
-   - Simply open the HTML file in a web browser
-   - Or use a local server: `python -m http.server 8000`
+Edit CSS variables in `:root`:
 
-3. **Keyboard shortcuts:**
-   - **Space/Arrow keys**: Navigate slides
-   - **S**: Open speaker view
-   - **Esc**: Overview mode
-   - **F**: Fullscreen
-   - **B**: Blackout/pause
-   - **?**: Help
+```css
+:root {
+    --accent-color: #D97757;    /* Claude orange */
+    --title-font: Georgia, serif;
+    --body-font: -apple-system, sans-serif;
+    --text-primary: #1d1d1f;
+    --bg-color: #ffffff;
+}
+```
 
 ## Best Practices
 
 1. **Keep slides focused** - One main idea per slide
-2. **Use fragments sparingly** - Don't overuse progressive reveals
-3. **Choose readable fonts** - Themes are optimized for readability
-4. **Test on target display** - Check how it looks on the presentation screen
-5. **Add speaker notes** - Help yourself during the presentation
-6. **Use vertical slides** - For deep dives into subtopics
-7. **Include a closing slide** - Always end with next steps or Q&A
+2. **Use center-content** - For title and closing slides
+3. **Feature grids on single line** - Avoid markdown parsing issues
+4. **Test in browser** - Open HTML file directly, no server needed
+5. **Use the outline** - Press O to navigate quickly during presentation
 
-## Example: Creating a Tech Talk
+## Example: Creating a Tech Presentation
 
-When asked to "Create a presentation about Python best practices", generate:
+When asked to "Create a presentation about Python":
 
-1. Title slide with topic and speaker info
-2. Agenda/overview slide
-3. Content slides for each topic with code examples
-4. Summary/key takeaways slide
-5. Thank you / Q&A slide
+```markdown
+class: center-content
 
-Include appropriate:
-- Code blocks with syntax highlighting
-- Fragment animations for bullet points
-- Speaker notes with talking points
-- Consistent theme throughout
+# Introduction to Python
+### A Beginner's Guide
+
+Your Name
+
+---
+
+## Why Python?
+
+- Easy to learn syntax
+- Versatile language
+- Large community
+- Extensive libraries
+
+---
+
+## Code Example
+
+```python
+# Hello World
+print("Hello, World!")
+
+# Variables
+name = "Python"
+version = 3.12
+```
+
+---
+
+## Key Features
+
+<div class="feature-grid"><div class="feature-card"><div class="feature-icon">📚</div><div class="feature-content"><strong>Libraries</strong><span>NumPy, Pandas, Django</span></div></div><div class="feature-card"><div class="feature-icon">🔧</div><div class="feature-content"><strong>Tools</strong><span>pip, virtualenv, pytest</span></div></div></div>
+
+---
+class: center-content
+
+# Thank You!
+### Questions?
+```
+
+## Setup Instructions
+
+1. Copy `index.html` to your project folder
+2. Rename it to match your presentation topic
+3. Edit the markdown content in `<script id="slides-markdown">`
+4. Open in any browser - works offline!
