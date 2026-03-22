@@ -1,0 +1,1468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Git & GitHub Workshop</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink: #0a0a0f;
+  --ink-mid: #141018;
+  --ink-light: #1e1822;
+  --accent: #059669;
+  --accent-glow: #10b981;
+  --cream: #f0ece4;
+  --cream-dim: #d8d3c9;
+  --paper: #e8e3d9;
+  --teal: #0d9488;
+  --rose: #f43f5e;
+  --display: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  --body: 'Avenir Next', 'Segoe UI', 'Helvetica Neue', system-ui, sans-serif;
+  --mono: 'SF Mono', 'Fira Code', Monaco, Consolas, monospace;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: #050709;
+}
+
+body {
+  font-family: var(--body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* == STORY SHELL == */
+.story {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 600px) {
+  .story {
+    max-width: min(480px, 90vw);
+    height: min(92vh, 860px);
+    border-radius: 24px;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.06),
+      0 40px 100px -20px rgba(0,0,0,0.8);
+  }
+}
+
+@media (min-width: 1000px) {
+  .story {
+    max-width: 500px;
+    height: min(90vh, 900px);
+  }
+}
+
+/* == PROGRESS == */
+.progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 3px;
+  padding: 14px 16px 0;
+  z-index: 20;
+}
+
+.progress-seg {
+  flex: 1;
+  height: 2.5px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-seg.done .progress-fill { width: 100%; }
+.progress-seg.active .progress-fill {
+  width: 100%;
+  transition: width 8s linear;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+/* == SLIDE == */
+.s {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 1.75rem 1.75rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  overflow: hidden;
+}
+
+.s.on {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (min-width: 400px) {
+  .s { padding: 4.5rem 2.25rem 2rem; }
+}
+
+@media (min-width: 600px) {
+  .s { padding: 4.5rem 2.75rem 2.5rem; }
+}
+
+/* -- Slide Variants -- */
+.s--ink {
+  background: radial-gradient(ellipse at 30% 20%, #0a1a12 0%, var(--ink) 70%);
+  color: var(--cream);
+}
+
+.s--cream {
+  background: radial-gradient(ellipse at 70% 80%, var(--paper) 0%, var(--cream) 70%);
+  color: var(--ink);
+}
+
+.s--accent {
+  background: linear-gradient(145deg, var(--accent) 0%, #047857 50%, #065f46 100%);
+  color: #f0fdf4;
+}
+
+.s--deep {
+  background: linear-gradient(160deg, #0a0a1e 0%, #0c1f1a 40%, #0f2922 100%);
+  color: var(--cream);
+}
+
+.s--teal {
+  background: linear-gradient(150deg, #0c1e1c 0%, #134e4a 40%, #1a6b64 100%);
+  color: var(--cream);
+}
+
+.s--rose {
+  background: linear-gradient(150deg, #2a0f0f 0%, #3d1616 40%, #4a1e1e 100%);
+  color: var(--cream);
+}
+
+/* -- Grain overlay -- */
+.s::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px;
+  mix-blend-mode: overlay;
+}
+
+/* -- Glow orbs -- */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 0;
+  filter: blur(60px);
+  opacity: 0.12;
+}
+
+.orb-1 {
+  width: 300px; height: 300px;
+  top: -100px; right: -80px;
+  background: var(--accent);
+}
+
+.orb-2 {
+  width: 200px; height: 200px;
+  bottom: -60px; left: -60px;
+  background: var(--teal);
+}
+
+.s--cream .orb { opacity: 0.06; }
+.s--accent .orb-1 { background: rgba(255,255,255,0.3); opacity: 0.15; }
+.s--accent .orb-2 { background: var(--ink); opacity: 0.06; }
+
+/* -- Top bar -- */
+.s-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: auto;
+}
+
+.s-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.s-brand-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.s--accent .s-brand-dot { background: var(--ink); }
+.s--cream .s-brand-dot { background: var(--accent); }
+
+.s-brand-name {
+  font-family: var(--body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  opacity: 0.7;
+}
+
+.s-tag {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  opacity: 0.35;
+  letter-spacing: 0.08em;
+}
+
+/* -- Content -- */
+.s-body {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.s-label {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 0.6rem;
+}
+
+.s-title {
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+
+.s-title i {
+  font-style: italic;
+  color: var(--accent-glow);
+}
+
+.s--accent .s-title i { color: #d1fae5; }
+.s--cream .s-title i { color: var(--accent); }
+.s--teal .s-title i { color: #5eead4; }
+.s--rose .s-title i { color: #f2936d; }
+
+/* -- Card / callout -- */
+.s-card {
+  margin-top: 1.25rem;
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.04);
+}
+
+.s--cream .s-card {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.06);
+}
+
+.s--accent .s-card {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.12);
+}
+
+.s-card-label {
+  font-family: var(--mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 0.5rem;
+}
+
+.s-card-value {
+  font-family: var(--mono);
+  font-size: clamp(0.82rem, 2vw, 0.95rem);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+.s-text {
+  font-size: clamp(0.82rem, 2.2vw, 0.95rem);
+  line-height: 1.7;
+  opacity: 0.75;
+  max-width: 400px;
+}
+
+.s-text strong {
+  font-weight: 600;
+  opacity: 1;
+}
+
+/* -- Stat pair -- */
+.s-stats {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+.s-stat {
+  flex: 1;
+  padding: 0.85rem 0.9rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.s--cream .s-stat {
+  background: rgba(0,0,0,0.03);
+  border-color: rgba(0,0,0,0.06);
+}
+
+.s--accent .s-stat {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.s-stat-label {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 0.3rem;
+}
+
+.s-stat-val {
+  font-family: var(--display);
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  font-weight: 400;
+}
+
+/* -- List -- */
+.s-list {
+  list-style: none;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.s-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  padding: 0.4rem 0;
+  font-size: clamp(0.8rem, 2.1vw, 0.92rem);
+  line-height: 1.55;
+  opacity: 0.8;
+}
+
+.s-list li::before {
+  content: '';
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  transform: translateY(-1px);
+}
+
+.s--accent .s-list li::before { background: var(--ink); }
+.s--teal .s-list li::before { background: #5eead4; }
+.s--rose .s-list li::before { background: #f2936d; }
+
+.s-list strong {
+  font-weight: 600;
+  opacity: 1;
+}
+
+/* -- Code block -- */
+.s-code {
+  margin-top: 1.25rem;
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.07);
+  overflow-x: auto;
+}
+
+.s--cream .s-code {
+  background: rgba(0,0,0,0.06);
+  border-color: rgba(0,0,0,0.08);
+}
+
+.s-code pre {
+  font-family: var(--mono);
+  font-size: clamp(0.65rem, 1.6vw, 0.78rem);
+  line-height: 1.6;
+  color: var(--cream);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.s--cream .s-code pre { color: var(--ink); }
+
+.s-code-label {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.35;
+  margin-bottom: 0.6rem;
+}
+
+/* -- Timeline -- */
+.s-timeline {
+  margin-top: 1.25rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.s-timeline::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+}
+
+.s--cream .s-timeline::before { background: rgba(0,0,0,0.08); }
+
+.s-tl-item {
+  position: relative;
+  padding: 0.4rem 0;
+  font-size: clamp(0.72rem, 1.8vw, 0.82rem);
+  line-height: 1.5;
+  opacity: 0.7;
+  cursor: default;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.s-tl-item:hover {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+.s-tl-item::before {
+  content: '';
+  position: absolute;
+  left: -1.5rem;
+  top: 0.65rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: var(--ink);
+  transition: background 0.2s;
+}
+
+.s--cream .s-tl-item::before { background: var(--cream); }
+.s--accent .s-tl-item::before { background: var(--accent); border-color: var(--ink); }
+.s--teal .s-tl-item::before { border-color: #5eead4; background: #134e4a; }
+.s-tl-item:hover::before { background: var(--accent); }
+
+.s-tl-item strong {
+  font-weight: 600;
+  opacity: 1;
+  color: var(--accent-glow);
+}
+
+.s--cream .s-tl-item strong { color: var(--accent); }
+.s--accent .s-tl-item strong { color: var(--ink); }
+.s--teal .s-tl-item strong { color: #5eead4; }
+
+/* -- Bottom -- */
+.s-foot {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+}
+
+.s-pg {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  opacity: 0.3;
+  letter-spacing: 0.08em;
+}
+
+/* == NAV ARROWS == */
+.nav-arrows {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 20;
+}
+
+.nav-arrow {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s, border-color 0.25s, transform 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-arrow:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.25);
+  transform: scale(1.08);
+}
+
+.nav-arrow:active { transform: scale(0.95); }
+
+.nav-arrow.disabled {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.nav-arrow svg {
+  width: 18px; height: 18px;
+  stroke: rgba(255,255,255,0.7);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* == KEYBOARD HINT == */
+.kbd-hint {
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 20;
+}
+
+.kbd-hint span {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  opacity: 0.2;
+  letter-spacing: 0.08em;
+}
+
+/* == ENTRANCE ANIMATIONS == */
+.s.on .s-label { animation: fadeUp 0.4s ease both 0.05s; }
+.s.on .s-text { animation: fadeUp 0.45s ease both 0.2s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Transition flash */
+.story::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  opacity: 0;
+  z-index: 15;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+
+.story.flash::before {
+  opacity: 0.06;
+}
+
+/* Orb drift */
+@keyframes orbDrift1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(15px, -20px) scale(1.05); }
+  50% { transform: translate(-10px, -35px) scale(0.97); }
+  75% { transform: translate(20px, -10px) scale(1.03); }
+}
+@keyframes orbDrift2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-20px, 15px) scale(1.06); }
+  66% { transform: translate(15px, 25px) scale(0.95); }
+}
+
+.s.on .orb-1 { animation: orbDrift1 8s ease-in-out infinite; }
+.s.on .orb-2 { animation: orbDrift2 10s ease-in-out infinite; }
+
+/* Staggered list items */
+.s.on .s-list li { animation: fadeSlideIn 0.4s ease both; }
+.s.on .s-list li:nth-child(1) { animation-delay: 0.25s; }
+.s.on .s-list li:nth-child(2) { animation-delay: 0.35s; }
+.s.on .s-list li:nth-child(3) { animation-delay: 0.45s; }
+.s.on .s-list li:nth-child(4) { animation-delay: 0.55s; }
+.s.on .s-list li:nth-child(5) { animation-delay: 0.65s; }
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 0.8; transform: translateX(0); }
+}
+
+/* Timeline stagger */
+.s.on .s-tl-item { animation: fadeSlideIn 0.4s ease both; }
+.s.on .s-tl-item:nth-child(1) { animation-delay: 0.2s; }
+.s.on .s-tl-item:nth-child(2) { animation-delay: 0.35s; }
+.s.on .s-tl-item:nth-child(3) { animation-delay: 0.5s; }
+.s.on .s-tl-item:nth-child(4) { animation-delay: 0.65s; }
+
+/* Stat cards pop-in */
+.s.on .s-stat { animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both; }
+.s.on .s-stat:nth-child(1) { animation-delay: 0.3s; }
+.s.on .s-stat:nth-child(2) { animation-delay: 0.42s; }
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.85) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Title scale entrance */
+.s.on .s-title {
+  animation: titleReveal 0.6s cubic-bezier(0.22,1,0.36,1) both 0.1s;
+}
+
+@keyframes titleReveal {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Card slide-up */
+.s.on .s-card { animation: cardSlideUp 0.5s cubic-bezier(0.22,1,0.36,1) both 0.3s; }
+.s.on .s-code { animation: cardSlideUp 0.5s cubic-bezier(0.22,1,0.36,1) both 0.35s; }
+
+@keyframes cardSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Shimmer on strong text */
+.s.on .s-text strong {
+  animation: shimmer 0.6s ease both 0.5s;
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; text-shadow: 0 0 8px rgba(5,150,105,0.3); }
+  100% { opacity: 1; text-shadow: none; }
+}
+
+/* Pulse dot */
+.pulse-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  position: relative;
+  display: inline-block;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  animation: pulse 2s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Brand bar fade */
+.s.on .s-top { animation: fadeIn 0.4s ease both 0.02s; }
+.s.on .s-foot { animation: fadeUp 0.3s ease both 0.15s; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* ══════════════════════════════════════════════════════
+   RETRO TERMINAL CLI THEME OVERRIDE
+   Green-screen CRT aesthetic
+   ══════════════════════════════════════════════════════ */
+
+/* -- Root variable overrides -- */
+:root {
+    --display: 'Courier New', 'Lucida Console', monospace;
+    --body: 'Courier New', 'Lucida Console', monospace;
+    --mono: 'Courier New', 'Lucida Console', monospace;
+    --ink: #000000;
+    --ink-mid: #0a0a0a;
+    --ink-light: #111111;
+    --accent: #00ff41;
+    --accent-glow: #00cc33;
+    --cream: #00ff41;
+    --cream-dim: #00cc33;
+    --paper: #001a00;
+    --teal: #00ff41;
+    --rose: #00ff41;
+}
+
+/* -- Global background -- */
+html, body {
+    background: #000000;
+}
+
+/* -- All text: subtle green glow -- */
+body, .s, .s-title, .s-text, .s-label, .s-card, .s-list, .s-code,
+.s-stat, .s-tl-item, .s-brand-name, .s-tag, .s-pg, .kbd-hint span {
+    text-shadow: 0 0 5px rgba(0,255,65,0.3);
+}
+
+/* -- Zero border-radius everywhere -- */
+*, *::before, *::after {
+    border-radius: 0;
+}
+
+/* -- Slide variants: black bg, green text -- */
+.s--ink {
+    background: #000000;
+    color: #00ff41;
+}
+
+.s--cream {
+    background: #001100;
+    color: #00ff41;
+}
+
+.s--accent {
+    background: #000000;
+    color: #00ff41;
+}
+
+.s--deep {
+    background: #000000;
+    color: #00ff41;
+}
+
+.s--teal {
+    background: #000000;
+    color: #00ff41;
+}
+
+.s--rose {
+    background: #000000;
+    color: #00ff41;
+}
+
+/* -- Remove grain overlay -- */
+.s::after {
+    opacity: 0;
+}
+
+/* -- CRT scanline effect on .story -- */
+.story::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 255, 65, 0.03) 2px,
+        rgba(0, 255, 65, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 30;
+}
+
+/* -- Remove all orbs/decorative elements -- */
+.orb, .orb-1, .orb-2 {
+    display: none;
+}
+
+/* -- Title styling with blinking cursor -- */
+.s-title {
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    font-weight: 700;
+    color: #00ff41;
+    text-shadow: 0 0 10px rgba(0,255,65,0.4);
+}
+
+.s-title::after {
+    content: '_';
+    animation: cursorBlink 1s step-end infinite;
+    color: #00ff41;
+    font-weight: 400;
+    margin-left: 2px;
+}
+
+@keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+.s-title i {
+    font-style: normal;
+    color: #00cc33;
+    text-shadow: 0 0 8px rgba(0,204,51,0.4);
+}
+
+.s--accent .s-title i,
+.s--cream .s-title i,
+.s--teal .s-title i,
+.s--rose .s-title i {
+    color: #00cc33;
+}
+
+/* -- Label styling -- */
+.s-label {
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    color: #00cc33;
+    opacity: 0.6;
+}
+
+/* -- Body text -- */
+.s-text {
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    color: #00cc33;
+    opacity: 0.8;
+}
+
+.s-text strong {
+    color: #00ff41;
+    opacity: 1;
+}
+
+/* -- Cards: black bg with green border -- */
+.s-card {
+    background: #000000;
+    border: 1px solid #00ff41;
+    font-family: 'Courier New', 'Lucida Console', monospace;
+}
+
+.s--cream .s-card {
+    background: #000000;
+    border-color: #00ff41;
+}
+
+.s--accent .s-card {
+    background: #000000;
+    border-color: #00ff41;
+}
+
+.s-card-label {
+    color: #00cc33;
+    font-family: 'Courier New', 'Lucida Console', monospace;
+}
+
+.s-card-value {
+    color: #00ff41;
+    font-family: 'Courier New', 'Lucida Console', monospace;
+}
+
+/* -- Code blocks -- */
+.s-code {
+    background: #000000;
+    border: 1px solid #00ff41;
+}
+
+.s--cream .s-code {
+    background: #000000;
+    border-color: #00ff41;
+}
+
+.s-code pre {
+    color: #00ff41;
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    text-shadow: 0 0 5px rgba(0,255,65,0.3);
+}
+
+.s--cream .s-code pre {
+    color: #00ff41;
+}
+
+.s-code-label {
+    color: #00cc33;
+}
+
+/* -- Stats: green monospace numbers -- */
+.s-stat {
+    background: #000000;
+    border: 1px solid #00ff41;
+}
+
+.s--cream .s-stat {
+    background: #000000;
+    border-color: #00ff41;
+}
+
+.s--accent .s-stat {
+    background: #000000;
+    border-color: #00ff41;
+}
+
+.s-stat-val {
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    color: #00ff41;
+    text-shadow: 0 0 8px rgba(0,255,65,0.4);
+}
+
+.s-stat-label {
+    color: #00cc33;
+    font-family: 'Courier New', 'Lucida Console', monospace;
+}
+
+/* -- Lists -- */
+.s-list li {
+    color: #00cc33;
+}
+
+.s-list li::before {
+    content: '>';
+    background: none;
+    color: #00ff41;
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    width: auto;
+    height: auto;
+    font-size: 0.85rem;
+}
+
+.s-list strong {
+    color: #00ff41;
+}
+
+.s--accent .s-list li::before,
+.s--teal .s-list li::before,
+.s--rose .s-list li::before {
+    background: none;
+    color: #00ff41;
+}
+
+/* -- Timeline -- */
+.s-timeline::before {
+    background: #00ff41;
+    opacity: 0.3;
+}
+
+.s--cream .s-timeline::before {
+    background: #00ff41;
+    opacity: 0.3;
+}
+
+.s-tl-item {
+    color: #00cc33;
+}
+
+.s-tl-item::before {
+    border: 2px solid #00ff41;
+    background: #000000;
+}
+
+.s--cream .s-tl-item::before { background: #000000; }
+.s--accent .s-tl-item::before { background: #000000; border-color: #00ff41; }
+.s--teal .s-tl-item::before { border-color: #00ff41; background: #000000; }
+.s-tl-item:hover::before { background: #00ff41; }
+
+.s-tl-item strong {
+    color: #00ff41;
+}
+
+.s--cream .s-tl-item strong,
+.s--accent .s-tl-item strong,
+.s--teal .s-tl-item strong {
+    color: #00ff41;
+}
+
+/* -- Progress bar: bright green -- */
+.progress-seg {
+    background: #0a0a0a;
+}
+
+.progress-fill {
+    background: #00ff41;
+    box-shadow: 0 0 6px rgba(0,255,65,0.4);
+}
+
+/* -- Nav arrows: green rectangles -- */
+.nav-arrow {
+    border: 1px solid #00ff41;
+    background: #000000;
+}
+
+.nav-arrow:hover {
+    background: #00ff41;
+    border-color: #00ff41;
+}
+
+.nav-arrow:hover svg {
+    stroke: #000000;
+}
+
+.nav-arrow:active {
+    transform: scale(0.95);
+}
+
+.nav-arrow svg {
+    stroke: #00ff41;
+}
+
+/* -- Brand elements -- */
+.s-brand-dot {
+    background: #00ff41;
+    animation: cursorBlink 1s step-end infinite;
+}
+
+.s--accent .s-brand-dot,
+.s--cream .s-brand-dot {
+    background: #00ff41;
+}
+
+.s-brand-name {
+    color: #00cc33;
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.s-tag {
+    color: #00cc33;
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    opacity: 0.5;
+}
+
+/* -- Footer / page numbers -- */
+.s-pg {
+    color: #00cc33;
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    opacity: 0.5;
+}
+
+.kbd-hint span {
+    color: #00cc33;
+    font-family: 'Courier New', 'Lucida Console', monospace;
+    opacity: 0.3;
+}
+
+/* -- Fullscreen button -- */
+.fs-btn {
+    background: #000000;
+    border: 1px solid #00ff41;
+}
+
+.fs-btn:hover {
+    background: #00ff41;
+}
+
+.fs-btn svg {
+    stroke: #00ff41;
+}
+
+.fs-btn:hover svg {
+    stroke: #000000;
+}
+
+/* -- Story container: sharp edges, green glow -- */
+@media (min-width: 600px) {
+    .story {
+        box-shadow: 0 0 30px rgba(0,255,65,0.05), 0 0 0 1px rgba(0,255,65,0.15);
+    }
+}
+
+/* -- Transition flash: green instead of accent default -- */
+.story.flash::before {
+    background: #00ff41;
+    opacity: 0.04;
+}
+
+/* -- Pulse dot override -- */
+.pulse-dot {
+    background: #00ff41;
+}
+
+.pulse-dot::after {
+    border-color: #00ff41;
+}
+
+/* -- Shimmer override -- */
+.s.on .s-text strong {
+    animation: shimmerGreen 0.6s ease both 0.5s;
+}
+
+@keyframes shimmerGreen {
+    0% { opacity: 0.4; }
+    50% { opacity: 1; text-shadow: 0 0 12px rgba(0,255,65,0.5); }
+    100% { opacity: 1; text-shadow: 0 0 5px rgba(0,255,65,0.3); }
+}
+</style>
+</head>
+<body>
+
+<div class="story" id="story">
+  <div class="progress" id="prog"></div>
+
+  <button class="fs-btn" id="fsBtn" title="Fullscreen (F)">
+    <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  </button>
+
+  <div class="nav-arrows">
+    <button class="nav-arrow disabled" id="navL" aria-label="Previous slide">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="nav-arrow" id="navR" aria-label="Next slide">
+      <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+    </button>
+  </div>
+
+  <div class="kbd-hint"><span>Arrow keys or swipe · F for fullscreen</span></div>
+
+  <!-- SLIDE 1: Title -->
+  <div class="s s--ink">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">Dev Workshop</div></div>
+      <div class="s-tag">Hands-On</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">Workshop</div>
+      <h2 class="s-title">Mastering <i>Git & GitHub</i></h2>
+      <p class="s-text">A hands-on workshop from zero to confident contributor. Follow along on your own machine.</p>
+    </div>
+    <div class="s-foot"><div class="s-pg">01 / 10</div></div>
+  </div>
+
+  <!-- SLIDE 2: What You'll Learn -->
+  <div class="s s--cream">
+    <div class="orb orb-1"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">Dev Workshop</div></div>
+      <div class="s-tag">Hands-On</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">Overview</div>
+      <h2 class="s-title">What You'll <i>Learn</i></h2>
+      <ul class="s-list">
+        <li>Initialize repos & make commits</li>
+        <li>Branching & merging strategies</li>
+        <li>Pull requests & code review</li>
+        <li>Resolving merge conflicts</li>
+      </ul>
+    </div>
+    <div class="s-foot"><div class="s-pg">02 / 10</div></div>
+  </div>
+
+  <!-- SLIDE 3: Setup Check -->
+  <div class="s s--deep">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">Dev Workshop</div></div>
+      <div class="s-tag">Hands-On</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">Before We Start</div>
+      <h2 class="s-title">Setup <i>Check</i></h2>
+      <p class="s-text">Make sure everything is ready before we dive in.</p>
+      <div class="s-card">
+        <div class="s-card-label">Prerequisites</div>
+        <div class="s-card-value">Git installed (git --version)<br>GitHub account created<br>Terminal or VS Code ready<br>A sense of adventure</div>
+      </div>
+    </div>
+    <div class="s-foot"><div class="s-pg">03 / 10</div></div>
+  </div>
+
+  <!-- SLIDE 4: Core Commands -->
+  <div class="s s--accent">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">Dev Workshop</div></div>
+      <div class="s-tag">Hands-On</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">Essentials</div>
+      <h2 class="s-title">Core <i>Commands</i></h2>
+      <div class="s-code">
+        <div class="s-code-label">Terminal</div>
+        <pre>git init          # Start a repo
+git add .         # Stage changes
+git commit -m ""  # Save snapshot
+git push          # Upload to remote
+git pull          # Download changes</pre>
+      </div>
+    </div>
+    <div class="s-foot"><div class="s-pg">04 / 10</div></div>
+  </div>
+
+  <!-- SLIDE 5: Branching Strategy -->
+  <div class="s s--teal">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">Dev Workshop</div></div>
+      <div class="s-tag">Hands-On</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">Workflow</div>
+      <h2 class="s-title">Branching <i>Strategy</i></h2>
+      <div class="s-timeline">
+        <div class="s-tl-item"><strong>main</strong> &mdash; production-ready code</div>
+        <div class="s-tl-item"><strong>develop</strong> &mdash; integration branch</div>
+        <div class="s-tl-item"><strong>feature/*</strong> &mdash; new features</div>
+        <div class="s-tl-item"><strong>hotfix/*</strong> &mdash; emergency fixes</div>
+      </div>
+    </div>
+    <div class="s-foot"><div class="s-pg">05 / 10</div></div>
+  </div>
+
+  <!-- SLIDE 6: Exercise 1 -->
+  <div class="s s--ink">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">Dev Workshop</div></div>
+      <div class="s-tag">Hands-On</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">Hands-On</div>
+      <h2 class="s-title">Exercise <i>1</i></h2>
+      <div class="s-card">
+        <div class="s-card-label">Try It</div>
+        <div class="s-card-value">1. Create a new repo on GitHub<br>2. Clone it locally<br>3. Create a file, add, commit<br>4. Push to remote<br>5. Check GitHub &mdash; your code is there!</div>
+      </div>
+    </div>
+    <div class="s-foot"><div class="s-pg">06 / 10</div></div>
+  </div>
+
+  <!-- SLIDE 7: Pull Requests -->
+  <div class="s s--cream">
+    <div class="orb orb-1"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">Dev Workshop</div></div>
+      <div class="s-tag">Hands-On</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">Collaboration</div>
+      <h2 class="s-title">Pull <i>Requests</i></h2>
+      <ul class="s-list">
+        <li>Fork or branch the repo</li>
+        <li>Make your changes</li>
+        <li>Push and open a PR</li>
+        <li>Request review</li>
+        <li>Merge when approved</li>
+      </ul>
+      <p class="s-text" style="margin-top:0.75rem">Pull requests are the heart of collaboration.</p>
+    </div>
+    <div class="s-foot"><div class="s-pg">07 / 10</div></div>
+  </div>
+
+  <!-- SLIDE 8: Merge Conflicts -->
+  <div class="s s--deep">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">Dev Workshop</div></div>
+      <div class="s-tag">Hands-On</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">Troubleshooting</div>
+      <h2 class="s-title">Merge <i>Conflicts</i></h2>
+      <p class="s-text">Conflicts happen when two branches change the same lines. They're normal and fixable.</p>
+      <div class="s-card">
+        <div class="s-card-label">The Fix</div>
+        <div class="s-card-value">Open the conflicted file. Look for &lt;&lt;&lt;&lt;&lt;&lt;&lt; markers. Choose which changes to keep. Remove the markers. Add, commit, done.</div>
+      </div>
+    </div>
+    <div class="s-foot"><div class="s-pg">08 / 10</div></div>
+  </div>
+
+  <!-- SLIDE 9: Pro Tips -->
+  <div class="s s--accent">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">Dev Workshop</div></div>
+      <div class="s-tag">Hands-On</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">Best Practices</div>
+      <h2 class="s-title">Pro <i>Tips</i></h2>
+      <ul class="s-list">
+        <li>Write clear commit messages</li>
+        <li>Commit early, commit often</li>
+        <li>Never force push to main</li>
+        <li>Use .gitignore from day one</li>
+      </ul>
+    </div>
+    <div class="s-foot"><div class="s-pg">09 / 10</div></div>
+  </div>
+
+  <!-- SLIDE 10: Keep Practicing -->
+  <div class="s s--ink">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">Dev Workshop</div></div>
+      <div class="s-tag">Hands-On</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">Next Steps</div>
+      <h2 class="s-title">Keep <i>Practicing</i></h2>
+      <div class="s-card" style="margin-top:1.5rem;text-align:center">
+        <div class="s-card-label">Resources</div>
+        <div class="s-card-value" style="font-family:var(--display);font-size:1rem">git-scm.com &mdash; Official docs<br>GitHub Skills &mdash; Interactive courses</div>
+      </div>
+    </div>
+    <div class="s-foot"><div class="s-pg">10 / 10</div></div>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var slides = document.querySelectorAll('.s');
+  var prog = document.getElementById('prog');
+  var story = document.getElementById('story');
+  var cur = 0;
+
+  // Build progress segments
+  for (var i = 0; i < slides.length; i++) {
+    var seg = document.createElement('div');
+    seg.className = 'progress-seg';
+    var fill = document.createElement('div');
+    fill.className = 'progress-fill';
+    seg.appendChild(fill);
+    prog.appendChild(seg);
+  }
+
+  var navL = document.getElementById('navL');
+  var navR = document.getElementById('navR');
+
+  function updateArrows() {
+    navL.classList.toggle('disabled', cur === 0);
+    navR.classList.toggle('disabled', cur === slides.length - 1);
+  }
+
+  function go(n) {
+    if (n < 0 || n >= slides.length) return;
+
+    // Flash transition
+    story.classList.add('flash');
+    setTimeout(function() { story.classList.remove('flash'); }, 200);
+
+    cur = n;
+    updateArrows();
+
+    slides.forEach(function(s, i) { s.classList.toggle('on', i === cur); });
+
+    // Update progress
+    var segs = prog.children;
+    for (var i = 0; i < segs.length; i++) {
+      segs[i].classList.remove('done', 'active');
+      var f = segs[i].querySelector('.progress-fill');
+      f.style.transition = 'none';
+      f.style.width = '0';
+      if (i < cur) {
+        segs[i].classList.add('done');
+        f.style.width = '100%';
+      }
+    }
+
+    // Animate current segment
+    var cf = segs[cur].querySelector('.progress-fill');
+    cf.style.transition = 'none';
+    cf.style.width = '0';
+    cf.offsetWidth; // reflow
+    segs[cur].classList.add('active');
+    cf.style.transition = 'width 8s linear';
+    cf.style.width = '100%';
+  }
+
+  // Navigation
+  navL.addEventListener('click', function(e) { e.stopPropagation(); go(cur - 1); });
+  navR.addEventListener('click', function(e) { e.stopPropagation(); go(cur + 1); });
+
+  // Fullscreen
+  var fsBtn = document.getElementById('fsBtn');
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+      story.classList.add('fullscreen');
+    } else {
+      document.exitFullscreen();
+      story.classList.remove('fullscreen');
+    }
+  }
+  fsBtn.addEventListener('click', function(e) { e.stopPropagation(); toggleFullscreen(); });
+  document.addEventListener('fullscreenchange', function() {
+    if (!document.fullscreenElement) story.classList.remove('fullscreen');
+  });
+
+  // Keyboard
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); go(cur + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1); }
+    if (e.key === 'Home') { e.preventDefault(); go(0); }
+    if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+    if (e.key === 'f' || e.key === 'F') { e.preventDefault(); toggleFullscreen(); }
+  });
+
+  // Touch/swipe
+  var touchStartX = 0;
+  var touchStartY = 0;
+  document.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  document.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    var dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      if (dx > 0) go(cur - 1);
+      else go(cur + 1);
+    }
+  });
+
+  // Click on sides for mobile
+  story.addEventListener('click', function(e) {
+    if (e.target.closest('.nav-arrow') || e.target.closest('a') || e.target.closest('button')) return;
+    var rect = story.getBoundingClientRect();
+    var x = e.clientX - rect.left;
+    if (x < rect.width * 0.3) go(cur - 1);
+    else if (x > rect.width * 0.7) go(cur + 1);
+  });
+
+  // Start
+  go(0);
+})();
+</script>
+</body>
+</html>

@@ -573,6 +573,45 @@ body {
   letter-spacing: 0.08em;
 }
 
+/* ══ FULLSCREEN MODE ══ */
+.story.fullscreen {
+  max-width: 100vw;
+  width: 100vw;
+  height: 100vh;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.fs-btn {
+  position: absolute;
+  top: 26px;
+  right: 16px;
+  z-index: 20;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fs-btn:hover { background: rgba(255,255,255,0.14); }
+
+.fs-btn svg {
+  width: 14px; height: 14px;
+  stroke: rgba(255,255,255,0.6);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
 /* ══ ENTRANCE ANIMATIONS ══ */
 .s.on .s-label { animation: fadeUp 0.4s ease both 0.05s; }
 .s.on .s-text { animation: fadeUp 0.45s ease both 0.2s; }
@@ -714,6 +753,10 @@ body {
 <div class="story" id="story">
   <div class="progress" id="prog"></div>
 
+  <button class="fs-btn" id="fsBtn" title="Fullscreen (F)">
+    <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  </button>
+
   <div class="nav-arrows">
     <button class="nav-arrow disabled" id="navL" aria-label="Previous slide">
       <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
@@ -723,7 +766,7 @@ body {
     </button>
   </div>
 
-  <div class="kbd-hint"><span>Arrow keys or swipe to navigate</span></div>
+  <div class="kbd-hint"><span>Arrow keys or swipe &middot; F for fullscreen</span></div>
 
   <!-- ══════════════════════════════════════
        SLIDE CONTENT - Edit slides below
@@ -922,12 +965,29 @@ body {
   navL.addEventListener('click', function(e) { e.stopPropagation(); go(cur - 1); });
   navR.addEventListener('click', function(e) { e.stopPropagation(); go(cur + 1); });
 
+  // Fullscreen
+  var fsBtn = document.getElementById('fsBtn');
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+      story.classList.add('fullscreen');
+    } else {
+      document.exitFullscreen();
+      story.classList.remove('fullscreen');
+    }
+  }
+  fsBtn.addEventListener('click', function(e) { e.stopPropagation(); toggleFullscreen(); });
+  document.addEventListener('fullscreenchange', function() {
+    if (!document.fullscreenElement) story.classList.remove('fullscreen');
+  });
+
   // Keyboard
   document.addEventListener('keydown', function(e) {
     if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); go(cur + 1); }
     if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1); }
     if (e.key === 'Home') { e.preventDefault(); go(0); }
     if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+    if (e.key === 'f' || e.key === 'F') { e.preventDefault(); toggleFullscreen(); }
   });
 
   // Touch/swipe

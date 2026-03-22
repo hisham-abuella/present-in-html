@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Why HTML Presentations Win</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink: #0a0a0f;
+  --ink-mid: #141018;
+  --ink-light: #1e1822;
+  --accent: #e07a5f;
+  --accent-glow: #f2936d;
+  --cream: #f0ece4;
+  --cream-dim: #d8d3c9;
+  --paper: #e8e3d9;
+  --teal: #3d5a80;
+  --rose: #e07a5f;
+  --display: 'Palatino Linotype', Palatino, 'Book Antiqua', Georgia, serif;
+  --body: 'Avenir Next', 'Segoe UI', 'Helvetica Neue', system-ui, sans-serif;
+  --mono: 'SF Mono', 'Fira Code', Monaco, Consolas, monospace;
+}
+
+html, body {
+  height: 100%;
+  overflow: hidden;
+  background: #050709;
+}
+
+body {
+  font-family: var(--body);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ══ STORY SHELL ══ */
+.story {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (min-width: 600px) {
+  .story {
+    max-width: min(480px, 90vw);
+    height: min(92vh, 860px);
+    border-radius: 24px;
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.06),
+      0 40px 100px -20px rgba(0,0,0,0.8);
+  }
+}
+
+@media (min-width: 1000px) {
+  .story {
+    max-width: 500px;
+    height: min(90vh, 900px);
+  }
+}
+
+/* ══ PROGRESS ══ */
+.progress {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  gap: 3px;
+  padding: 14px 16px 0;
+  z-index: 20;
+}
+
+.progress-seg {
+  flex: 1;
+  height: 2.5px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progress-seg.done .progress-fill { width: 100%; }
+.progress-seg.active .progress-fill {
+  width: 100%;
+  transition: width 8s linear;
+}
+
+.progress-fill {
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+/* ══ SLIDE ══ */
+.s {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 1.75rem 1.75rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  overflow: hidden;
+}
+
+.s.on {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (min-width: 400px) {
+  .s { padding: 4.5rem 2.25rem 2rem; }
+}
+
+@media (min-width: 600px) {
+  .s { padding: 4.5rem 2.75rem 2.5rem; }
+}
+
+/* ── Slide Variants ── */
+.s--ink {
+  background: radial-gradient(ellipse at 30% 20%, #1a1018 0%, var(--ink) 70%);
+  color: var(--cream);
+}
+
+.s--cream {
+  background: radial-gradient(ellipse at 70% 80%, var(--paper) 0%, var(--cream) 70%);
+  color: var(--ink);
+}
+
+.s--accent {
+  background: linear-gradient(145deg, var(--accent) 0%, #c4654a 50%, #b85a42 100%);
+  color: var(--ink);
+}
+
+.s--deep {
+  background: linear-gradient(160deg, #0a0a1e 0%, #121230 40%, #1a1a45 100%);
+  color: var(--cream);
+}
+
+.s--teal {
+  background: linear-gradient(150deg, #0c1e2e 0%, #1a3550 40%, #264a6a 100%);
+  color: var(--cream);
+}
+
+.s--rose {
+  background: linear-gradient(150deg, #2a0f0f 0%, #3d1616 40%, #4a1e1e 100%);
+  color: var(--cream);
+}
+
+/* ── Grain overlay ── */
+.s::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 256px;
+  mix-blend-mode: overlay;
+}
+
+/* ── Glow orbs ── */
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  z-index: 0;
+  filter: blur(60px);
+  opacity: 0.12;
+}
+
+.orb-1 {
+  width: 300px; height: 300px;
+  top: -100px; right: -80px;
+  background: var(--accent);
+}
+
+.orb-2 {
+  width: 200px; height: 200px;
+  bottom: -60px; left: -60px;
+  background: var(--teal);
+}
+
+.s--cream .orb { opacity: 0.06; }
+.s--accent .orb-1 { background: rgba(255,255,255,0.3); opacity: 0.15; }
+.s--accent .orb-2 { background: var(--ink); opacity: 0.06; }
+
+/* ── Top bar ── */
+.s-top {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: auto;
+}
+
+.s-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.s-brand-dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.s--accent .s-brand-dot { background: var(--ink); }
+.s--cream .s-brand-dot { background: var(--accent); }
+
+.s-brand-name {
+  font-family: var(--body);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  opacity: 0.7;
+}
+
+.s-tag {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  opacity: 0.35;
+  letter-spacing: 0.08em;
+}
+
+/* ── Content ── */
+.s-body {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.s-label {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 0.6rem;
+}
+
+.s-title {
+  font-family: var(--display);
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 1rem;
+}
+
+.s-title i {
+  font-style: italic;
+  color: var(--accent-glow);
+}
+
+.s--accent .s-title i { color: var(--ink); }
+.s--cream .s-title i { color: var(--accent); }
+.s--teal .s-title i { color: #6db3d4; }
+.s--rose .s-title i { color: #f2936d; }
+
+.s-text {
+  font-size: clamp(0.82rem, 2.2vw, 0.95rem);
+  line-height: 1.7;
+  opacity: 0.75;
+  max-width: 400px;
+}
+
+.s-text strong {
+  font-weight: 600;
+  opacity: 1;
+}
+
+/* ── Card / callout ── */
+.s-card {
+  margin-top: 1.25rem;
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.04);
+}
+
+.s--cream .s-card {
+  background: rgba(0,0,0,0.04);
+  border-color: rgba(0,0,0,0.06);
+}
+
+.s--accent .s-card {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.12);
+}
+
+.s-card-label {
+  font-family: var(--mono);
+  font-size: 0.52rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 0.5rem;
+}
+
+.s-card-value {
+  font-family: var(--mono);
+  font-size: clamp(0.82rem, 2vw, 0.95rem);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+}
+
+/* ── Stat pair ── */
+.s-stats {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1.25rem;
+}
+
+.s-stat {
+  flex: 1;
+  padding: 0.85rem 0.9rem;
+  border-radius: 12px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+.s--cream .s-stat {
+  background: rgba(0,0,0,0.03);
+  border-color: rgba(0,0,0,0.06);
+}
+
+.s--accent .s-stat {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.1);
+}
+
+.s-stat-label {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  margin-bottom: 0.3rem;
+}
+
+.s-stat-val {
+  font-family: var(--display);
+  font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+  font-weight: 400;
+}
+
+/* ── List ── */
+.s-list {
+  list-style: none;
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.s-list li {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65rem;
+  padding: 0.4rem 0;
+  font-size: clamp(0.8rem, 2.1vw, 0.92rem);
+  line-height: 1.55;
+  opacity: 0.8;
+}
+
+.s-list li::before {
+  content: '';
+  width: 4px; height: 4px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+  transform: translateY(-1px);
+}
+
+.s--accent .s-list li::before { background: var(--ink); }
+.s--teal .s-list li::before { background: #6db3d4; }
+.s--rose .s-list li::before { background: #f2936d; }
+
+.s-list strong {
+  font-weight: 600;
+  opacity: 1;
+}
+
+/* ── Code block ── */
+.s-code {
+  margin-top: 1.25rem;
+  padding: 1rem 1.1rem;
+  border-radius: 14px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.07);
+  overflow-x: auto;
+}
+
+.s--cream .s-code {
+  background: rgba(0,0,0,0.06);
+  border-color: rgba(0,0,0,0.08);
+}
+
+.s-code pre {
+  font-family: var(--mono);
+  font-size: clamp(0.65rem, 1.6vw, 0.78rem);
+  line-height: 1.6;
+  color: var(--cream);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.s--cream .s-code pre { color: var(--ink); }
+
+.s-code-label {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.35;
+  margin-bottom: 0.6rem;
+}
+
+/* ── Timeline ── */
+.s-timeline {
+  margin-top: 1.25rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.s-timeline::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  bottom: 4px;
+  width: 2px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+}
+
+.s--cream .s-timeline::before { background: rgba(0,0,0,0.08); }
+
+.s-tl-item {
+  position: relative;
+  padding: 0.4rem 0;
+  font-size: clamp(0.72rem, 1.8vw, 0.82rem);
+  line-height: 1.5;
+  opacity: 0.7;
+  cursor: default;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.s-tl-item:hover {
+  opacity: 1;
+  transform: translateX(4px);
+}
+
+.s-tl-item::before {
+  content: '';
+  position: absolute;
+  left: -1.5rem;
+  top: 0.65rem;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  background: var(--ink);
+  transition: background 0.2s;
+}
+
+.s--cream .s-tl-item::before { background: var(--cream); }
+.s--accent .s-tl-item::before { background: var(--accent); border-color: var(--ink); }
+.s-tl-item:hover::before { background: var(--accent); }
+
+.s-tl-item strong {
+  font-weight: 600;
+  opacity: 1;
+  color: var(--accent-glow);
+}
+
+.s--cream .s-tl-item strong { color: var(--accent); }
+.s--accent .s-tl-item strong { color: var(--ink); }
+
+/* ── Bottom ── */
+.s-foot {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 1rem;
+  padding-bottom: 3rem;
+}
+
+.s-pg {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  opacity: 0.3;
+  letter-spacing: 0.08em;
+}
+
+/* ══ NAV ARROWS ══ */
+.nav-arrows {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  z-index: 20;
+}
+
+.nav-arrow {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.25s, border-color 0.25s, transform 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-arrow:hover {
+  background: rgba(255,255,255,0.12);
+  border-color: rgba(255,255,255,0.25);
+  transform: scale(1.08);
+}
+
+.nav-arrow:active { transform: scale(0.95); }
+
+.nav-arrow.disabled {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+.nav-arrow svg {
+  width: 18px; height: 18px;
+  stroke: rgba(255,255,255,0.7);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ══ KEYBOARD HINT ══ */
+.kbd-hint {
+  position: absolute;
+  bottom: 6px;
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 20;
+}
+
+.kbd-hint span {
+  font-family: var(--mono);
+  font-size: 0.5rem;
+  opacity: 0.2;
+  letter-spacing: 0.08em;
+}
+
+/* ══ FULLSCREEN MODE ══ */
+.story.fullscreen {
+  max-width: 100vw;
+  width: 100vw;
+  height: 100vh;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.fs-btn {
+  position: absolute;
+  top: 26px;
+  right: 16px;
+  z-index: 20;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fs-btn:hover { background: rgba(255,255,255,0.14); }
+
+.fs-btn svg {
+  width: 14px; height: 14px;
+  stroke: rgba(255,255,255,0.6);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ══ FULLSCREEN MODE ══ */
+.story.fullscreen {
+  max-width: 100vw;
+  width: 100vw;
+  height: 100vh;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.fs-btn {
+  position: absolute;
+  top: 26px;
+  right: 16px;
+  z-index: 20;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fs-btn:hover { background: rgba(255,255,255,0.14); }
+
+.fs-btn svg {
+  width: 14px; height: 14px;
+  stroke: rgba(255,255,255,0.6);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* ══ ENTRANCE ANIMATIONS ══ */
+.s.on .s-label { animation: fadeUp 0.4s ease both 0.05s; }
+.s.on .s-text { animation: fadeUp 0.45s ease both 0.2s; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Transition flash */
+.story::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--accent);
+  opacity: 0;
+  z-index: 15;
+  pointer-events: none;
+  transition: opacity 0.15s;
+}
+
+.story.flash::before {
+  opacity: 0.06;
+}
+
+/* Orb drift */
+@keyframes orbDrift1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(15px, -20px) scale(1.05); }
+  50% { transform: translate(-10px, -35px) scale(0.97); }
+  75% { transform: translate(20px, -10px) scale(1.03); }
+}
+@keyframes orbDrift2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-20px, 15px) scale(1.06); }
+  66% { transform: translate(15px, 25px) scale(0.95); }
+}
+
+.s.on .orb-1 { animation: orbDrift1 8s ease-in-out infinite; }
+.s.on .orb-2 { animation: orbDrift2 10s ease-in-out infinite; }
+
+/* Staggered list items */
+.s.on .s-list li { animation: fadeSlideIn 0.4s ease both; }
+.s.on .s-list li:nth-child(1) { animation-delay: 0.25s; }
+.s.on .s-list li:nth-child(2) { animation-delay: 0.35s; }
+.s.on .s-list li:nth-child(3) { animation-delay: 0.45s; }
+.s.on .s-list li:nth-child(4) { animation-delay: 0.55s; }
+.s.on .s-list li:nth-child(5) { animation-delay: 0.65s; }
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 0.8; transform: translateX(0); }
+}
+
+/* Timeline stagger */
+.s.on .s-tl-item { animation: fadeSlideIn 0.4s ease both; }
+.s.on .s-tl-item:nth-child(1) { animation-delay: 0.2s; }
+.s.on .s-tl-item:nth-child(2) { animation-delay: 0.35s; }
+.s.on .s-tl-item:nth-child(3) { animation-delay: 0.5s; }
+.s.on .s-tl-item:nth-child(4) { animation-delay: 0.65s; }
+
+/* Stat cards pop-in */
+.s.on .s-stat { animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both; }
+.s.on .s-stat:nth-child(1) { animation-delay: 0.3s; }
+.s.on .s-stat:nth-child(2) { animation-delay: 0.42s; }
+
+@keyframes popIn {
+  from { opacity: 0; transform: scale(0.85) translateY(8px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* Title scale entrance */
+.s.on .s-title {
+  animation: titleReveal 0.6s cubic-bezier(0.22,1,0.36,1) both 0.1s;
+}
+
+@keyframes titleReveal {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Card slide-up */
+.s.on .s-card { animation: cardSlideUp 0.5s cubic-bezier(0.22,1,0.36,1) both 0.3s; }
+.s.on .s-code { animation: cardSlideUp 0.5s cubic-bezier(0.22,1,0.36,1) both 0.35s; }
+
+@keyframes cardSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Shimmer on strong text */
+.s.on .s-text strong {
+  animation: shimmer 0.6s ease both 0.5s;
+}
+
+@keyframes shimmer {
+  0% { opacity: 0.4; }
+  50% { opacity: 1; text-shadow: 0 0 8px rgba(224,122,95,0.3); }
+  100% { opacity: 1; text-shadow: none; }
+}
+
+/* Pulse dot */
+.pulse-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  position: relative;
+  display: inline-block;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.pulse-dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  animation: pulse 2s ease-out infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(2.2); opacity: 0; }
+}
+
+/* Brand bar fade */
+.s.on .s-top { animation: fadeIn 0.4s ease both 0.02s; }
+.s.on .s-foot { animation: fadeUp 0.3s ease both 0.15s; }
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+</style>
+</head>
+<body>
+
+<div class="story" id="story">
+  <div class="progress" id="prog"></div>
+
+  <button class="fs-btn" id="fsBtn" title="Fullscreen (F)">
+    <svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 00-2 2v3m18 0V5a2 2 0 00-2-2h-3m0 18h3a2 2 0 002-2v-3M3 16v3a2 2 0 002 2h3"/></svg>
+  </button>
+
+  <div class="nav-arrows">
+    <button class="nav-arrow disabled" id="navL" aria-label="Previous slide">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="nav-arrow" id="navR" aria-label="Next slide">
+      <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+    </button>
+  </div>
+
+  <div class="kbd-hint"><span>Arrow keys or swipe · F for fullscreen</span></div>
+
+  <!-- SLIDE 1: Title -->
+  <div class="s s--ink">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">HTML Slides</div></div>
+      <div class="s-tag">A New Way</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">A New Way</div>
+      <h2 class="s-title">Why <i>HTML</i> Wins</h2>
+      <p class="s-text">Every presentation tool you've used has limitations. HTML has none. Here's why the smartest presenters are switching.</p>
+    </div>
+    <div class="s-foot"><div class="s-pg">01 / 10</div></div>
+  </div>
+
+  <!-- SLIDE 2: The Problem -->
+  <div class="s s--cream">
+    <div class="orb orb-1"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">HTML Slides</div></div>
+      <div class="s-tag">The Old Way</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">The Old Way</div>
+      <h2 class="s-title">Death by <i>PowerPoint</i></h2>
+      <p class="s-text">Bloated files, broken fonts, version chaos. We've all been there.</p>
+      <div class="s-stats">
+        <div class="s-stat">
+          <div class="s-stat-label">Avg File</div>
+          <div class="s-stat-val">85 MB</div>
+        </div>
+        <div class="s-stat">
+          <div class="s-stat-label">Font Issues</div>
+          <div class="s-stat-val">73%</div>
+        </div>
+      </div>
+    </div>
+    <div class="s-foot"><div class="s-pg">02 / 10</div></div>
+  </div>
+
+  <!-- SLIDE 3: The Solution -->
+  <div class="s s--deep">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">HTML Slides</div></div>
+      <div class="s-tag">The New Way</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">The New Way</div>
+      <h2 class="s-title">One <i>HTML</i> File</h2>
+      <p class="s-text">Everything in a single file. No installs, no plugins, no cloud. Just open and present.</p>
+      <ul class="s-list">
+        <li>Single file under 50KB</li>
+        <li>Works in any browser</li>
+        <li>Full offline support</li>
+        <li>Git version control</li>
+      </ul>
+    </div>
+    <div class="s-foot"><div class="s-pg">03 / 10</div></div>
+  </div>
+
+  <!-- SLIDE 4: Design Power -->
+  <div class="s s--accent">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">HTML Slides</div></div>
+      <div class="s-tag">Design</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">Design</div>
+      <h2 class="s-title">Beyond <i>Templates</i></h2>
+      <p class="s-text">Gradient backgrounds, grain textures, floating orbs, staggered animations — all in pure CSS.</p>
+      <div class="s-timeline">
+        <div class="s-tl-item"><strong>CSS Animations</strong> &mdash; Smooth reveals</div>
+        <div class="s-tl-item"><strong>Grain Textures</strong> &mdash; Film-like depth</div>
+        <div class="s-tl-item"><strong>Gradient Meshes</strong> &mdash; Rich backgrounds</div>
+        <div class="s-tl-item"><strong>Micro-interactions</strong> &mdash; Hover &amp; touch</div>
+      </div>
+    </div>
+    <div class="s-foot"><div class="s-pg">04 / 10</div></div>
+  </div>
+
+  <!-- SLIDE 5: Interactive -->
+  <div class="s s--teal">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">HTML Slides</div></div>
+      <div class="s-tag">Interactive</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">Interactive</div>
+      <h2 class="s-title">Not Just <i>Slides</i></h2>
+      <p class="s-text">Drawing tools, dark mode toggle, touch gestures, keyboard shortcuts. A presentation that responds to you.</p>
+      <div class="s-card">
+        <div class="s-card-label">Built-In Features</div>
+        <div class="s-card-value">Drawing canvas, marker mode, PDF export, slide outline, theme toggle — all without a single dependency</div>
+      </div>
+    </div>
+    <div class="s-foot"><div class="s-pg">05 / 10</div></div>
+  </div>
+
+  <!-- SLIDE 6: Speed -->
+  <div class="s s--ink">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">HTML Slides</div></div>
+      <div class="s-tag">Speed</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">Speed</div>
+      <h2 class="s-title">60 Seconds to <i>Launch</i></h2>
+      <p class="s-text">Describe your topic. AI generates the complete presentation. Edit with natural language. Present immediately.</p>
+      <div class="s-stats">
+        <div class="s-stat">
+          <div class="s-stat-label">Create</div>
+          <div class="s-stat-val">60 sec</div>
+        </div>
+        <div class="s-stat">
+          <div class="s-stat-label">Edit</div>
+          <div class="s-stat-val">Instant</div>
+        </div>
+      </div>
+    </div>
+    <div class="s-foot"><div class="s-pg">06 / 10</div></div>
+  </div>
+
+  <!-- SLIDE 7: Comparison -->
+  <div class="s s--cream">
+    <div class="orb orb-1"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">HTML Slides</div></div>
+      <div class="s-tag">Compare</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">Compare</div>
+      <h2 class="s-title">The <i>Numbers</i></h2>
+      <p class="s-text">Side by side, HTML presentations outperform traditional tools in every metric that matters.</p>
+      <ul class="s-list">
+        <li><strong>50KB</strong> vs 85MB file size</li>
+        <li><strong>0</strong> vs 3+ dependencies</li>
+        <li><strong>Infinite</strong> vs limited customization</li>
+        <li><strong>Free</strong> vs $150+/year</li>
+      </ul>
+    </div>
+    <div class="s-foot"><div class="s-pg">07 / 10</div></div>
+  </div>
+
+  <!-- SLIDE 8: Use Cases -->
+  <div class="s s--rose">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">HTML Slides</div></div>
+      <div class="s-tag">Use Cases</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">Use Cases</div>
+      <h2 class="s-title">Built for <i>Everyone</i></h2>
+      <p class="s-text">From boardroom pitches to university lectures, the format adapts.</p>
+      <ul class="s-list">
+        <li>Conference keynotes</li>
+        <li>Technical workshops</li>
+        <li>Sales presentations</li>
+        <li>Educational content</li>
+      </ul>
+    </div>
+    <div class="s-foot"><div class="s-pg">08 / 10</div></div>
+  </div>
+
+  <!-- SLIDE 9: The Future -->
+  <div class="s s--deep">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">HTML Slides</div></div>
+      <div class="s-tag">What's Next</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">What's Next</div>
+      <h2 class="s-title">AI + <i>HTML</i> <span class="pulse-dot"></span></h2>
+      <p class="s-text">The combination of AI generation and HTML flexibility creates a presentation experience that was impossible two years ago.</p>
+      <div class="s-card">
+        <div class="s-card-label">The Vision</div>
+        <div class="s-card-value">Describe what you want &rarr; AI builds it &rarr; Present anywhere &rarr; Iterate naturally</div>
+      </div>
+    </div>
+    <div class="s-foot"><div class="s-pg">09 / 10</div></div>
+  </div>
+
+  <!-- SLIDE 10: Closing -->
+  <div class="s s--ink">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="s-top">
+      <div class="s-brand"><div class="s-brand-dot"></div><div class="s-brand-name">HTML Slides</div></div>
+      <div class="s-tag">Get Started</div>
+    </div>
+    <div class="s-body">
+      <div class="s-label">Get Started</div>
+      <h2 class="s-title">Your Next <i>Presentation</i></h2>
+      <p class="s-text">Stop fighting with software. Start presenting with code.</p>
+      <div class="s-card" style="margin-top:1.5rem;text-align:center">
+        <div class="s-card-label">Try It Now</div>
+        <div class="s-card-value" style="font-family:var(--display);font-size:1.1rem">github.com/hisham-abuella</div>
+      </div>
+    </div>
+    <div class="s-foot"><div class="s-pg">10 / 10</div></div>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var slides = document.querySelectorAll('.s');
+  var prog = document.getElementById('prog');
+  var story = document.getElementById('story');
+  var cur = 0;
+
+  // Build progress segments
+  for (var i = 0; i < slides.length; i++) {
+    var seg = document.createElement('div');
+    seg.className = 'progress-seg';
+    var fill = document.createElement('div');
+    fill.className = 'progress-fill';
+    seg.appendChild(fill);
+    prog.appendChild(seg);
+  }
+
+  var navL = document.getElementById('navL');
+  var navR = document.getElementById('navR');
+
+  function updateArrows() {
+    navL.classList.toggle('disabled', cur === 0);
+    navR.classList.toggle('disabled', cur === slides.length - 1);
+  }
+
+  function go(n) {
+    if (n < 0 || n >= slides.length) return;
+
+    // Flash transition
+    story.classList.add('flash');
+    setTimeout(function() { story.classList.remove('flash'); }, 200);
+
+    cur = n;
+    updateArrows();
+
+    slides.forEach(function(s, i) { s.classList.toggle('on', i === cur); });
+
+    // Update progress
+    var segs = prog.children;
+    for (var i = 0; i < segs.length; i++) {
+      segs[i].classList.remove('done', 'active');
+      var f = segs[i].querySelector('.progress-fill');
+      f.style.transition = 'none';
+      f.style.width = '0';
+      if (i < cur) {
+        segs[i].classList.add('done');
+        f.style.width = '100%';
+      }
+    }
+
+    // Animate current segment
+    var cf = segs[cur].querySelector('.progress-fill');
+    cf.style.transition = 'none';
+    cf.style.width = '0';
+    cf.offsetWidth; // reflow
+    segs[cur].classList.add('active');
+    cf.style.transition = 'width 8s linear';
+    cf.style.width = '100%';
+  }
+
+  // Navigation
+  navL.addEventListener('click', function(e) { e.stopPropagation(); go(cur - 1); });
+  navR.addEventListener('click', function(e) { e.stopPropagation(); go(cur + 1); });
+
+  // Fullscreen
+  var fsBtn = document.getElementById('fsBtn');
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen();
+      story.classList.add('fullscreen');
+    } else {
+      document.exitFullscreen();
+      story.classList.remove('fullscreen');
+    }
+  }
+  fsBtn.addEventListener('click', function(e) { e.stopPropagation(); toggleFullscreen(); });
+  document.addEventListener('fullscreenchange', function() {
+    if (!document.fullscreenElement) story.classList.remove('fullscreen');
+  });
+
+  // Keyboard
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'ArrowRight' || e.key === ' ') { e.preventDefault(); go(cur + 1); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); go(cur - 1); }
+    if (e.key === 'Home') { e.preventDefault(); go(0); }
+    if (e.key === 'End') { e.preventDefault(); go(slides.length - 1); }
+    if (e.key === 'f' || e.key === 'F') { e.preventDefault(); toggleFullscreen(); }
+  });
+
+  // Touch/swipe
+  var touchStartX = 0;
+  var touchStartY = 0;
+  document.addEventListener('touchstart', function(e) {
+    touchStartX = e.touches[0].clientX;
+    touchStartY = e.touches[0].clientY;
+  }, { passive: true });
+
+  document.addEventListener('touchend', function(e) {
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    var dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 40) {
+      if (dx > 0) go(cur - 1);
+      else go(cur + 1);
+    }
+  });
+
+  // Click on sides for mobile
+  story.addEventListener('click', function(e) {
+    if (e.target.closest('.nav-arrow') || e.target.closest('a') || e.target.closest('button')) return;
+    var rect = story.getBoundingClientRect();
+    var x = e.clientX - rect.left;
+    if (x < rect.width * 0.3) go(cur - 1);
+    else if (x > rect.width * 0.7) go(cur + 1);
+  });
+
+  // Start
+  go(0);
+})();
+</script>
+</body>
+</html>

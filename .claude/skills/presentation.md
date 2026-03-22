@@ -305,6 +305,48 @@ Each slide is a `<div class="s s--variant">` with this structure:
 
 ---
 
+## Sample Presentations & Theme Reference
+
+Each sample has a unique visual identity. Use these as inspiration when creating new presentations:
+
+### Keynote Format Samples (`samples/`)
+
+| Sample | Theme | Fonts | Colors | Key Effects |
+|--------|-------|-------|--------|-------------|
+| `tech-talk.html` | Hacker Terminal | Courier New monospace | Green #22c55e on black #0a0a0a | CRT scanlines, blinking cursor, terminal window cards |
+| `sales-pitch.html` | Luxury Editorial | Didot/Bodoni serif, weight 300 | Gold #b8860b on cream #fefcf9 | Em-dash bullets, gold underlines, zero border-radius |
+| `product-launch.html` | Apple Cinematic | SF Pro Display | White on pure black #000 | Spotlight radial gradient, massive typography, glass tiles |
+| `conference-keynote.html` | Glass Futurism | Futura/Century Gothic | Purple #a855f7 on deep space #080215 | Iridescent mesh gradients, frosted glass cards, neon glow |
+
+### Stories Format Samples (`samples/`)
+
+| Sample | Theme | Fonts | Colors | Key Effects |
+|--------|-------|-------|--------|-------------|
+| `course-materials.html` | Chalkboard Academic | Charter serif | Chalk #f5e6c8 on green #1a2e1a | Dashed borders, italic underlined titles, chalk dust texture |
+| `team-update.html` | Swiss Dashboard | Helvetica Neue | Blue #0066ff on white #fff | Red square bullets, left-border stats, zero radius, hidden orbs |
+| `workshop-guide.html` | Retro Terminal CLI | Courier New monospace | Matrix green #00ff41 on black | CRT scanlines, green glow, blinking cursor, square nav |
+| `internal-training.html` | Military/Shield | Impact stencil | Amber #f59e0b on navy #0a0e1a | Caution-stripe cards, diamond bullets, uppercase headings |
+
+### Creating Unique Themes
+
+To create a unique visual identity, add a CSS override block before `</style>` that overrides the base `:root` variables and component styles:
+
+```css
+/* ═══ YOUR THEME NAME ═══ */
+:root {
+    --title-font: 'Your Display Font', fallback, serif;
+    --body-font: 'Your Body Font', fallback, sans-serif;
+    --accent-color: #yourcolor;
+    --bg-color: #yourbg;
+    --text-primary: #yourtext;
+}
+/* Override specific components as needed */
+.feature-card { border-radius: 0; border: 1px solid var(--accent-color); }
+.orb { display: none; } /* Remove decorative elements */
+```
+
+Theme ideas to try: Brutalist (Impact, red/black, sharp corners), Art Deco (geometric patterns, gold/black), Retro 80s (neon colors, grid backgrounds), Nature/Organic (earth tones, rounded shapes), Blueprint (blue-white, grid lines, technical feel).
+
 ## Design Tips
 
 1. **Keynote format** - Best for conference talks, tech demos, business presentations
@@ -316,10 +358,12 @@ Each slide is a `<div class="s s--variant">` with this structure:
 7. **Stories: use `<i>` in titles** - Adds accent color italic for visual interest
 8. **HTML on single lines** - Components must be on one line to avoid markdown parsing issues (keynote format)
 9. **Test in browser** - Open HTML file directly, no server needed
+10. **Each presentation should have a unique theme** - Don't reuse the same design. Override fonts, colors, and effects to create a distinct identity matching the content's tone.
 
 ## Setup Instructions
 
 1. Copy the desired template (`index.html` or `stories-template.html`) to your project
 2. Rename it to match your topic
 3. Edit the content (markdown for keynote, HTML divs for stories)
-4. Open in any browser - works offline!
+4. Add a CSS theme override block before `</style>` for a unique visual identity
+5. Open in any browser - works offline!
