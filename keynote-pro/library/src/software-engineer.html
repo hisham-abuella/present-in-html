@@ -1,0 +1,70 @@
+<!--meta {"theme":"commit","fonts":"","title":"The cache stampede, reviewed","pageTitle":"Incident review: software engineer (Keynote Pro library)"} -->
+<section class="slide" data-layout="title">
+  <p class="label">Blameless review</p>
+  <h1>The cache <em>stampede</em></h1>
+  <p class="sub">How one expired key took the profile service down for eleven minutes, and the 14 lines that fixed it.</p>
+  <p class="meta"><span>Platform team</span><span>Fictional incident</span><span>October 2026</span></p>
+  <aside class="notes"><p>Sample deck with a fictional incident. Tone: blameless, specific.</p></aside>
+</section>
+
+<section class="slide" data-layout="statement">
+  <h2>One key expired. <em>4,000 requests</em> asked the database the same question.</h2>
+  <aside class="notes"><p>The whole incident in one sentence. Everything else is detail.</p></aside>
+</section>
+
+<section class="slide" data-layout="timeline">
+  <p class="label">Timeline, UTC</p>
+  <h2>Eleven minutes</h2>
+  <ol class="timeline" data-build="list">
+    <li><time>14:02</time><h3>Key expires</h3><p>Popular profile, TTL 300 s.</p></li>
+    <li><time>14:03</time><h3>Pool exhausted</h3><p>Every miss opens a connection.</p></li>
+    <li class="now"><time>14:07</time><h3>Page fires</h3><p>p99 above 8 s.</p></li>
+    <li><time>14:13</time><h3>Recovered</h3><p>Traffic shed, cache warm.</p></li>
+  </ol>
+  <aside class="notes"><p>Note the four-minute gap between impact and the page: alert threshold was too loose.</p></aside>
+</section>
+
+<section class="slide" data-layout="code">
+  <p class="label">The fix</p>
+  <h2>One fetch per key, everyone else waits</h2>
+  <pre data-lang="js" data-focus="1-3;4-8;*">
+    async function getProfile(id) {
+      const hit = await cache.get(id)
+      if (hit) return hit
+      // single flight: share one in-flight fetch per key
+      if (!inflight.has(id)) {
+        inflight.set(id, db.load(id).finally(() => inflight.delete(id)))
+      }
+      return inflight.get(id)
+    }
+  </pre>
+  <aside class="notes"><p>Walk the three focus steps: the happy path, the shared promise, then the whole function.</p></aside>
+</section>
+
+<section class="slide" data-layout="chart">
+  <h2>p99 latency after the fix</h2>
+  <p class="lede">Same load test, same key expiry.</p>
+  <figure class="chart" data-chart="column" data-unit=" ms" data-highlight="2" data-build="draw">
+    <table><thead><tr><th>Build</th><th>p99</th></tr></thead><tbody><tr><td>Before</td><td>8200</td></tr><tr><td>After</td><td>180</td></tr></tbody></table>
+    <figcaption>Replay of the incident traffic, staging</figcaption>
+  </figure>
+  <aside class="notes"><p>Staging replay, not production. Say so.</p></aside>
+</section>
+
+<section class="slide" data-layout="two-column">
+  <h2>What worked, what did not</h2>
+  <div class="col"><h3>Worked</h3><ul><li>Runbook found the pool graph in two minutes</li><li>Load shedding bought time</li><li>Replay harness reproduced it first try</li></ul></div>
+  <div class="col"><h3>Did not</h3><ul><li>Page threshold was 8 s, not 1 s</li><li>No jitter on TTLs</li><li>Dashboards showed averages only</li></ul></div>
+  <aside class="notes"><p>Keep it about the system, not people.</p></aside>
+</section>
+
+<section class="slide" data-layout="bullets">
+  <h2>Action items</h2>
+  <ul data-build="list">
+    <li><strong>Add TTL jitter.</strong> Plus or minus 10 percent.</li>
+    <li><strong>Page at p99 above 1 s</strong> for five minutes.</li>
+    <li><strong>Ship single-flight</strong> in the shared client library.</li>
+    <li><strong>Add a stampede test</strong> to CI.</li>
+  </ul>
+  <aside class="notes"><p>Each has an owner in the ticket; names omitted here.</p></aside>
+</section>

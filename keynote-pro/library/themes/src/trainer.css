@@ -1,0 +1,25 @@
+/* Library theme source. tools/build-library.mjs expands the macros into ../<id>.css.
+   @C(id) = content slides, @T(id) = title/section/closing, @A(id) = every slide, @IMG:key = an SVG made in build-library.mjs, @SVG[<svg ...>]SVG@ = your own inline SVG. */
+/* ---------- 16 trainer: bilingual EN/AR trainer, community or faith educator ---------- */
+/* THEME:trainer | Trainer | #1B4F9C | https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap */
+html[data-theme="trainer"]{
+  --bg:#FFFFFF; --bg2:#EDF2FA; --ink:#0F2240; --ink2:#44577A; --rule:#CBD6E8; --rule-strong:#0F2240;
+  --brand:#1B4F9C; --brand-text:#1B4F9C; --on-brand:#ffffff;
+  --hero-bg:#12305F; --hero-ink:#F4F7FD; --hero-ink2:#BFD0EA; --hero-rule:#33568F; --hero-brand:#F0C463;
+  --bleed-bg:#1B4F9C; --bleed-ink:#ffffff;
+  --f-display:"Readex Pro","IBM Plex Sans Arabic","IBM Plex Sans","Helvetica Neue",Arial,sans-serif; --f-body:"IBM Plex Sans","IBM Plex Sans Arabic","Helvetica Neue",Arial,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --f-ar-d:"Readex Pro","IBM Plex Sans Arabic","Geeza Pro","Segoe UI",Tahoma,sans-serif; --f-ar-b:"IBM Plex Sans Arabic","Geeza Pro","Segoe UI",Tahoma,sans-serif;
+  --w-display:600; --ls-display:-0.015em; --em-style:normal;
+  --radius:14px; --chart-radius:6px; --rule-w:1px; --letterbox:#060F20;
+  --s1:#1B4F9C; --s2:#0E8C86; --s3:#B8892B; --muted-bar:#C4D2E8; --hot:#8A6414; --hot-text:#8A6414;
+  --code-bg:#12305F; --code-ink:#F4F7FD; --c-kw:#F0C463; --c-str:#8FE0D4; --c-num:#F5A38F; --c-com:#A9BEDD; --c-fn:#A8C7FF;
+}
+@C(trainer){isolation:isolate}
+@C(trainer)::before{content:"";position:absolute;top:0;inset-inline:0;height:40px;z-index:-1;pointer-events:none;background:@IMG:starband repeat-x 0 0/40px 40px;border-bottom:1px solid var(--rule)}
+@C(trainer) .kp-foot{border-top:1px solid var(--rule);padding-top:12px}
+@T(trainer){isolation:isolate}
+@T(trainer)::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:@IMG:star repeat 0 0/160px 160px}
+[data-theme="trainer"] .label{color:var(--hero-brand)}
+@C(trainer) .label{color:var(--brand-text)}
+@C(trainer) [dir="rtl"] .label{font-family:var(--f-ar-b)}
+/* /THEME */

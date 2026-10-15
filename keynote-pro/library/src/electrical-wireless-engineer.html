@@ -1,0 +1,72 @@
+<!--meta {"theme":"spectrum","fonts":"","title":"Link budget review, n78 small cell","pageTitle":"Link budget review: electrical and wireless engineer (Keynote Pro library)"} -->
+<section class="slide" data-layout="title">
+  <p class="label">Design review</p>
+  <h1>Link budget, <em>n78</em> small cell</h1>
+  <p class="sub">Will a 3.5 GHz street-level cell cover a 200 m block? A five-minute walk through the maths.</p>
+  <p class="meta"><span>RF Systems team</span><span>Sample deck, illustrative numbers</span><span>October 2026</span></p>
+  <aside class="notes"><p>Sample deck. Numbers are textbook free-space values, not a measured site.</p></aside>
+</section>
+
+<section class="slide" data-layout="statement">
+  <h2>Every doubling of distance costs <em>6 dB</em>.</h2>
+  <p>Free space, any frequency. Walls, foliage and bodies come on top.</p>
+  <aside class="notes"><p>The rule of thumb that anchors the rest of the review: 20 log10 of 2 is about 6.02 dB.</p></aside>
+</section>
+
+<section class="slide" data-layout="formula">
+  <p class="label">Link budget</p>
+  <h2>Add the gains, subtract the loss</h2>
+  <div class="eq"><i>P<sub>r</sub></i> = <i>P<sub>t</sub></i> + <i>G<sub>t</sub></i> + <i>G<sub>r</sub></i> &minus; <span class="hot"><i>L<sub>fs</sub></i></span></div>
+  <dl class="terms">
+    <div><dt><i>P<sub>t</sub></i></dt><dd>Transmit power, 43 dBm</dd></div>
+    <div><dt><i>G<sub>t</sub></i></dt><dd>Antenna gain, 17 dBi</dd></div>
+    <div><dt><i>G<sub>r</sub></i></dt><dd>Handset gain, 0 dBi</dd></div>
+    <div><dt><i>L<sub>fs</sub></i></dt><dd>Free-space loss, 89.3 dB at 200 m</dd></div>
+  </dl>
+  <aside class="notes"><p>L = 20 log10(d in km) + 20 log10(f in MHz) + 32.44. At 0.2 km and 3500 MHz that is -14.0 + 70.9 + 32.4 = 89.3 dB.</p></aside>
+</section>
+
+<section class="slide" data-layout="chart">
+  <h2>Loss grows 6 dB per doubling</h2>
+  <p class="lede">From 77 dB at 50 m to 101 dB at 800 m.</p>
+  <figure class="chart" data-chart="line" data-unit=" dB" data-decimals="1" data-min="70" data-build="draw">
+    <table><thead><tr><th>Distance</th><th>Free-space loss</th></tr></thead>
+    <tbody><tr><td>50 m</td><td>77.3</td></tr><tr><td>100 m</td><td>83.3</td></tr><tr><td>200 m</td><td>89.3</td></tr><tr><td>400 m</td><td>95.4</td></tr><tr><td>800 m</td><td>101.4</td></tr></tbody></table>
+    <figcaption>Free-space path loss at 3.5 GHz</figcaption>
+  </figure>
+  <aside class="notes"><p>Each point is the previous plus 6.0 dB. Real urban loss is steeper; this is the best case.</p></aside>
+</section>
+
+<section class="slide" data-layout="diagram">
+  <p class="label">Signal chain</p>
+  <h2>From radio to handset, in dB</h2>
+  <figure class="dg">
+    <svg viewBox="0 120 1680 330" role="img" aria-hidden="true">
+      <g data-build="fade" data-order="1">
+        <rect class="dg-box" x="0" y="170" width="360" height="190" rx="2"/><text class="dg-t" x="180" y="250" text-anchor="middle">Radio</text><text class="dg-m" x="180" y="305" text-anchor="middle">43 dBm</text>
+        <rect class="dg-box" x="440" y="170" width="360" height="190" rx="2"/><text class="dg-t" x="620" y="250" text-anchor="middle">Antenna</text><text class="dg-m" x="620" y="305" text-anchor="middle">+17 dBi</text>
+        <rect class="dg-box" x="1320" y="170" width="360" height="190" rx="2"/><text class="dg-t" x="1500" y="250" text-anchor="middle">Handset</text><text class="dg-m" x="1500" y="305" text-anchor="middle">0 dBi</text>
+      </g>
+      <g data-build="draw" data-order="2"><path class="dg-line" d="M370 265H430M414 253L430 265L414 277"/></g>
+      <g data-build="draw" data-order="3"><path class="dg-line hot" d="M810 265H1310M1294 253L1310 265L1294 277"/></g>
+      <g data-build="fade" data-order="3"><text class="dg-b" x="1060" y="235" text-anchor="middle">&minus;89.3 dB</text><text class="dg-s" x="1060" y="320" text-anchor="middle">200 m, free space</text></g>
+      <g data-build="fade" data-order="4"><text class="dg-b" x="840" y="430" text-anchor="middle">Received: &minus;29.3 dBm</text></g>
+    </svg>
+  </figure>
+  <aside class="notes"><p>43 + 17 + 0 - 89.3 = -29.3 dBm. Plenty of margin for a 3.5 GHz carrier; the next slide is about what eats it.</p></aside>
+</section>
+
+<section class="slide" data-layout="stats">
+  <h2>What the margin has to cover</h2>
+  <div class="stat" data-build="rise"><b>&minus;29<small>dBm</small></b><span>Received power, free space</span></div>
+  <div class="stat" data-build="rise"><b>&minus;12<small>dB</small></b><span>Wall and body loss allowance</span></div>
+  <div class="stat" data-build="rise"><b>17<small>dB</small></b><span>Margin left before the receiver floor</span></div>
+  <aside class="notes"><p>Allowances are planning figures for the example, not a site survey.</p></aside>
+</section>
+
+<section class="slide" data-layout="closing">
+  <p class="label">Review outcome</p>
+  <h2>Coverage holds</h2>
+  <p class="contact"><span><b>Next</b> drive-test the 400 m edge</span><span>rf-team@example.com</span></p>
+  <aside class="notes"><p>Close on the one point you want remembered from Link budget review, n78 small cell. Say it in a sentence, thank the room, and take questions. Leave this slide up while people ask. Sample deck with fictional content, so replace the contact details before use.</p></aside>
+</section>

@@ -1,0 +1,21 @@
+/* Library theme source. tools/build-library.mjs expands the macros into ../<id>.css.
+   @C(id) = content slides, @T(id) = title/section/closing, @A(id) = every slide, @IMG:key = an SVG made in build-library.mjs, @SVG[<svg ...>]SVG@ = your own inline SVG. */
+/* ---------- 19 civic: nonprofit / NGO / public policy ---------- */
+/* THEME:civic | Civic | #B4472A | https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,500;0,600;0,700;1,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Red+Hat+Mono:wght@400;500;700&display=swap */
+html[data-theme="civic"]{
+  --bg:#FAF6EE; --bg2:#F0E9DA; --ink:#1F2A24; --ink2:#4E5A52; --rule:#D8CEB8; --rule-strong:#1F2A24;
+  --brand:#B4472A; --brand-text:#A83F23; --on-brand:#ffffff;
+  --hero-bg:#1E4D3A; --hero-ink:#F7F3E8; --hero-ink2:#C4D8CB; --hero-rule:#3F7059; --hero-brand:#F4B77E;
+  --bleed-bg:#B4472A; --bleed-ink:#ffffff;
+  --f-display:"Petrona",Georgia,serif; --f-body:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif; --f-mono:"Red Hat Mono",ui-monospace,Menlo,monospace;
+  --f-ar-d:"Noto Naskh Arabic","Amiri","Geeza Pro",serif; --w-display-ar:500;
+  --w-display:600; --ls-display:-0.015em; --em-style:italic;
+  --radius:14px; --chart-radius:4px; --rule-w:2px; --letterbox:#0E241B;
+  --s1:#1E6B4E; --s2:#B4472A; --s3:#C9A227; --muted-bar:#CFC5AE; --hot:#B4472A; --hot-text:#A83F23;
+  --code-bg:#1E4D3A; --code-ink:#F7F3E8; --c-kw:#F4B77E; --c-str:#B7E0A8; --c-num:#F2D277; --c-com:#A5C1B1; --c-fn:#9CCFE8;
+}
+@A(civic){isolation:isolate}
+@C(civic)::before{content:"";position:absolute;inset-inline:0;top:0;height:14px;z-index:-1;pointer-events:none;background:linear-gradient(90deg,var(--s1) 0 40%,var(--s2) 40% 70%,var(--s3) 70% 100%)}
+@C(civic) .kp-foot{border-top:2px dotted var(--rule-strong);padding-top:12px}
+@T(civic)::before{content:"";position:absolute;inset-inline-end:0;top:60px;width:620px;height:494px;z-index:-1;pointer-events:none;background:@SVG[<svg xmlns='http://www.w3.org/2000/svg' width='880' height='700' viewBox='0 0 880 700'><g fill='none' stroke-width='3'><circle cx='330' cy='300' r='230' stroke='#F4B77E' stroke-opacity='.5'/><circle cx='550' cy='300' r='230' stroke='#F7F3E8' stroke-opacity='.4'/><circle cx='440' cy='470' r='230' stroke='#C4D8CB' stroke-opacity='.4'/></g><g fill='#F4B77E' fill-opacity='.5'><circle cx='440' cy='300' r='8'/><circle cx='390' cy='360' r='6'/><circle cx='490' cy='360' r='6'/><circle cx='440' cy='400' r='7'/></g></svg>]SVG@ no-repeat 0 0/100% 100%}
+/* /THEME */

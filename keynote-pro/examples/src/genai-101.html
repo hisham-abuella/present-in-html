@@ -1,0 +1,153 @@
+<!--meta {"theme":"studio","fonts":"","title":"GenAI 101: how LLMs actually work","pageTitle":"How large language models actually work (GenAI 101, Keynote Pro example)"} -->
+<section class="slide" data-layout="title">
+  <p class="label">GenAI 101 &middot; Module 2</p>
+  <h1>How large language models <em>actually work</em></h1>
+  <p class="sub">From raw text to intelligent responses, with no code required.</p>
+  <p class="meta"><span>Wireless 101</span><span>Generative AI 101</span><span>Beginner</span></p>
+  <aside class="notes"><p>Welcome. This is Module 2 of the public GenAI 101 course. Promise the room one thing: by the end you can explain, in plain words, what happens between typing a prompt and reading the answer. No code needed, no maths. Ask who has used a chatbot this week, then move to the five ideas.</p></aside>
+</section>
+
+<section class="slide" data-layout="agenda">
+  <h2>Five ideas</h2>
+  <ol>
+    <li>Predicting the next word <small>the one job</small></li>
+    <li>Tokens and embeddings <small>text to numbers</small></li>
+    <li>Attention <small>which words matter</small></li>
+    <li>How a model is built <small>three stages</small></li>
+    <li>Sampling <small>why answers vary</small></li>
+  </ol>
+  <aside class="notes"><p>Five ideas, in order, and each one builds on the last. Everything in the later modules, prompting, agents, retrieval, rests on these. Do not explain them yet; just name them so the room knows the road map. Bridge: start with the idea that sounds too simple to be true.</p></aside>
+</section>
+
+<section class="slide" data-layout="statement">
+  <p class="label">At their core</p>
+  <h2>An LLM does one thing: it predicts what comes <em>next</em>.</h2>
+  <p>It is the autocomplete on your phone keyboard, scaled up beyond recognition.</p>
+  <aside class="notes"><p>The core claim: an LLM does one thing, it predicts what comes next. Use the phone keyboard analogy: the same idea, scaled up beyond recognition. Say it is nothing more mysterious than that, and nothing less impressive. Pause on the word next. Bridge: let them try the job themselves on the next slide.</p></aside>
+</section>
+
+<section class="slide" data-layout="statement">
+  <h2><span data-magic="t1">The</span> <span data-magic="t2">cat</span> <span data-magic="t3">sat</span> <span data-magic="t4">on</span> <span data-magic="t5">the</span> ___</h2>
+  <aside class="notes"><p>Let the audience finish the sentence out loud. Someone will say mat; that is the point, most people agree without thinking. Ask how they knew. Then say the model faces exactly this task, billions of times. Bridge: the model does not see letters, it sees something else. Click to the next slide.</p></aside>
+</section>
+
+<section class="slide" data-layout="diagram">
+  <p class="label">Step one</p>
+  <h2>Text becomes tokens</h2>
+  <figure class="dg">
+    <div class="chip-row" style="font-size:96px;gap:28px">
+      <span class="tk"><span class="chip" data-magic="t1">The</span><i data-build="fade" data-order="2">464</i></span>
+      <span class="tk"><span class="chip" data-magic="t2">cat</span><i data-build="fade" data-order="2">3797</i></span>
+      <span class="tk"><span class="chip" data-magic="t3">sat</span><i data-build="fade" data-order="2">3332</i></span>
+      <span class="tk"><span class="chip" data-magic="t4">on</span><i data-build="fade" data-order="2">319</i></span>
+      <span class="tk"><span class="chip" data-magic="t5">the</span><i data-build="fade" data-order="2">262</i></span>
+      <span class="tk"><span class="chip hot" data-build="scale" data-order="1">?</span><i data-build="fade" data-order="2">&hellip;</i></span>
+    </div>
+    <figcaption>Illustrative token ids. Real tokenisers split text into pieces, not always whole words.</figcaption>
+  </figure>
+  <aside class="notes"><p>Same sentence, now boxed: the model never sees letters, it sees numbered pieces called tokens. First click reveals the blank as the thing to predict, second reveals the ids. Stress that the ids are illustrative and real tokenisers split text into pieces, not always whole words. Bridge: where do these numbers go next?</p></aside>
+</section>
+
+<section class="slide" data-layout="diagram">
+  <p class="label">The whole pipeline</p>
+  <h2>Five stages from prompt to answer</h2>
+  <figure class="dg">{{PIPE}}<figcaption>Simplified: real models repeat the attention stage many times.</figcaption></figure>
+  <aside class="notes"><p>One click per stage: text, tokens, embeddings, attention, next word. Attention is highlighted because it is the idea that made modern models possible. Be honest that this is simplified and real models repeat the attention stage many times. Do not dwell; the next three slides take the stages one by one. Bridge: first, how big is the choice at the end?</p></aside>
+</section>
+
+<section class="slide" data-layout="big-number">
+  <p class="label">Vocabulary</p>
+  <div class="big" data-build="fade">50&ndash;100<small>K</small></div>
+  <p>candidate words, and every single one gets a score on every turn.</p>
+  <p class="src">GenAI 101, Module 2: roughly 50,000 to 100,000 words</p>
+  <aside class="notes"><p>Say the number, then stop: roughly fifty to a hundred thousand candidate words, and every one gets a score on every turn. Nothing is ever exactly zero, even absurd words get a tiny number. That is why sampling can occasionally surprise you. The count animates, so wait for it. Bridge: what do those scores look like?</p></aside>
+</section>
+
+<section class="slide" data-layout="chart">
+  <h2>A probability for every word</h2>
+  <p class="lede">The model scores the whole vocabulary. Here are six of the candidates.</p>
+  <figure class="chart" data-chart="bar" data-unit="%" data-decimals="0" data-highlight="1" data-build="draw">
+    <table><thead><tr><th>Next word</th><th>Probability</th></tr></thead>
+      <tbody><tr><td>mat</td><td>42</td></tr><tr><td>floor</td><td>23</td></tr><tr><td>sofa</td><td>16</td></tr><tr><td>bed</td><td>11</td></tr><tr><td>roof</td><td>7</td></tr><tr><td>moon</td><td>1</td></tr></tbody></table>
+    <figcaption>Hand-authored to show the shape of a distribution; not read from a trained model.</figcaption>
+  </figure>
+  <aside class="notes"><p>Be upfront that these numbers are illustrative, hand-authored to show the shape of a distribution, not read from a trained model. Walk the bars top down, then land on the last one: unlikely is not impossible. Bridge: that was the end of the pipeline; now return to the start and see how words become numbers with meaning.</p></aside>
+</section>
+
+<section class="slide" data-layout="diagram">
+  <p class="label">Step two</p>
+  <h2>Every word becomes a point in space</h2>
+  <figure class="dg">{{EMB}}<figcaption>Illustrative two-dimensional picture; real embeddings have hundreds of dimensions.</figcaption></figure>
+  <aside class="notes"><p>Step two. Each word becomes a point in space, and closeness is measured by the angle between the arrows, not by the letters two words share. Cat and kitten sit close; cat and truck do not. Warn that real embeddings have hundreds of dimensions squeezed into two here, so close in the picture is not exactly similar to the model. Bridge: now the word it.</p></aside>
+</section>
+
+<section class="slide" data-layout="diagram">
+  <p class="label">Step three</p>
+  <h2>Attention decides which earlier words matter</h2>
+  <figure class="dg">{{ATT}}<figcaption>Line weight shows how much the word &ldquo;it&rdquo; attends to each earlier word. Illustrative.</figcaption></figure>
+  <aside class="notes"><p>Step three. To fill a blank after it, the model has to know what it refers to. Attention is how it looks back: the thick line goes to cat, the thin ones to everything else. Line weight is illustrative. Let the arcs draw one at a time. Bridge: why was this such a breakthrough compared with older approaches?</p></aside>
+</section>
+
+<section class="slide" data-layout="comparison">
+  <h2>Why counting words wasn&rsquo;t enough</h2>
+  <table>
+    <thead><tr><th></th><th>N-gram counting</th><th class="rec" data-tag="What LLMs do">Neural language model</th></tr></thead>
+    <tbody>
+      <tr><th>How it learns</th><td>Counts every word sequence it has seen</td><td>Learns what words mean and which earlier words matter</td></tr>
+      <tr><th>A sentence it never saw</th><td>No idea: the table has no entry</td><td>Generalises from similar sentences</td></tr>
+      <tr><th>Cost of more context</th><td>Combinations explode</td><td>Grows with the window, not the combinations</td></tr>
+    </tbody>
+  </table>
+  <aside class="notes"><p>Imagine memorising every LEGO combination: impossible, the table explodes. Counting words only works on sentences you have already seen. Embeddings and attention are the way out of that explosion. Walk down the three rows and let the highlighted column carry the argument. Bridge: so how does a model actually get built?</p></aside>
+</section>
+
+<section class="slide" data-layout="process">
+  <p class="label">How a model gets built</p>
+  <h2>Read, then practise, then take feedback</h2>
+  <ol class="steps" data-build="list">
+    <li><h3>Pre-training</h3><p>Guess the next word in real text, over and over. The text is its own answer key.</p></li>
+    <li><h3>Fine-tuning</h3><p>Learn from worked examples of good answers to real requests.</p></li>
+    <li><h3>Alignment</h3><p>People compare two answers and pick the better one.</p></li>
+  </ol>
+  <aside class="notes"><p>Three stages, one click each. Only stage one needs a supercomputer. Stages two and three are comparatively cheap, which is why many assistants sit on a handful of base models. Pre-training is the text as its own answer key; fine-tuning shows good answers; alignment is people picking the better one. Bridge: back to the output, and why answers vary.</p></aside>
+</section>
+
+<section class="slide" data-layout="code">
+  <p class="label">Sampling</p>
+  <h2>Why the same prompt gives different words</h2>
+  <pre data-lang="python" data-focus="1-3;5-7;*">
+    import random
+    probs = {"mat": .42, "floor": .23, "sofa": .16,
+             "bed": .11, "roof": .07, "moon": .01}
+
+    def next_word(probs):
+        words, weights = zip(*probs.items())
+        return random.choices(words, weights)[0]  # a draw, not the top pick
+  </pre>
+  <aside class="notes"><p>The model samples from the distribution rather than always taking the top word. Step through the code with the focus builds: the data, the function, then the whole thing. Run it twice live if you can: two different words, and neither is a mistake. Bridge: one line to take away on the next slide.</p></aside>
+</section>
+
+<section class="slide" data-layout="quote">
+  <blockquote>It is a raffle where the tickets are <em>not shared out evenly</em>.</blockquote>
+  <cite><b>GenAI 101</b>Module 2, on sampling</cite>
+  <aside class="notes"><p>The line to remember: a raffle where the tickets are not shared out evenly. Read it slowly and leave it up for a few seconds. If the room asks about temperature, say it changes how uneven the tickets are, and leave the detail for later. Bridge: where this sits in the course.</p></aside>
+</section>
+
+<section class="slide" data-layout="timeline">
+  <h2>Where this fits in the course</h2>
+  <ol class="timeline" data-build="list">
+    <li><time>Module 1</time><h3>The AI revolution</h3><p>From early machine learning to transformers.</p></li>
+    <li class="now"><time>Module 2</time><h3>LLM fundamentals</h3><p>Tokens, embeddings, attention, training.</p></li>
+    <li><time>Module 3</time><h3>Prompt engineering</h3><p>Context, examples, iteration.</p></li>
+    <li><time>Module 4</time><h3>Agentic AI</h3><p>Claude Code, tools, MCP.</p></li>
+    <li><time>Module 5</time><h3>Context and retrieval</h3><p>RAG and agentic search.</p></li>
+  </ol>
+  <aside class="notes"><p>Show the road ahead. Eight modules in total, about ninety minutes each. We covered module two; three through eight build on it, starting with prompt engineering. The highlighted dot marks where we are now. Invite anyone who wants to go deeper to start with module three. Bridge: close by pointing at it.</p></aside>
+</section>
+
+<section class="slide" data-layout="closing">
+  <p class="label">Keep going</p>
+  <h2>Next: how to talk to it</h2>
+  <p class="contact"><span><b>Course</b> Generative AI 101, Wireless 101</span><span><b>Next</b> Module 3: Prompt Engineering</span></p>
+  <aside class="notes"><p>Close by pointing at Module 3. Every prompting technique makes more sense once you know the model is predicting the next token. Offer one takeaway in a sentence: it predicts, it samples, it pays attention. Thank the room and take questions. Leave this slide up while people leave.</p></aside>
+</section>

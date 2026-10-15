@@ -1,0 +1,114 @@
+<!--meta {"theme":"swiss","fonts":"","title":"p99 under 200 ms","pageTitle":"p99 under 200 ms: a job-queue rewrite (Keynote Pro example)"} -->
+<section class="slide" data-layout="title">
+  <p class="label">Platform Engineering Meetup</p>
+  <h1>p99 under 200&nbsp;ms</h1>
+  <p class="sub">What we learned replacing a polling job queue with partitioned leases.</p>
+  <p class="meta"><span>Dana Ortiz, Staff Engineer</span><span>Fictional case study</span><span>October 2026</span></p>
+  <aside class="notes"><p>Thirty-minute talk, fictional service, realistic numbers. Promise: you will leave with one pattern you can apply on Monday. Introduce yourself in one line, say the service is a job queue that fans work out to workers, and that the story is about a tail, not an average. Bridge: start with the number that hurt.</p></aside>
+</section>
+
+<section class="slide" data-layout="statement">
+  <h2>Our slowest 1% of requests took <span data-magic="p">2.4&nbsp;s</span>.</h2>
+  <aside class="notes"><p>That is p99: our slowest one percent of requests took 2.4 seconds. Customers did not complain about the average, they complained about this tail. Hold the sentence for a beat; the number is about to become the whole next slide. Bridge: Magic Move, the number grows into the hero.</p></aside>
+</section>
+
+<section class="slide" data-layout="big-number">
+  <p class="label">p99 latency, enqueue to ack</p>
+  <div class="big" data-magic="p">2.4&nbsp;s</div>
+  <p>Median was 90 ms. The tail was twenty-six times worse.</p>
+  <aside class="notes"><p>The number from the last slide is now the hero. Median was 90 milliseconds, the tail twenty-six times worse. The median looked fine, which is why nobody paged. Do not read the caption; let people look. Bridge: why was the tail so long? Look at the architecture.</p></aside>
+</section>
+
+<section class="slide" data-layout="diagram">
+  <p class="label">Before</p>
+  <h2>Workers polled a Postgres table</h2>
+  <figure class="dg">{{ARCH1}}<figcaption>Simplified architecture of the old queue.</figcaption></figure>
+  <aside class="notes"><p>Click through: boxes, then the request path, then the polling arrow. The last click is the problem: workers poll one Postgres table, and the scans hold row locks that block each other under load. Keep it simple, this is the old design. Bridge: so what did we change?</p></aside>
+</section>
+
+<section class="slide" data-layout="section">
+  <p class="label">The fix</p>
+  <span class="num">2</span>
+  <h2>Lease, don&rsquo;t scan</h2>
+  <p>Partition the work, then claim it without blocking.</p>
+  <aside class="notes"><p>Section break: the fix. One sentence: partition the work, then claim it without blocking. Give the room a moment to reset before the details. If you are short on time, this is the slide where you check the clock; the next twelve minutes are the core of the talk. Bridge: the new shape.</p></aside>
+</section>
+
+<section class="slide" data-layout="diagram">
+  <p class="label">After</p>
+  <h2>Partitioned lanes, one lease each</h2>
+  <figure class="dg">{{ARCH2}}<figcaption>Each worker owns a lane; claims skip rows another worker holds.</figcaption></figure>
+  <aside class="notes"><p>Same boxes, new shape. Four lanes means four workers never touch each other's rows. Each worker owns a lane, and claims skip rows another worker holds. Click once per lane. Point at what disappeared: the shared table everyone fought over. Bridge: follow a single job through the system.</p></aside>
+</section>
+
+<section class="slide" data-layout="process">
+  <p class="label">Life of a job</p>
+  <h2>Four steps, no polling</h2>
+  <ol class="steps" data-build="list">
+    <li><h3>Enqueue</h3><p>The API writes the job to its lane, chosen by hashing the tenant.</p></li>
+    <li><h3>Lease</h3><p>A worker claims a batch for 30 seconds.</p></li>
+    <li><h3>Execute</h3><p>Work runs; the lease is renewed while it does.</p></li>
+    <li><h3>Ack</h3><p>The row is deleted. A missed ack simply expires.</p></li>
+  </ol>
+  <aside class="notes"><p>Four steps, no polling: enqueue, lease, execute, ack. Emphasise the expiry: crash recovery is just a lease running out, no special code path. That is the idea to carry out of the room. The job is hashed to its lane by tenant. Bridge: the lease is one query. Show it.</p></aside>
+</section>
+
+<section class="slide" data-layout="code">
+  <p class="label">Lease</p>
+  <h2>The whole trick is one query</h2>
+  <pre data-lang="sql" data-focus="1;2-3;4-6;*">
+    -- claim up to 10 ready jobs without waiting on anyone
+    UPDATE jobs SET state = 'leased',
+      lease_until = now() + interval '30 seconds'
+    WHERE id IN (
+      SELECT id FROM jobs WHERE state = 'ready' AND lane = 2
+      ORDER BY run_at LIMIT 10 FOR UPDATE SKIP LOCKED)
+    RETURNING *;
+  </pre>
+  <aside class="notes"><p>Walk the focus: the comment, the update, the subquery, then the whole thing. SKIP LOCKED is the line that removes the waiting; say so plainly. Mention that the lease length is thirty seconds here and renewed while work runs. Keep the pace slow, this is the slide people photograph. Bridge: did it work?</p></aside>
+</section>
+
+<section class="slide" data-layout="chart" data-wide>
+  <h2>Tail latency fell over eight weeks of rollout</h2>
+  <figure class="chart" data-chart="line" data-unit=" ms" data-build="draw">
+    <table><thead><tr><th>Week</th><th>p99</th></tr></thead>
+      <tbody><tr><td>W1</td><td>2400</td></tr><tr><td>W2</td><td>2350</td></tr><tr><td>W3</td><td>1500</td></tr><tr><td>W4</td><td>820</td></tr><tr><td>W5</td><td>410</td></tr><tr><td>W6</td><td>260</td></tr><tr><td>W7</td><td>195</td></tr><tr><td>W8</td><td>180</td></tr></tbody></table>
+    <figcaption>p99 enqueue-to-ack latency in milliseconds, weekly. Sample data.</figcaption>
+  </figure>
+  <aside class="notes"><p>Sample data, eight weeks of rollout. The cliff in week three is when the first tenants moved to lanes. The long tail after is stragglers still on the old path. End on week eight: 180 milliseconds, under the 200 target in the title. Be honest that the data is illustrative. Bridge: why not something simpler?</p></aside>
+</section>
+
+<section class="slide" data-layout="comparison">
+  <h2>What we considered</h2>
+  <table>
+    <thead><tr><th></th><th>Keep polling</th><th>Redis list</th><th class="rec" data-tag="Chosen">Partitioned leases</th></tr></thead>
+    <tbody>
+      <tr><th>p99 at load</th><td>2.4 s</td><td>~300 ms</td><td><b>180 ms</b></td></tr>
+      <tr><th>New infrastructure</th><td>None</td><td>Redis cluster</td><td><b>None</b></td></tr>
+      <tr><th>If a worker dies</th><td>Job stuck</td><td>Job lost</td><td><b>Lease expires</b></td></tr>
+    </tbody>
+  </table>
+  <aside class="notes"><p>Three options. Keep polling was the status quo; the Redis list was faster to build but lost jobs on failover; leases reused Postgres, so no new on-call surface. Read down the last row: a dead worker means a stuck job, a lost job, or a lease that expires. Bridge: what would we do differently?</p></aside>
+</section>
+
+<section class="slide" data-layout="two-column">
+  <h2>Looking back</h2>
+  <div class="col"><h3>What worked</h3><ul><li>Hashing by tenant kept lanes even</li><li>Shadow-writing to both queues for two weeks</li><li>One dashboard: lease age, not queue depth</li></ul></div>
+  <div class="col"><h3>What we&rsquo;d change</h3><ul><li>Start with 16 lanes, not 4</li><li>Alert on lease expiry rate from day one</li><li>Write the rollback runbook before the migration</li></ul></div>
+  <aside class="notes"><p>Be honest here: four lanes was too few and we resharded once. Left side, what worked: hashing by tenant, shadow-writing for two weeks, one dashboard about lease age. Right side, what we would change. Invite the room to disagree on the alerting point. Bridge: the result after ninety days.</p></aside>
+</section>
+
+<section class="slide" data-layout="stats">
+  <h2>Result after 90 days</h2>
+  <div class="stat" data-build="rise"><b data-build="count" data-order="1">13<small>&times;</small></b><span>Lower p99 latency</span></div>
+  <div class="stat" data-build="rise"><b data-build="count" data-order="2">62<small>%</small></b><span>Less database CPU</span></div>
+  <div class="stat" data-build="rise"><b data-build="count" data-order="3">0</b><span>Jobs lost</span></div>
+  <aside class="notes"><p>Thirteen times lower p99, which is 2400 over 180. CPU dropped because the polling scans are gone. Zero jobs lost. Let the three numbers arrive one click at a time and say nothing between them. Bridge: thank the room and open for questions.</p></aside>
+</section>
+
+<section class="slide" data-layout="closing">
+  <p class="label">Thanks for listening</p>
+  <h2>Questions?</h2>
+  <p class="contact"><span><b>Slides</b> example.dev/p99</span><span><b>Dana</b> dana@example.dev</span></p>
+  <aside class="notes"><p>Thank the room. Slides and a longer write-up are at the address shown. Fictional talk used to demonstrate the Swiss theme and the diagram, chart and code layouts. Take questions; if there is silence, ask who has a polling queue today.</p></aside>
+</section>

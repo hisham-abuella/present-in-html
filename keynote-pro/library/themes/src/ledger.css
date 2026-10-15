@@ -1,0 +1,22 @@
+/* Library theme source. tools/build-library.mjs expands the macros into ../<id>.css.
+   @C(id) = content slides, @T(id) = title/section/closing, @A(id) = every slide, @IMG:key = an SVG made in build-library.mjs, @SVG[<svg ...>]SVG@ = your own inline SVG. */
+/* ---------- 12 ledger: finance professional ---------- */
+/* THEME:ledger | Ledger | #0B6B3F | https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,500;0,600;0,700;1,500&family=Public+Sans:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap */
+html[data-theme="ledger"]{
+  --bg:#F1F6F2; --bg2:#E1ECE5; --ink:#0F2A1D; --ink2:#3C5848; --rule:#BCD1C3; --rule-strong:#0F2A1D;
+  --brand:#0B6B3F; --brand-text:#0B6B3F; --on-brand:#ffffff;
+  --hero-bg:#0B3D2A; --hero-ink:#EAF6EE; --hero-ink2:#B2D3BE; --hero-rule:#2A6A4B; --hero-brand:#9BE3B7;
+  --bleed-bg:#0B6B3F; --bleed-ink:#ffffff;
+  --f-display:"Bitter",Georgia,serif; --f-body:"Public Sans","Helvetica Neue",Arial,sans-serif; --f-mono:"Roboto Mono",ui-monospace,Menlo,monospace;
+  --w-display:600; --ls-display:-0.02em; --em-style:normal;
+  --f-ar-d:"Noto Naskh Arabic","Amiri","Geeza Pro",serif; --w-display-ar:500;
+  --radius:2px; --chart-radius:0px; --rule-w:2px; --letterbox:#05140D;
+  --s1:#0B6B3F; --s2:#B42318; --s3:#7A8F82; --muted-bar:#B5CBBC; --hot:#B42318; --hot-text:#B42318;
+  --code-bg:#0B3D2A; --code-ink:#EAF6EE; --c-kw:#9BE3B7; --c-str:#F4D58D; --c-num:#F5A38F; --c-com:#9CBDA9; --c-fn:#9CC9F2;
+}
+@A(ledger){font-variant-numeric:lining-nums tabular-nums;isolation:isolate}
+@C(ledger)::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(90deg,transparent 80px,#C4443B 80px,#C4443B 82px,transparent 82px,transparent 86px,#C4443B 86px,#C4443B 87px,transparent 87px),repeating-linear-gradient(transparent 0 59px,color-mix(in srgb,var(--brand) 22%,transparent) 59px 60px)}
+@C(ledger) .kp-foot{border-top:2px solid var(--ink);padding-top:12px}
+[data-theme="ledger"] [data-layout="big-number"] .big{text-decoration:underline double var(--brand-text);text-decoration-thickness:6px;text-underline-offset:.08em}
+/* /THEME */

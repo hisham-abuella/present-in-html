@@ -1,0 +1,22 @@
+/* Library theme source. tools/build-library.mjs expands the macros into ../<id>.css.
+   @C(id) = content slides, @T(id) = title/section/closing, @A(id) = every slide, @IMG:key = an SVG made in build-library.mjs, @SVG[<svg ...>]SVG@ = your own inline SVG. */
+/* ---------- 15 drawing: architect / designer ---------- */
+/* THEME:drawing | Drawing | #C8341E | https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap */
+html[data-theme="drawing"]{
+  --bg:#FFFFFF; --bg2:#F1F1EE; --ink:#111111; --ink2:#53534F; --rule:#D3D3CE; --rule-strong:#111111;
+  --brand:#C8341E; --brand-text:#C8341E; --on-brand:#ffffff;
+  --hero-bg:#E8E8E4; --hero-ink:#111111; --hero-ink2:#4A4A46; --hero-rule:#B9B9B3; --hero-brand:#B52D19;
+  --bleed-bg:#111111; --bleed-ink:#ffffff;
+  --f-display:"Jost","Futura","Century Gothic",Arial,sans-serif; --f-body:"Jost","Futura","Century Gothic",Arial,sans-serif; --f-mono:"DM Mono",ui-monospace,Menlo,monospace;
+  --w-display:400; --ls-display:-0.025em; --em-style:normal;
+  --radius:0px; --chart-radius:0px; --rule-w:1px; --letterbox:#0A0A0A;
+  --s1:#111111; --s2:#C8341E; --s3:#8A8A86; --muted-bar:#CFCFCA; --hot:#C8341E; --hot-text:#C8341E;
+  --code-bg:#111111; --code-ink:#EEEEEE; --c-kw:#FF8A70; --c-str:#B8D8A8; --c-num:#F0C27B; --c-com:#9A9A96; --c-fn:#9CC4F0;
+}
+@A(drawing){isolation:isolate}
+@A(drawing)::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:@IMG:crop no-repeat 0 0/100% 100%}
+@A(drawing) .kp-foot{border:1px solid var(--ink);padding:0;height:48px;align-items:stretch;bottom:34px}
+@A(drawing) .kp-foot span{display:flex;align-items:center;padding-inline:20px}
+@A(drawing) .kp-foot span:last-child{border-inline-start:1px solid var(--ink);min-width:96px;justify-content:center}
+@C(drawing) > h2{font-weight:300}
+/* /THEME */

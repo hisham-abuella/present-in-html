@@ -1,0 +1,312 @@
+<!--meta {"theme":"keynote-black","fonts":"","title":"Every layout","pageTitle":"Every layout: one deck, every slide type (Keynote Pro example)","looks":"all"} -->
+<style id="ev-css">
+/* Photo behind a title, section or closing slide. Text switches to the theme's on-image colour, so it reads in every theme. */
+.slide:has(>.ev-bg){isolation:isolate}
+.slide>.ev-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1}
+.slide:has(>.ev-bg)::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(0,0,0,.78) 0,rgba(0,0,0,.45) 48%,rgba(0,0,0,.05) 85%)}
+/* !important: some themes set their own tokens on title and closing slides. --bg is the photo's dark tone, so contrast checks measure against it. */
+.slide:has(>.ev-bg){--bg:#0b1824!important;--bg2:#1d2c38!important;--ink:#fff!important;--ink2:rgba(255,255,255,.86)!important;--brand-text:#fff!important;--rule:rgba(255,255,255,.35)!important;background:var(--bg);color:#fff}
+/* The layout's name, in the top corner of every slide. It carries kp-foot so the checker and auto-fit treat it as chrome. */
+.slide .kp-foot.ev-tag{display:block;position:absolute;top:44px;bottom:auto;inset-inline:auto 56px;z-index:2;margin:0;padding:6px 14px;border:1px solid var(--rule);border-radius:999px;font:500 20px/1 var(--f-mono)!important;letter-spacing:0;color:var(--ink2);background:color-mix(in srgb,var(--bg) 70%,transparent)}
+.slide:has(>.ev-bg) .kp-foot.ev-tag,[data-layout="full-bleed"] .kp-foot.ev-tag{background:rgba(0,0,0,.35);border-color:rgba(255,255,255,.4);color:#fff}
+/* A bright sky needs a little shade at the top too, so the label above the title reads */
+[data-layout="full-bleed"]:has(.bleed)::after{background:linear-gradient(to bottom,rgba(0,0,0,.45) 0,rgba(0,0,0,0) 30%),var(--scrim)}
+@media print{.ev-tag{display:none}}
+</style>
+
+<section class="slide" data-layout="title">
+  <img class="bleed ev-bg" src="../assets/ev-title.jpg" alt="">
+  <p class="label">Keynote Pro, every layout</p>
+  <h1>Northwind Array</h1>
+  <p class="sub">A fictional offshore wind farm, told once in each of the template&rsquo;s 28 layouts.</p>
+  <p class="meta"><span>Example deck</span><span>Press S for 32 themes</span><span>October 2026</span></p>
+  <aside class="notes"><p>This deck exists to show every layout the template has, one per slide, with one made-up story running through it: a 1.2 gigawatt offshore wind farm called Northwind Array. The small tag in the top corner of each slide names its layout. Press S to try any of the 32 themes; every slide should still read. The photos were generated locally with a Draw Things model.</p></aside>
+</section>
+
+<section class="slide" data-layout="agenda">
+  <h2>Agenda</h2>
+  <ol>
+    <li>The site and the machine <small>5 min</small></li>
+    <li aria-current="true">The numbers <small>10 min</small></li>
+    <li>Building it <small>10 min</small></li>
+    <li>Running it <small>5 min</small></li>
+  </ol>
+  <aside class="notes"><p>Agenda layout. The second item carries aria-current, which dims the others: use it when the agenda comes back between sections to show where you are.</p></aside>
+</section>
+
+<section class="slide" data-layout="section">
+  <img class="bleed ev-bg" src="../assets/ev-sea.jpg" alt="">
+  <p class="label">Part one</p>
+  <span class="num">1</span>
+  <h2>The site and the machine</h2>
+  <p>Eighty turbines, 45 km out, in 38 m of water.</p>
+  <aside class="notes"><p>Section layout with a photo behind it. The deck's own style block adds the photo and a dark wash, and switches the text to the theme's on-image colour.</p></aside>
+</section>
+
+<section class="slide" data-layout="statement">
+  <h2>One turn of the rotor powers a home for <em>three days</em>.</h2>
+  <aside class="notes"><p>Statement layout: one sentence, set big, nothing else. The accent word is in an em. A 15 MW turbine at full output turns about once every eight seconds and makes over 30 kWh in that time, roughly three days for an average European home.</p></aside>
+</section>
+
+<section class="slide" data-layout="bullets">
+  <h2>Why this stretch of sea</h2>
+  <ul data-build="list">
+    <li><strong>Steady wind.</strong> 10.2 m/s average at hub height.</li>
+    <li><strong>Shallow banks.</strong> 30 to 45 m, deep enough for monopiles.</li>
+    <li><strong>A grid with room.</strong> Spare capacity at the coastal substation.</li>
+    <li><strong>A port close by.</strong> 70 km to a quay that can take the blades.</li>
+  </ul>
+  <aside class="notes"><p>Bullets layout with data-build="list": each point arrives on a click. Bold lead, then one short line of support.</p></aside>
+</section>
+
+<section class="slide" data-layout="two-column">
+  <h2>Monopile or jacket</h2>
+  <div class="col"><h3>Monopile</h3><ul><li>One steel tube, 10 m wide</li><li>Fast to drive, cheap to make</li><li>Best up to about 45 m of water</li></ul></div>
+  <div class="col"><h3>Jacket</h3><p>A four-legged lattice pinned with small piles. Lighter in steel, slower to install, and the choice for the deep north-east corner.</p></div>
+  <aside class="notes"><p>Two-column layout: a list on one side, a paragraph on the other. Each column starts with an h3.</p></aside>
+</section>
+
+<section class="slide" data-layout="two-column" data-cols="3">
+  <h2>Now, next, later</h2>
+  <div class="col"><h3>Now</h3><p>Seabed survey and cable route design.</p></div>
+  <div class="col"><h3>Next</h3><p>Foundations go in over two summers.</p></div>
+  <div class="col"><h3>Later</h3><p>Turbines, first power, then a 30-year run.</p></div>
+  <aside class="notes"><p>The same two-column layout with data-cols="3" on the section gives three columns.</p></aside>
+</section>
+
+<section class="slide" data-layout="image-left">
+  <figure><img src="../assets/ev-climb.jpg" alt="A technician in an orange suit climbing on top of a turbine above the sea"></figure>
+  <p class="label">The people</p>
+  <h2>Work happens 150 m up</h2>
+  <p>Technicians reach the nacelle by boat and ladder, and work in pairs on ropes. Weather decides every shift.</p>
+  <aside class="notes"><p>Image-left layout: the picture bleeds to the left edge and crops to fill. In an Arabic deck it flips to the right automatically.</p></aside>
+</section>
+
+<section class="slide" data-layout="image-right">
+  <figure><img src="../assets/ev-blade.jpg" alt="The round root end of a giant turbine blade inside a factory hall"></figure>
+  <h2>A blade longer than a football pitch</h2>
+  <ul><li>115 m of glass and carbon fibre</li><li>Bolted on with 200 studs</li><li>Built in one piece, shipped one at a time</li></ul>
+  <aside class="notes"><p>Image-right layout, the mirror of the last slide.</p></aside>
+</section>
+
+<section class="slide" data-layout="full-bleed" data-bg="../assets/ev-vessel.jpg">
+  <p class="label">Installation</p>
+  <h2>One blade, one lift, <em>one calm morning</em></h2>
+  <p>Cranes stop at 12 m/s of wind, so crews wait for the window.</p>
+  <aside class="notes"><p>Full-bleed layout: data-bg on the section places the photo, and the theme's scrim keeps the text readable.</p></aside>
+</section>
+
+<section class="slide" data-layout="big-number">
+  <p class="label">Planned yearly output</p>
+  <div class="big" data-build="count">4.6<small>TWh</small></div>
+  <p>About the electricity used by 1.3 million homes.</p>
+  <p class="src">Fictional figures. 1.2 GW at a 44% capacity factor.</p>
+  <aside class="notes"><p>Big-number layout with data-build="count": the number counts up on click. 1.2 gigawatts times 8,760 hours times 0.44 is 4.6 terawatt-hours.</p></aside>
+</section>
+
+<section class="slide" data-layout="stats">
+  <h2>The farm in three numbers</h2>
+  <div class="stat" data-build="rise"><b>80</b><span>Turbines of 15 MW</span></div>
+  <div class="stat" data-build="rise"><b>236<small>m</small></b><span>Rotor diameter</span></div>
+  <div class="stat" data-build="rise"><b>44<small>%</small></b><span>Capacity factor</span></div>
+  <aside class="notes"><p>Stats layout: two to four figures, each rising on a click.</p></aside>
+</section>
+
+<section class="slide" data-layout="chart">
+  <h2>Winter does the heavy lifting</h2>
+  <p class="lede">Expected output by month, in gigawatt-hours.</p>
+  <figure class="chart" data-chart="column" data-highlight="Jan" data-build="draw">
+    <table><thead><tr><th>Month</th><th>GWh</th></tr></thead>
+      <tbody><tr><td>Jan</td><td>520</td></tr><tr><td>Mar</td><td>440</td></tr><tr><td>May</td><td>300</td></tr><tr><td>Jul</td><td>250</td></tr><tr><td>Sep</td><td>350</td></tr><tr><td>Nov</td><td>480</td></tr></tbody></table>
+    <figcaption>Fictional yield model, alternate months shown.</figcaption>
+  </figure>
+  <aside class="notes"><p>Chart layout: the data is a plain table, drawn as columns. data-highlight picks a bar, data-build="draw" grows the bars on click. Bar and line charts use the same markup.</p></aside>
+</section>
+
+<section class="slide" data-layout="comparison">
+  <h2>Choosing the turbine</h2>
+  <table>
+    <thead><tr><th></th><th>12 MW</th><th class="rec" data-tag="Chosen">15 MW</th><th>18 MW</th></tr></thead>
+    <tbody>
+      <tr><th>Turbines for 1.2 GW</th><td>100</td><td>80</td><td>67</td></tr>
+      <tr><th>Track record</th><td>Five years</td><td>Three years</td><td>Prototype</td></tr>
+      <tr><th>Port fit</th><td>Yes</td><td>Yes</td><td>Quay upgrade</td></tr>
+    </tbody>
+  </table>
+  <aside class="notes"><p>Comparison layout: a table with one column marked as the recommendation through class="rec" and data-tag.</p></aside>
+</section>
+
+<section class="slide" data-layout="timeline">
+  <h2>From survey to first power</h2>
+  <ol class="timeline" data-build="list">
+    <li><time>2026</time><h3>Survey</h3><p>Seabed, birds, wind.</p></li>
+    <li class="now"><time>2027</time><h3>Consent</h3><p>Permits and grid offer.</p></li>
+    <li><time>2029</time><h3>Foundations</h3><p>80 monopiles driven.</p></li>
+    <li><time>2030</time><h3>First power</h3><p>Turbines online in rows.</p></li>
+  </ol>
+  <aside class="notes"><p>Timeline layout. class="now" marks where the project is today.</p></aside>
+</section>
+
+<section class="slide" data-layout="process">
+  <h2>How a turbine goes in</h2>
+  <ol class="steps" data-build="list">
+    <li><h3>Drive</h3><p>Hammer the monopile into the seabed.</p></li>
+    <li><h3>Connect</h3><p>Bolt on the transition piece.</p></li>
+    <li><h3>Lift</h3><p>Tower, nacelle, then three blades.</p></li>
+    <li><h3>Energise</h3><p>Pull in the cable and test.</p></li>
+  </ol>
+  <aside class="notes"><p>Process layout: three to five steps, shown in order.</p></aside>
+</section>
+
+<section class="slide" data-layout="diagram">
+  <p class="label">The electrical path</p>
+  <h2>From rotor to the grid</h2>
+  <figure class="dg">
+    <svg viewBox="0 150 1680 300" role="img" aria-label="Turbines connect by array cables to an offshore substation, then an export cable runs to the onshore grid">
+      <g data-build="fade" data-order="1">
+        <rect class="dg-box" x="0" y="200" width="360" height="150" rx="6"/><text class="dg-t" x="180" y="270" text-anchor="middle">80 turbines</text><text class="dg-s" x="180" y="310" text-anchor="middle">66 kV</text>
+        <rect class="dg-box" x="660" y="200" width="360" height="150" rx="6"/><text class="dg-t" x="840" y="270" text-anchor="middle">Offshore substation</text><text class="dg-s" x="840" y="310" text-anchor="middle">steps up to 220 kV</text>
+        <rect class="dg-hot" x="1320" y="200" width="360" height="150" rx="6"/><text class="dg-b" x="1500" y="285" text-anchor="middle">Onshore grid</text>
+      </g>
+      <g data-build="draw" data-order="2"><path class="dg-line" d="M370 275H650M634 263L650 275L634 287"/><text class="dg-s" x="510" y="245" text-anchor="middle">array cables</text></g>
+      <g data-build="draw" data-order="3"><path class="dg-line hot" d="M1030 275H1310M1294 263L1310 275L1294 287"/><text class="dg-s" x="1170" y="245" text-anchor="middle">45 km export</text></g>
+    </svg>
+    <figcaption>Simplified. A real farm of this size needs two export cables.</figcaption>
+  </figure>
+  <aside class="notes"><p>Diagram layout: an inline SVG at viewBox width 1680 with the dg classes, so it follows the theme. Groups fade and draw on clicks in data-order.</p></aside>
+</section>
+
+<section class="slide" data-layout="formula">
+  <p class="label">Power in the wind</p>
+  <h2>One turbine at 10 m/s</h2>
+  <div class="eq"><i>P</i> = &frac12;<i>&rho;</i><i>A</i><i>v</i><sup>3</sup><i>C<sub>p</sub></i> = <span class="hot">12.9 MW</span></div>
+  <dl class="terms">
+    <div><dt><i>&rho;</i></dt><dd>Air density, 1.225 kg/m³</dd></div>
+    <div><dt><i>A</i></dt><dd>Swept area, 43,700 m²</dd></div>
+    <div><dt><i>C<sub>p</sub></i></dt><dd>Power coefficient, 0.48</dd></div>
+  </dl>
+  <aside class="notes"><p>Formula layout: the equation, the result highlighted, and the terms below. Half of 1.225 times 43,700 times 1,000, times 0.48, is about 12.9 megawatts. Power grows with the cube of wind speed, which is why the site matters so much.</p></aside>
+</section>
+
+<section class="slide" data-layout="materials">
+  <h2>What it is made of</h2>
+  <div class="board">
+    <figure class="mat"><img src="../assets/ev-steel.jpg" alt=""><figcaption><b>Marine steel</b><span>Monopiles and towers</span></figcaption></figure>
+    <figure class="mat"><img src="../assets/ev-concrete.jpg" alt=""><figcaption><b>Grout and concrete</b><span>Scour protection</span></figcaption></figure>
+    <figure class="mat"><img src="../assets/ev-copper.jpg" alt=""><figcaption><b>Copper cable</b><span>Array and export</span></figcaption></figure>
+    <figure class="mat"><img src="../assets/ev-glass.jpg" alt=""><figcaption><b>Glass fibre</b><span>Blades</span></figcaption></figure>
+  </div>
+  <aside class="notes"><p>Materials layout: a board of swatches. Each one can be a colour, a CSS texture, or, as here, a photo. These four textures were generated locally.</p></aside>
+</section>
+
+<section class="slide" data-layout="case">
+  <p class="label">Turbine T-14</p>
+  <h2>A gearbox alarm on a winter night</h2>
+  <div class="pt">
+    <h3>What happened</h3>
+    <p>Vibration rose over six hours in a storm. The turbine stopped itself before anyone was called.</p>
+    <h3>Finding</h3>
+    <p>A worn bearing, caught early. Replaced at the next calm spell.</p>
+  </div>
+  <div class="vitals">
+    <div class="vital" data-flag="high"><span>Vibration</span><b>7.8<small>mm/s</small></b></div>
+    <div class="vital"><span>Oil temp</span><b>62<small>°C</small></b></div>
+    <div class="vital"><span>Wind</span><b>19<small>m/s</small></b></div>
+  </div>
+  <ol class="course" data-build="list">
+    <li><time>21:10</time>Vibration starts to climb</li>
+    <li><time>02:40</time>Turbine stops itself</li>
+    <li><time>07:30</time>Remote check confirms the bearing</li>
+  </ol>
+  <aside class="notes"><p>Case layout, built for a patient case but useful for any incident: a summary, a few readings with one flagged, and a timed course of events.</p></aside>
+</section>
+
+<section class="slide" data-layout="rows">
+  <h2>Why we chose a bigger turbine</h2>
+  <ol class="rows">
+    <li data-k="Situation"><p>The port can handle blades up to 120 m long.</p></li>
+    <li data-k="Complication"><p>Every foundation costs the same, whatever sits on top.</p></li>
+    <li data-k="Resolution" data-hot><h3>Fewer, larger turbines</h3><p>Eighty instead of a hundred: twenty fewer foundations and cables.</p></li>
+  </ol>
+  <aside class="notes"><p>Rows layout: labelled rows, here situation, complication, resolution. data-hot highlights the one that matters.</p></aside>
+</section>
+
+<section class="slide" data-layout="quiz">
+  <p class="label">Quick check</p>
+  <h2>Wind speed doubles. How much more power is in the wind?</h2>
+  <ol class="opts" data-build="reveal">
+    <li>Two times</li>
+    <li>Four times</li>
+    <li data-correct>Eight times</li>
+    <li>The same</li>
+  </ol>
+  <aside class="notes"><p>Quiz layout: ask the room, then click to reveal the right answer. Power goes with the cube of speed, so two cubed is eight.</p></aside>
+</section>
+
+<section class="slide" data-layout="ask">
+  <h2>The next phase</h2>
+  <div class="amount"><b data-build="count">$90<small>M</small></b><span>The gap to a final decision. $150M is committed.</span></div>
+  <ul class="use" data-build="list">
+    <li style="--w:45"><b>Surveys</b><span>45%</span><i></i></li>
+    <li style="--w:35"><b>Grid deposit</b><span>35%</span><i></i></li>
+    <li style="--w:20"><b>Permits</b><span>20%</span><i></i></li>
+  </ul>
+  <aside class="notes"><p>Ask layout, for a funding request: the amount and how it will be spent; a terms row (dl.terms) is optional. All figures are fictional.</p></aside>
+</section>
+
+<section class="slide" data-layout="code">
+  <h2>Capacity factor in four lines</h2>
+  <pre data-lang="py" data-focus="1-2;3;4;*">
+    rated_mw = 1200
+    hours = 8760
+    produced_mwh = 4_620_000
+    print(produced_mwh / (rated_mw * hours))  # 0.44
+  </pre>
+  <aside class="notes"><p>Code layout: syntax colours from the theme, and data-focus lights up a few lines per click.</p></aside>
+</section>
+
+<section class="slide" data-layout="quote">
+  <blockquote>The sea decides the schedule. We just <em>listen to it</em>.</blockquote>
+  <cite><b>Site manager</b>Northwind Array (fictional)</cite>
+  <aside class="notes"><p>Quote layout: a short quote and who said it. This one is made up, like the project.</p></aside>
+</section>
+
+<section class="slide" data-layout="team">
+  <h2>The project team</h2>
+  <div class="people">
+    <figure class="person" data-initials="SN"><figcaption><b>Sara Nilsen</b><span>Project director</span></figcaption></figure>
+    <figure class="person" data-initials="OA"><figcaption><b>Omar Aziz</b><span>Grid and cables</span></figcaption></figure>
+    <figure class="person" data-initials="JM"><figcaption><b>Jonas Meyer</b><span>Marine operations</span></figcaption></figure>
+    <figure class="person" data-initials="LC"><figcaption><b>Lucia Costa</b><span>Environment</span></figcaption></figure>
+  </div>
+  <aside class="notes"><p>Team layout: initials stand in for photos. Put an img inside each figure to use a real headshot. These people are fictional.</p></aside>
+</section>
+
+<section class="slide" data-layout="closing">
+  <img class="bleed ev-bg" src="../assets/ev-title.jpg" alt="">
+  <p class="label">Questions welcome</p>
+  <h2>Thank you</h2>
+  <p class="contact"><span><b>Northwind Array</b></span><span>A fictional project</span><span>Keynote Pro example deck</span></p>
+  <aside class="notes"><p>Closing layout, here with the title photo behind it. The two slides after this one are in the appendix, so they are skipped in play but stay in the overview and the PDF.</p></aside>
+</section>
+
+<section class="slide" data-layout="appendix">
+  <h2>Appendix</h2>
+  <p>Backup slides and sources.</p>
+  <aside class="notes"><p>Appendix layout: it shows as a section divider, and it and every slide after it are skipped in play.</p></aside>
+</section>
+
+<section class="slide" data-layout="references">
+  <h2>Sources and credits</h2>
+  <ol class="refs">
+    <li><div><cite>Northwind Array</cite> <span>A fictional project. Every figure is a round, realistic number for illustration only.</span></div></li>
+    <li><div><cite>Power in the wind</cite> <span>P = ½ρAv³Cp, the standard formula for wind turbine output.</span></div></li>
+    <li><div><cite>Photos and textures</cite> <span>Generated locally with the Qwen Image model in Draw Things, October 2026.</span></div></li>
+  </ol>
+  <aside class="notes"><p>References layout: numbered sources. Cite them on slides with a sup element of class cite.</p></aside>
+</section>
+
+<script id="ev-js">
+/* Tag each slide with its layout name (the engine renames appendix to section, so read it before the engine runs) */
+document.querySelectorAll('.slide[data-layout]').forEach(s => { const t = document.createElement('span'); t.className = 'kp-foot ev-tag'; t.setAttribute('aria-hidden', 'true'); t.textContent = s.dataset.layout + (s.dataset.cols ? ' ×' + s.dataset.cols : ''); s.append(t); });
+</script>

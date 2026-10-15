@@ -1,0 +1,549 @@
+<!--meta {"theme":"keynote-black","fonts":"","title":"Slides that run","pageTitle":"Slides that run: things a normal slide file can't do (Keynote Pro)","looks":["spectrum","chalk","blueprint"]} -->
+<style id="bx-css">
+/* Demos for this deck only. Colours come from the theme tokens, so S restyles them too. 28px is the floor for text. */
+[data-demo]{padding-block:80px}
+[data-demo] .cols{flex:1;min-height:0;margin:0;padding:0;align-items:center}
+[data-demo] .col{border-top:0;padding:0}
+[data-demo] .col.bx-text{grid-column:span 5;padding-inline-end:16px}
+[data-demo] .col.bx-stage{grid-column:span 7;display:flex;flex-direction:column;align-items:stretch;gap:22px;min-width:0}
+[data-demo] .bx-text h2{font-size:76px;margin-block-end:36px}
+[data-demo] .bx-text p{font-size:36px;line-height:1.42;color:var(--ink2)}
+[data-demo] .bx-text p+p{margin-block-start:22px}
+[data-demo] .bx-text p.bx-hint{font:500 28px/1.35 var(--f-mono);color:var(--brand-text)}
+.bx-b{display:inline-flex;align-items:center;justify-content:center;gap:12px;min-height:60px;font:500 30px/1.1 var(--f-body);color:var(--ink);background:var(--bg2);border:2px solid var(--rule-strong);border-radius:var(--radius);padding:10px 22px;cursor:pointer}
+.bx-b:hover{border-color:var(--brand-text)}
+.bx-b[aria-pressed="true"],.bx-b.bx-go{background:var(--brand);border-color:var(--brand);color:var(--on-brand)}
+.bx-b:disabled{opacity:.5;cursor:default}
+.bx-ui :focus-visible{outline:4px solid var(--brand-text);outline-offset:4px}
+.bx-row{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+[data-demo] p.bx-out{font:500 28px/1.35 var(--f-mono);color:var(--ink2);min-height:38px}
+.bx-ctl{display:grid;grid-template-columns:260px 1fr 220px;align-items:center;gap:20px;font:500 28px/1.2 var(--f-mono);color:var(--ink2)}
+.bx-ctl output{color:var(--ink);text-align:end}
+.bx-ctl input[type=range]{width:100%;height:48px;accent-color:var(--brand);margin:0;cursor:pointer}
+.bx-box{background:var(--bg2);border:2px solid var(--rule);border-radius:var(--radius);overflow:hidden;position:relative}
+.bx-media{display:block;width:100%;aspect-ratio:16/9;background:var(--bg2);border:2px solid var(--rule);border-radius:var(--radius);object-fit:cover}
+
+/* live-ui: a phone settings screen */
+[data-id="live-ui"] .bx-stage{align-items:center}
+.bx-phone{width:440px;height:820px;box-sizing:border-box;border:14px solid var(--ink);border-radius:66px;background:var(--bg2);padding:26px 30px;display:flex;flex-direction:column;color:var(--ink)}
+.bx-sb{display:flex;align-items:center;gap:12px;font:600 28px/1 var(--f-mono);height:44px}
+.bx-sb .bx-time{margin-inline-end:auto}
+.bx-sb svg{height:26px;width:auto;fill:var(--ink)}
+.bx-sb [hidden]{display:none}
+.bx-phone h3{font:var(--w-display) 52px/1.1 var(--f-display);letter-spacing:var(--ls-display);margin:26px 0 10px}
+.bx-set{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:18px 0;border-bottom:1px solid var(--rule);font-size:32px;line-height:1.2}
+.bx-set small{display:block;font-size:28px;color:var(--ink2);margin-top:4px}
+.bx-set.off{opacity:.45}
+.bx-sw{flex:none;width:96px;height:56px;border-radius:28px;border:2px solid var(--rule-strong);background:var(--bg);position:relative;cursor:pointer;padding:0}
+.bx-sw::after{content:"";position:absolute;top:6px;inset-inline-start:6px;width:40px;height:40px;border-radius:50%;background:var(--ink2);transition:inset-inline-start .18s,background .18s}
+.bx-sw[aria-checked="true"]{background:var(--brand);border-color:var(--brand)}
+.bx-sw[aria-checked="true"]::after{inset-inline-start:46px;background:var(--on-brand)}
+.bx-sw:disabled{cursor:default}
+.bx-state{margin-top:auto;padding:22px 24px;background:var(--bg);border-radius:calc(var(--radius) + 8px);font-size:30px;line-height:1.3}
+.bx-state b{display:block;font:600 28px/1.2 var(--f-mono);color:var(--brand-text);margin-bottom:6px}
+
+/* app: path loss calculator */
+.bx-big{font:var(--w-display) 132px/1 var(--f-display);letter-spacing:var(--ls-display);color:var(--brand-text);font-variant-numeric:tabular-nums}
+.bx-big small{font-size:56px;color:var(--ink2);margin-inline-start:12px}
+.bx-plot{width:100%;height:auto;display:block}
+.bx-plot .ax{stroke:var(--rule);stroke-width:2}
+.bx-plot .ln{fill:none;stroke:var(--brand);stroke-width:5}
+.bx-plot .ln2{fill:none;stroke:var(--ink2);stroke-width:2;stroke-dasharray:8 8}
+.bx-plot .dot{fill:var(--brand);stroke:var(--bg);stroke-width:5}
+.bx-plot text{font:500 28px var(--f-mono);fill:var(--ink2)}
+
+/* waves */
+.bx-field{position:relative;width:100%;aspect-ratio:16/10;touch-action:none;cursor:crosshair}
+.bx-field canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.bx-ant{position:absolute;width:56px;height:56px;margin:-28px 0 0 -28px;border-radius:50%;border:6px solid var(--ink);background:var(--bg);cursor:grab;padding:0}
+.bx-ant::after{content:"";position:absolute;inset:12px;border-radius:50%;background:var(--brand)}
+
+/* sound */
+.bx-scope{width:100%;height:auto;aspect-ratio:3/1;display:block}
+
+/* you */
+.bx-tiles{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.bx-tile{background:var(--bg2);border:2px solid var(--rule);border-radius:var(--radius);padding:20px 26px;min-width:0}
+.bx-tile span{display:block;font:500 28px/1.2 var(--f-mono);color:var(--ink2);margin-bottom:10px}
+.bx-tile b{display:block;font:var(--w-display) 46px/1.15 var(--f-display);letter-spacing:var(--ls-display);overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.bx-name{display:flex;gap:14px;align-items:center;font:500 28px/1.2 var(--f-mono);color:var(--ink2)}
+.bx-name input{flex:1;min-width:0;font:400 36px/1.2 var(--f-body);color:var(--ink);background:var(--bg2);border:2px solid var(--rule-strong);border-radius:var(--radius);padding:12px 20px}
+
+/* code */
+.bx-code{width:100%;box-sizing:border-box;height:340px;resize:none;font:500 28px/1.42 var(--f-mono);color:var(--code-ink,var(--ink));background:var(--code-bg,var(--bg2));border:2px solid var(--rule);border-radius:var(--radius);padding:18px 22px;white-space:pre;overflow:auto;tab-size:2}
+.bx-code:focus{border-color:var(--brand)}
+[data-demo] p.bx-out.bad{color:var(--brand-text)}
+
+/* game */
+.bx-game{position:relative}
+.bx-game canvas{display:block;width:100%;height:auto;aspect-ratio:16/9;touch-action:none;cursor:pointer}
+[data-demo] .bx-score p{font:inherit;color:inherit;margin:0}
+[data-demo] .bx-score{display:flex;gap:36px;font:600 30px/1.2 var(--f-mono);color:var(--ink)}
+[data-demo] .bx-score span{color:var(--ink2);font-weight:500}
+[data-demo] .bx-over{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;background:color-mix(in srgb,var(--bg2) 82%,transparent);text-align:center;padding:24px}
+[data-demo] .bx-over p{font-size:36px;color:var(--ink)}
+[data-demo] .bx-over[hidden]{display:none}
+
+/* camera */
+.bx-cam{position:relative}
+.bx-cam video{transform:scaleX(-1)}
+[data-demo] .bx-cam .bx-lower[hidden]{display:none}
+[data-demo] .bx-cam .bx-lower{position:absolute;inset-inline-start:28px;bottom:28px;background:var(--brand);color:var(--on-brand);padding:12px 22px;border-radius:var(--radius);font:600 30px/1.2 var(--f-body)}
+[data-demo] .bx-cam .bx-lower small{display:block;font:500 28px/1.2 var(--f-mono);opacity:.85}
+[data-demo] .bx-cam .bx-off[hidden]{display:none}
+[data-demo] .bx-cam .bx-off{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:34px;color:var(--ink2);padding:40px;text-align:center}
+
+/* ideas */
+[data-id="more"] .col li small{display:block;font-size:28px;color:var(--ink2);margin-top:4px}
+@media (prefers-reduced-motion:reduce){.bx-sw::after{transition:none}}
+</style>
+
+<section data-id="start" class="slide" data-layout="title">
+  <p class="label" id="bx-for">Keynote Pro, demo deck</p>
+  <h1>Slides that <em>run</em></h1>
+  <p class="sub">A slide here is a web page, so it can do what a web page does. Every slide after this one is a working example.</p>
+  <p class="meta"><span>Hisham Abuella</span><span>A personal project</span><span>October 2026</span></p>
+  <aside class="notes"><p>Keynote and PowerPoint play back what you made. A browser runs it. This deck is one HTML file, like every deck the skill makes, and each slide from here on does something a normal slide file can't do on its own. Click into any of them and play.</p></aside>
+</section>
+
+<section data-id="idea" class="slide" data-layout="statement">
+  <p class="label">The idea</p>
+  <h2>A slide file plays back what you made. <em>A web page runs.</em></h2>
+  <p>So a slide can hold a working app, a simulation, sound, code, a game or another page. Press the right arrow.</p>
+  <aside class="notes"><p>Everything that follows is plain HTML, CSS and JavaScript inside this one file. No plug-ins, no add-ins, nothing to install.</p></aside>
+</section>
+
+<section data-id="live-ui" class="slide" data-layout="two-column" data-fit="off" data-demo>
+  <div class="col bx-text">
+    <p class="label">Live interface</p>
+    <h2>Demo the product, <em>not a screenshot</em></h2>
+    <p>This phone is real HTML. Tap the switches. Airplane mode turns the radios off, and the status bar follows.</p>
+    <p class="bx-hint">Try: 5G off, then airplane mode on.</p>
+  </div>
+  <div class="col bx-stage bx-ui">
+    <div class="bx-phone" id="bx-phone">
+      <div class="bx-sb">
+        <span class="bx-time" data-bx="clock">9:41</span>
+        <span data-bx="net">5G</span>
+        <svg data-bx="bars" viewBox="0 0 34 24" aria-hidden="true"><rect x="0" y="16" width="6" height="8" rx="1"/><rect x="9" y="11" width="6" height="13" rx="1"/><rect x="18" y="6" width="6" height="18" rx="1"/><rect x="27" y="0" width="6" height="24" rx="1"/></svg>
+        <svg data-bx="wifi" viewBox="0 0 32 24" aria-hidden="true"><path d="M16 24 11 18a7 7 0 0 1 10 0zM6.5 13.5a13 13 0 0 1 19 0l-3 3a9 9 0 0 0-13 0zM2 9a19.5 19.5 0 0 1 28 0l-3 3a15.5 15.5 0 0 0-22 0z"/></svg>
+        <svg data-bx="plane" viewBox="0 0 24 24" aria-hidden="true" hidden><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg>
+      </div>
+      <h3>Settings</h3>
+      <div class="bx-set"><span>Airplane mode</span><button class="bx-sw" type="button" role="switch" aria-checked="false" data-sw="air" aria-label="Airplane mode"></button></div>
+      <div class="bx-set"><span>Wi-Fi<small data-bx="wifi-s">Home</small></span><button class="bx-sw" type="button" role="switch" aria-checked="true" data-sw="wifi" aria-label="Wi-Fi"></button></div>
+      <div class="bx-set"><span>Cellular data</span><button class="bx-sw" type="button" role="switch" aria-checked="true" data-sw="cell" aria-label="Cellular data"></button></div>
+      <div class="bx-set"><span>5G<small data-bx="g-s">On</small></span><button class="bx-sw" type="button" role="switch" aria-checked="true" data-sw="g5" aria-label="5G"></button></div>
+      <div class="bx-state" aria-live="polite"><b>Status</b><span data-bx="state">Wi-Fi and 5G connected</span></div>
+    </div>
+  </div>
+  <aside class="notes"><p>Instead of a screenshot of an app, the slide carries a working copy of its screen. Here it is a phone's settings: the switches really switch, airplane mode disables the others, and the status bar changes between 5G and LTE. For a product demo this means you can click through the real flow in front of the room, and if someone asks "what happens if", you show them.</p></aside>
+</section>
+
+<section data-id="app" class="slide" data-layout="two-column" data-fit="off" data-demo>
+  <div class="col bx-text">
+    <p class="label">Web app</p>
+    <h2>Ask &ldquo;what if?&rdquo; and <em>get the answer live</em></h2>
+    <p>Free-space path loss: how much a radio signal weakens on its way. Move the sliders, or pick a band.</p>
+    <p class="bx-hint">FSPL = 20 log(d) + 20 log(f) &minus; 147.55</p>
+  </div>
+  <div class="col bx-stage bx-ui">
+    <div class="bx-big" aria-live="polite"><span data-bx="loss">103.3</span><small>dB lost</small></div>
+    <label class="bx-ctl"><span>Frequency</span><input type="range" min="0" max="1000" value="0" data-bx="f" aria-label="Frequency"><output data-bx="fv">3.5 GHz</output></label>
+    <label class="bx-ctl"><span>Distance</span><input type="range" min="0" max="1000" value="0" data-bx="d" aria-label="Distance"><output data-bx="dv">1.0 km</output></label>
+    <div class="bx-row"><button class="bx-b" type="button" data-band="2.4">Wi-Fi, 2.4 GHz</button><button class="bx-b" type="button" data-band="3.5">5G, 3.5 GHz</button><button class="bx-b" type="button" data-band="28">mmWave, 28 GHz</button></div>
+    <svg class="bx-plot" viewBox="0 0 980 330" role="img" aria-label="Path loss against distance for the chosen frequency" data-bx="plot"></svg>
+  </div>
+  <aside class="notes"><p>This is a calculator, not a picture of one. The formula is the standard free-space path loss with distance in metres and frequency in hertz. The solid line is the loss over distance at the chosen frequency; the dashed line is 2.4 GHz for comparison. Jump from Wi-Fi to mmWave and you see why 28 gigahertz cells are small. A spreadsheet chart on a slide can't take a question from the room; this can.</p></aside>
+</section>
+
+<section data-id="waves" class="slide" data-layout="two-column" data-fit="off" data-demo>
+  <div class="col bx-text">
+    <p class="label">Simulation</p>
+    <h2>Physics you can <em>drag around</em></h2>
+    <p>Two antennas send the same wave. Where the waves meet in step they add up; out of step they cancel.</p>
+    <p class="bx-hint">Drag an antenna. Change the phase and the beam turns: that is beamforming.</p>
+  </div>
+  <div class="col bx-stage bx-ui">
+    <div class="bx-field bx-box" data-bx="field">
+      <canvas width="320" height="200" aria-label="Wave interference from two antennas" role="img"></canvas>
+      <button class="bx-ant" type="button" data-ant="0" aria-label="Antenna 1: drag, or use the arrow keys"></button>
+      <button class="bx-ant" type="button" data-ant="1" aria-label="Antenna 2: drag, or use the arrow keys"></button>
+    </div>
+    <label class="bx-ctl"><span>Phase</span><input type="range" min="-180" max="180" value="0" data-bx="ph" aria-label="Phase shift of antenna 2"><output data-bx="phv">0&deg;</output></label>
+    <label class="bx-ctl"><span>Wavelength</span><input type="range" min="10" max="40" value="18" data-bx="wl" aria-label="Wavelength"><output data-bx="wlv">18</output></label>
+  </div>
+  <aside class="notes"><p>Each pixel adds the two waves at its distance from each antenna, every frame, in plain JavaScript. Bright is where they reinforce, dark is where they cancel. Shift the phase of the second antenna and the bright lobes swing to one side: that is the idea behind beamforming in 5G, shown live instead of described. Antennas can be moved with a finger, a mouse, or the arrow keys once they have focus.</p></aside>
+</section>
+
+<section data-id="sound" class="slide" data-layout="two-column" data-fit="off" data-demo>
+  <div class="col bx-text">
+    <p class="label">Sound and voice</p>
+    <h2>The slide can <em>sing, and talk</em></h2>
+    <p>The tone is made by the browser as you listen, and drawn on the scope. The voice is the browser's own.</p>
+    <p class="bx-hint">Turn your sound on first.</p>
+  </div>
+  <div class="col bx-stage bx-ui">
+    <div class="bx-box"><canvas class="bx-scope" width="960" height="320" data-bx="scope" aria-label="Oscilloscope of the tone" role="img"></canvas></div>
+    <label class="bx-ctl"><span>Pitch</span><input type="range" min="0" max="1000" value="500" data-bx="hz" aria-label="Pitch"><output data-bx="hzv">440 Hz</output></label>
+    <div class="bx-row" role="group" aria-label="Wave shape"><button class="bx-b" type="button" data-wave="sine" aria-pressed="true">Sine</button><button class="bx-b" type="button" data-wave="square" aria-pressed="false">Square</button><button class="bx-b" type="button" data-wave="sawtooth" aria-pressed="false">Sawtooth</button></div>
+    <div class="bx-row"><button class="bx-b bx-go" type="button" data-bx="play">Play tone</button><button class="bx-b" type="button" data-bx="say">Read this slide aloud</button></div>
+    <p class="bx-out" data-bx="note" aria-live="polite">Close to A4, the note orchestras tune to.</p>
+  </div>
+  <aside class="notes"><p>Two browser features, no files. Web Audio builds the tone from an oscillator while you listen, and an analyser draws the real waveform on the canvas. The voice is speech synthesis, which every modern browser ships. It reads this slide's title and text, so a deck could narrate itself, or read slides aloud for someone who can't see them.</p></aside>
+</section>
+
+<section data-id="you" class="slide" data-layout="two-column" data-fit="off" data-demo>
+  <div class="col bx-text">
+    <p class="label">Made for the viewer</p>
+    <h2><span data-bx="hello">This slide</span> <em>knows who is watching</em></h2>
+    <p>Every value here is read from your own device, live. Nothing leaves your browser.</p>
+    <p class="bx-hint">Type your name: the title slide greets you too. Or add ?for=YourName to the link.</p>
+  </div>
+  <div class="col bx-stage bx-ui">
+    <div class="bx-tiles">
+      <div class="bx-tile"><span>Your time</span><b data-bx="t-time">&nbsp;</b></div>
+      <div class="bx-tile"><span>Your time zone</span><b data-bx="t-zone">&nbsp;</b></div>
+      <div class="bx-tile"><span>Your screen</span><b data-bx="t-screen">&nbsp;</b></div>
+      <div class="bx-tile"><span>Your language</span><b data-bx="t-lang">&nbsp;</b></div>
+      <div class="bx-tile"><span>You prefer</span><b data-bx="t-theme">&nbsp;</b></div>
+      <div class="bx-tile"><span>Motion</span><b data-bx="t-motion">&nbsp;</b></div>
+    </div>
+    <label class="bx-name"><span>Your name</span><input type="text" maxlength="40" autocomplete="off" data-bx="name" placeholder="Type it here"></label>
+  </div>
+  <aside class="notes"><p>A slide file shows everyone the same thing. A web page can adapt: the time where you are, your language, whether your system is in dark mode, whether you asked for less motion. The name box rewrites the title slide, and the same works from the link with ?for= and a name, so one deck can greet each person you send it to. All of it stays on the viewer's device.</p></aside>
+</section>
+
+<section data-id="code" class="slide" data-layout="two-column" data-fit="off" data-demo>
+  <div class="col bx-text">
+    <p class="label">Live code</p>
+    <h2>Code you edit, <em>running on the slide</em></h2>
+    <p>Change a number and the drawing changes as you type. Teaching code stops being a screenshot.</p>
+    <p class="bx-hint">Try n = 30, or r = 60.</p>
+  </div>
+  <div class="col bx-stage bx-ui">
+    <textarea class="bx-code" data-bx="src" spellcheck="false" aria-label="JavaScript that draws the picture below">// Edit me. t is time, dot(x, y, size) draws.
+const n = 14, r = 120;
+for (let i = 0; i &lt; n; i++) {
+  const a = i / n * 2 * Math.PI + t;
+  ctx.fillStyle = i % 2 ? brand : ink;
+  dot(480 + 2*r*Math.cos(a), 170 + r*Math.sin(a), 22);
+}</textarea>
+    <div class="bx-box"><canvas width="960" height="340" data-bx="art" style="display:block;width:100%;height:auto" aria-label="Drawing made by the code above" role="img"></canvas></div>
+    <p class="bx-out" data-bx="err" aria-live="polite">Running.</p>
+  </div>
+  <aside class="notes"><p>The box is JavaScript, and it runs every frame while this slide is on screen. It only runs on the viewer's own computer, with whatever they typed. For a programming class, the example on the slide is the example you run: change it in front of the room, and the result is right there.</p></aside>
+</section>
+
+<section data-id="game" class="slide" data-layout="two-column" data-fit="off" data-demo>
+  <div class="col bx-text">
+    <p class="label">Game</p>
+    <h2>A slide you can <em>play</em></h2>
+    <p>Catch the data packets before they drop off the edge. Twenty seconds. Good for waking a room up after lunch.</p>
+    <p class="bx-hint">Tap or click the packets.</p>
+  </div>
+  <div class="col bx-stage bx-ui">
+    <div class="bx-score" aria-live="off"><p><span>Caught</span> <b data-bx="caught">0</b></p><p><span>Dropped</span> <b data-bx="dropped">0</b></p><p><span>Time</span> <b data-bx="left">20</b></p><p><span>Best</span> <b data-bx="best">0</b></p></div>
+    <div class="bx-game bx-box">
+      <canvas width="960" height="540" data-bx="pitch" aria-label="Game area"></canvas>
+      <div class="bx-over" data-bx="over"><p data-bx="msg">Packets fly left to right. Catch as many as you can.</p><button class="bx-b bx-go" type="button" data-bx="startgame">Start</button></div>
+    </div>
+  </div>
+  <aside class="notes"><p>A whole game loop on a slide: a canvas, a timer, and a high score kept in this browser. Nothing here is special to games; the same pieces make quizzes, polls or a countdown for a workshop exercise.</p></aside>
+</section>
+
+<section data-id="page" class="slide" data-layout="two-column" data-fit="off" data-demo>
+  <div class="col bx-text">
+    <p class="label">A page in a slide</p>
+    <h2>Any web page can <em>sit on a slide</em></h2>
+    <p>This is another deck, the GenAI 101 lesson, running inside this slide. Dashboards, docs and tools fit the same way.</p>
+    <p class="bx-hint">Click into it and use its arrows. Click outside it to come back.</p>
+  </div>
+  <div class="col bx-stage bx-ui">
+    <iframe class="bx-media" data-src="genai-101.html#2" title="The GenAI 101 deck, running inside this slide"></iframe>
+  </div>
+  <aside class="notes"><p>An iframe puts a live page on the slide. Here it is a second deck, which has its own keys, themes and notes. In a real talk it could be your dashboard, your app's staging site or a document, live instead of a screenshot that was out of date the day after you took it. It loads when you reach this slide, so the deck stays fast.</p></aside>
+</section>
+
+<section data-id="video" class="slide" data-layout="two-column" data-fit="off" data-demo>
+  <div class="col bx-text">
+    <p class="label">Video</p>
+    <h2>Quick edits, <em>right in the browser</em></h2>
+    <p>A recording of the deck editor: retype a word, swap Q3 for Q4 across the deck, add a note, save the same file.</p>
+    <p class="bx-hint">It plays while this slide is on screen and stops when you leave. The buttons jump inside it.</p>
+  </div>
+  <div class="col bx-stage bx-ui">
+    <video class="bx-media" data-bx="vid" muted loop playsinline preload="metadata" poster="../assets/edit-in-browser.jpg" controls aria-label="Screen recording: editing a deck's text in the browser"><source src="../assets/edit-in-browser.mp4" type="video/mp4"></video>
+    <div class="bx-row" role="group" aria-label="Chapters"><button class="bx-b" type="button" data-at="0">Retype a word</button><button class="bx-b" type="button" data-at="3">Find and replace</button><button class="bx-b" type="button" data-at="8">Edit a note</button><button class="bx-b" type="button" data-at="11.5">Save</button></div>
+  </div>
+  <aside class="notes"><p>The video is a screen recording of editor.html, the small text editor that ships with the skill. It opens a deck, lets you click any text on a slide and type, find and replace across every slide, edit speaker notes, and saves the same file, touching only the words you changed. The slide plays the clip when you arrive and pauses it when you leave, and the chapter buttons seek inside it, which is a few lines of JavaScript.</p></aside>
+</section>
+
+<section data-id="camera" class="slide" data-layout="two-column" data-fit="off" data-demo>
+  <div class="col bx-text">
+    <p class="label">Camera</p>
+    <h2>Put the room <em>on the slide</em></h2>
+    <p>A live camera with a caption on top, for a workshop or a remote talk. It turns off when you leave the slide.</p>
+    <p class="bx-hint">The picture stays in your browser. Nothing is recorded or sent.</p>
+  </div>
+  <div class="col bx-stage bx-ui">
+    <div class="bx-cam">
+      <video class="bx-media" data-bx="cam" muted playsinline aria-label="Your camera"></video>
+      <p class="bx-off" data-bx="camoff">Camera is off.</p>
+      <p class="bx-lower" data-bx="lower" hidden>Live from the room<small data-bx="camtime"></small></p>
+    </div>
+    <div class="bx-row"><button class="bx-b bx-go" type="button" data-bx="camgo">Turn on my camera</button></div>
+  </div>
+  <aside class="notes"><p>The browser asks before the camera turns on, and the stream never leaves the page. The caption is ordinary HTML on top of the video, so it takes the theme's colours. Leaving the slide stops the camera.</p></aside>
+</section>
+
+<section data-id="more" class="slide" data-layout="two-column">
+  <p class="label">More ideas</p>
+  <h2>And it <em>doesn't stop there</em></h2>
+  <div class="col">
+    <h3>Show</h3>
+    <ul>
+      <li>A map you can pan and zoom<small>to walk a site or a route</small></li>
+      <li>A 3D model you can turn<small>a part, a building, a molecule</small></li>
+      <li>Charts fed by live data<small>numbers that are right on the day</small></li>
+    </ul>
+  </div>
+  <div class="col">
+    <h3>Ask</h3>
+    <ul>
+      <li>Polls and quizzes that count answers<small>from phones in the room</small></li>
+      <li>Captions as you speak<small>the browser's speech recognition</small></li>
+      <li>A slide that translates itself<small>one deck, many languages</small></li>
+    </ul>
+  </div>
+  <aside class="notes"><p>These are not built in this deck; each one is a standard browser feature or a small library, and each fits on a slide the same way the demos did. If a web page can do it, a slide can.</p></aside>
+</section>
+
+<section data-id="end" class="slide" data-layout="closing">
+  <p class="label">One HTML file</p>
+  <h2>Slides are web pages. <em>Use that.</em></h2>
+  <p class="contact"><span><b>Hisham Abuella</b></span><span>hishamabuella.com</span><span>A personal project</span></p>
+  <aside class="notes"><p>Everything in this deck is one file you can open in any browser. Press S to restyle it, P for the presenter view, G to see every slide.</p></aside>
+</section>
+
+<script id="bx-js">
+/* The demos. Plain JS; waits for the engine, then wires each demo. A demo only animates while its slide is on screen. */
+(() => {
+'use strict';
+const ready = (n = 0) => { if (window.kp && window.kp.ready) { try { init(window.kp); } catch (e) { console.warn('beyond-slides: demos skipped', e); } } else if (n < 200) setTimeout(() => ready(n + 1), 50); };
+ready();
+
+function init(kp) {
+  const root = document.documentElement;
+  const S = id => document.querySelector(`.deck > .slide[data-id="${id}"]`);
+  const q = (s, r) => (r || document).querySelector(`[data-bx="${s}"]`);
+  const rm = matchMedia('(prefers-reduced-motion: reduce)');
+  const tok = (el, k) => getComputedStyle(el).getPropertyValue(k).trim();
+  const px = document.createElement('canvas').getContext('2d', {willReadFrequently: true});
+  const rgb = c => { px.clearRect(0, 0, 1, 1); px.fillStyle = '#000'; px.fillStyle = c || '#000'; px.fillRect(0, 0, 1, 1); return [...px.getImageData(0, 0, 1, 1).data].slice(0, 3); };
+  /* on(id, enter, leave): called when a slide becomes the current one and when it stops being it */
+  const on = (id, enter, leave) => { const s = S(id); if (!s) return; let was = false;
+    const check = () => { const now = s.classList.contains('is-current') && !root.classList.contains('kp-editing'); if (now !== was) { was = now; (now ? enter : leave)?.(); } };
+    new MutationObserver(check).observe(s, {attributes: true, attributeFilter: ['class']}); check(); };
+  /* a loop that runs only while its slide is current */
+  const loop = (id, frame) => { let raf = 0; const tick = t => { frame(t); raf = requestAnimationFrame(tick); };
+    on(id, () => { cancelAnimationFrame(raf); raf = requestAnimationFrame(tick); }, () => { cancelAnimationFrame(raf); raf = 0; }); };
+
+  /* clicks inside a demo must not advance the deck; text fields hand the keys back on Enter or Escape */
+  document.querySelectorAll('.bx-ui').forEach(w => w.addEventListener('click', e => e.stopPropagation()));
+  document.querySelectorAll('.bx-ui input, .bx-ui textarea').forEach(i => i.addEventListener('keydown', e => {
+    e.stopPropagation(); if (e.key === 'Escape' || (e.key === 'Enter' && i.tagName === 'INPUT')) { e.preventDefault(); i.blur(); } }));
+
+  /* ---- live-ui: phone settings ---- */
+  { const ph = document.getElementById('bx-phone'); if (ph) {
+    const st = {air: false, wifi: true, cell: true, g5: true};
+    const sw = k => ph.querySelector(`[data-sw="${k}"]`);
+    const draw = () => {
+      const radios = !st.air, cell = radios && st.cell, wifi = radios && st.wifi;
+      ['wifi', 'cell', 'g5'].forEach(k => { const b = sw(k); b.disabled = st.air; b.setAttribute('aria-checked', String(st[k] && radios)); b.closest('.bx-set').classList.toggle('off', st.air || (k === 'g5' && !st.cell)); });
+      sw('g5').disabled = st.air || !st.cell; sw('air').setAttribute('aria-checked', String(st.air));
+      q('net', ph).textContent = cell ? (st.g5 ? '5G' : 'LTE') : ''; q('bars', ph).style.opacity = cell ? 1 : .25;
+      q('wifi', ph).hidden = !wifi; q('plane', ph).hidden = !st.air;
+      q('wifi-s', ph).textContent = wifi ? 'Home' : 'Off'; q('g-s', ph).textContent = cell && st.g5 ? 'On' : 'Off';
+      q('state', ph).textContent = st.air ? 'Airplane mode: every radio is off' : wifi && cell ? `Wi-Fi and ${st.g5 ? '5G' : 'LTE'} connected` : wifi ? 'Wi-Fi only' : cell ? `${st.g5 ? '5G' : 'LTE'} only` : 'No connection';
+    };
+    ph.addEventListener('click', e => { const b = e.target.closest('[data-sw]'); if (!b || b.disabled) return; st[b.dataset.sw] = !st[b.dataset.sw]; draw(); });
+    const clock = () => { q('clock', ph).textContent = new Date().toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'}).replace(/\s?[AP]M$/i, ''); };
+    let ct = 0; on('live-ui', () => { clock(); ct = setInterval(clock, 15000); }, () => clearInterval(ct)); clock(); draw();
+  } }
+
+  /* ---- app: free-space path loss ---- */
+  { const s = S('app'); if (s) {
+    const F0 = .6, F1 = 40, D0 = 10, D1 = 10000; // GHz, metres
+    const fOf = u => F0 * Math.pow(F1 / F0, u / 1000), dOf = u => D0 * Math.pow(D1 / D0, u / 1000);
+    const uOf = (v, a, b) => Math.round(1000 * Math.log(v / a) / Math.log(b / a));
+    const fspl = (dm, ghz) => 20 * Math.log10(dm) + 20 * Math.log10(ghz * 1e9) - 147.55;
+    const fmtF = g => g < 1 ? Math.round(g * 1000) + ' MHz' : (g < 10 ? g.toFixed(1) : Math.round(g)) + ' GHz';
+    const fmtD = m => m < 1000 ? Math.round(m) + ' m' : (m / 1000).toFixed(m < 10000 ? 1 : 0) + ' km';
+    const fi = q('f', s), di = q('d', s), svg = q('plot', s);
+    fi.value = uOf(3.5, F0, F1); di.value = uOf(1000, D0, D1);
+    const X0 = 120, X1 = 960, Y0 = 20, Y1 = 270, L0 = 40, L1 = 160;
+    const x = m => X0 + (X1 - X0) * Math.log10(m / D0) / 3, y = l => Y1 - (Y1 - Y0) * (l - L0) / (L1 - L0);
+    const path = g => Array.from({length: 61}, (_, i) => { const m = D0 * Math.pow(10, i / 20); return (i ? 'L' : 'M') + x(m).toFixed(1) + ' ' + y(fspl(m, g)).toFixed(1); }).join('');
+    const axes = [10, 100, 1000, 10000].map(m => `<line class="ax" x1="${x(m)}" x2="${x(m)}" y1="${Y0}" y2="${Y1}"/><text x="${x(m)}" y="314" text-anchor="${m === 10 ? 'start' : m === 10000 ? 'end' : 'middle'}">${fmtD(m)}</text>`).join('')
+      + [60, 100, 140].map(l => `<line class="ax" x1="${X0}" x2="${X1}" y1="${y(l)}" y2="${y(l)}"/><text x="${X0 - 14}" y="${y(l) + 10}" text-anchor="end">${l} dB</text>`).join('');
+    const draw = () => { const g = fOf(+fi.value), m = dOf(+di.value), l = fspl(m, g);
+      q('loss', s).textContent = l.toFixed(1); q('fv', s).textContent = fmtF(g); q('dv', s).textContent = fmtD(m);
+      svg.innerHTML = axes + `<path class="ln2" d="${path(2.4)}"/><path class="ln" d="${path(g)}"/><circle class="dot" cx="${x(m)}" cy="${y(l)}" r="16"/>`;
+      s.querySelectorAll('[data-band]').forEach(b => b.setAttribute('aria-pressed', String(Math.abs(+b.dataset.band - g) / g < .02))); };
+    [fi, di].forEach(i => i.addEventListener('input', draw));
+    s.querySelectorAll('[data-band]').forEach(b => b.addEventListener('click', () => { fi.value = uOf(+b.dataset.band, F0, F1); draw(); }));
+    draw();
+  } }
+
+  /* ---- waves: two-antenna interference ---- */
+  { const s = S('waves'); if (s) {
+    const box = q('field', s), cv = box.querySelector('canvas'), cx = cv.getContext('2d'), W = cv.width, H = cv.height, img = cx.createImageData(W, H);
+    const ant = [{x: .42, y: .5}, {x: .58, y: .5}], btn = [...box.querySelectorAll('.bx-ant')];
+    const ph = q('ph', s), wl = q('wl', s);
+    let cA = [0, 0, 0], cB = [0, 0, 0], tk = 0;
+    const place = () => btn.forEach((b, i) => { b.style.left = ant[i].x * 100 + '%'; b.style.top = ant[i].y * 100 + '%'; });
+    const frame = t => {
+      if (!(tk++ % 30)) { cA = rgb(tok(s, '--bg2')); cB = rgb(tok(s, '--brand')); }
+      const k = 2 * Math.PI / +wl.value, w = rm.matches ? 0 : t / 1000 * 4, p = +ph.value * Math.PI / 180, d = img.data;
+      const ax = ant[0].x * W, ay = ant[0].y * H, bx = ant[1].x * W, by = ant[1].y * H;
+      for (let j = 0, o = 0; j < H; j++) for (let i = 0; i < W; i++, o += 4) {
+        const r1 = Math.hypot(i - ax, j - ay), r2 = Math.hypot(i - bx, j - by);
+        const v = Math.cos(k * r1 - w) / Math.sqrt(1 + r1 * .06) + Math.cos(k * r2 - w + p) / Math.sqrt(1 + r2 * .06);
+        const a = Math.min(1, Math.max(0, .5 + v * .42));
+        d[o] = cA[0] + (cB[0] - cA[0]) * a; d[o + 1] = cA[1] + (cB[1] - cA[1]) * a; d[o + 2] = cA[2] + (cB[2] - cA[2]) * a; d[o + 3] = 255; }
+      cx.putImageData(img, 0, 0);
+    };
+    const show = v => { q('phv', s).textContent = ph.value + '°'; q('wlv', s).textContent = wl.value; if (v !== false) frame(performance.now()); };
+    [ph, wl].forEach(i => i.addEventListener('input', show));
+    let drag = -1;
+    const at = e => { const r = box.getBoundingClientRect(); return {x: Math.min(.97, Math.max(.03, (e.clientX - r.left) / r.width)), y: Math.min(.95, Math.max(.05, (e.clientY - r.top) / r.height))}; };
+    box.addEventListener('pointerdown', e => { const p = at(e), r = box.getBoundingClientRect();
+      drag = ant.map((a, i) => [Math.hypot((a.x - p.x) * r.width, (a.y - p.y) * r.height), i]).sort((a, b) => a[0] - b[0])[0][1];
+      box.setPointerCapture(e.pointerId); Object.assign(ant[drag], p); place(); frame(performance.now()); e.preventDefault(); });
+    box.addEventListener('pointermove', e => { if (drag < 0) return; Object.assign(ant[drag], at(e)); place(); if (rm.matches) frame(0); });
+    box.addEventListener('pointerup', () => { drag = -1; });
+    btn.forEach((b, i) => b.addEventListener('keydown', e => { const m = {ArrowLeft: [-.02, 0], ArrowRight: [.02, 0], ArrowUp: [0, -.03], ArrowDown: [0, .03]}[e.key]; if (!m) return;
+      e.preventDefault(); e.stopPropagation(); ant[i].x = Math.min(.97, Math.max(.03, ant[i].x + m[0])); ant[i].y = Math.min(.95, Math.max(.05, ant[i].y + m[1])); place(); frame(performance.now()); }));
+    place(); show(false); frame(0);
+    loop('waves', t => { if (!rm.matches) frame(t); });
+    on('waves', () => { tk = 0; frame(performance.now()); }); // pick up the current theme's colours
+  } }
+
+  /* ---- sound: Web Audio tone and speech ---- */
+  { const s = S('sound'); if (s) {
+    const cv = q('scope', s), cx = cv.getContext('2d'), hz = q('hz', s), play = q('play', s), say = q('say', s);
+    const NAMES = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
+    const fOf = u => 110 * Math.pow(16, u / 1000); // 110 Hz to 1760 Hz
+    let ac = null, osc = null, gain = null, an = null, wave = 'sine', buf = null;
+    const label = () => { const f = fOf(+hz.value), n = Math.round(12 * Math.log2(f / 440)) + 57, name = NAMES[(n % 12 + 12) % 12] + Math.floor(n / 12);
+      q('hzv', s).textContent = Math.round(f) + ' Hz'; q('note', s).textContent = name === 'A4' ? 'Close to A4, the note orchestras tune to.' : `Close to ${name}.`; if (osc) osc.frequency.setTargetAtTime(f, ac.currentTime, .02); };
+    const scope = () => { const w = cv.width, h = cv.height; cx.fillStyle = tok(s, '--bg2'); cx.fillRect(0, 0, w, h);
+      cx.strokeStyle = tok(s, '--rule'); cx.lineWidth = 2; cx.beginPath(); for (let i = 1; i < 8; i++) { cx.moveTo(i * w / 8, 0); cx.lineTo(i * w / 8, h); } for (let i = 1; i < 4; i++) { cx.moveTo(0, i * h / 4); cx.lineTo(w, i * h / 4); } cx.stroke();
+      cx.strokeStyle = tok(s, '--brand'); cx.lineWidth = 5; cx.beginPath();
+      if (an) { an.getFloatTimeDomainData(buf); let z = 0; for (let i = 1; i < buf.length / 2; i++) if (buf[i - 1] < 0 && buf[i] >= 0) { z = i; break; } // trigger on a rising zero crossing so the trace stands still
+        for (let i = 0; i < 1024; i++) { const v = buf[z + i] || 0, X = i / 1023 * w, Y = h / 2 - v * h * 1.6; i ? cx.lineTo(X, Y) : cx.moveTo(X, Y); } }
+      else { cx.moveTo(0, h / 2); cx.lineTo(w, h / 2); } cx.stroke(); };
+    const stop = () => { if (osc) { gain.gain.setTargetAtTime(0, ac.currentTime, .03); const o = osc; setTimeout(() => o.stop(), 150); osc = null; an = null; } play.textContent = 'Play tone'; scope(); };
+    const start = () => { try { ac = ac || new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { q('note', s).textContent = 'This browser has no Web Audio.'; return; }
+      ac.resume(); osc = ac.createOscillator(); gain = ac.createGain(); an = ac.createAnalyser(); an.fftSize = 4096; buf = new Float32Array(an.fftSize);
+      osc.type = wave; osc.frequency.value = fOf(+hz.value); gain.gain.value = 0; gain.gain.setTargetAtTime(.12, ac.currentTime, .03);
+      osc.connect(gain).connect(an).connect(ac.destination); osc.start(); play.textContent = 'Stop tone'; };
+    play.addEventListener('click', () => osc ? stop() : start());
+    hz.addEventListener('input', label);
+    s.querySelectorAll('[data-wave]').forEach(b => b.addEventListener('click', () => { wave = b.dataset.wave; if (osc) osc.type = wave; s.querySelectorAll('[data-wave]').forEach(o => o.setAttribute('aria-pressed', String(o === b))); }));
+    const tts = 'speechSynthesis' in window;
+    if (!tts) { say.disabled = true; say.textContent = 'No voice in this browser'; }
+    say.addEventListener('click', () => { if (!tts) return; if (speechSynthesis.speaking) { speechSynthesis.cancel(); return; }
+      const u = new SpeechSynthesisUtterance([...s.querySelectorAll('.bx-text h2, .bx-text p:not(.bx-hint)')].map(e => e.textContent).join('. '));
+      u.lang = 'en'; u.onend = u.onerror = () => { say.textContent = 'Read this slide aloud'; }; say.textContent = 'Stop reading'; speechSynthesis.speak(u); });
+    loop('sound', scope); // also repaints the grid after a theme change
+    on('sound', null, () => { stop(); if (tts) speechSynthesis.cancel(); });
+    label(); scope();
+  } }
+
+  /* ---- you: the viewer's own device ---- */
+  { const s = S('you'); if (s) {
+    const set = (k, v) => { q(k, s).textContent = v; };
+    const fill = () => {
+      set('t-time', new Date().toLocaleTimeString([], {hour: 'numeric', minute: '2-digit', second: '2-digit'}));
+      try { set('t-zone', Intl.DateTimeFormat().resolvedOptions().timeZone.replace(/_/g, ' ')); } catch (e) { set('t-zone', 'Not shared'); }
+      set('t-screen', `${screen.width} × ${screen.height}`);
+      let lang = navigator.language || 'Not shared'; try { lang = new Intl.DisplayNames([navigator.language], {type: 'language'}).of(navigator.language) || lang; } catch (e) {} set('t-lang', lang);
+      set('t-theme', matchMedia('(prefers-color-scheme: dark)').matches ? 'Dark mode' : 'Light mode');
+      set('t-motion', rm.matches ? 'Less, please' : 'Full motion');
+    };
+    const title = document.getElementById('bx-for'), plain = title ? title.textContent : '', input = q('name', s);
+    const greet = n => { n = (n || '').trim().slice(0, 40); if (title) title.textContent = n ? `Made for ${n}` : plain; set('hello', n ? `Hello ${n}, this slide` : 'This slide'); };
+    let from = ''; try { from = new URLSearchParams(location.search).get('for') || ''; } catch (e) {}
+    if (from && !root.classList.contains('kp-editing')) { input.value = from.slice(0, 40); greet(from); }
+    input.addEventListener('input', () => greet(input.value));
+    let it = 0; on('you', () => { fill(); it = setInterval(fill, 1000); }, () => clearInterval(it)); fill();
+  } }
+
+  /* ---- code: edit and run ---- */
+  { const s = S('code'); if (s) {
+    const ta = q('src', s), cv = q('art', s), cx = cv.getContext('2d'), err = q('err', s);
+    let fn = null;
+    const compile = () => { try { fn = new Function('ctx', 't', 'brand', 'ink', 'dot', ta.value); err.textContent = 'Running.'; err.classList.remove('bad'); } catch (e) { err.textContent = 'Fix this line: ' + e.message; err.classList.add('bad'); } };
+    const dot = (x, y, r) => { cx.beginPath(); cx.arc(x, y, Math.max(0, r), 0, 2 * Math.PI); cx.fill(); };
+    const frame = t => { cx.fillStyle = tok(s, '--bg2'); cx.fillRect(0, 0, cv.width, cv.height); if (!fn) return;
+      cx.save(); try { fn(cx, rm.matches ? 0 : t / 1000, tok(s, '--brand'), tok(s, '--ink'), dot); } catch (e) { err.textContent = 'Error: ' + e.message; err.classList.add('bad'); fn = null; } cx.restore(); };
+    let deb = 0; ta.addEventListener('input', () => { clearTimeout(deb); deb = setTimeout(() => { compile(); frame(performance.now()); }, 200); });
+    ta.addEventListener('keydown', e => { if (e.key === 'Tab') { e.preventDefault(); document.execCommand('insertText', false, '  '); } });
+    compile(); frame(0);
+    loop('code', t => { if (!rm.matches) frame(t); });
+    on('code', () => frame(0));
+  } }
+
+  /* ---- game: catch the packets ---- */
+  { const s = S('game'); if (s) {
+    const cv = q('pitch', s), cx = cv.getContext('2d'), W = cv.width, H = cv.height, over = q('over', s), go = q('startgame', s);
+    let best = 0; try { best = +localStorage.getItem('kp-beyond-best') || 0; } catch (e) {} q('best', s).textContent = best;
+    let packs = [], pops = [], caught = 0, dropped = 0, run = false, t0 = 0, last = 0, next = 0;
+    const draw = () => { cx.fillStyle = tok(s, '--bg2'); cx.fillRect(0, 0, W, H);
+      cx.strokeStyle = tok(s, '--rule'); cx.lineWidth = 2; cx.setLineDash([10, 14]); cx.beginPath(); cx.moveTo(W - 40, 0); cx.lineTo(W - 40, H); cx.stroke(); cx.setLineDash([]);
+      const br = tok(s, '--brand'), ink = tok(s, '--on-brand');
+      packs.forEach(p => { cx.fillStyle = br; cx.beginPath(); cx.roundRect ? cx.roundRect(p.x - 34, p.y - 24, 68, 48, 8) : cx.rect(p.x - 34, p.y - 24, 68, 48); cx.fill();
+        cx.fillStyle = ink; cx.fillRect(p.x - 20, p.y - 8, 40, 5); cx.fillRect(p.x - 20, p.y + 4, 26, 5); });
+      pops.forEach(p => { cx.strokeStyle = br; cx.globalAlpha = Math.max(0, 1 - p.a); cx.lineWidth = 5; cx.beginPath(); cx.arc(p.x, p.y, 30 + p.a * 60, 0, 7); cx.stroke(); cx.globalAlpha = 1; }); };
+    const score = () => { q('caught', s).textContent = caught; q('dropped', s).textContent = dropped; };
+    const end = () => { run = false; packs = []; if (caught > best) { best = caught; try { localStorage.setItem('kp-beyond-best', best); } catch (e) {} }
+      q('best', s).textContent = best; q('msg', s).textContent = `You caught ${caught} and dropped ${dropped}.`; go.textContent = 'Play again'; over.hidden = false; draw(); };
+    const tick = t => { if (!run) return; const dt = Math.min(.05, (t - (last || t)) / 1000); last = t;
+      const left = Math.max(0, 20 - (t - t0) / 1000); q('left', s).textContent = Math.ceil(left); if (!left) return end();
+      if (t > next) { packs.push({x: -40, y: 50 + Math.random() * (H - 100), v: 200 + Math.random() * 220 + (t - t0) / 60}); next = t + 380 + Math.random() * 380; }
+      packs.forEach(p => p.x += p.v * dt); const gone = packs.filter(p => p.x > W - 40); dropped += gone.length; if (gone.length) score(); packs = packs.filter(p => p.x <= W - 40);
+      pops.forEach(p => p.a += dt * 2.5); pops = pops.filter(p => p.a < 1); draw(); requestAnimationFrame(tick); };
+    go.addEventListener('click', () => { packs = []; pops = []; caught = 0; dropped = 0; score(); over.hidden = true; run = true; t0 = performance.now(); last = 0; next = 0; requestAnimationFrame(tick); });
+    cv.addEventListener('pointerdown', e => { if (!run) return; const r = cv.getBoundingClientRect(), x = (e.clientX - r.left) * W / r.width, y = (e.clientY - r.top) * H / r.height;
+      const k = packs.findIndex(p => Math.abs(p.x - x) < 52 && Math.abs(p.y - y) < 44); if (k > -1) { pops.push({x: packs[k].x, y: packs[k].y, a: 0}); packs.splice(k, 1); caught++; score(); } });
+    on('game', draw, () => { if (run) end(); });
+    draw();
+  } }
+
+  /* ---- page: load the inner deck only when this slide is reached ---- */
+  { const s = S('page'); if (s) { const f = s.querySelector('iframe[data-src]'); on('page', () => { if (!f.getAttribute('src')) f.src = f.dataset.src; }); } }
+
+  /* ---- video: play here, pause elsewhere, chapters seek ---- */
+  { const s = S('video'); if (s) { const v = q('vid', s);
+    on('video', () => { if (!rm.matches) v.play().catch(() => {}); }, () => v.pause());
+    s.querySelectorAll('[data-at]').forEach(b => b.addEventListener('click', () => { v.currentTime = +b.dataset.at; v.play().catch(() => {}); }));
+  } }
+
+  /* ---- camera: only on request, off when leaving ---- */
+  { const s = S('camera'); if (s) {
+    const v = q('cam', s), off = q('camoff', s), low = q('lower', s), b = q('camgo', s); let stream = null, ct = 0;
+    const stop = () => { if (stream) stream.getTracks().forEach(t => t.stop()); stream = null; v.srcObject = null; off.hidden = false; off.textContent = 'Camera is off.'; low.hidden = true; b.textContent = 'Turn on my camera'; clearInterval(ct); };
+    b.addEventListener('click', async () => { if (stream) return stop();
+      if (!navigator.mediaDevices?.getUserMedia) { off.textContent = 'This browser cannot reach a camera here.'; return; }
+      try { stream = await navigator.mediaDevices.getUserMedia({video: {width: 1280, height: 720}, audio: false}); }
+      catch (e) { off.textContent = 'The camera is blocked or missing, so the slide stays as it is.'; return; }
+      if (!s.classList.contains('is-current')) return stop();
+      v.srcObject = stream; v.play().catch(() => {}); off.hidden = true; low.hidden = false; b.textContent = 'Turn off my camera';
+      const tm = () => { q('camtime', s).textContent = new Date().toLocaleTimeString([], {hour: 'numeric', minute: '2-digit'}); }; tm(); ct = setInterval(tm, 15000); });
+    on('camera', null, stop);
+  } }
+}
+})();
+</script>

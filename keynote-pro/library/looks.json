@@ -1,0 +1,292 @@
+{
+ "themes": [
+  {
+   "id": "archive",
+   "label": "Archive",
+   "swatch": "#2C4A6E",
+   "url": "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,600;0,700;1,500&family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=Fragment+Mono&display=swap"
+  },
+  {
+   "id": "blueprint",
+   "label": "Blueprint",
+   "swatch": "#1558B0",
+   "url": "https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Archivo:wght@400;500;600;700&family=Azeret+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "campaign",
+   "label": "Campaign",
+   "swatch": "#B5124F",
+   "url": "https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap"
+  },
+  {
+   "id": "chalk",
+   "label": "Chalk",
+   "swatch": "#8FD6C0",
+   "url": "https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400;1,7..72,500&family=Karla:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "chambers",
+   "label": "Chambers",
+   "swatch": "#5B1E4F",
+   "url": "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "civic",
+   "label": "Civic",
+   "swatch": "#B4472A",
+   "url": "https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,500;0,600;0,700;1,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Red+Hat+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "clinic",
+   "label": "Clinic",
+   "swatch": "#0F766E",
+   "url": "https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "commit",
+   "label": "Commit",
+   "swatch": "#B79CFF",
+   "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "drawing",
+   "label": "Drawing",
+   "swatch": "#C8341E",
+   "url": "https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap"
+  },
+  {
+   "id": "estate",
+   "label": "Estate",
+   "swatch": "#8A5A1F",
+   "url": "https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;600;700;800&family=Red+Hat+Text:wght@400;500;700&family=Red+Hat+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "labbook",
+   "label": "Lab book",
+   "swatch": "#5B3A9B",
+   "url": "https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "ledger",
+   "label": "Ledger",
+   "swatch": "#0B6B3F",
+   "url": "https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,500;0,600;0,700;1,500&family=Public+Sans:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "menu",
+   "label": "Menu",
+   "swatch": "#8E2A17",
+   "url": "https://fonts.googleapis.com/css2?family=Young+Serif&family=Alegreya+Sans:wght@400;500;700&family=Fragment+Mono&display=swap"
+  },
+  {
+   "id": "newsroom",
+   "label": "Newsroom",
+   "swatch": "#B3121B",
+   "url": "https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;500;600;700&family=Chivo+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "notebook",
+   "label": "Notebook",
+   "swatch": "#B5460F",
+   "url": "https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "partner",
+   "label": "Partner",
+   "swatch": "#1F5FA8",
+   "url": "https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,500;0,600;0,700;1,500&family=Lato:wght@400;700;900&family=Source+Code+Pro:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "people",
+   "label": "People",
+   "swatch": "#7A2A7C",
+   "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Albert+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "pitch",
+   "label": "Pitch",
+   "swatch": "#2A2FE0",
+   "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap"
+  },
+  {
+   "id": "pitchside",
+   "label": "Pitchside",
+   "swatch": "#0B6B35",
+   "url": "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap"
+  },
+  {
+   "id": "roadmap",
+   "label": "Roadmap",
+   "swatch": "#4F46E5",
+   "url": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "schoolyard",
+   "label": "Schoolyard",
+   "swatch": "#1D4ED8",
+   "url": "https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&display=swap"
+  },
+  {
+   "id": "sentinel",
+   "label": "Sentinel",
+   "swatch": "#FF5D4D",
+   "url": "https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700;800&family=Overpass+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "spectrum",
+   "label": "Spectrum",
+   "swatch": "#0A6A8F",
+   "url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "thesis",
+   "label": "Thesis",
+   "swatch": "#8A1538",
+   "url": "https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Fira+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "trainer",
+   "label": "Trainer",
+   "swatch": "#1B4F9C",
+   "url": "https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+  },
+  {
+   "id": "wireframe",
+   "label": "Wireframe",
+   "swatch": "#2352D9",
+   "url": "https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600;700&family=Martian+Mono:wght@400;500;700&display=swap"
+  }
+ ],
+ "fonts": [
+  {
+   "id": "archivo",
+   "label": "Archivo Narrow / Archivo / Azeret Mono",
+   "url": "https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Archivo:wght@400;500;600;700&family=Azeret+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "barlow",
+   "label": "Barlow Condensed / Barlow",
+   "url": "https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap"
+  },
+  {
+   "id": "bitter",
+   "label": "Bitter / Public Sans",
+   "url": "https://fonts.googleapis.com/css2?family=Bitter:ital,wght@0,500;0,600;0,700;1,500&family=Public+Sans:wght@400;500;600;700&family=Roboto+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "bodoni",
+   "label": "Bodoni Moda / Alegreya / Fragment Mono",
+   "url": "https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,500;0,600;0,700;1,500&family=Alegreya:ital,wght@0,400;0,500;0,700;1,400&family=Fragment+Mono&display=swap"
+  },
+  {
+   "id": "bricolage",
+   "label": "Bricolage Grotesque / DM Sans",
+   "url": "https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap"
+  },
+  {
+   "id": "caslon",
+   "label": "Libre Caslon Text / Work Sans / Chivo Mono",
+   "url": "https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;500;600;700&family=Chivo+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "epilogue",
+   "label": "Epilogue / Instrument Sans / Martian Mono",
+   "url": "https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600;700&family=Martian+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "figtree",
+   "label": "Figtree / Plex Mono",
+   "url": "https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "fira",
+   "label": "Fira Sans / Fira Mono",
+   "url": "https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Fira+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "franklin",
+   "label": "Libre Franklin / Roboto Mono",
+   "url": "https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "garamond",
+   "label": "EB Garamond / Public Sans",
+   "url": "https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "geist",
+   "label": "Geist / Geist Mono",
+   "url": "https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "gelasio",
+   "label": "Gelasio / Lato",
+   "url": "https://fonts.googleapis.com/css2?family=Gelasio:ital,wght@0,500;0,600;0,700;1,500&family=Lato:wght@400;700;900&family=Source+Code+Pro:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "jakarta",
+   "label": "Plus Jakarta Sans / JetBrains Mono",
+   "url": "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "jost",
+   "label": "Jost / DM Mono",
+   "url": "https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap"
+  },
+  {
+   "id": "lexend",
+   "label": "Lexend / Atkinson Hyperlegible",
+   "url": "https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&display=swap"
+  },
+  {
+   "id": "literata",
+   "label": "Literata / Karla",
+   "url": "https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400;1,7..72,500&family=Karla:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "outfit",
+   "label": "Outfit / Albert Sans / Spline Sans Mono",
+   "url": "https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700&family=Albert+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "overpass",
+   "label": "Overpass / Overpass Mono",
+   "url": "https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700;800&family=Overpass+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "petrona",
+   "label": "Petrona / Hanken Grotesk / Red Hat Mono",
+   "url": "https://fonts.googleapis.com/css2?family=Petrona:ital,wght@0,500;0,600;0,700;1,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Red+Hat+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "plexcond",
+   "label": "Plex Condensed / Plex Sans",
+   "url": "https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "readex",
+   "label": "Readex Pro / Plex Arabic (EN + AR)",
+   "url": "https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap"
+  },
+  {
+   "id": "redhat",
+   "label": "Red Hat Display / Red Hat Text / Red Hat Mono",
+   "url": "https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;600;700;800&family=Red+Hat+Text:wght@400;500;700&family=Red+Hat+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "stix",
+   "label": "STIX Two / Source Sans",
+   "url": "https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap"
+  },
+  {
+   "id": "syne",
+   "label": "Syne / Manrope",
+   "url": "https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap"
+  },
+  {
+   "id": "youngserif",
+   "label": "Young Serif / Alegreya Sans / Fragment Mono",
+   "url": "https://fonts.googleapis.com/css2?family=Young+Serif&family=Alegreya+Sans:wght@400;500;700&family=Fragment+Mono&display=swap"
+  }
+ ]
+}

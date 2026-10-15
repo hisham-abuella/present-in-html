@@ -1,0 +1,21 @@
+/* Library theme source. tools/build-library.mjs expands the macros into ../<id>.css.
+   @C(id) = content slides, @T(id) = title/section/closing, @A(id) = every slide, @IMG:key = an SVG made in build-library.mjs, @SVG[<svg ...>]SVG@ = your own inline SVG. */
+/* ---------- 17 sentinel: cybersecurity / security engineer ---------- */
+/* THEME:sentinel | Sentinel | #FF5D4D | https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700;800&family=Overpass+Mono:wght@400;500;700&display=swap */
+html[data-theme="sentinel"]{
+  --bg:#0F1419; --bg2:#18202A; --ink:#E8EEF3; --ink2:#9FB1C1; --rule:#2B3947; --rule-strong:#E8EEF3;
+  --brand:#FF5D4D; --brand-text:#FF7A6B; --on-brand:#0F1419;
+  --hero-bg:#070A0D; --hero-ink:#F1F5F8; --hero-ink2:#9FB1C1; --hero-rule:#26323E; --hero-brand:#FF7A6B;
+  --bleed-bg:#FF5D4D; --bleed-ink:#0F1419;
+  --f-display:"Overpass","Helvetica Neue",Arial,sans-serif; --f-body:"Overpass","Helvetica Neue",Arial,sans-serif; --f-mono:"Overpass Mono",ui-monospace,Menlo,monospace;
+  --w-display:800; --ls-display:-0.02em; --em-style:normal;
+  --radius:3px; --chart-radius:1px; --rule-w:2px; --letterbox:#000000;
+  --s1:#FF5D4D; --s2:#F5B83D; --s3:#5AA9E6; --muted-bar:#34434F; --hot:#F5B83D; --hot-text:#F5B83D;
+  --code-bg:#070A0D; --code-ink:#E8EEF3; --c-kw:#FF7A6B; --c-str:#8FD99B; --c-num:#F5B83D; --c-com:#8396A6; --c-fn:#7FC1F5;
+}
+@A(sentinel){isolation:isolate}
+@C(sentinel) .label::before{content:"SEV-2";display:inline-block;margin-inline-end:14px;padding:0 10px;border:2px solid var(--brand-text);color:var(--brand-text);font-weight:700;letter-spacing:.06em;line-height:1.15;margin-bottom:6px}
+@C(sentinel)::after{content:"TLP:AMBER  INTERNAL";position:absolute;top:34px;inset-inline-end:120px;z-index:-1;pointer-events:none;font-family:var(--f-mono);font-size:18px;letter-spacing:.14em;color:var(--hot-text);opacity:.8}
+@C(sentinel) .kp-foot{border-top:2px solid var(--rule);padding-top:12px}
+@T(sentinel)::before{content:"";position:absolute;inset-inline-end:0;top:50%;width:900px;height:900px;margin-top:-450px;z-index:-1;pointer-events:none;background:@SVG[<svg xmlns='http://www.w3.org/2000/svg' width='900' height='900' viewBox='0 0 900 900'><g fill='none' stroke='#FF7A6B' stroke-opacity='.28' stroke-width='2'><circle cx='450' cy='450' r='120'/><circle cx='450' cy='450' r='230'/><circle cx='450' cy='450' r='340'/><circle cx='450' cy='450' r='440' stroke-dasharray='4 12'/><path d='M450 0V900M0 450H900'/></g><path d='M450 450 L690 220 A340 340 0 0 1 790 450 Z' fill='#FF5D4D' fill-opacity='.12'/><circle cx='640' cy='300' r='9' fill='#FF7A6B' fill-opacity='.75'/></svg>]SVG@ no-repeat 0 0/100% 100%}
+/* /THEME */

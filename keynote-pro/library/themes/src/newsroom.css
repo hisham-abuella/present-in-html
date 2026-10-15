@@ -1,0 +1,23 @@
+/* Library theme source. tools/build-library.mjs expands the macros into ../<id>.css.
+   @C(id) = content slides, @T(id) = title/section/closing, @A(id) = every slide, @IMG:key = an SVG made in build-library.mjs, @SVG[<svg ...>]SVG@ = your own inline SVG. */
+/* ---------- 20 newsroom: journalist / editor ---------- */
+/* THEME:newsroom | Newsroom | #B3121B | https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;500;600;700&family=Chivo+Mono:wght@400;500;700&display=swap */
+html[data-theme="newsroom"]{
+  --bg:#FBFAF6; --bg2:#EFEDE4; --ink:#161616; --ink2:#4A4944; --rule:#D3D0C3; --rule-strong:#161616;
+  --brand:#B3121B; --brand-text:#B3121B; --on-brand:#ffffff;
+  --hero-bg:#161616; --hero-ink:#F7F5EE; --hero-ink2:#B9B6AA; --hero-rule:#3F3E3A; --hero-brand:#FF7468;
+  --bleed-bg:#B3121B; --bleed-ink:#ffffff;
+  --f-display:"Libre Caslon Text",Georgia,"Times New Roman",serif; --f-body:"Work Sans","Helvetica Neue",Arial,sans-serif; --f-mono:"Chivo Mono",ui-monospace,Menlo,monospace;
+  --f-ar-d:"Noto Naskh Arabic","Amiri","Geeza Pro",serif; --w-display-ar:700;
+  --w-display:700; --ls-display:-0.02em; --em-style:italic;
+  --radius:0px; --chart-radius:0px; --rule-w:2px; --letterbox:#070707;
+  --s1:#161616; --s2:#B3121B; --s3:#8A877C; --muted-bar:#CFCCBF; --hot:#B3121B; --hot-text:#B3121B;
+  --code-bg:#161616; --code-ink:#F7F5EE; --c-kw:#FF7468; --c-str:#B8DDA0; --c-num:#F2CF74; --c-com:#9C998D; --c-fn:#9CC8F0;
+}
+@A(newsroom){isolation:isolate}
+@C(newsroom)::before{content:"";position:absolute;inset-inline:120px;top:40px;height:12px;z-index:-1;pointer-events:none;border-top:4px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong)}
+@C(newsroom)::after{content:"FILED  OCT 14, 2026  |  EDITION 2";position:absolute;top:60px;inset-inline-end:120px;z-index:-1;pointer-events:none;font-family:var(--f-mono);font-size:15px;letter-spacing:.14em;color:var(--ink2)}
+@C(newsroom) .kp-foot{border-top:1px solid var(--rule-strong);padding-top:12px}
+@T(newsroom)::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:@SVG[<svg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080'><g stroke='#F7F5EE' stroke-opacity='.22'><path d='M120 60H1800' stroke-width='5'/><path d='M120 74H1800' stroke-width='1.5'/><path d='M120 1010H1800' stroke-width='1.5'/><path d='M120 1022H1800' stroke-width='5'/></g><g stroke='#F7F5EE' stroke-opacity='.14' stroke-width='1.5'><path d='M1540 150V930M1780 150V930'/></g></svg>]SVG@ no-repeat 0 0/100% 100%}
+[data-theme="newsroom"] [data-layout="big-number"] .big{position:relative;top:.1em}
+/* /THEME */

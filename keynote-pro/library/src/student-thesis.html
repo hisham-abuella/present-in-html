@@ -1,0 +1,61 @@
+<!--meta {"theme":"thesis","fonts":"","title":"Scheduling for low-power sensor networks","pageTitle":"Thesis defence: student (Keynote Pro library)"} -->
+<section class="slide" data-layout="title">
+  <p class="label">MSc thesis defence</p>
+  <h1>Scheduling for low-power <em>sensor networks</em></h1>
+  <p class="sub">Can duty-cycle scheduling extend battery life without losing data?</p>
+  <p class="meta"><span>Student Name</span><span>Supervisor: Prof. Sample</span><span>October 2026</span></p>
+  <aside class="notes"><p>Fictional thesis. 20 minutes talk, then questions. Three contributions, said early.</p></aside>
+</section>
+
+<section class="slide" data-layout="agenda">
+  <h2>Outline</h2>
+  <ol>
+    <li>Problem and question <small>3 min</small></li>
+    <li>Method <small>5 min</small></li>
+    <li>Results <small>8 min</small></li>
+    <li>Limits and future work <small>4 min</small></li>
+  </ol>
+  <aside class="notes"><p>Tell the committee where the time goes.</p></aside>
+</section>
+
+<section class="slide" data-layout="statement">
+  <h2>Batteries, not radios, set the <em>lifetime</em> of a sensor network.</h2>
+  <p>Research question: how much lifetime can a smarter schedule buy?</p>
+  <aside class="notes"><p>State the question in one breath.</p></aside>
+</section>
+
+<section class="slide" data-layout="rows">
+  <p class="label">The thesis in four lines</p>
+  <h2>Question to contribution</h2>
+  <ol class="rows">
+    <li data-k="Question"><p>Can an adaptive duty cycle extend lifetime at equal delivery?</p></li>
+    <li data-k="Method"><p>A scheduler that adapts to traffic, tested in simulation and on 20 nodes.</p></li>
+    <li data-k="Result"><p>31 percent longer lifetime, delivery ratio above 98 percent.</p></li>
+    <li data-k="Contribution" data-hot><h3>An open scheduler and a reproducible testbed</h3><p>Code and traces released with the thesis.</p></li>
+  </ol>
+  <aside class="notes"><p>If time runs short, this is the slide to keep.</p></aside>
+</section>
+
+<section class="slide" data-layout="chart">
+  <h2>31 percent longer lifetime</h2>
+  <p class="lede">Delivery ratio stayed above 98 percent in all three.</p>
+  <figure class="chart" data-chart="column" data-unit=" days" data-decimals="0" data-highlight="3" data-build="draw">
+    <table><thead><tr><th>Scheduler</th><th>Lifetime</th></tr></thead><tbody><tr><td>Always on</td><td>42</td></tr><tr><td>Fixed 10% duty</td><td>118</td></tr><tr><td>Adaptive</td><td>155</td></tr></tbody></table>
+    <figcaption>20-node testbed, mean of five runs, sample figures</figcaption>
+  </figure>
+  <aside class="notes"><p>Be ready for: why fixed 10 percent and not 5.</p></aside>
+</section>
+
+<section class="slide" data-layout="two-column">
+  <h2>Limits and what comes next</h2>
+  <div class="col"><h3>Limits</h3><ul><li>One radio platform</li><li>Indoor testbed, stable links</li></ul></div>
+  <div class="col"><h3>Future work</h3><ul><li>Outdoor deployment</li><li>Joint scheduling and routing</li></ul></div>
+  <aside class="notes"><p>Name the limits before the committee does.</p></aside>
+</section>
+
+<section class="slide" data-layout="closing">
+  <p class="label">Thank you</p>
+  <h2>Questions</h2>
+  <p class="contact"><span><b>Student</b> Student Name</span><span>student@example.edu</span></p>
+  <aside class="notes"><p>Close on the one point you want remembered from Scheduling for low-power sensor networks. Say it in a sentence, thank the room, and take questions. Leave this slide up while people ask. Sample deck with fictional content, so replace the contact details before use.</p></aside>
+</section>

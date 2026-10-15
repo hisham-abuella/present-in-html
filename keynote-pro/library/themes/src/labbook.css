@@ -1,0 +1,23 @@
+/* Library theme source. tools/build-library.mjs expands the macros into ../<id>.css.
+   @C(id) = content slides, @T(id) = title/section/closing, @A(id) = every slide, @IMG:key = an SVG made in build-library.mjs, @SVG[<svg ...>]SVG@ = your own inline SVG. */
+/* ---------- 5 labbook: medical / scientific researcher ---------- */
+/* THEME:labbook | Lab book | #5B3A9B | https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Source+Sans+3:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap */
+html[data-theme="labbook"]{
+  --bg:#FFFFFF; --bg2:#F3F0FA; --ink:#1B1530; --ink2:#51496A; --rule:#D9D3EA; --rule-strong:#1B1530;
+  --brand:#5B3A9B; --brand-text:#5B3A9B; --on-brand:#ffffff;
+  --hero-bg:#2A1B4D; --hero-ink:#F5F1FF; --hero-ink2:#C6BCE3; --hero-rule:#4A3A78; --hero-brand:#CDBBFF;
+  --bleed-bg:#5B3A9B; --bleed-ink:#ffffff;
+  --f-display:"STIX Two Text","Times New Roman",Georgia,serif; --f-body:"Source Sans 3","Helvetica Neue",Arial,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --w-display:600; --ls-display:-0.015em; --em-style:italic;
+  --f-ar-d:"Noto Naskh Arabic","Amiri","Geeza Pro",serif; --w-display-ar:500;
+  --radius:2px; --chart-radius:0px; --rule-w:1px; --letterbox:#0E0A1A;
+  --s1:#5B3A9B; --s2:#1F7A8C; --s3:#8A8498; --muted-bar:#CBC4DD; --hot:#B3261E; --hot-text:#B3261E;
+  --code-bg:#F3F0FA; --code-ink:#1B1530; --c-kw:#5B3A9B; --c-str:#1F6F43; --c-num:#9A4A00; --c-com:#625A7A; --c-fn:#1D5C8F;
+}
+@C(labbook){isolation:isolate;counter-reset:fig}
+@C(labbook)::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(color-mix(in srgb,var(--brand) 14%,transparent) 1px,transparent 1px) 0 0/200px 200px,linear-gradient(90deg,color-mix(in srgb,var(--brand) 14%,transparent) 1px,transparent 1px) 0 0/200px 200px,
+  linear-gradient(color-mix(in srgb,var(--brand) 6%,transparent) 1px,transparent 1px) 0 0/40px 40px,linear-gradient(90deg,color-mix(in srgb,var(--brand) 6%,transparent) 1px,transparent 1px) 0 0/40px 40px}
+@C(labbook) .chart figcaption::before,@C(labbook) [data-layout="diagram"] figcaption::before{counter-increment:fig;content:"Fig. " counter(fig) ". ";font-weight:700;color:var(--brand-text)}
+@C(labbook) .kp-foot{border-top:1px solid var(--rule);padding-top:12px}
+/* /THEME */

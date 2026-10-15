@@ -1,0 +1,23 @@
+/* Library theme source. tools/build-library.mjs expands the macros into ../<id>.css.
+   @C(id) = content slides, @T(id) = title/section/closing, @A(id) = every slide, @IMG:key = an SVG made in build-library.mjs, @SVG[<svg ...>]SVG@ = your own inline SVG. */
+/* ---------- 24 wireframe: UX / product designer ---------- */
+/* THEME:wireframe | Wireframe | #2352D9 | https://fonts.googleapis.com/css2?family=Epilogue:wght@500;600;700;800&family=Instrument+Sans:wght@400;500;600;700&family=Martian+Mono:wght@400;500;700&display=swap */
+html[data-theme="wireframe"]{
+  --bg:#F4F5F7; --bg2:#E6E8EC; --ink:#14171F; --ink2:#4A5160; --rule:#CDD1D9; --rule-strong:#14171F;
+  --brand:#2352D9; --brand-text:#2352D9; --on-brand:#ffffff;
+  --hero-bg:#12141A; --hero-ink:#F2F4F8; --hero-ink2:#A4ACBD; --hero-rule:#2D3342; --hero-brand:#86A6FF;
+  --bleed-bg:#2352D9; --bleed-ink:#ffffff;
+  --f-display:"Epilogue","Helvetica Neue",Arial,sans-serif; --f-body:"Instrument Sans","Helvetica Neue",Arial,sans-serif; --f-mono:"Martian Mono",ui-monospace,Menlo,monospace;
+  --w-display:700; --ls-display:-0.03em; --em-style:normal;
+  --radius:4px; --chart-radius:2px; --rule-w:1px; --letterbox:#07080B;
+  --s1:#2352D9; --s2:#D1242F; --s3:#8A91A0; --muted-bar:#C3C8D2; --hot:#C81E2B; --hot-text:#C81E2B;
+  --code-bg:#12141A; --code-ink:#F2F4F8; --c-kw:#86A6FF; --c-str:#8EE0A5; --c-num:#FFB86B; --c-com:#8D96A8; --c-fn:#FF8FA3;
+}
+@C(wireframe){isolation:isolate}
+@C(wireframe)::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle,color-mix(in srgb,var(--ink) 20%,transparent) 1.5px,transparent 2px) 0 0/32px 32px}
+@C(wireframe)::after{content:"Frame 01  /  1920 x 1080";position:absolute;top:34px;inset-inline-start:120px;z-index:-1;pointer-events:none;font:500 18px/1 var(--f-mono);letter-spacing:.02em;color:var(--brand-text)}
+@C(wireframe) .kp-foot{border-top:1px dashed var(--ink2);padding-top:12px}
+@C(wireframe) h2 em{box-shadow:inset 0 -.14em 0 color-mix(in srgb,var(--brand) 18%,transparent);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+@T(wireframe){isolation:isolate}
+@T(wireframe)::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:@SVG[<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'><rect x='48' y='48' width='1824' height='984' fill='none' stroke='#86A6FF' stroke-opacity='.45' stroke-dasharray='10 8' stroke-width='2'/><g fill='#12141A' stroke='#86A6FF' stroke-width='2'><rect x='41' y='41' width='14' height='14'/><rect x='1865' y='41' width='14' height='14'/><rect x='41' y='1025' width='14' height='14'/><rect x='1865' y='1025' width='14' height='14'/><rect x='953' y='41' width='14' height='14'/><rect x='953' y='1025' width='14' height='14'/></g><g stroke='#FF6B73' stroke-width='2' stroke-opacity='.85'><path d='M48 20 H1872 M48 12 V28 M1872 12 V28'/></g></svg>]SVG@ no-repeat 0 0/100% 100%}
+/* /THEME */

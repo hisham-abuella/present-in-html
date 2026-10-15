@@ -1,0 +1,20 @@
+/* ---------- 18 blueprint: civil / structural / mechanical engineer ---------- */
+/* THEME:blueprint | Blueprint | #1558B0 | https://fonts.googleapis.com/css2?family=Archivo+Narrow:wght@500;600;700&family=Archivo:wght@400;500;600;700&family=Azeret+Mono:wght@400;500;700&display=swap */
+html[data-theme="blueprint"]{
+  --bg:#F4F8FC; --bg2:#E3EDF7; --ink:#0B2545; --ink2:#3C5675; --rule:#B6CCE3; --rule-strong:#0B2545;
+  --brand:#1558B0; --brand-text:#1558B0; --on-brand:#ffffff;
+  --hero-bg:#0E3F84; --hero-ink:#F1F7FF; --hero-ink2:#BDD6F4; --hero-rule:#4C7DBE; --hero-brand:#FFD166;
+  --bleed-bg:#1558B0; --bleed-ink:#ffffff;
+  --f-display:"Archivo Narrow","Arial Narrow","Helvetica Neue",Arial,sans-serif; --f-body:"Archivo","Helvetica Neue",Arial,sans-serif; --f-mono:"Azeret Mono",ui-monospace,Menlo,monospace;
+  --w-display:700; --ls-display:-0.005em; --em-style:normal;
+  --radius:0px; --chart-radius:0px; --rule-w:1px; --letterbox:#061A35;
+  --s1:#1558B0; --s2:#B4410B; --s3:#6F8299; --muted-bar:#B2C6DB; --hot:#B4410B; --hot-text:#B4410B;
+  --code-bg:#0B2545; --code-ink:#E6F0FB; --c-kw:#8FC1FF; --c-str:#9ADDB0; --c-num:#FFD166; --c-com:#8DA6C3; --c-fn:#F2A682;
+}
+html[data-theme="blueprint"] .slide{isolation:isolate}
+html[data-theme="blueprint"] .slide:not(:is([data-layout="title"],[data-layout="section"],[data-layout="closing"],[data-layout="full-bleed"],[data-tone="hero"]))::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(color-mix(in srgb,var(--brand) 16%,transparent) 1px,transparent 1px) 0 0/120px 120px,linear-gradient(90deg,color-mix(in srgb,var(--brand) 16%,transparent) 1px,transparent 1px) 0 0/120px 120px,linear-gradient(color-mix(in srgb,var(--brand) 7%,transparent) 1px,transparent 1px) 0 0/24px 24px,linear-gradient(90deg,color-mix(in srgb,var(--brand) 7%,transparent) 1px,transparent 1px) 0 0/24px 24px}
+html[data-theme="blueprint"] .slide:not(:is([data-layout="title"],[data-layout="section"],[data-layout="closing"],[data-layout="full-bleed"],[data-tone="hero"]))::after{content:"SHEET S-101   REV B   SCALE 1:50";position:absolute;inset-inline-end:0;bottom:0;padding:8px 24px 8px 20px;z-index:-1;pointer-events:none;border-top:1px solid var(--rule-strong);border-inline-start:1px solid var(--rule-strong);background:var(--bg);font-family:var(--f-mono);font-size:15px;letter-spacing:.1em;color:var(--ink2)}
+html[data-theme="blueprint"] .slide:not(:is([data-layout="title"],[data-layout="section"],[data-layout="closing"],[data-layout="full-bleed"],[data-tone="hero"])) .kp-foot{border-top:1px solid var(--rule-strong);padding-top:12px;max-width:calc(100% - 520px)}
+html[data-theme="blueprint"] .slide:is([data-layout="title"],[data-layout="section"],[data-layout="closing"])::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='1920' height='1080' viewBox='0 0 1920 1080'><g stroke='%23FFFFFF' stroke-opacity='.12' stroke-width='1'><path d='M0 120H1920M0 240H1920M0 360H1920M0 480H1920M0 600H1920M0 720H1920M0 840H1920M0 960H1920M120 0V1080M240 0V1080M360 0V1080M480 0V1080M600 0V1080M720 0V1080M840 0V1080M960 0V1080M1080 0V1080M1200 0V1080M1320 0V1080M1440 0V1080M1560 0V1080M1680 0V1080M1800 0V1080'/></g><g fill='none' stroke='%23FFFFFF' stroke-opacity='.5' stroke-width='2'><rect x='40' y='40' width='1840' height='1000'/></g><g fill='none' stroke='%23BDD6F4' stroke-opacity='.4' stroke-width='2' transform='translate(0 -300)'><path d='M1150 640H1830M1150 668H1830M1250 668V820M1730 668V820M1100 820H1880M1250 640Q1490 380 1730 640M1250 520V560M1730 520V560M1250 540H1730M1250 530V550M1730 530V550'/></g></svg>") no-repeat 0 0/100% 100%}
+/* /THEME */

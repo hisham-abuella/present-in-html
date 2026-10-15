@@ -1,0 +1,25 @@
+/* Library theme source. tools/build-library.mjs expands the macros into ../<id>.css.
+   @C(id) = content slides, @T(id) = title/section/closing, @A(id) = every slide, @IMG:key = an SVG made in build-library.mjs, @SVG[<svg ...>]SVG@ = your own inline SVG. */
+/* ---------- 3 notebook: data scientist / analyst ---------- */
+/* THEME:notebook | Notebook | #B5460F | https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Roboto+Mono:wght@400;500;700&display=swap */
+html[data-theme="notebook"]{
+  --bg:#FBFCFD; --bg2:#EDF1F5; --ink:#101820; --ink2:#47535F; --rule:#D3DAE1; --rule-strong:#101820;
+  --brand:#B5460F; --brand-text:#B5460F; --on-brand:#ffffff;
+  --hero-bg:#B5460F; --hero-ink:#ffffff; --hero-ink2:#FFE7D8; --hero-rule:#E39A72; --hero-brand:#ffffff;
+  --bleed-bg:#B5460F; --bleed-ink:#ffffff;
+  --f-display:"Libre Franklin","Helvetica Neue",Arial,sans-serif; --f-body:"Libre Franklin","Helvetica Neue",Arial,sans-serif; --f-mono:"Roboto Mono",ui-monospace,Menlo,monospace;
+  --w-display:700; --ls-display:-0.03em; --em-style:normal;
+  --radius:4px; --chart-radius:2px; --rule-w:1px; --letterbox:#0B1015;
+  --s1:#0072B2; --s2:#D55E00; --s3:#009E73; --muted-bar:#C9D2DB; --hot:#B5460F; --hot-text:#B5460F;
+  --code-bg:#EDF1F5; --code-ink:#1B2733; --c-kw:#7C2D9E; --c-str:#0B6E3F; --c-num:#B5460F; --c-com:#5B6773; --c-fn:#0A5FA5;
+}
+@C(notebook){isolation:isolate}
+@C(notebook)::before{content:"";position:absolute;inset-block:0;inset-inline-start:0;width:72px;z-index:-1;pointer-events:none;background:var(--bg2);border-inline-end:1px solid var(--rule)}
+@C(notebook) > h2{position:relative}
+@C(notebook) > h2::before{content:"";position:absolute;inset-inline-start:-40px;top:.1em;bottom:.1em;width:8px;background:var(--brand)}
+@C(notebook) .kp-foot span:last-child::before{content:"In [";color:var(--brand-text)}
+@C(notebook) .kp-foot span:last-child::after{content:"]:";color:var(--brand-text)}
+@C(notebook) .kp-foot span:last-child{order:-1;margin-inline-end:auto}
+@C(notebook) .kp-foot span:first-child{margin-inline-start:auto}
+@T(notebook) .label{font-weight:500}
+/* /THEME */

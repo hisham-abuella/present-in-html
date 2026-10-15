@@ -1,0 +1,19 @@
+/* ---------- 7 chalk: university lecturer ---------- */
+/* THEME:chalk | Chalk | #8FD6C0 | https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;1,7..72,400;1,7..72,500&family=Karla:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;700&display=swap */
+html[data-theme="chalk"]{
+  --bg:#23313A; --bg2:#2D3E49; --ink:#F2F0E6; --ink2:#BDC7CB; --rule:#4A5D68; --rule-strong:#F2F0E6;
+  --brand:#8FD6C0; --brand-text:#8FD6C0; --on-brand:#16231F;
+  --hero-bg:#182329; --hero-ink:#F2F0E6; --hero-ink2:#B6C1C6; --hero-rule:#3A4C56; --hero-brand:#F3D77A;
+  --bleed-bg:#8FD6C0; --bleed-ink:#16231F;
+  --f-display:"Literata",Georgia,"Times New Roman",serif; --f-body:"Karla","Helvetica Neue",Arial,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --w-display:500; --ls-display:-0.02em; --em-style:italic;
+  --f-ar-d:"Noto Naskh Arabic","Amiri","Geeza Pro",serif; --w-display-ar:500;
+  --rec-mix:24%;
+  --radius:6px; --chart-radius:2px; --rule-w:2px; --letterbox:#0C1317;
+  --s1:#8FD6C0; --s2:#F3D77A; --s3:#F2A7B8; --muted-bar:#46596A; --hot:#F3D77A; --hot-text:#F3D77A;
+  --code-bg:#182329; --code-ink:#F2F0E6; --c-kw:#F3D77A; --c-str:#8FD6C0; --c-num:#F2A7B8; --c-com:#9AABB3; --c-fn:#9CC9F2;
+}
+html[data-theme="chalk"] .slide:not(:is([data-layout="title"],[data-layout="section"],[data-layout="closing"],[data-layout="full-bleed"],[data-tone="hero"])) > h2::after{content:"";display:block;width:300px;height:18px;margin-top:10px;background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='18' viewBox='0 0 300 18'><path d='M3 11 C60 3 120 16 180 8 S270 12 297 6' fill='none' stroke='%238FD6C0' stroke-width='4' stroke-linecap='round'/></svg>") no-repeat 0 0/100% 100%}
+html[data-theme="chalk"] .slide:not(:is([data-layout="title"],[data-layout="section"],[data-layout="closing"],[data-layout="full-bleed"],[data-tone="hero"])) .kp-foot{border-top:2px dashed var(--rule);padding-top:12px}
+html[data-theme="chalk"] .slide :is(.col,.stat,.steps li,table.cmp thead th){border-top-style:dashed}
+/* /THEME */

@@ -1,0 +1,3 @@
+/* FONTS:syne | Syne / Manrope | https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap */
+html[data-fonts="syne"]{--f-display:"Syne",Arial,sans-serif;--f-body:"Manrope",Arial,sans-serif;--f-mono:"DM Mono",ui-monospace,Menlo,monospace;--w-display:800;--ls-display:-0.04em;--em-style:normal}
+/* /FONTS */

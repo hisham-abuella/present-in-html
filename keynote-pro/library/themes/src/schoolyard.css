@@ -1,0 +1,23 @@
+/* Library theme source. tools/build-library.mjs expands the macros into ../<id>.css.
+   @C(id) = content slides, @T(id) = title/section/closing, @A(id) = every slide, @IMG:key = an SVG made in build-library.mjs, @SVG[<svg ...>]SVG@ = your own inline SVG. */
+/* ---------- 6 schoolyard: school teacher ---------- */
+/* THEME:schoolyard | Schoolyard | #1D4ED8 | https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@400;500&display=swap */
+html[data-theme="schoolyard"]{
+  --bg:#FFFFFF; --bg2:#E8F0FF; --ink:#10243E; --ink2:#3B4F69; --rule:#C3D2EA; --rule-strong:#10243E;
+  --brand:#1D4ED8; --brand-text:#1D4ED8; --on-brand:#ffffff;
+  --hero-bg:#FFD23F; --hero-ink:#10243E; --hero-ink2:#2A3E58; --hero-rule:#10243E; --hero-brand:#1D4ED8;
+  --bleed-bg:#1D4ED8; --bleed-ink:#ffffff;
+  --f-display:"Lexend","Trebuchet MS",Verdana,sans-serif; --f-body:"Atkinson Hyperlegible","Trebuchet MS",Verdana,sans-serif; --f-mono:"DM Mono",ui-monospace,Menlo,monospace;
+  --w-display:700; --ls-display:-0.02em; --em-style:normal;
+  --radius:22px; --chart-radius:8px; --rule-w:3px; --letterbox:#08142A;
+  --s1:#1D4ED8; --s2:#C2255C; --s3:#2F9E44; --muted-bar:#C3D2EA; --hot:#C2255C; --hot-text:#C2255C;
+  --code-bg:#10243E; --code-ink:#EAF1FF; --c-kw:#FFD23F; --c-str:#9BE3B5; --c-num:#FFA8C5; --c-com:#9FB4D1; --c-fn:#8EC5FF;
+}
+@C(schoolyard){isolation:isolate}
+@C(schoolyard)::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(#E3EBF8 2px,transparent 2px) 0 0/48px 48px,linear-gradient(90deg,#E3EBF8 2px,transparent 2px) 0 0/48px 48px}
+@C(schoolyard) > h2::after{content:"";display:block;width:180px;height:16px;border-radius:8px;background:#FFD23F;margin-top:18px}
+@C(schoolyard) .kp-foot{border-top:3px solid var(--ink);padding-top:12px}
+@T(schoolyard){isolation:isolate}
+@T(schoolyard)::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(#10243E22 2px,transparent 2px) 0 0/48px 48px,linear-gradient(90deg,#10243E22 2px,transparent 2px) 0 0/48px 48px}
+/* /THEME */

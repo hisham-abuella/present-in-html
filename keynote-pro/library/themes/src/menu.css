@@ -1,0 +1,27 @@
+/* Library theme source. tools/build-library.mjs expands the macros into ../<id>.css.
+   @C(id) = content slides, @T(id) = title/section/closing, @A(id) = every slide, @IMG:key = an SVG made in build-library.mjs, @SVG[<svg ...>]SVG@ = your own inline SVG. */
+/* ---------- 22 menu: chef / restaurant / hospitality ---------- */
+/* THEME:menu | Menu | #8E2A17 | https://fonts.googleapis.com/css2?family=Young+Serif&family=Alegreya+Sans:wght@400;500;700&family=Fragment+Mono&display=swap */
+html[data-theme="menu"]{
+  --bg:#F7F0E2; --bg2:#ECE2CC; --ink:#2B1B12; --ink2:#5E4838; --rule:#D5C6A8; --rule-strong:#2B1B12;
+  --brand:#8E2A17; --brand-text:#8E2A17; --on-brand:#ffffff;
+  --hero-bg:#1D2A21; --hero-ink:#F4EBD6; --hero-ink2:#B9C6B8; --hero-rule:#3B5040; --hero-brand:#E3B65B;
+  --bleed-bg:#8E2A17; --bleed-ink:#ffffff;
+  --f-display:"Young Serif",Georgia,serif; --f-body:"Alegreya Sans","Helvetica Neue",Arial,sans-serif; --f-mono:"Fragment Mono",ui-monospace,Menlo,monospace;
+  --w-display:400; --ls-display:-0.01em; --em-style:normal;
+  --radius:0px; --chart-radius:0px; --rule-w:1px; --letterbox:#0E1510;
+  --s1:#8E2A17; --s2:#3E6B4B; --s3:#A8895A; --muted-bar:#D9CBAA; --hot:#9A4A12; --hot-text:#9A4A12;
+  --code-bg:#1D2A21; --code-ink:#F4EBD6; --c-kw:#E3B65B; --c-str:#A9D6A0; --c-num:#F0A27F; --c-com:#9DB09F; --c-fn:#9CC4E8;
+}
+@C(menu){isolation:isolate}
+@C(menu)::before{content:"";position:absolute;inset:20px;z-index:-1;pointer-events:none;border:1px solid color-mix(in srgb,var(--brand) 55%,transparent);box-shadow:inset 0 0 0 7px var(--bg),inset 0 0 0 8px color-mix(in srgb,var(--brand) 40%,transparent)}
+@C(menu) .label{text-transform:uppercase;letter-spacing:.16em}
+@C(menu) .label::after{content:"";display:block;width:64px;border-top:2px solid var(--brand);margin-top:14px}
+@C(menu) .kp-foot{border-top:1px dotted var(--ink2);padding-top:12px}
+@C(menu)[data-layout="bullets"] ul{counter-reset:course}
+@C(menu)[data-layout="bullets"] li{counter-increment:course;padding-inline-start:104px}
+@C(menu)[data-layout="bullets"] li::before{content:counter(course,decimal-leading-zero);width:auto;height:auto;background:none;border-radius:0;transform:none;top:.3em;inset-inline-start:0;font:400 .56em/1 var(--f-mono);color:var(--brand-text)}
+@T(menu){isolation:isolate}
+@T(menu)::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:@SVG[<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'><g fill='none' stroke='#F4EBD6' stroke-opacity='.16' stroke-width='2'><circle cx='1760' cy='240' r='480'/><circle cx='1760' cy='240' r='400'/><circle cx='1760' cy='240' r='290' stroke-dasharray='2 14' stroke-linecap='round' stroke-width='4'/><circle cx='1760' cy='240' r='180'/></g></svg>]SVG@ no-repeat 0 0/100% 100%}
+@T(menu)::after{content:"";position:absolute;inset-inline:120px;bottom:72px;border-top:2px dotted color-mix(in srgb,var(--ink) 30%,transparent);pointer-events:none}
+/* /THEME */

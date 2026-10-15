@@ -1,0 +1,75 @@
+<!--meta {"theme":"blueprint","fonts":"","title":"Design review: Marlow Street pedestrian bridge","pageTitle":"Design review: civil engineer (Keynote Pro library)"} -->
+<section class="slide" data-layout="title">
+  <p class="label">60 percent design review</p>
+  <h1>Marlow Street <em>footbridge</em></h1>
+  <p class="sub">A 42 m steel box-girder crossing over the canal: loads, deflection and the construction plan.</p>
+  <p class="meta"><span>Structures Group</span><span>Fictional project, sample deck</span><span>October 2026</span></p>
+  <aside class="notes"><p>Fictional project and numbers, for illustration only. Not for design use.</p></aside>
+</section>
+
+<section class="slide" data-layout="stats">
+  <h2>The bridge in three numbers</h2>
+  <div class="stat" data-build="rise"><b>42<small>m</small></b><span>Main span</span></div>
+  <div class="stat" data-build="rise"><b>3.0<small>m</small></b><span>Clear deck width</span></div>
+  <div class="stat" data-build="rise"><b>186<small>t</small></b><span>Steel weight</span></div>
+  <aside class="notes"><p>Span is fixed by the canal reserve. Width is the cycling and walking minimum from the client's brief.</p></aside>
+</section>
+
+<section class="slide" data-layout="two-column">
+  <p class="label">Design basis</p>
+  <h2>What the structure must carry</h2>
+  <div class="col"><h3>Loads</h3><ul><li>Pedestrian crowd: 5.0 kN/m2</li><li>Maintenance vehicle: 7.5 t</li><li>Wind on deck and parapet</li></ul></div>
+  <div class="col"><h3>Limits</h3><ul><li>Deflection under 1/800 of span</li><li>Vertical frequency above 3.4 Hz</li><li>Design life 100 years</li></ul></div>
+  <aside class="notes"><p>The frequency limit avoids pedestrian resonance; it governs more than strength does.</p></aside>
+</section>
+
+<section class="slide" data-layout="formula">
+  <p class="label">Deflection check</p>
+  <h2>Midspan deflection passes with margin</h2>
+  <div class="eq"><i>&delta;</i> = 5<i>wL</i><sup>4</sup> &divide; 384<i>EI</i> = <span class="hot">38 mm</span></div>
+  <dl class="terms">
+    <div><dt><i>L</i></dt><dd>Span, 42 m</dd></div>
+    <div><dt>52 mm</dt><dd>Limit, L/800</dd></div>
+    <div><dt>73%</dt><dd>Utilisation</dd></div>
+  </dl>
+  <aside class="notes"><p>Hand check of the model result. 38 against a 52 mm limit; the finite element model gives 36 mm.</p></aside>
+</section>
+
+<section class="slide" data-layout="chart">
+  <h2>Utilisation by member</h2>
+  <p class="lede">Every member is under 90 percent; the bottom flange governs.</p>
+  <figure class="chart" data-chart="bar" data-unit="%" data-decimals="0" data-highlight="1" data-build="draw">
+    <table><thead><tr><th>Member</th><th>Utilisation</th></tr></thead><tbody><tr><td>Bottom flange</td><td>86</td></tr><tr><td>Web at support</td><td>79</td></tr><tr><td>Top flange</td><td>71</td></tr><tr><td>Bearings</td><td>58</td></tr></tbody></table>
+    <figcaption>Ultimate limit state, governing combination</figcaption>
+  </figure>
+  <aside class="notes"><p>Utilisation is demand over capacity. Anything over 100 percent fails; we keep a 10 percent reserve for design changes.</p></aside>
+</section>
+
+<section class="slide" data-layout="materials">
+  <h2>Materials</h2>
+  <div class="board">
+    <figure class="mat" style="--sw:#6F7C86"><figcaption><b>Weathering steel</b><span>Box girder, S355</span></figcaption></figure>
+    <figure class="mat" style="--sw:#B9B3A6"><figcaption><b>Concrete</b><span>Abutments, C40/50</span></figcaption></figure>
+    <figure class="mat" style="--sw:#8A6B44"><figcaption><b>Hardwood</b><span>Deck planking</span></figcaption></figure>
+  </div>
+  <aside class="notes"><p>Weathering steel avoids repainting over the canal. Timber is certified and replaceable by plank.</p></aside>
+</section>
+
+<section class="slide" data-layout="timeline">
+  <p class="label">Programme</p>
+  <h2>From approval to opening</h2>
+  <ol class="timeline" data-build="list">
+    <li><time>Nov</time><h3>Detailed design</h3><p>Drawings issued for tender.</p></li>
+    <li><time>Mar</time><h3>Abutments</h3><p>Piling and concrete.</p></li>
+    <li class="now"><time>Jul</time><h3>Lift</h3><p>Girder craned in one night.</p></li>
+    <li><time>Oct</time><h3>Opening</h3><p>Handover and inspection.</p></li>
+  </ol>
+  <aside class="notes"><p>The lift needs a canal closure notice at least eight weeks ahead; that is the critical path.</p></aside>
+</section>
+
+<section class="slide" data-layout="closing">
+  <p class="label">Review comments</p>
+  <h2>Mark up the drawings</h2>
+  <p class="contact"><span><b>Lead</b> Structures Group</span><span>structures@example.com</span></p>
+  <aside class="notes"><p>Ask reviewers to return markups within five working days. Sample deck with fictional content, so replace the contact details before use.</p></aside>
+</section>

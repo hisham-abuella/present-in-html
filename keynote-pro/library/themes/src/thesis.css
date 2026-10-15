@@ -1,0 +1,21 @@
+/* Library theme source. tools/build-library.mjs expands the macros into ../<id>.css.
+   @C(id) = content slides, @T(id) = title/section/closing, @A(id) = every slide, @IMG:key = an SVG made in build-library.mjs, @SVG[<svg ...>]SVG@ = your own inline SVG. */
+/* ---------- 8 thesis: student, thesis defence ---------- */
+/* THEME:thesis | Thesis | #8A1538 | https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Fira+Mono:wght@400;500;700&display=swap */
+html[data-theme="thesis"]{
+  --bg:#FFFFFF; --bg2:#F5EFF1; --ink:#211A1D; --ink2:#5A5256; --rule:#DDD3D7; --rule-strong:#211A1D;
+  --brand:#8A1538; --brand-text:#8A1538; --on-brand:#ffffff;
+  --hero-bg:#FFFFFF; --hero-ink:#211A1D; --hero-ink2:#5A5256; --hero-rule:#DDD3D7; --hero-brand:#8A1538;
+  --bleed-bg:#8A1538; --bleed-ink:#ffffff;
+  --f-display:"Fira Sans","Helvetica Neue",Arial,sans-serif; --f-body:"Fira Sans","Helvetica Neue",Arial,sans-serif; --f-mono:"Fira Mono",ui-monospace,Menlo,monospace;
+  --w-display:600; --ls-display:-0.02em; --em-style:normal;
+  --radius:4px; --chart-radius:2px; --rule-w:1px; --letterbox:#120A0D;
+  --s1:#8A1538; --s2:#2F5D8A; --s3:#8E8589; --muted-bar:#D3C6CB; --hot:#8A1538; --hot-text:#8A1538;
+  --code-bg:#F5EFF1; --code-ink:#211A1D; --c-kw:#8A1538; --c-str:#1F6F43; --c-num:#8A4B00; --c-com:#675E62; --c-fn:#1E4F8F;
+}
+@A(thesis){isolation:isolate}
+@A(thesis) .kp-foot{bottom:0;inset-inline:0;height:56px;align-items:center;padding-inline:120px;background:var(--brand);color:var(--on-brand)}
+@C(thesis)::before,@T(thesis)::before{content:"";position:absolute;top:0;inset-inline:0;height:18px;background:var(--brand);z-index:-1}
+@T(thesis){padding-bottom:210px}
+@C(thesis) > h2{padding-bottom:24px;border-bottom:var(--rule-w) solid var(--rule)}
+/* /THEME */

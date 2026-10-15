@@ -1,0 +1,62 @@
+<!--meta {"theme":"notebook","fonts":"","title":"What predicts churn","pageTitle":"Churn analysis: data scientist (Keynote Pro library)"} -->
+<section class="slide" data-layout="title">
+  <p class="label">Analysis readout</p>
+  <h1>What predicts <em>churn</em></h1>
+  <p class="sub">A gradient-boosted model on 18 months of subscription data, and what it says to do next.</p>
+  <p class="meta"><span>Analytics</span><span>Synthetic data, sample deck</span><span>October 2026</span></p>
+  <aside class="notes"><p>Sample deck, synthetic numbers. Lead with the decision, not the model.</p></aside>
+</section>
+
+<section class="slide" data-layout="statement">
+  <h2>The strongest signal is not price. It is the <em>first two weeks</em>.</h2>
+  <aside class="notes"><p>Headline finding. Everything after is evidence.</p></aside>
+</section>
+
+<section class="slide" data-layout="chart">
+  <h2>Feature importance</h2>
+  <p class="lede">Early activity outweighs plan price and support tickets.</p>
+  <figure class="chart" data-chart="bar" data-decimals="0" data-unit="%" data-highlight="1" data-build="draw">
+    <table><thead><tr><th>Feature</th><th>Share of importance</th></tr></thead><tbody>
+    <tr><td>Sessions in days 1 to 14</td><td>31</td></tr><tr><td>Setup completed</td><td>22</td></tr><tr><td>Seats invited</td><td>17</td></tr><tr><td>Plan price</td><td>9</td></tr><tr><td>Support tickets</td><td>6</td></tr></tbody></table>
+    <figcaption>Permutation importance, hold-out set</figcaption>
+  </figure>
+  <aside class="notes"><p>Permutation importance on the hold-out set; correlated features share credit, so read ranks, not decimals.</p></aside>
+</section>
+
+<section class="slide" data-layout="chart">
+  <h2>Retention by onboarding group</h2>
+  <p class="lede">Teams that finish setup keep 2x as many users at month six.</p>
+  <figure class="chart" data-chart="line" data-unit="%" data-decimals="0" data-min="0" data-build="draw">
+    <table><thead><tr><th>Month</th><th>Setup done</th><th>Not done</th></tr></thead><tbody>
+    <tr><td>M1</td><td>96</td><td>88</td></tr><tr><td>M2</td><td>90</td><td>71</td></tr><tr><td>M3</td><td>85</td><td>58</td></tr><tr><td>M6</td><td>76</td><td>38</td></tr></tbody></table>
+    <figcaption>Cohort retention, synthetic</figcaption>
+  </figure>
+  <aside class="notes"><p>Association, not proof of cause: teams that are motivated finish setup. We test it next.</p></aside>
+</section>
+
+<section class="slide" data-layout="comparison">
+  <h2>Model comparison</h2>
+  <table>
+    <thead><tr><th></th><th>Logistic baseline</th><th class="rec" data-tag="Chosen">Gradient boosting</th></tr></thead>
+    <tbody>
+      <tr><th>AUC, hold-out</th><td>0.74</td><td><b>0.86</b></td></tr>
+      <tr><th>Top-decile lift</th><td>2.1x</td><td><b>4.3x</b></td></tr>
+      <tr><th>Explainability</th><td>Coefficients</td><td>SHAP values</td></tr>
+    </tbody>
+  </table>
+  <aside class="notes"><p>Same split, same features. Calibration plot is in the appendix.</p></aside>
+</section>
+
+<section class="slide" data-layout="two-column">
+  <h2>Caveats before anyone acts</h2>
+  <div class="col"><h3>What we know</h3><ul><li>Early activity predicts churn well out of sample</li><li>The effect holds across all three plans</li></ul></div>
+  <div class="col"><h3>What we do not</h3><ul><li>Whether nudging setup causes retention</li><li>Behaviour after the March pricing change</li></ul></div>
+  <aside class="notes"><p>Propose an A/B test on a guided setup flow.</p></aside>
+</section>
+
+<section class="slide" data-layout="closing">
+  <p class="label">Recommendation</p>
+  <h2>Test guided setup</h2>
+  <p class="contact"><span><b>Ask</b> two-week A/B on new signups</span><span>analytics@example.com</span></p>
+  <aside class="notes"><p>Close on the one point you want remembered from What predicts churn. Say it in a sentence, thank the room, and take questions. Leave this slide up while people ask. Sample deck with fictional content, so replace the contact details before use.</p></aside>
+</section>

@@ -1,0 +1,74 @@
+<!--meta {"theme":"chalk","fonts":"","title":"Sampling and aliasing","pageTitle":"Lecture 7: university lecturer (Keynote Pro library)"} -->
+<section class="slide" data-layout="title">
+  <p class="label">Signals and Systems, Lecture 7</p>
+  <h1>Sampling, and when it <em>goes wrong</em></h1>
+  <p class="sub">The Nyquist rate, aliasing, and how to choose a sampling frequency.</p>
+  <p class="meta"><span>Department of Electrical Engineering</span><span>Sample lecture</span><span>Week 7</span></p>
+  <aside class="notes"><p>Sample lecture. 50 minutes: 20 theory, 10 demo, 10 quiz, 10 worked problem.</p></aside>
+</section>
+
+<section class="slide" data-layout="agenda">
+  <h2>Today</h2>
+  <ol>
+    <li>Why sample at all <small>5 min</small></li>
+    <li>The sampling theorem <small>15 min</small></li>
+    <li>Aliasing, demonstrated <small>10 min</small></li>
+    <li>Quiz and worked problem <small>20 min</small></li>
+  </ol>
+  <aside class="notes"><p>Remind: assignment 3 is due Friday.</p></aside>
+</section>
+
+<section class="slide" data-layout="formula">
+  <p class="label">Theorem</p>
+  <h2>The Nyquist condition</h2>
+  <div class="eq"><i>f<sub>s</sub></i> &gt; 2 <i>f<sub>max</sub></i></div>
+  <dl class="terms">
+    <div><dt><i>f<sub>s</sub></i></dt><dd>Sampling frequency, samples per second</dd></div>
+    <div><dt><i>f<sub>max</sub></i></dt><dd>Highest frequency present in the signal</dd></div>
+    <div><dt>2<i>f<sub>max</sub></i></dt><dd>The Nyquist rate, the minimum to avoid aliasing</dd></div>
+    <div><dt>Example</dt><dd>Audio to 20 kHz needs more than 40 kHz; CDs use 44.1 kHz</dd></div>
+  </dl>
+  <aside class="notes"><p>Strict inequality: sampling exactly at 2 f_max can fail for a sine at its peak crossings.</p></aside>
+</section>
+
+<section class="slide" data-layout="code">
+  <p class="label">Demo</p>
+  <h2>See aliasing in five lines</h2>
+  <pre data-lang="py" data-focus="1-2;3-4;*">
+    import numpy as np
+    t = np.arange(0, 1, 1/100)          # fs = 100 Hz
+    x = np.sin(2*np.pi*90*t)            # a 90 Hz tone
+    # 90 Hz is above fs/2, so it appears at 10 Hz
+    plt.plot(t, x)
+  </pre>
+  <aside class="notes"><p>Run it live. The 90 Hz tone shows up as a (inverted) 10 Hz wave: 100 minus 90.</p></aside>
+</section>
+
+<section class="slide" data-layout="quiz">
+  <p class="label">Check</p>
+  <h2>A 6 kHz tone is sampled at 8 kHz. What frequency appears?</h2>
+  <ol class="opts" data-build="reveal">
+    <li>6 kHz</li>
+    <li>4 kHz</li>
+    <li data-correct>2 kHz</li>
+    <li>14 kHz</li>
+  </ol>
+  <aside class="notes"><p>8 minus 6 equals 2 kHz. Ask them to explain why 4 kHz is tempting (it is fs/2).</p></aside>
+</section>
+
+<section class="slide" data-layout="bullets">
+  <h2>Take away</h2>
+  <ul data-build="list">
+    <li><strong>Sample above twice the highest frequency.</strong></li>
+    <li><strong>Filter first.</strong> An anti-aliasing filter removes what you cannot capture.</li>
+    <li><strong>Aliases cannot be undone</strong> after sampling.</li>
+  </ul>
+  <aside class="notes"><p>Next lecture: reconstruction and the DAC.</p></aside>
+</section>
+
+<section class="slide" data-layout="closing">
+  <p class="label">Before next week</p>
+  <h2>Reading</h2>
+  <p class="contact"><span><b>Chapter</b> 4, sections 4.1 to 4.3</span><span>Office hours Tuesday</span></p>
+  <aside class="notes"><p>Close on the one point you want remembered from Sampling and aliasing. Say it in a sentence, thank the room, and take questions. Leave this slide up while people ask. Sample deck with fictional content, so replace the contact details before use.</p></aside>
+</section>

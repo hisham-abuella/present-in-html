@@ -1,0 +1,15 @@
+{
+  "name": "html-presentation-marketplace",
+  "owner": {
+    "name": "Hisham Abu Ella",
+    "email": "TODO-OWNER-SET-REAL-EMAIL-OR-DELETE-THIS-FIELD"
+  },
+  "plugins": [
+    {
+      "name": "html-presentation",
+      "source": ".",
+      "description": "Keynote Pro is the default: one-file 16:9 HTML decks with 22 themes (16 by profession), builds, Magic Move, presenter view, PDF and Arabic/RTL, plus a built-in checker. Markdown Keynote, Stories (mobile) and Course formats are kept for when you ask for them.",
+      "version": "2.0.0"
+    }
+  ]
+}

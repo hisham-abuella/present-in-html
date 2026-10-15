@@ -1,0 +1,396 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Keynote Pro theme library: 16 professions</title>
+<style>
+:root{--ink:#16181d;--ink2:#4a505b;--bg:#eceef1;--card:#fff;--rule:#cfd3da;--accent:#1f4fc1}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:inherit}
+header.top{padding:48px 24px 8px;max-width:1500px;margin:0 auto}
+header.top h1{font-size:clamp(30px,5vw,56px);line-height:1.05;margin:0 0 12px;letter-spacing:-0.03em}
+header.top p{margin:0;max-width:760px;color:var(--ink2);font-size:18px}
+header.top nav{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:16px;font-size:15px}
+header.top nav a{color:var(--accent);min-height:40px;display:inline-flex;align-items:center}
+.filters{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--rule);padding:12px 24px;max-width:none}
+.filters .in{max-width:1500px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px 28px;align-items:center}
+.group{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.group>span{font:500 13px ui-monospace,Menlo,monospace;color:var(--ink2);margin-inline-end:4px}
+button.f{font:inherit;font-size:15px;min-height:40px;padding:0 14px;border:1px solid var(--rule);background:var(--card);color:var(--ink);border-radius:20px;cursor:pointer}
+button.f[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+button.f:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.count{margin-inline-start:auto;color:var(--ink2);font-size:15px}
+ul.grid{list-style:none;margin:0 auto;padding:24px;max-width:1500px;display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr));gap:24px}
+.card{background:var(--card);border:1px solid var(--rule);display:flex;flex-direction:column;min-width:0}
+.card[hidden]{display:none}
+.card>a{display:block;line-height:0;border-bottom:1px solid var(--rule)}
+.card img{width:100%;height:auto;display:block}
+.card>a:focus-visible,.card h2 a:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.body{padding:18px 20px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+.no{margin:0;font:500 13px ui-monospace,Menlo,monospace;color:var(--ink2)}
+.card h2{margin:0;font-size:22px;line-height:1.2;letter-spacing:-0.01em}
+.card h2 a{text-decoration:none}.card h2 a:hover{text-decoration:underline}
+dl{margin:0;display:flex;flex-direction:column;gap:6px;font-size:15px;line-height:1.4}
+dl>div{display:grid;grid-template-columns:76px 1fr;gap:0 12px}
+dt{color:var(--ink2);font-size:14px;padding-top:1px}dd{margin:0;min-width:0;overflow-wrap:anywhere}
+code{font:13px ui-monospace,Menlo,monospace;background:#eef0f3;padding:1px 5px}
+.sw{display:flex;align-items:center;gap:6px;margin:auto 0 0;padding-top:6px}
+.sw i{width:26px;height:26px;border:1px solid rgba(0,0,0,.2);flex:none}
+.sw span{font:12px ui-monospace,Menlo,monospace;color:var(--ink2);margin-inline-start:6px;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}
+.empty{padding:40px 24px;text-align:center;color:var(--ink2)}
+footer{max-width:1500px;margin:0 auto;padding:8px 24px 48px;color:var(--ink2);font-size:15px}
+@media (max-width:700px){.filters{position:static}}
+@media (max-width:480px){header.top{padding:32px 16px 8px}.filters{padding:10px 16px}ul.grid{padding:16px;gap:16px}.count{margin:0}}
+</style></head><body>
+<header class="top"><h1>Theme library</h1>
+<p>Sixteen professions, sixteen looks. Each card opens a short sample deck built from the Keynote Pro template with that theme, its font pairing and a recommended slide sequence. Any deck can switch to any theme: press <b>S</b>.</p>
+<nav><a href="../README.md">README: Theme library</a><a href="../template.html">Template</a><a href="../fonts.html">Font and theme specimens</a><a href="../index.html">All examples</a></nav></header>
+<div class="filters"><div class="in">
+<div class="group" role="group" aria-label="Filter by field"><span>Field</span><button class="f" type="button" data-k="field" data-v="all" aria-pressed="true">All</button><button class="f" type="button" data-k="field" data-v="eng" aria-pressed="false">Engineering and data</button><button class="f" type="button" data-k="field" data-v="health" aria-pressed="false">Health and science</button><button class="f" type="button" data-k="field" data-v="edu" aria-pressed="false">Education</button><button class="f" type="button" data-k="field" data-v="biz" aria-pressed="false">Business</button><button class="f" type="button" data-k="field" data-v="pro" aria-pressed="false">Law and design</button><button class="f" type="button" data-k="field" data-v="trade" aria-pressed="false">Built world and trades</button><button class="f" type="button" data-k="field" data-v="pub" aria-pressed="false">Public and media</button><button class="f" type="button" data-k="field" data-v="people" aria-pressed="false">People and hospitality</button></div>
+<div class="group" role="group" aria-label="Filter by light or dark"><span>Look</span><button class="f" type="button" data-k="mode" data-v="all" aria-pressed="true">All</button><button class="f" type="button" data-k="mode" data-v="light" aria-pressed="false">Light</button><button class="f" type="button" data-k="mode" data-v="dark" aria-pressed="false">Dark</button></div>
+<span class="count" role="status" aria-live="polite" id="count"></span></div></div>
+<ul class="grid" id="grid">
+<li class="card" data-field="eng" data-mode="light">
+  <a href="electrical-wireless-engineer.html"><img src="thumbs/electrical-wireless-engineer.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Electrical / wireless engineer sample deck, Spectrum theme"></a>
+  <div class="body">
+    <p class="no">01 &middot; Engineering and data</p>
+    <h2><a href="electrical-wireless-engineer.html">Electrical / wireless engineer</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Spectrum</b> <code>data-theme="spectrum"</code> &middot; light + dark hero</dd></div>
+      <div><dt>Fonts</dt><dd>IBM Plex Sans Condensed / Plex Sans / Plex Mono <code>data-fonts="plexcond"</code></dd></div>
+      <div><dt>Best for</dt><dd>Design reviews, link budgets, lab talks, standards updates</dd></div>
+      <div><dt>Recipe</dt><dd>title, statement, formula, chart (line), diagram, stats, closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#EDF0F2" title="#EDF0F2"></i><i style="background:#0E1B26" title="#0E1B26"></i><i style="background:#0A6A8F" title="#0A6A8F"></i><i style="background:#0A1722" title="#0A1722"></i><span>#EDF0F2 #0E1B26 #0A6A8F #0A1722</span></p>
+  </div></li>
+<li class="card" data-field="eng" data-mode="dark">
+  <a href="software-engineer.html"><img src="thumbs/software-engineer.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Software engineer sample deck, Commit theme"></a>
+  <div class="body">
+    <p class="no">02 &middot; Engineering and data</p>
+    <h2><a href="software-engineer.html">Software engineer</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Commit</b> <code>data-theme="commit"</code> &middot; dark</dd></div>
+      <div><dt>Fonts</dt><dd>Geist / Geist Mono <code>data-fonts="geist"</code></dd></div>
+      <div><dt>Best for</dt><dd>Incident reviews, architecture talks, demos, internal tech talks</dd></div>
+      <div><dt>Recipe</dt><dd>title, statement, timeline, code (focus), chart, two-column, bullets</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#171A26" title="#171A26"></i><i style="background:#E6E9F5" title="#E6E9F5"></i><i style="background:#B79CFF" title="#B79CFF"></i><i style="background:#0F111A" title="#0F111A"></i><span>#171A26 #E6E9F5 #B79CFF #0F111A</span></p>
+  </div></li>
+<li class="card" data-field="eng" data-mode="light">
+  <a href="data-scientist.html"><img src="thumbs/data-scientist.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Data scientist / analyst sample deck, Notebook theme"></a>
+  <div class="body">
+    <p class="no">03 &middot; Engineering and data</p>
+    <h2><a href="data-scientist.html">Data scientist / analyst</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Notebook</b> <code>data-theme="notebook"</code> &middot; light + orange hero</dd></div>
+      <div><dt>Fonts</dt><dd>Libre Franklin / Roboto Mono <code>data-fonts="franklin"</code></dd></div>
+      <div><dt>Best for</dt><dd>Analysis readouts, model reviews, experiment results, dashboards walk-throughs</dd></div>
+      <div><dt>Recipe</dt><dd>title, statement, chart (bar), chart (line), comparison, two-column (caveats), closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#FBFCFD" title="#FBFCFD"></i><i style="background:#101820" title="#101820"></i><i style="background:#B5460F" title="#B5460F"></i><i style="background:#B5460F" title="#B5460F"></i><span>#FBFCFD #101820 #B5460F #B5460F</span></p>
+  </div></li>
+<li class="card" data-field="health" data-mode="light">
+  <a href="doctor-clinician.html"><img src="thumbs/doctor-clinician.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Doctor / clinician sample deck, Clinic theme"></a>
+  <div class="body">
+    <p class="no">04 &middot; Health and science</p>
+    <h2><a href="doctor-clinician.html">Doctor / clinician</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Clinic</b> <code>data-theme="clinic"</code> &middot; light + deep teal hero</dd></div>
+      <div><dt>Fonts</dt><dd>Figtree / IBM Plex Mono <code>data-fonts="figtree"</code></dd></div>
+      <div><dt>Best for</dt><dd>Case conferences, grand rounds, M&amp;M, patient-education talks</dd></div>
+      <div><dt>Recipe</dt><dd>title, case, two-column (differential), chart (line), timeline (course), bullets (take-home), closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#FFFFFF" title="#FFFFFF"></i><i style="background:#10292B" title="#10292B"></i><i style="background:#0F766E" title="#0F766E"></i><i style="background:#0A3B3A" title="#0A3B3A"></i><span>#FFFFFF #10292B #0F766E #0A3B3A</span></p>
+  </div></li>
+<li class="card" data-field="health" data-mode="light">
+  <a href="researcher.html"><img src="thumbs/researcher.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Medical / scientific researcher sample deck, Lab book theme"></a>
+  <div class="body">
+    <p class="no">05 &middot; Health and science</p>
+    <h2><a href="researcher.html">Medical / scientific researcher</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Lab book</b> <code>data-theme="labbook"</code> &middot; light + violet hero</dd></div>
+      <div><dt>Fonts</dt><dd>STIX Two Text / Source Sans 3 / Plex Mono <code>data-fonts="stix"</code></dd></div>
+      <div><dt>Best for</dt><dd>Seminars, conference talks, lab meetings, thesis committee updates</dd></div>
+      <div><dt>Recipe</dt><dd>title, statement (finding first), process (methods), chart, stats (n, effect), rows (claim, evidence, caveat), closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#FFFFFF" title="#FFFFFF"></i><i style="background:#1B1530" title="#1B1530"></i><i style="background:#5B3A9B" title="#5B3A9B"></i><i style="background:#2A1B4D" title="#2A1B4D"></i><span>#FFFFFF #1B1530 #5B3A9B #2A1B4D</span></p>
+  </div></li>
+<li class="card" data-field="edu" data-mode="light">
+  <a href="school-teacher.html"><img src="thumbs/school-teacher.jpg" width="960" height="540" loading="lazy" alt="Title slide of the School teacher sample deck, Schoolyard theme"></a>
+  <div class="body">
+    <p class="no">06 &middot; Education</p>
+    <h2><a href="school-teacher.html">School teacher</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Schoolyard</b> <code>data-theme="schoolyard"</code> &middot; light + yellow hero</dd></div>
+      <div><dt>Fonts</dt><dd>Lexend / Atkinson Hyperlegible / DM Mono <code>data-fonts="lexend"</code></dd></div>
+      <div><dt>Best for</dt><dd>Primary and middle-school lessons, parent evenings, classroom routines</dd></div>
+      <div><dt>Recipe</dt><dd>title, agenda (&quot;today we will&quot;), statement, diagram, quiz (reveal), bullets (remember), closing (task)</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#FFFFFF" title="#FFFFFF"></i><i style="background:#10243E" title="#10243E"></i><i style="background:#1D4ED8" title="#1D4ED8"></i><i style="background:#FFD23F" title="#FFD23F"></i><span>#FFFFFF #10243E #1D4ED8 #FFD23F</span></p>
+  </div></li>
+<li class="card" data-field="edu" data-mode="dark">
+  <a href="university-lecturer.html"><img src="thumbs/university-lecturer.jpg" width="960" height="540" loading="lazy" alt="Title slide of the University lecturer sample deck, Chalk theme"></a>
+  <div class="body">
+    <p class="no">07 &middot; Education</p>
+    <h2><a href="university-lecturer.html">University lecturer</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Chalk</b> <code>data-theme="chalk"</code> &middot; dark</dd></div>
+      <div><dt>Fonts</dt><dd>Literata / Karla / Plex Mono <code>data-fonts="literata"</code></dd></div>
+      <div><dt>Best for</dt><dd>Lectures in dimmed halls, tutorials, worked examples, course introductions</dd></div>
+      <div><dt>Recipe</dt><dd>title, agenda, formula, code (focus), quiz (check), bullets, closing (reading)</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#23313A" title="#23313A"></i><i style="background:#F2F0E6" title="#F2F0E6"></i><i style="background:#8FD6C0" title="#8FD6C0"></i><i style="background:#182329" title="#182329"></i><span>#23313A #F2F0E6 #8FD6C0 #182329</span></p>
+  </div></li>
+<li class="card" data-field="edu" data-mode="light">
+  <a href="student-thesis.html"><img src="thumbs/student-thesis.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Student (thesis defence) sample deck, Thesis theme"></a>
+  <div class="body">
+    <p class="no">08 &middot; Education</p>
+    <h2><a href="student-thesis.html">Student (thesis defence)</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Thesis</b> <code>data-theme="thesis"</code> &middot; light</dd></div>
+      <div><dt>Fonts</dt><dd>Fira Sans / Fira Mono <code>data-fonts="fira"</code></dd></div>
+      <div><dt>Best for</dt><dd>Thesis and capstone defences, qualifying exams, course projects</dd></div>
+      <div><dt>Recipe</dt><dd>title, agenda (outline), statement (the question), rows (question to contribution), chart, two-column (limits, future), closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#FFFFFF" title="#FFFFFF"></i><i style="background:#211A1D" title="#211A1D"></i><i style="background:#8A1538" title="#8A1538"></i><i style="background:#FFFFFF" title="#FFFFFF"></i><span>#FFFFFF #211A1D #8A1538 #FFFFFF</span></p>
+  </div></li>
+<li class="card" data-field="biz" data-mode="light">
+  <a href="startup-founder.html"><img src="thumbs/startup-founder.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Startup founder (pitch) sample deck, Pitch theme"></a>
+  <div class="body">
+    <p class="no">09 &middot; Business</p>
+    <h2><a href="startup-founder.html">Startup founder (pitch)</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Pitch</b> <code>data-theme="pitch"</code> &middot; light + ultramarine hero</dd></div>
+      <div><dt>Fonts</dt><dd>Bricolage Grotesque / DM Sans / DM Mono <code>data-fonts="bricolage"</code></dd></div>
+      <div><dt>Best for</dt><dd>Seed and Series A pitches, demo days, investor updates</dd></div>
+      <div><dt>Recipe</dt><dd>title, statement (problem), big-number (market), stats (traction), chart (growth), comparison, ask, closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#FFFFFF" title="#FFFFFF"></i><i style="background:#0C0D2B" title="#0C0D2B"></i><i style="background:#2A2FE0" title="#2A2FE0"></i><i style="background:#2A2FE0" title="#2A2FE0"></i><span>#FFFFFF #0C0D2B #2A2FE0 #2A2FE0</span></p>
+  </div></li>
+<li class="card" data-field="biz" data-mode="light">
+  <a href="product-manager.html"><img src="thumbs/product-manager.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Product manager sample deck, Roadmap theme"></a>
+  <div class="body">
+    <p class="no">10 &middot; Business</p>
+    <h2><a href="product-manager.html">Product manager</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Roadmap</b> <code>data-theme="roadmap"</code> &middot; light</dd></div>
+      <div><dt>Fonts</dt><dd>Plus Jakarta Sans / JetBrains Mono <code>data-fonts="jakarta"</code></dd></div>
+      <div><dt>Best for</dt><dd>Product reviews, roadmap updates, decision memos, launch readouts</dd></div>
+      <div><dt>Recipe</dt><dd>title, stats, two-column x3 (now, next, later), timeline, comparison, rows (decision log), bullets (decisions needed)</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#FAFAFB" title="#FAFAFB"></i><i style="background:#1B1B26" title="#1B1B26"></i><i style="background:#4F46E5" title="#4F46E5"></i><i style="background:#EAE9FB" title="#EAE9FB"></i><span>#FAFAFB #1B1B26 #4F46E5 #EAE9FB</span></p>
+  </div></li>
+<li class="card" data-field="biz" data-mode="light">
+  <a href="executive-consultant.html"><img src="thumbs/executive-consultant.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Executive / consultant (board review) sample deck, Partner theme"></a>
+  <div class="body">
+    <p class="no">11 &middot; Business</p>
+    <h2><a href="executive-consultant.html">Executive / consultant (board review)</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Partner</b> <code>data-theme="partner"</code> &middot; light + charcoal hero</dd></div>
+      <div><dt>Fonts</dt><dd>Gelasio / Lato / Source Code Pro <code>data-fonts="gelasio"</code></dd></div>
+      <div><dt>Best for</dt><dd>Steering committees, strategy reviews, client recommendations</dd></div>
+      <div><dt>Recipe</dt><dd>title, statement (the answer), rows (situation, complication, resolution), chart, comparison, big-number, bullets (next steps)</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#FFFFFF" title="#FFFFFF"></i><i style="background:#1A1F26" title="#1A1F26"></i><i style="background:#1F5FA8" title="#1F5FA8"></i><i style="background:#12161C" title="#12161C"></i><span>#FFFFFF #1A1F26 #1F5FA8 #12161C</span></p>
+  </div></li>
+<li class="card" data-field="biz" data-mode="light">
+  <a href="finance.html"><img src="thumbs/finance.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Finance professional sample deck, Ledger theme"></a>
+  <div class="body">
+    <p class="no">12 &middot; Business</p>
+    <h2><a href="finance.html">Finance professional</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Ledger</b> <code>data-theme="ledger"</code> &middot; light + green hero</dd></div>
+      <div><dt>Fonts</dt><dd>Bitter / Public Sans / Roboto Mono <code>data-fonts="bitter"</code></dd></div>
+      <div><dt>Best for</dt><dd>Budget reviews, variance and forecast decks, treasury and audit updates</dd></div>
+      <div><dt>Recipe</dt><dd>title, big-number, comparison (statement), chart (variance), formula (margin), bullets (outlook)</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#F1F6F2" title="#F1F6F2"></i><i style="background:#0F2A1D" title="#0F2A1D"></i><i style="background:#0B6B3F" title="#0B6B3F"></i><i style="background:#0B3D2A" title="#0B3D2A"></i><span>#F1F6F2 #0F2A1D #0B6B3F #0B3D2A</span></p>
+  </div></li>
+<li class="card" data-field="biz" data-mode="light">
+  <a href="marketing-sales.html"><img src="thumbs/marketing-sales.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Marketing / sales sample deck, Campaign theme"></a>
+  <div class="body">
+    <p class="no">13 &middot; Business</p>
+    <h2><a href="marketing-sales.html">Marketing / sales</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Campaign</b> <code>data-theme="campaign"</code> &middot; light + raspberry hero</dd></div>
+      <div><dt>Fonts</dt><dd>Syne / Manrope / DM Mono <code>data-fonts="syne"</code></dd></div>
+      <div><dt>Best for</dt><dd>Campaign plans, launch briefs, QBRs, sales kickoffs</dd></div>
+      <div><dt>Recipe</dt><dd>title, statement (the promise), stats (funnel), chart (budget), timeline (beats), comparison (test), closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#FFFFFF" title="#FFFFFF"></i><i style="background:#1A0A12" title="#1A0A12"></i><i style="background:#B5124F" title="#B5124F"></i><i style="background:#B5124F" title="#B5124F"></i><span>#FFFFFF #1A0A12 #B5124F #B5124F</span></p>
+  </div></li>
+<li class="card" data-field="pro" data-mode="light">
+  <a href="lawyer.html"><img src="thumbs/lawyer.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Lawyer sample deck, Chambers theme"></a>
+  <div class="body">
+    <p class="no">14 &middot; Law and design</p>
+    <h2><a href="lawyer.html">Lawyer</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Chambers</b> <code>data-theme="chambers"</code> &middot; light + aubergine hero</dd></div>
+      <div><dt>Fonts</dt><dd>EB Garamond / Public Sans / Plex Mono <code>data-fonts="garamond"</code></dd></div>
+      <div><dt>Best for</dt><dd>Advice memos, client briefings, CLE talks, case summaries</dd></div>
+      <div><dt>Recipe</dt><dd>title, agenda, quote (the clause), rows (issue, rule, application, conclusion), two-column (for, against), comparison (options), closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#FFFFFF" title="#FFFFFF"></i><i style="background:#1E1620" title="#1E1620"></i><i style="background:#5B1E4F" title="#5B1E4F"></i><i style="background:#2A0F27" title="#2A0F27"></i><span>#FFFFFF #1E1620 #5B1E4F #2A0F27</span></p>
+  </div></li>
+<li class="card" data-field="pro" data-mode="light">
+  <a href="architect-designer.html"><img src="thumbs/architect-designer.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Architect / designer sample deck, Drawing theme"></a>
+  <div class="body">
+    <p class="no">15 &middot; Law and design</p>
+    <h2><a href="architect-designer.html">Architect / designer</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Drawing</b> <code>data-theme="drawing"</code> &middot; light + concrete hero</dd></div>
+      <div><dt>Fonts</dt><dd>Jost / DM Mono <code>data-fonts="jost"</code></dd></div>
+      <div><dt>Best for</dt><dd>Concept and design reviews, client presentations, studio crits</dd></div>
+      <div><dt>Recipe</dt><dd>title, statement (the idea), diagram (plan), materials, stats (brief), timeline, closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#FFFFFF" title="#FFFFFF"></i><i style="background:#111111" title="#111111"></i><i style="background:#C8341E" title="#C8341E"></i><i style="background:#E8E8E4" title="#E8E8E4"></i><span>#FFFFFF #111111 #C8341E #E8E8E4</span></p>
+  </div></li>
+<li class="card" data-field="edu" data-mode="light">
+  <a href="trainer-bilingual.html"><img src="thumbs/trainer-bilingual.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Trainer / community or faith educator (EN and AR) sample deck, Trainer theme"></a>
+  <div class="body">
+    <p class="no">16 &middot; Education</p>
+    <h2><a href="trainer-bilingual.html">Trainer / community or faith educator (EN and AR)</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Trainer</b> <code>data-theme="trainer"</code> &middot; light + lapis hero</dd></div>
+      <div><dt>Fonts</dt><dd>Readex Pro / IBM Plex Sans Arabic / Plex Sans <code>data-fonts="readex"</code></dd></div>
+      <div><dt>Best for</dt><dd>Bilingual workshops, community classes, Friday and weekend programmes, parent sessions</dd></div>
+      <div><dt>Recipe</dt><dd>title (EN + AR), two-column (EN left, AR right), Arabic slides with dir=&quot;rtl&quot;, quiz in both languages, closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#FFFFFF" title="#FFFFFF"></i><i style="background:#0F2240" title="#0F2240"></i><i style="background:#1B4F9C" title="#1B4F9C"></i><i style="background:#12305F" title="#12305F"></i><span>#FFFFFF #0F2240 #1B4F9C #12305F</span></p>
+  </div></li>
+<li class="card" data-field="eng" data-mode="dark">
+  <a href="security-engineer.html"><img src="thumbs/security-engineer.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Security engineer sample deck, Sentinel theme"></a>
+  <div class="body">
+    <p class="no">17 &middot; Engineering and data</p>
+    <h2><a href="security-engineer.html">Security engineer</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Sentinel</b> <code>data-theme="sentinel"</code> &middot; dark</dd></div>
+      <div><dt>Fonts</dt><dd>Overpass / Overpass Mono <code>data-fonts="overpass"</code></dd></div>
+      <div><dt>Best for</dt><dd>Incident reviews, threat models, red-team readouts, security briefings</dd></div>
+      <div><dt>Recipe</dt><dd>title, big-number (impact), timeline, chart (line), rows (threat, gap, impact, fix), comparison (before, after), process, bullets (decisions), closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#0F1419" title="#0F1419"></i><i style="background:#E8EEF3" title="#E8EEF3"></i><i style="background:#FF5D4D" title="#FF5D4D"></i><i style="background:#070A0D" title="#070A0D"></i><span>#0F1419 #E8EEF3 #FF5D4D #070A0D</span></p>
+  </div></li>
+<li class="card" data-field="trade" data-mode="light">
+  <a href="civil-engineer.html"><img src="thumbs/civil-engineer.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Civil / structural / mechanical engineer sample deck, Blueprint theme"></a>
+  <div class="body">
+    <p class="no">18 &middot; Built world and trades</p>
+    <h2><a href="civil-engineer.html">Civil / structural / mechanical engineer</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Blueprint</b> <code>data-theme="blueprint"</code> &middot; light + blueprint-blue hero</dd></div>
+      <div><dt>Fonts</dt><dd>Archivo Narrow / Archivo / Azeret Mono <code>data-fonts="archivo"</code></dd></div>
+      <div><dt>Best for</dt><dd>Design reviews, site reports, tender briefings, project handovers</dd></div>
+      <div><dt>Recipe</dt><dd>title, stats, two-column (design basis), formula (check), chart (bar), materials, timeline, closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#F4F8FC" title="#F4F8FC"></i><i style="background:#0B2545" title="#0B2545"></i><i style="background:#1558B0" title="#1558B0"></i><i style="background:#0E3F84" title="#0E3F84"></i><span>#F4F8FC #0B2545 #1558B0 #0E3F84</span></p>
+  </div></li>
+<li class="card" data-field="pub" data-mode="light">
+  <a href="nonprofit.html"><img src="thumbs/nonprofit.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Nonprofit / NGO / public policy sample deck, Civic theme"></a>
+  <div class="body">
+    <p class="no">19 &middot; Public and media</p>
+    <h2><a href="nonprofit.html">Nonprofit / NGO / public policy</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Civic</b> <code>data-theme="civic"</code> &middot; light + deep green hero</dd></div>
+      <div><dt>Fonts</dt><dd>Petrona / Hanken Grotesk / Red Hat Mono <code>data-fonts="petrona"</code></dd></div>
+      <div><dt>Best for</dt><dd>Impact reports, funder updates, policy briefings, community presentations</dd></div>
+      <div><dt>Recipe</dt><dd>title, big-number (reach), stats (outcomes), chart (column), quote, ask (the need), bullets (how to help), closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#FAF6EE" title="#FAF6EE"></i><i style="background:#1F2A24" title="#1F2A24"></i><i style="background:#B4472A" title="#B4472A"></i><i style="background:#1E4D3A" title="#1E4D3A"></i><span>#FAF6EE #1F2A24 #B4472A #1E4D3A</span></p>
+  </div></li>
+<li class="card" data-field="pub" data-mode="light">
+  <a href="journalist.html"><img src="thumbs/journalist.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Journalist / editor sample deck, Newsroom theme"></a>
+  <div class="body">
+    <p class="no">20 &middot; Public and media</p>
+    <h2><a href="journalist.html">Journalist / editor</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Newsroom</b> <code>data-theme="newsroom"</code> &middot; light + black hero</dd></div>
+      <div><dt>Fonts</dt><dd>Libre Caslon Text / Work Sans / Chivo Mono <code>data-fonts="caslon"</code></dd></div>
+      <div><dt>Best for</dt><dd>Story pitches, investigation briefings, editorial meetings, data-story reviews</dd></div>
+      <div><dt>Recipe</dt><dd>title, statement (the story), big-number, chart (line), rows (claim, evidence, caveat), timeline, closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#FBFAF6" title="#FBFAF6"></i><i style="background:#161616" title="#161616"></i><i style="background:#B3121B" title="#B3121B"></i><i style="background:#161616" title="#161616"></i><span>#FBFAF6 #161616 #B3121B #161616</span></p>
+  </div></li>
+<li class="card" data-field="biz" data-mode="light">
+  <a href="real-estate.html"><img src="thumbs/real-estate.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Real estate / property sample deck, Estate theme"></a>
+  <div class="body">
+    <p class="no">21 &middot; Business</p>
+    <h2><a href="real-estate.html">Real estate / property</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Estate</b> <code>data-theme="estate"</code> &middot; light + navy hero</dd></div>
+      <div><dt>Fonts</dt><dd>Red Hat Display / Red Hat Text / Red Hat Mono <code>data-fonts="redhat"</code></dd></div>
+      <div><dt>Best for</dt><dd>Investor tours, listing presentations, market updates, portfolio reviews</dd></div>
+      <div><dt>Recipe</dt><dd>title, stats, two-column x3 (buildings), chart (bar), comparison, ask (equity), timeline, closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#FBF9F5" title="#FBF9F5"></i><i style="background:#1B2A33" title="#1B2A33"></i><i style="background:#8A5A1F" title="#8A5A1F"></i><i style="background:#14233A" title="#14233A"></i><span>#FBF9F5 #1B2A33 #8A5A1F #14233A</span></p>
+  </div></li>
+<li class="card" data-field="people" data-mode="light">
+  <a href="chef-hospitality.html"><img src="thumbs/chef-hospitality.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Chef / restaurant / hospitality sample deck, Menu theme"></a>
+  <div class="body">
+    <p class="no">22 &middot; People and hospitality</p>
+    <h2><a href="chef-hospitality.html">Chef / restaurant / hospitality</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Menu</b> <code>data-theme="menu"</code> &middot; light + bottle-green hero</dd></div>
+      <div><dt>Fonts</dt><dd>Young Serif / Alegreya Sans / Fragment Mono <code>data-fonts="youngserif"</code></dd></div>
+      <div><dt>Best for</dt><dd>Menu launches, front-of-house briefings, service reviews, supplier pitches</dd></div>
+      <div><dt>Recipe</dt><dd>title, statement, bullets (the courses), stats, chart (bar), process (service), comparison (suppliers), closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#F7F0E2" title="#F7F0E2"></i><i style="background:#2B1B12" title="#2B1B12"></i><i style="background:#8E2A17" title="#8E2A17"></i><i style="background:#1D2A21" title="#1D2A21"></i><span>#F7F0E2 #2B1B12 #8E2A17 #1D2A21</span></p>
+  </div></li>
+<li class="card" data-field="people" data-mode="light">
+  <a href="hr-people.html"><img src="thumbs/hr-people.jpg" width="960" height="540" loading="lazy" alt="Title slide of the HR / people operations sample deck, People theme"></a>
+  <div class="body">
+    <p class="no">23 &middot; People and hospitality</p>
+    <h2><a href="hr-people.html">HR / people operations</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>People</b> <code>data-theme="people"</code> &middot; light + plum hero</dd></div>
+      <div><dt>Fonts</dt><dd>Outfit / Albert Sans / Spline Sans Mono <code>data-fonts="outfit"</code></dd></div>
+      <div><dt>Best for</dt><dd>All-hands updates, policy changes, engagement survey results, onboarding talks</dd></div>
+      <div><dt>Recipe</dt><dd>title, big-number (response rate), chart (bar), two-column (themes), comparison (policy), timeline (commitments), closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#FFF8F2" title="#FFF8F2"></i><i style="background:#2A1530" title="#2A1530"></i><i style="background:#7A2A7C" title="#7A2A7C"></i><i style="background:#36153D" title="#36153D"></i><span>#FFF8F2 #2A1530 #7A2A7C #36153D</span></p>
+  </div></li>
+<li class="card" data-field="pro" data-mode="light">
+  <a href="ux-designer.html"><img src="thumbs/ux-designer.jpg" width="960" height="540" loading="lazy" alt="Title slide of the UX / product designer sample deck, Wireframe theme"></a>
+  <div class="body">
+    <p class="no">24 &middot; Law and design</p>
+    <h2><a href="ux-designer.html">UX / product designer</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Wireframe</b> <code>data-theme="wireframe"</code> &middot; light + near-black hero</dd></div>
+      <div><dt>Fonts</dt><dd>Epilogue / Instrument Sans / Martian Mono <code>data-fonts="epilogue"</code></dd></div>
+      <div><dt>Best for</dt><dd>Design crits, research readouts, case studies, handoff walkthroughs</dd></div>
+      <div><dt>Recipe</dt><dd>title, statement (the finding), chart (column), rows (observed, why, change), two-column (flow A vs B), process, closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#F4F5F7" title="#F4F5F7"></i><i style="background:#14171F" title="#14171F"></i><i style="background:#2352D9" title="#2352D9"></i><i style="background:#12141A" title="#12141A"></i><span>#F4F5F7 #14171F #2352D9 #12141A</span></p>
+  </div></li>
+<li class="card" data-field="pub" data-mode="light">
+  <a href="sports-coach.html"><img src="thumbs/sports-coach.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Sports coach / performance analyst sample deck, Pitchside theme"></a>
+  <div class="body">
+    <p class="no">25 &middot; Public and media</p>
+    <h2><a href="sports-coach.html">Sports coach / performance analyst</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Pitchside</b> <code>data-theme="pitchside"</code> &middot; light + pitch-green hero</dd></div>
+      <div><dt>Fonts</dt><dd>Barlow Condensed / Barlow <code>data-fonts="barlow"</code></dd></div>
+      <div><dt>Best for</dt><dd>Match analysis, season reviews, tactical briefings, pre-season plans</dd></div>
+      <div><dt>Recipe</dt><dd>title, stats, chart (line), two-column (worked, cost us), comparison (formations), timeline (pre-season), closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#F3F6F0" title="#F3F6F0"></i><i style="background:#0F2418" title="#0F2418"></i><i style="background:#0B6B35" title="#0B6B35"></i><i style="background:#0D3B22" title="#0D3B22"></i><span>#F3F6F0 #0F2418 #0B6B35 #0D3B22</span></p>
+  </div></li>
+<li class="card" data-field="pub" data-mode="light">
+  <a href="historian-curator.html"><img src="thumbs/historian-curator.jpg" width="960" height="540" loading="lazy" alt="Title slide of the Historian / museum curator sample deck, Archive theme"></a>
+  <div class="body">
+    <p class="no">26 &middot; Public and media</p>
+    <h2><a href="historian-curator.html">Historian / museum curator</a></h2>
+    <dl>
+      <div><dt>Theme</dt><dd><b>Archive</b> <code>data-theme="archive"</code> &middot; light + slate hero</dd></div>
+      <div><dt>Fonts</dt><dd>Bodoni Moda / Alegreya / Fragment Mono <code>data-fonts="bodoni"</code></dd></div>
+      <div><dt>Best for</dt><dd>Exhibition talks, public lectures, collection walk-throughs, humanities seminars</dd></div>
+      <div><dt>Recipe</dt><dd>title, quote (primary source), timeline, case (object record), chart (line), two-column (readings), closing</dd></div>
+    </dl>
+    <p class="sw" aria-label="Palette"><i style="background:#F5F2EA" title="#F5F2EA"></i><i style="background:#1E2228" title="#1E2228"></i><i style="background:#2C4A6E" title="#2C4A6E"></i><i style="background:#1B232D" title="#1B232D"></i><span>#F5F2EA #1E2228 #2C4A6E #1B232D</span></p>
+  </div></li>
+</ul>
+<p class="empty" id="empty" hidden>No theme matches both filters.</p>
+<footer>Sample decks use fictional people, companies, patients and clients. Light means a light content page; a dark title slide on a light theme still counts as Light.</footer>
+<script>
+(function(){var f={field:'all',mode:'all'},cards=[].slice.call(document.querySelectorAll('.card')),cnt=document.getElementById('count'),em=document.getElementById('empty');
+function run(){var n=0;cards.forEach(function(c){var ok=(f.field==='all'||c.dataset.field===f.field)&&(f.mode==='all'||c.dataset.mode===f.mode);c.hidden=!ok;if(ok)n++});cnt.textContent=n+' of '+cards.length+' themes';em.hidden=n>0}
+document.querySelectorAll('button.f').forEach(function(b){b.addEventListener('click',function(){f[b.dataset.k]=b.dataset.v;document.querySelectorAll('button.f[data-k="'+b.dataset.k+'"]').forEach(function(x){x.setAttribute('aria-pressed',x===b)});run()})});run()})();
+</script></body></html>

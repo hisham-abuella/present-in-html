@@ -1,0 +1,21 @@
+/* Library theme source. tools/build-library.mjs expands the macros into ../<id>.css.
+   @C(id) = content slides, @T(id) = title/section/closing, @A(id) = every slide, @IMG:key = an SVG made in build-library.mjs, @SVG[<svg ...>]SVG@ = your own inline SVG. */
+/* ---------- 4 clinic: doctor / clinician ---------- */
+/* THEME:clinic | Clinic | #0F766E | https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;700&display=swap */
+html[data-theme="clinic"]{
+  --bg:#FFFFFF; --bg2:#ECF4F3; --ink:#10292B; --ink2:#41605E; --rule:#CCDEDC; --rule-strong:#10292B;
+  --brand:#0F766E; --brand-text:#0F766E; --on-brand:#ffffff;
+  --hero-bg:#0A3B3A; --hero-ink:#F1FAF8; --hero-ink2:#B4D6D2; --hero-rule:#2C6360; --hero-brand:#7DE0D2;
+  --bleed-bg:#0F766E; --bleed-ink:#ffffff;
+  --f-display:"Figtree","Helvetica Neue",Arial,sans-serif; --f-body:"Figtree","Helvetica Neue",Arial,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --w-display:700; --ls-display:-0.02em; --em-style:normal;
+  --radius:10px; --chart-radius:3px; --rule-w:1px; --letterbox:#061817;
+  --s1:#0F766E; --s2:#B42318; --s3:#64807E; --muted-bar:#BFD3D1; --hot:#B42318; --hot-text:#B42318;
+  --code-bg:#10292B; --code-ink:#E6F4F2; --c-kw:#7DE0D2; --c-str:#A9DDA0; --c-num:#F2B880; --c-com:#9DBBB8; --c-fn:#8FC1FF;
+}
+@C(clinic){isolation:isolate}
+@C(clinic)::before{content:"";position:absolute;top:44px;inset-inline-end:120px;width:260px;height:56px;z-index:-1;pointer-events:none;background:@IMG:ecgmark no-repeat 0 0/100% 100%}
+@C(clinic) .kp-foot{border-top:1px solid var(--rule);padding-top:12px}
+@T(clinic){isolation:isolate}
+@T(clinic)::before{content:"";position:absolute;inset-inline:0;bottom:0;height:96px;z-index:-1;pointer-events:none;background:@IMG:ecg no-repeat 0 100%/100% 100%}
+/* /THEME */

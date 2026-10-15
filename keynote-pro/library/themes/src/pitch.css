@@ -1,0 +1,20 @@
+/* Library theme source. tools/build-library.mjs expands the macros into ../<id>.css.
+   @C(id) = content slides, @T(id) = title/section/closing, @A(id) = every slide, @IMG:key = an SVG made in build-library.mjs, @SVG[<svg ...>]SVG@ = your own inline SVG. */
+/* ---------- 9 pitch: startup founder ---------- */
+/* THEME:pitch | Pitch | #2A2FE0 | https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;600;700;800&family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap */
+html[data-theme="pitch"]{
+  --bg:#FFFFFF; --bg2:#EFF0FF; --ink:#0C0D2B; --ink2:#464870; --rule:#D5D7F4; --rule-strong:#0C0D2B;
+  --brand:#2A2FE0; --brand-text:#2A2FE0; --on-brand:#ffffff;
+  --hero-bg:#2A2FE0; --hero-ink:#ffffff; --hero-ink2:#DCDEFF; --hero-rule:#7478F0; --hero-brand:#FFE066;
+  --bleed-bg:#FF5A36; --bleed-ink:#0C0D2B;
+  --f-display:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif; --f-body:"DM Sans","Helvetica Neue",Arial,sans-serif; --f-mono:"DM Mono",ui-monospace,Menlo,monospace;
+  --w-display:800; --ls-display:-0.04em; --em-style:normal;
+  --radius:22px; --chart-radius:10px; --rule-w:2px; --letterbox:#07082A;
+  --s1:#2A2FE0; --s2:#FF5A36; --s3:#0C0D2B; --muted-bar:#C9CBF2; --hot:#C23415; --hot-text:#C23415;
+  --code-bg:#0C0D2B; --code-ink:#EEEFFF; --c-kw:#FFE066; --c-str:#9BE3B5; --c-num:#FF9E85; --c-com:#9A9CCB; --c-fn:#9EA3FF;
+}
+@C(pitch) .kp-foot span:last-child{background:var(--brand);color:var(--on-brand);padding:4px 20px;border-radius:999px}
+@C(pitch) .kp-foot span:first-child{padding-top:4px}
+@A(pitch) :is([data-layout="stats"] .stat){border-top-width:8px;border-top-color:var(--brand)}
+@C(pitch) > h2{letter-spacing:-0.045em}
+/* /THEME */

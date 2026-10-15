@@ -1,0 +1,25 @@
+/* Library theme source. tools/build-library.mjs expands the macros into ../<id>.css.
+   @C(id) = content slides, @T(id) = title/section/closing, @A(id) = every slide, @IMG:key = an SVG made in build-library.mjs, @SVG[<svg ...>]SVG@ = your own inline SVG. */
+/* ---------- 25 pitchside: sports coach / performance analyst ---------- */
+/* THEME:pitchside | Pitchside | #0B6B35 | https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600;700&display=swap */
+html[data-theme="pitchside"]{
+  --bg:#F3F6F0; --bg2:#E1E9DD; --ink:#0F2418; --ink2:#455C4C; --rule:#C5D3C2; --rule-strong:#0F2418;
+  --brand:#0B6B35; --brand-text:#0B6B35; --on-brand:#ffffff;
+  --hero-bg:#0D3B22; --hero-ink:#F1F7EE; --hero-ink2:#AFCDB8; --hero-rule:#2C6A47; --hero-brand:#C9F26B;
+  --bleed-bg:#0B6B35; --bleed-ink:#ffffff;
+  --f-display:"Barlow Condensed","Arial Narrow",Arial,sans-serif; --f-body:"Barlow","Helvetica Neue",Arial,sans-serif; --f-mono:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --w-display:700; --ls-display:0.005em; --em-style:normal;
+  --radius:3px; --chart-radius:0px; --rule-w:2px; --letterbox:#05160C;
+  --s1:#0B6B35; --s2:#D9480F; --s3:#7C8F82; --muted-bar:#BFD0BF; --hot:#AE3A08; --hot-text:#AE3A08;
+  --code-bg:#0D3B22; --code-ink:#F1F7EE; --c-kw:#C9F26B; --c-str:#F5D97A; --c-num:#FFA574; --c-com:#94B8A0; --c-fn:#8EC5FF;
+}
+@A(pitchside) :is(h1,h2){text-transform:uppercase}
+@A(pitchside) .label{text-transform:uppercase;letter-spacing:.1em;font-weight:600}
+@C(pitchside){isolation:isolate}
+@C(pitchside)::before{content:"";position:absolute;inset:34px;z-index:-1;pointer-events:none;border:3px solid color-mix(in srgb,var(--brand) 22%,transparent);border-radius:28px 28px 28px 28px}
+@C(pitchside)::after{content:"";position:absolute;top:50%;inset-inline-start:34px;width:48px;height:48px;margin-top:-24px;z-index:-1;pointer-events:none;border:3px solid color-mix(in srgb,var(--brand) 22%,transparent);border-inline-start:0;border-radius:0 48px 48px 0}
+@C(pitchside) .label::before{content:"";display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--hot);margin-inline-end:12px;vertical-align:0}
+@C(pitchside) .kp-foot{border-top:2px solid var(--ink);padding-top:12px}
+@T(pitchside){isolation:isolate}
+@T(pitchside)::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:@SVG[<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1920 1080'><g fill='#FFFFFF' fill-opacity='.045'><rect x='0' y='0' width='160' height='1080'/><rect x='320' y='0' width='160' height='1080'/><rect x='640' y='0' width='160' height='1080'/><rect x='960' y='0' width='160' height='1080'/><rect x='1280' y='0' width='160' height='1080'/><rect x='1600' y='0' width='160' height='1080'/></g><g fill='none' stroke='#FFFFFF' stroke-opacity='.2' stroke-width='5'><path d='M1800 0 V1080'/><circle cx='1800' cy='540' r='210'/></g><circle cx='1800' cy='540' r='10' fill='#FFFFFF' fill-opacity='.3'/></svg>]SVG@ no-repeat 0 0/100% 100%}
+/* /THEME */

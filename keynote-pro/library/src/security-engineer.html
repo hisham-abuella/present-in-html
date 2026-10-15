@@ -1,0 +1,93 @@
+<!--meta {"theme":"sentinel","fonts":"","title":"Incident review: credential stuffing on the Harbor portal","pageTitle":"Incident review: security engineer (Keynote Pro library)"} -->
+<section class="slide" data-layout="title">
+  <p class="label">Post-incident review</p>
+  <h1>Credential stuffing, <em>nine hours</em> in the dark</h1>
+  <p class="sub">What the attackers did, how we found them, and the four controls we are shipping.</p>
+  <p class="meta"><span>Security Engineering</span><span>Fictional company, sample deck</span><span>October 2026</span></p>
+  <aside class="notes"><p>Fictional incident at a fictional company, Harbor Freight Cloud. No real systems, IPs or customers. Blameless format: talk about controls, not people.</p></aside>
+</section>
+
+<section class="slide" data-layout="big-number">
+  <p class="label">Impact</p>
+  <div class="big" data-build="count">412<small> accounts</small></div>
+  <p>Logged in from attacker infrastructure. 37 had saved payment methods; none were charged.</p>
+  <p class="src">Source: auth logs, reviewed by two engineers</p>
+  <aside class="notes"><p>Lead with the impact so nobody waits for it. 412 successful logins out of 1.9 million attempts.</p></aside>
+</section>
+
+<section class="slide" data-layout="timeline">
+  <p class="label">Timeline (UTC)</p>
+  <h2>From first request to containment</h2>
+  <ol class="timeline" data-build="list">
+    <li><time>02:10</time><h3>Spray begins</h3><p>Login attempts from 3,000 residential IPs.</p></li>
+    <li><time>08:40</time><h3>Alert fires</h3><p>Failure ratio crosses 40 percent.</p></li>
+    <li class="now"><time>09:05</time><h3>Page acknowledged</h3><p>On-call opens the incident channel.</p></li>
+    <li><time>11:20</time><h3>Contained</h3><p>Rate limits and forced resets live.</p></li>
+  </ol>
+  <aside class="notes"><p>Note the 6.5 hour gap between first request and alert. The detection threshold was the weak spot, not the response.</p></aside>
+</section>
+
+<section class="slide" data-layout="chart">
+  <h2>Failed logins per minute, peak window</h2>
+  <p class="lede">Low and slow: the attack stayed under our per-IP limit all night.</p>
+  <figure class="chart" data-chart="line" data-unit="/min" data-decimals="0" data-min="0" data-build="draw">
+    <table><thead><tr><th>Hour</th><th>Failed logins</th></tr></thead><tbody><tr><td>02</td><td>40</td></tr><tr><td>04</td><td>120</td></tr><tr><td>06</td><td>380</td></tr><tr><td>08</td><td>910</td></tr><tr><td>10</td><td>240</td></tr></tbody></table>
+    <figcaption>Fictional data, UTC hours</figcaption>
+  </figure>
+  <aside class="notes"><p>The curve is what the attacker wanted: slow ramp, no single IP above 3 attempts a minute. Per-IP limits could not see it.</p></aside>
+</section>
+
+<section class="slide" data-layout="rows">
+  <p class="label">Root cause</p>
+  <h2>Threat, gap, consequence</h2>
+  <ol class="rows">
+    <li data-k="Threat"><p>Reused passwords from unrelated breaches, tried at scale.</p></li>
+    <li data-k="Gap"><p>Limits were per IP, no check against known-breached passwords, MFA optional.</p></li>
+    <li data-k="Impact"><p>412 sessions, 37 with stored payment methods, no card data exposed.</p></li>
+    <li data-k="Fix" data-hot><h3>Detect on the target, not the source</h3><p>Rate and anomaly rules keyed on accounts and on the failure ratio.</p></li>
+  </ol>
+  <aside class="notes"><p>Keep it blameless. The gap is in the controls.</p></aside>
+</section>
+
+<section class="slide" data-layout="comparison">
+  <h2>Controls: before and after</h2>
+  <table>
+    <thead><tr><th></th><th>Before</th><th class="rec" data-tag="Shipping">After</th></tr></thead>
+    <tbody>
+      <tr><th>Rate limit</th><td>Per IP</td><td><b>Per account and per device</b></td></tr>
+      <tr><th>Breached passwords</th><td>Not checked</td><td><b>Blocked at sign-in</b></td></tr>
+      <tr><th>MFA</th><td>Optional</td><td><b>Required for stored payments</b></td></tr>
+      <tr><th>Alert latency</th><td>6.5 hours</td><td><b>Under 15 minutes</b></td></tr>
+    </tbody>
+  </table>
+  <aside class="notes"><p>The 15 minute target is tested by replaying last night's traffic against the new rule in staging.</p></aside>
+</section>
+
+<section class="slide" data-layout="process">
+  <p class="label">Response plan</p>
+  <h2>Four steps, in this order</h2>
+  <ol class="steps" data-build="list">
+    <li><h3>Contain</h3><p>Force resets on the 412 accounts.</p></li>
+    <li><h3>Detect</h3><p>Ship account-level anomaly alert.</p></li>
+    <li><h3>Prevent</h3><p>Breached-password check and MFA.</p></li>
+    <li><h3>Verify</h3><p>Replay the attack monthly.</p></li>
+  </ol>
+  <aside class="notes"><p>Owners and dates are in the tracker. Containment is done; detection ships this sprint.</p></aside>
+</section>
+
+<section class="slide" data-layout="bullets">
+  <h2>Decisions we need today</h2>
+  <ul data-build="list">
+    <li><strong>Approve required MFA</strong> for accounts with stored payments.</li>
+    <li><strong>Fund the replay harness:</strong> two engineers for one quarter.</li>
+    <li><strong>Agree the customer notice,</strong> to go out Thursday.</li>
+  </ul>
+  <aside class="notes"><p>Ask for each decision by name. The notice text is in the appendix of the written review.</p></aside>
+</section>
+
+<section class="slide" data-layout="closing">
+  <p class="label">Questions</p>
+  <h2>Blameless, specific, tested</h2>
+  <p class="contact"><span><b>Owner</b> Security Engineering</span><span>security@example.com</span></p>
+  <aside class="notes"><p>Close on the one point: we could not see a slow attack because we only watched sources. Thank the on-call team. Sample deck with fictional content, so replace the contact details before use.</p></aside>
+</section>
