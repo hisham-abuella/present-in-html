@@ -10,7 +10,8 @@ keynote-pro/
   template.html        copy this; replace the slides between SLIDES:START and SLIDES:END
   examples/            product-launch, quarterly-review, tech-talk, genai-101, how-it-works, beyond-slides (live demos:
                        app UI, calculator, simulation, sound, live code, game, embedded page, video, camera),
-                       every-layout (all 28 layouts once, with locally generated photos; the slide-type reference)
+                       every-layout (all 28 layouts once, with locally generated photos; the slide-type reference),
+                       how-it-works-ar and beyond-slides-ar (whole decks in Egyptian Arabic, right to left)
   examples/src/        slide sources for the examples (build-examples.mjs assembles them)
   library/             LOOK LIBRARY: one sample deck per profession and index.html (gallery with filters); library/src holds their sources
   library/themes/      every non-core theme, one file each (library/themes/src = sources with macros); added to a deck by tools/add-look.mjs
