@@ -15,6 +15,6 @@ html[data-theme="campaign"] .slide .label{display:inline-block;align-self:flex-s
 html[data-theme="campaign"] .slide:not(:is([data-layout="title"],[data-layout="section"],[data-layout="closing"],[data-layout="full-bleed"],[data-tone="hero"])) .kp-foot{border-top:3px solid var(--ink);padding-top:12px}
 html[data-theme="campaign"] .slide:is([data-layout="title"],[data-layout="section"],[data-layout="closing"]) h1{font-size:calc(124px*var(--fh))}
 html[data-theme="campaign"][dir="rtl"] .label,html[data-theme="campaign"] [dir="rtl"] .label{transform:translate(-4px,12px) rotate(1.5deg);transform-origin:100% 0}
-html[data-theme="campaign"] .slide [data-layout="big-number"] .big{-webkit-text-stroke:0}
+html[data-theme="campaign"] .slide[data-layout="big-number"] .big{-webkit-text-stroke:0}
 html[data-theme="campaign"] .slide[data-layout="ask"] .amount b{font-size:calc(220px*var(--fit))} /* the extended display face is about 35% wider; 300px pushes a 3-digit amount out of its column */
 /* /THEME */
