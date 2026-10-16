@@ -1,0 +1,21 @@
+{
+  "skill_name": "edit-deck",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I want to fix some typos in my deck myself, it's keynote-pro/examples/quarterly-review.html — open it in the editor for me",
+      "expected_output": "Runs open-editor.sh on the deck, gives the URL and short how-to (click to type, notes, Save to same file), does not rewrite the deck itself.",
+      "files": [
+        "keynote-pro/examples/quarterly-review.html"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "can you change slide 3 of quarterly-review.html to a two-column layout with risks and mitigations? or should I do that in the editor",
+      "expected_output": "Recognises this is structural, not wording: does it via present-in-html instead of sending the user to the editor.",
+      "files": [
+        "keynote-pro/examples/quarterly-review.html"
+      ]
+    }
+  ]
+}

@@ -32,3 +32,10 @@
 - Understand how it currently works
 - Make targeted changes only
 - Verify the change doesn't break related functionality
+
+## Repository Layout
+
+- `plugins/present-in-html/` is the installable plugin (four skills). Only files the skills need at runtime go there.
+- `keynote-pro/` is the engine's source. Edit the engine there, never in the plugin copy, then run `scripts/build-plugin.sh`
+  to sync the plugin (`--check` reports drift).
+- Extras (gallery, sample decks, build tools, evals, legacy formats) stay outside the plugin folder.

@@ -14,3 +14,6 @@
 
 # Node modules (if any)
 node_modules/
+
+# skill-creator eval runs
+*-workspace/

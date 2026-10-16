@@ -1,0 +1,21 @@
+{
+  "skill_name": "review-deck",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I'm giving keynote-pro/examples/tech-talk.html at a meetup for junior front-end devs, I have 10 minutes including questions. Is it right for them?",
+      "expected_output": "Runs deck-stats, compares ~5 min estimate with a 10-min slot incl. Q&A, flags backend jargon (p99, etc.) for junior FE devs, top fixes with slide numbers, offers to apply.",
+      "files": [
+        "keynote-pro/examples/tech-talk.html"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "review keynote-pro/examples/quarterly-review.html for a 20 minute slot with the board",
+      "expected_output": "Verdict, timing vs 20 min (deck is ~5 min: says what is missing rather than padding), checks sources and the decision ask, does not edit the deck.",
+      "files": [
+        "keynote-pro/examples/quarterly-review.html"
+      ]
+    }
+  ]
+}

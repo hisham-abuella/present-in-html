@@ -1,82 +1,95 @@
-# HTML Presentation Skill for Claude Code
+<p align="center">
+  <img src="assets/logo.svg" alt="present-in-html logo" width="112" height="112">
+</p>
 
-A Claude Code Skill for creating professional, self-contained HTML presentations. No external dependencies required - just describe what you want and Claude generates beautiful, interactive slide decks.
+<h1 align="center">present-in-html</h1>
 
-## Features
+<p align="center">
+  <b>Presentations, written in HTML.</b><br>
+  A Claude Code plugin that turns a topic, an outline, a document or a dataset into a designed slide deck:<br>
+  one HTML file that opens in any browser, presents itself and prints to PDF.
+</p>
 
-- **Self-contained HTML** - Single file presentations, no CDN or external dependencies
-- **16:9 aspect ratio** - Professional widescreen format
-- **Dark/Light mode** - Toggle with one click
-- **Interactive toolbar** - Outline, marker, drawing, PDF export
-- **Keyboard navigation** - Arrow keys, fullscreen (F), overview (O)
-- **Responsive design** - Works on any screen size
-- **Print to PDF** - Built-in export functionality
+<p align="center">
+  <a href="https://hisham-abuella.github.io/present-in-html/"><b>Website and template library</b></a> ·
+  <a href="https://hisham-abuella.github.io/present-in-html/tour.html">Take the tour</a> ·
+  <a href="https://github.com/hisham-abuella/present-in-html/issues/new/choose">Feedback</a>
+</p>
 
-## Files
+<p align="center">
+  <a href="https://hisham-abuella.github.io/present-in-html/tour.html"><img src="gallery/thumbs/tour.jpg" alt="The tour deck: Presentations, written in HTML" width="720"></a>
+</p>
 
-| File | Description |
-|------|-------------|
-| `index.html` | Main skill demo and template |
-| `claude101.html` | Example presentation about Claude AI |
-| `install-skill.sh` | Installation script for the skill |
-| `logo.jpg` | Logo asset |
+## Install
 
-## Quick Start
+In Claude Code:
 
-1. **Install the skill** (optional):
-   ```bash
-   ./install-skill.sh
-   ```
-
-2. **Ask Claude to create a presentation**:
-   ```
-   Create a presentation about "Introduction to Python"
-   ```
-
-3. **Open the generated HTML file** in any modern browser
-
-## Keyboard Shortcuts
-
-| Key | Action |
-|-----|--------|
-| ← → | Navigate slides |
-| O | Toggle outline |
-| M | Marker mode |
-| D | Drawing mode |
-| C | Clear drawings |
-| T | Toggle theme (dark/light) |
-| F | Fullscreen |
-| P | Export to PDF |
-
-## Slide Types
-
-- **Title slides** - Centered content with contact links
-- **Content slides** - Headers, bullet points, code blocks
-- **Feature grids** - 2-column card layouts
-- **Tables** - Comparison and data tables
-- **Code blocks** - Syntax highlighted with copy button
-
-## Customization
-
-The presentations use CSS variables for easy theming:
-
-```css
-:root {
-    --accent-color: #D97757;  /* Claude orange */
-    --title-font: Georgia, serif;
-    --body-font: -apple-system, sans-serif;
-}
+```
+/plugin marketplace add hisham-abuella/present-in-html
+/plugin install present-in-html@present-in-html-marketplace
 ```
 
-## Example Presentations
+Then ask for a presentation. That's it.
 
-- [Skill Demo](index.html) - Demo of this presentation skill
-- [CLAUDE 101](claude101.html) - Introduction to Claude AI
+## The four skills
+
+You don't need to name them: Claude picks the right one from what you ask.
+
+| Skill | What it does | Ask something like |
+|---|---|---|
+| **present-in-html** | Makes a deck from a topic, an outline, files (PDF, Word, notes), data (CSV, Excel) or links. Picks a look for your audience, writes speaker notes and checks every slide. | "Turn `q3-report.pdf` into a 10-minute board deck" |
+| **edit-deck** | Opens your deck in a click-and-type editor in the browser, to fix wording and notes yourself. Save writes the same file. | "Let me fix the wording myself" |
+| **review-deck** | Reviews a deck against its audience and time slot: timing, jargon, story, sources. Gives a verdict and concrete fixes. | "Will this fit in 15 minutes for non-technical managers?" |
+| **publish-deck** | Publishes the deck and its images to GitHub Pages and gives you a link to share. | "Put my deck online so I can send a link" |
+
+## What you get
+
+One `.html` file. Open it in Chrome and press **F** for fullscreen, **P** for the presenter window (notes, next slide,
+timer), **G** for an overview of every slide, **S** to try another theme. Print to PDF with Cmd/Ctrl+P.
+
+32 themes (26 made for a profession, from clinician to lawyer to founder), 28 layouts, charts from your data, builds and
+Magic Move, and Arabic/RTL. See them all on the **[website](https://hisham-abuella.github.io/present-in-html/)**: every
+example deck and look opens live in your browser.
+
+## Feedback, bugs and ideas
+
+[Open an issue](https://github.com/hisham-abuella/present-in-html/issues/new/choose) and pick a form:
+[bug report](https://github.com/hisham-abuella/present-in-html/issues/new?template=bug_report.yml),
+[feature request](https://github.com/hisham-abuella/present-in-html/issues/new?template=feature_request.yml), or
+[feedback](https://github.com/hisham-abuella/present-in-html/issues/new?template=feedback.yml) on how it worked for a real talk.
+
+<details>
+<summary><b>More install options and the repository layout</b></summary>
+
+**Update:** `/plugin update present-in-html@present-in-html-marketplace`
+
+**From a local clone:** `/plugin marketplace add ./present-in-html`
+
+**Without the plugin system:** `./install-skill.sh` copies the four skills into `~/.claude/skills/` (or this project's
+`.claude/skills/`).
+
+**The slide checker** uses Playwright. Install it once, outside the plugin folder:
+
+```bash
+mkdir -p ~/.kp-tools && cd ~/.kp-tools && npm i playwright && npx playwright install chromium
+```
+
+| Path | What it is |
+|------|------------|
+| `plugins/present-in-html/` | The plugin: the four skills. Only this folder is installed |
+| `keynote-pro/` | The slide engine's source (Keynote Pro): build tools, themes, examples, profession library |
+| `scripts/build-plugin.sh` | Syncs the engine into the plugin (`--check` reports drift) |
+| `scripts/build-home.mjs` | Regenerates the website (`index.html`) |
+| `index.html`, `tour.html`, `gallery/`, `assets/` | The website, the tour deck, thumbnails and the logo |
+| `evals/` | Test prompts for the skills |
+| `legacy/` | Earlier formats (markdown keynote, Stories), archived |
+
+</details>
+
+## Author
+
+Made by **Hisham Abuella**: [hishamabuella.com](https://www.hishamabuella.com) · [GitHub](https://github.com/hisham-abuella)
 
 ## License
 
-MIT License
-
-## Credits
-
-Created with Claude Code by Anthropic
+[MIT](LICENSE) © 2026 Hisham Abuella. The plugin and each skill carry their own copy of the license.

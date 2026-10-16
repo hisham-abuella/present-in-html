@@ -1,0 +1,41 @@
+name: Feature request
+description: Suggest a new skill, layout, theme, profession look or improvement.
+title: "[Feature]: "
+labels: ["enhancement", "needs-triage"]
+body:
+  - type: dropdown
+    id: area
+    attributes:
+      label: What is it about?
+      options:
+        - A new layout or slide type
+        - A new theme or profession look
+        - Making decks (present-in-html skill)
+        - Editor (edit-deck skill)
+        - Review (review-deck skill)
+        - Publishing (publish-deck skill)
+        - Presenting (presenter view, keys, PDF, narration)
+        - Arabic, RTL or another language
+        - A new skill
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What are you trying to do?
+      description: The talk, the audience or the task, and what gets in the way today.
+      placeholder: "I give weekly clinical case reviews and need ..."
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: What would help?
+      description: How you imagine it working. A sketch or an example deck from elsewhere is welcome.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: What do you do instead today?

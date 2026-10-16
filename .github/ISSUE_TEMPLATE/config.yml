@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Project page and template library
+    url: https://github.com/hisham-abuella/present-in-html#readme
+    about: Install steps, the four skills and every example deck.
+  - name: Contact the author
+    url: https://www.hishamabuella.com
+    about: For anything that isn't a bug, a feature or feedback.

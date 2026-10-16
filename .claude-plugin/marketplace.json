@@ -1,15 +1,19 @@
 {
-  "name": "html-presentation-marketplace",
+  "name": "present-in-html-marketplace",
   "owner": {
     "name": "Hisham Abu Ella",
-    "email": "TODO-OWNER-SET-REAL-EMAIL-OR-DELETE-THIS-FIELD"
+    "url": "https://github.com/hisham-abuella"
+  },
+  "metadata": {
+    "description": "Keynote Pro: one-file HTML presentations for Claude Code."
   },
   "plugins": [
     {
-      "name": "html-presentation",
-      "source": ".",
-      "description": "Keynote Pro is the default: one-file 16:9 HTML decks with 22 themes (16 by profession), builds, Magic Move, presenter view, PDF and Arabic/RTL, plus a built-in checker. Markdown Keynote, Stories (mobile) and Course formats are kept for when you ask for them.",
-      "version": "2.0.0"
+      "name": "present-in-html",
+      "source": "./plugins/present-in-html",
+      "description": "Keynote Pro HTML presentations: make, edit, review and publish one-file 16:9 decks (32 themes, presenter view, PDF, Arabic/RTL, built-in checker).",
+      "version": "3.0.0",
+      "category": "productivity"
     }
   ]
 }

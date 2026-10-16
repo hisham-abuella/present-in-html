@@ -1,0 +1,23 @@
+{
+  "skill_name": "present-in-html",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "I'm presenting our Q3 results to the board next Tuesday, 12 minutes. Revenue $4.2M (up 18% YoY), gross margin 61%, churn down from 3.1% to 2.4%, 3 new enterprise logos. We need approval to hire 4 engineers. Make me the deck.",
+      "expected_output": "A boardroom-style Keynote Pro deck, ~10-12 slides, real numbers only, notes on every slide, ends with the hiring ask, checker passes.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "turn this outline into slides for my 2nd-year CS lecture (50 min): 1. why hashing 2. hash functions 3. collisions: chaining vs open addressing 4. load factor + resizing 5. python dict internals. include a quick quiz",
+      "expected_output": "A lecture deck following the user's outline order, teaching look (chalk/studio), code slide, a quiz slide, notes, checker passes.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Make a short Arabic (Egyptian dialect) deck from this data for our NGO donors: meals served 2024 = 182,000, 2025 = 241,500; volunteers 1,340; we need EGP 2.5M for a second kitchen.",
+      "expected_output": "An RTL Arabic deck (dir=rtl, lang=ar), civic or trainer look, chart of meals, an ask slide for EGP 2.5M, checker passes.",
+      "files": []
+    }
+  ]
+}

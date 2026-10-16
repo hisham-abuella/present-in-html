@@ -1,0 +1,19 @@
+/* ---------- 4 clinic: doctor / clinician ---------- */
+/* THEME:clinic | Clinic | #0F766E | https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;700&display=swap */
+html[data-theme="clinic"]{
+  --bg:#FFFFFF; --bg2:#ECF4F3; --ink:#10292B; --ink2:#41605E; --rule:#CCDEDC; --rule-strong:#10292B;
+  --brand:#0F766E; --brand-text:#0F766E; --on-brand:#ffffff;
+  --hero-bg:#0A3B3A; --hero-ink:#F1FAF8; --hero-ink2:#B4D6D2; --hero-rule:#2C6360; --hero-brand:#7DE0D2;
+  --bleed-bg:#0F766E; --bleed-ink:#ffffff;
+  --f-display:"Figtree","Helvetica Neue",Arial,sans-serif; --f-body:"Figtree","Helvetica Neue",Arial,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --w-display:700; --ls-display:-0.02em; --em-style:normal;
+  --radius:10px; --chart-radius:3px; --rule-w:1px; --letterbox:#061817;
+  --s1:#0F766E; --s2:#B42318; --s3:#64807E; --muted-bar:#BFD3D1; --hot:#B42318; --hot-text:#B42318;
+  --code-bg:#10292B; --code-ink:#E6F4F2; --c-kw:#7DE0D2; --c-str:#A9DDA0; --c-num:#F2B880; --c-com:#9DBBB8; --c-fn:#8FC1FF;
+}
+html[data-theme="clinic"] .slide:not(:is([data-layout="title"],[data-layout="section"],[data-layout="closing"],[data-layout="full-bleed"],[data-tone="hero"])){isolation:isolate}
+html[data-theme="clinic"] .slide:not(:is([data-layout="title"],[data-layout="section"],[data-layout="closing"],[data-layout="full-bleed"],[data-tone="hero"]))::before{content:"";position:absolute;top:44px;inset-inline-end:120px;width:260px;height:56px;z-index:-1;pointer-events:none;background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='260' height='56' viewBox='0 0 260 56'><path d='M0 34 H60 l8 -8 l10 8 H100 l6 8 l9 -34 l9 44 l8 -18 H150 l12 -10 l12 10 H260' fill='none' stroke='%230F766E' stroke-width='3' stroke-linejoin='round'/></svg>") no-repeat 0 0/100% 100%}
+html[data-theme="clinic"] .slide:not(:is([data-layout="title"],[data-layout="section"],[data-layout="closing"],[data-layout="full-bleed"],[data-tone="hero"])) .kp-foot{border-top:1px solid var(--rule);padding-top:12px}
+html[data-theme="clinic"] .slide:is([data-layout="title"],[data-layout="section"],[data-layout="closing"]){isolation:isolate}
+html[data-theme="clinic"] .slide:is([data-layout="title"],[data-layout="section"],[data-layout="closing"])::before{content:"";position:absolute;inset-inline:0;bottom:0;height:96px;z-index:-1;pointer-events:none;background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='1920' height='240' viewBox='0 0 1920 240'><path d='M0 130 H110 l16 -14 l20 14 H190 l12 14 l16 -110 l18 150 l14 -54 H300 l26 -26 l26 26 H420 M480 130 H590 l16 -14 l20 14 H670 l12 14 l16 -110 l18 150 l14 -54 H780 l26 -26 l26 26 H900 M960 130 H1070 l16 -14 l20 14 H1150 l12 14 l16 -110 l18 150 l14 -54 H1260 l26 -26 l26 26 H1380 M1440 130 H1550 l16 -14 l20 14 H1630 l12 14 l16 -110 l18 150 l14 -54 H1740 l26 -26 l26 26 H1860' fill='none' stroke='%237DE0D2' stroke-width='4' stroke-opacity='.55' stroke-linejoin='round'/></svg>") no-repeat 0 100%/100% 100%}
+/* /THEME */

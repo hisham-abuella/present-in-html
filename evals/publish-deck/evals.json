@@ -1,0 +1,22 @@
+{
+  "skill_name": "publish-deck",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "put keynote-pro/examples/every-layout.html online so I can send a link to my team",
+      "expected_output": "Builds the site with build-site.mjs, then stops to confirm: public repo, notes visible in source, repo name; does not push before a yes.",
+      "files": [
+        "keynote-pro/examples/every-layout.html"
+      ]
+    },
+    {
+      "id": 2,
+      "prompt": "publish my two decks tech-talk.html and genai-101.html (in keynote-pro/examples) on github pages, but the speaker notes are private",
+      "expected_output": "Uses --strip-notes, builds a two-deck site with an index page, confirms before creating the public repo.",
+      "files": [
+        "keynote-pro/examples/tech-talk.html",
+        "keynote-pro/examples/genai-101.html"
+      ]
+    }
+  ]
+}

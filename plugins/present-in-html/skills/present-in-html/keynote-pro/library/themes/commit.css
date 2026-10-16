@@ -1,0 +1,20 @@
+/* ---------- 2 commit: software engineer ---------- */
+/* THEME:commit | Commit | #B79CFF | https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;700&display=swap */
+html[data-theme="commit"]{
+  --bg:#171A26; --bg2:#20243A; --ink:#E6E9F5; --ink2:#A3A9C4; --rule:#343A58; --rule-strong:#E6E9F5;
+  --brand:#B79CFF; --brand-text:#B79CFF; --on-brand:#171A26;
+  --hero-bg:#0F111A; --hero-ink:#E6E9F5; --hero-ink2:#A3A9C4; --hero-rule:#2B3047; --hero-brand:#B79CFF;
+  --bleed-bg:#B79CFF; --bleed-ink:#171A26;
+  --f-display:"Geist","Inter",system-ui,sans-serif; --f-body:"Geist","Inter",system-ui,sans-serif; --f-mono:"Geist Mono",ui-monospace,Menlo,monospace;
+  --w-display:600; --ls-display:-0.035em; --em-style:normal;
+  --rec-mix:24%;
+  --radius:8px; --chart-radius:3px; --rule-w:1px; --letterbox:#08090F;
+  --s1:#B79CFF; --s2:#7DCFFF; --s3:#9ECE6A; --muted-bar:#3A4160; --hot:#FF8FB8; --hot-text:#FF8FB8;
+  --code-bg:#0F111A; --code-ink:#E6E9F5; --c-kw:#FF8FB8; --c-str:#9ECE6A; --c-num:#FFB86B; --c-com:#8087AB; --c-fn:#7DCFFF;
+}
+html[data-theme="commit"] .slide:not(:is([data-layout="title"],[data-layout="section"],[data-layout="closing"],[data-layout="full-bleed"],[data-tone="hero"])) > h2::before{content:"# ";font-family:var(--f-mono);font-weight:400;color:var(--ink2)}
+html[data-theme="commit"] .slide:not(:is([data-layout="title"],[data-layout="section"],[data-layout="closing"],[data-layout="full-bleed"],[data-tone="hero"])) .kp-foot{bottom:0;inset-inline:0;padding:12px 120px;background:var(--bg2);border-top:1px solid var(--rule)}
+html[data-theme="commit"] .slide:not(:is([data-layout="title"],[data-layout="section"],[data-layout="closing"],[data-layout="full-bleed"],[data-tone="hero"])) .kp-foot span:first-child::before{content:"";display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--brand);margin-inline-end:14px}
+html[data-theme="commit"] .slide:not(:is([data-layout="title"],[data-layout="section"],[data-layout="closing"],[data-layout="full-bleed"],[data-tone="hero"])) .kp-foot span:last-child::before{content:"ln ";color:var(--brand-text)}
+[data-theme="commit"] [data-layout="bullets"] li::before{content:"+";background:none;width:auto;height:auto;top:0;transform:none;font:600 1em/1.22 var(--f-mono);color:var(--brand-text)}
+/* /THEME */

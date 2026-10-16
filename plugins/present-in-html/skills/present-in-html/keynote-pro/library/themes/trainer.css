@@ -1,0 +1,23 @@
+/* ---------- 16 trainer: bilingual EN/AR trainer, community or faith educator ---------- */
+/* THEME:trainer | Trainer | #1B4F9C | https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap */
+html[data-theme="trainer"]{
+  --bg:#FFFFFF; --bg2:#EDF2FA; --ink:#0F2240; --ink2:#44577A; --rule:#CBD6E8; --rule-strong:#0F2240;
+  --brand:#1B4F9C; --brand-text:#1B4F9C; --on-brand:#ffffff;
+  --hero-bg:#12305F; --hero-ink:#F4F7FD; --hero-ink2:#BFD0EA; --hero-rule:#33568F; --hero-brand:#F0C463;
+  --bleed-bg:#1B4F9C; --bleed-ink:#ffffff;
+  --f-display:"Readex Pro","IBM Plex Sans Arabic","IBM Plex Sans","Helvetica Neue",Arial,sans-serif; --f-body:"IBM Plex Sans","IBM Plex Sans Arabic","Helvetica Neue",Arial,sans-serif; --f-mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
+  --f-ar-d:"Readex Pro","IBM Plex Sans Arabic","Geeza Pro","Segoe UI",Tahoma,sans-serif; --f-ar-b:"IBM Plex Sans Arabic","Geeza Pro","Segoe UI",Tahoma,sans-serif;
+  --w-display:600; --ls-display:-0.015em; --em-style:normal;
+  --radius:14px; --chart-radius:6px; --rule-w:1px; --letterbox:#060F20;
+  --s1:#1B4F9C; --s2:#0E8C86; --s3:#B8892B; --muted-bar:#C4D2E8; --hot:#8A6414; --hot-text:#8A6414;
+  --code-bg:#12305F; --code-ink:#F4F7FD; --c-kw:#F0C463; --c-str:#8FE0D4; --c-num:#F5A38F; --c-com:#A9BEDD; --c-fn:#A8C7FF;
+}
+html[data-theme="trainer"] .slide:not(:is([data-layout="title"],[data-layout="section"],[data-layout="closing"],[data-layout="full-bleed"],[data-tone="hero"])){isolation:isolate}
+html[data-theme="trainer"] .slide:not(:is([data-layout="title"],[data-layout="section"],[data-layout="closing"],[data-layout="full-bleed"],[data-tone="hero"]))::before{content:"";position:absolute;top:0;inset-inline:0;height:40px;z-index:-1;pointer-events:none;background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='40' height='40' viewBox='0 0 40 40'><g fill='none' stroke='%231B4F9C' stroke-opacity='.45' stroke-width='1.5'><rect x='10' y='10' width='20' height='20'/><rect x='10' y='10' width='20' height='20' transform='rotate(45 20 20)'/></g></svg>") repeat-x 0 0/40px 40px;border-bottom:1px solid var(--rule)}
+html[data-theme="trainer"] .slide:not(:is([data-layout="title"],[data-layout="section"],[data-layout="closing"],[data-layout="full-bleed"],[data-tone="hero"])) .kp-foot{border-top:1px solid var(--rule);padding-top:12px}
+html[data-theme="trainer"] .slide:is([data-layout="title"],[data-layout="section"],[data-layout="closing"]){isolation:isolate}
+html[data-theme="trainer"] .slide:is([data-layout="title"],[data-layout="section"],[data-layout="closing"])::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160' viewBox='0 0 160 160'><g fill='none' stroke='%23FFFFFF' stroke-opacity='0.09' stroke-width='2'><rect x='40' y='40' width='80' height='80'/><rect x='40' y='40' width='80' height='80' transform='rotate(45 80 80)'/><circle cx='80' cy='80' r='20'/><path d='M0 80 H40 M120 80 H160 M80 0 V40 M80 120 V160'/></g></svg>") repeat 0 0/160px 160px}
+[data-theme="trainer"] .label{color:var(--hero-brand)}
+html[data-theme="trainer"] .slide:not(:is([data-layout="title"],[data-layout="section"],[data-layout="closing"],[data-layout="full-bleed"],[data-tone="hero"])) .label{color:var(--brand-text)}
+html[data-theme="trainer"] .slide:not(:is([data-layout="title"],[data-layout="section"],[data-layout="closing"],[data-layout="full-bleed"],[data-tone="hero"])) [dir="rtl"] .label{font-family:var(--f-ar-b)}
+/* /THEME */

@@ -1,0 +1,28 @@
+{
+  "name": "present-in-html",
+  "version": "3.0.0",
+  "description": "Keynote Pro presentations as one self-contained HTML file: make a deck from a topic, outline, documents, data or links (32 themes, presenter view, PDF, Arabic/RTL, built-in checker), edit its wording in a click-and-type editor, review it against the audience and time slot, and publish it to GitHub Pages.",
+  "author": {
+    "name": "Hisham Abu Ella",
+    "url": "https://github.com/hisham-abuella"
+  },
+  "homepage": "https://github.com/hisham-abuella/present-in-html",
+  "repository": "https://github.com/hisham-abuella/present-in-html",
+  "license": "MIT",
+  "keywords": [
+    "arabic",
+    "github-pages",
+    "html",
+    "keynote",
+    "keynote-pro",
+    "pitch-deck",
+    "presentation",
+    "presentation-review",
+    "rtl",
+    "self-contained",
+    "slide-deck",
+    "slide-editor",
+    "slides"
+  ],
+  "skills": "./skills/"
+}

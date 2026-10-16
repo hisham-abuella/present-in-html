@@ -1,0 +1,49 @@
+name: Feedback
+description: Tell us how present-in-html worked for a real talk, good or bad.
+title: "[Feedback]: "
+labels: ["feedback"]
+body:
+  - type: markdown
+    attributes:
+      value: Short is fine. Knowing how decks are used in real talks is what shapes what comes next.
+  - type: input
+    id: occasion
+    attributes:
+      label: What was the deck for?
+      placeholder: "A 20-minute board review, a university lecture, a meetup talk in Arabic"
+    validations:
+      required: true
+  - type: dropdown
+    id: rating
+    attributes:
+      label: How well did it work?
+      options:
+        - "5: I presented it as it was"
+        - "4: Small fixes, then presented"
+        - "3: Useful start, a lot of changes"
+        - "2: Hard to get what I needed"
+        - "1: Didn't work for me"
+    validations:
+      required: true
+  - type: checkboxes
+    id: skills
+    attributes:
+      label: Which skills did you use?
+      options:
+        - label: present-in-html (make a deck)
+        - label: edit-deck (editor)
+        - label: review-deck (audience and time review)
+        - label: publish-deck (GitHub Pages)
+  - type: textarea
+    id: worked
+    attributes:
+      label: What worked well?
+  - type: textarea
+    id: didnt
+    attributes:
+      label: What didn't, or what was missing?
+  - type: input
+    id: link
+    attributes:
+      label: Link to the deck (optional)
+      description: Only if it is public and you're happy to share it. It may be featured in the template library, with your permission.

@@ -1,0 +1,72 @@
+name: Bug report
+description: Something in the plugin, a skill or a deck doesn't work as it should.
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! The more exact the steps, the faster it gets fixed.
+        Please don't attach decks with private content: a small deck that shows the problem is best.
+  - type: dropdown
+    id: area
+    attributes:
+      label: Where is the problem?
+      options:
+        - Making a deck (present-in-html skill)
+        - Editor (edit-deck skill)
+        - Review (review-deck skill)
+        - Publishing to GitHub Pages (publish-deck skill)
+        - A deck in the browser (layouts, themes, presenter view, PDF, keys)
+        - The checker (check.mjs)
+        - Installing the plugin
+        - Project page or template library
+        - Something else
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What you saw. Paste error messages or checker output as text.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: What you asked Claude, or what you clicked or pressed, in order.
+      placeholder: |
+        1. Asked: "Make a 10-minute deck for ..."
+        2. Opened the deck in Chrome, pressed P
+        3. ...
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Screenshot, deck or logs
+      description: Drag in a screenshot, or a small .html deck (zip it) that shows the problem.
+  - type: input
+    id: plugin-version
+    attributes:
+      label: Plugin version
+      description: From `/plugin` in Claude Code, or `claude plugin details present-in-html@present-in-html-marketplace`.
+      placeholder: "3.0.0"
+  - type: input
+    id: claude-code-version
+    attributes:
+      label: Claude Code version
+      description: From `claude --version`.
+      placeholder: "2.1.301"
+  - type: input
+    id: environment
+    attributes:
+      label: OS and browser
+      placeholder: "macOS 15, Chrome 141"

@@ -1,0 +1,20 @@
+/* ---------- 13 campaign: marketing / sales ---------- */
+/* THEME:campaign | Campaign | #B5124F | https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&display=swap */
+html[data-theme="campaign"]{
+  --bg:#FFFFFF; --bg2:#FFE9F1; --ink:#1A0A12; --ink2:#5A3A4A; --rule:#F1C9D9; --rule-strong:#1A0A12;
+  --brand:#B5124F; --brand-text:#B5124F; --on-brand:#ffffff;
+  --hero-bg:#B5124F; --hero-ink:#ffffff; --hero-ink2:#FFE3EE; --hero-rule:#E4789F; --hero-brand:#FFE45E;
+  --bleed-bg:#FFE45E; --bleed-ink:#1A0A12;
+  --f-display:"Syne","Helvetica Neue",Arial,sans-serif; --f-body:"Manrope","Helvetica Neue",Arial,sans-serif; --f-mono:"DM Mono",ui-monospace,Menlo,monospace;
+  --w-display:800; --ls-display:-0.04em; --em-style:normal;
+  --radius:0px; --chart-radius:0px; --rule-w:3px; --letterbox:#12060D;
+  --s1:#B5124F; --s2:#1A0A12; --s3:#E0A800; --muted-bar:#EBC3D3; --hot:#B5124F; --hot-text:#B5124F;
+  --code-bg:#1A0A12; --code-ink:#FFEFF5; --c-kw:#FFE45E; --c-str:#9BE3B5; --c-num:#FF9EC0; --c-com:#BFA0AE; --c-fn:#9CC9F2;
+}
+html[data-theme="campaign"] .slide .label{display:inline-block;align-self:flex-start;justify-self:start;background:#FFE45E;color:#1A0A12;padding:8px 22px;transform:translateY(12px) rotate(-1.5deg);transform-origin:0 0;margin-block-end:40px;font-weight:500}
+html[data-theme="campaign"] .slide:not(:is([data-layout="title"],[data-layout="section"],[data-layout="closing"],[data-layout="full-bleed"],[data-tone="hero"])) .kp-foot{border-top:3px solid var(--ink);padding-top:12px}
+html[data-theme="campaign"] .slide:is([data-layout="title"],[data-layout="section"],[data-layout="closing"]) h1{font-size:calc(124px*var(--fh))}
+html[data-theme="campaign"][dir="rtl"] .label,html[data-theme="campaign"] [dir="rtl"] .label{transform:translate(-4px,12px) rotate(1.5deg);transform-origin:100% 0}
+html[data-theme="campaign"] .slide[data-layout="big-number"] .big{-webkit-text-stroke:0}
+html[data-theme="campaign"] .slide[data-layout="ask"] .amount b{font-size:calc(220px*var(--fit))} /* the extended display face is about 35% wider; 300px pushes a 3-digit amount out of its column */
+/* /THEME */
