@@ -25,7 +25,8 @@ const tryDirs = d => { try { return fs.readdirSync(d).map(n => path.join(d, n));
 async function findPlaywright() {
   const cands = [];
   if (process.env.PLAYWRIGHT_MODULE) cands.push(process.env.PLAYWRIGHT_MODULE);
-  for (const root of [HERE, process.cwd()]) for (const n of ['playwright', 'playwright-core']) cands.push(path.join(root, 'node_modules', n));
+  // Never the current folder: the checker runs on decks from anywhere, and a deck's folder must not be able to supply code.
+  for (const root of [HERE, path.join(HOME, '.kp-tools')]) for (const n of ['playwright', 'playwright-core']) cands.push(path.join(root, 'node_modules', n));
   try { const g = (await import('node:child_process')).execSync('npm root -g', {encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'], timeout: 4000}).trim(); for (const n of ['playwright', 'playwright-core']) cands.push(path.join(g, n)); } catch {}
   for (const d of tryDirs(path.join(HOME, '.npm/_npx'))) for (const n of ['playwright', 'playwright-core']) cands.push(path.join(d, 'node_modules', n));
   for (const f of [() => import('playwright'), () => import('playwright-core')]) { try { const m = await f(); return {mod: m, from: 'import'}; } catch {} }

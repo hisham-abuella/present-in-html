@@ -3,7 +3,7 @@
   "version": "3.0.0",
   "description": "Keynote Pro presentations as one self-contained HTML file: make a deck from a topic, outline, documents, data or links (32 themes, presenter view, PDF, Arabic/RTL, built-in checker), edit its wording in a click-and-type editor, review it against the audience and time slot, and publish it to GitHub Pages.",
   "author": {
-    "name": "Hisham Abu Ella",
+    "name": "Hisham Abuella",
     "url": "https://github.com/hisham-abuella"
   },
   "homepage": "https://github.com/hisham-abuella/present-in-html",

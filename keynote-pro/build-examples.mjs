@@ -16,7 +16,7 @@ for (const [srcDir, outDir] of [['examples/src', 'examples'], ['library/src', 'l
   src = src.replace(/\{\{(\w+)\}\}/g, (_, k) => dg[k]);
   let out = tpl.replace(/(<!-- SLIDES:START -->)[\s\S]*(<!-- SLIDES:END -->)/, (_, a, b) => `${a}\n${src}\n${b}`)
     .replace('data-theme="keynote-white"', `data-theme="${meta.theme}"`).replace('data-fonts=""', `data-fonts="${meta.fonts || ''}"`)
-    .replace('<title>Keynote Pro template</title>', `<title>${meta.pageTitle || meta.title}</title>`).replace('data-title="Keynote Pro template"', `data-title="${meta.title}"`);
+    .replace('<title>present-in-html template</title>', `<title>${meta.pageTitle || meta.title}</title>`).replace('data-title="present-in-html template"', `data-title="${meta.title}"`);
   if (meta.lang) out = out.replace('<html lang="en"', `<html lang="${meta.lang}"${meta.dir ? ` dir="${meta.dir}"` : ''}`); // Arabic decks: lang and dir come from the meta line
   out = addLooks(out, {themes: meta.looks === 'all' ? 'all' : meta.looks || [], fonts: meta.looks === 'all' ? 'all' : [], keep: false}); // meta.looks: 'all' or [theme ids]; the deck's own theme and fonts are always added
   fs.writeFileSync(path.join(here, outDir, f), out); console.log('built ' + outDir + '/' + f);
@@ -33,7 +33,7 @@ for (const [srcDir, outDir] of [['examples/src', 'examples'], ['library/src', 'l
     <pre>const next = (step) =&gt; step + 1;  // 0123456789</pre></article>`;
   const rules = [...fonts.map(f => `.fp-${f.id}{${f.tokens}}`), ...themes.map(t => `.th-${t.id}{${t.tokens}}`)].join('\n');
   const html = `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Keynote Pro font and theme library</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>present-in-html font and theme library</title>
 ${urls.map(u => `<link rel="stylesheet" href="${u}">`).join('\n')}
 <style>
 body{margin:0;font:16px/1.5 system-ui,sans-serif;background:#f3f3f5;color:#111}
@@ -48,7 +48,7 @@ main{padding:28px;max-width:1500px;margin:0 auto}h3{margin:34px 0 14px;font-size
 .fp-card{--bg:#fff}
 ${rules}
 </style></head><body>
-<header class="top"><h1>Keynote Pro: font pairings and theme defaults</h1><input id="q" type="text" value="Make the numbers speak" aria-label="Preview headline: type your own title"><span>${fonts.length} pairings, ${themes.length} themes. Set one with data-fonts / data-theme on &lt;html&gt; or press S in a deck.</span></header>
+<header class="top"><h1>present-in-html: font pairings and theme defaults</h1><input id="q" type="text" value="Make the numbers speak" aria-label="Preview headline: type your own title"><span>${fonts.length} pairings, ${themes.length} themes. Set one with data-fonts / data-theme on &lt;html&gt; or press S in a deck.</span></header>
 <main><h3>Font pairings</h3><div class="grid">${fonts.map(f => card(`fp-${f.id}`, f.label, `data-fonts="${f.id}"`)).join('\n')}</div>
 <h3>Theme defaults (their own colours and type)</h3><div class="grid">${themes.map(t => card(`th-${t.id}`, t.label, `data-theme="${t.id}"`)).join('\n')}</div></main>
 <script>document.getElementById('q').addEventListener('input',e=>{document.querySelectorAll('.card h2').forEach(h=>{h.textContent=e.target.value||'Make the numbers speak'})})</script>

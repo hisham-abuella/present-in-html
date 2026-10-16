@@ -27,7 +27,7 @@ const title = val('--title') || 'Presentation', esc = s => s.replace(/&/g, '&amp
 let html = fs.readFileSync(path.join(here, 'template.html'), 'utf8')
   .replace(/(<!-- SLIDES:START -->)[\s\S]*(<!-- SLIDES:END -->)/, (_, s, e) => `${s}\n${body}\n${e}`)
   .replace('data-theme="keynote-white"', `data-theme="${val('--theme') || 'keynote-white'}"`).replace('data-fonts=""', `data-fonts="${val('--fonts') || ''}"`)
-  .replace('<title>Keynote Pro template</title>', `<title>${esc(title)}</title>`).replace('data-title="Keynote Pro template"', `data-title="${esc(title)}"`);
+  .replace('<title>present-in-html template</title>', `<title>${esc(title)}</title>`).replace('data-title="present-in-html template"', `data-title="${esc(title)}"`);
 if (val('--lang')) html = html.replace('<html lang="en"', `<html lang="${val('--lang')}"${val('--dir') ? ` dir="${val('--dir')}"` : ''}`);
 const looks = val('--looks');
 try { html = addLooks(html, {themes: looks === 'all' ? 'all' : (looks || '').split(',').filter(Boolean), fonts: looks === 'all' ? 'all' : [], keep: false}); }

@@ -27,9 +27,12 @@ node <skill base dir>/scripts/build-site.mjs deck.html --out <scratch>/site [--s
 node <skill base dir>/scripts/build-site.mjs a.html b.html --out <scratch>/site     # several decks + an index page
 ```
 
-The script copies the deck (as `index.html` when there is one), every local file it references (paths that leave the deck's
-folder are moved into `_ext/` and rewritten), the narration folder, and adds `.nojekyll`. It stops and lists any missing file
-instead of publishing a deck with broken images; fix those first. Build in a scratch location, not the user's project, and
+The script copies the deck (as `index.html` when there is one), every local file it references, the narration folder, and
+adds `.nojekyll`. Because everything copied becomes public, it only takes web file types from inside the deck's folder, never
+hidden files, and follows symlinks to check where they really point. It stops and lists anything missing or refused instead
+of publishing. For a file outside the deck's folder (an image in `../assets/`), the better fix is to copy it next to the deck;
+pass `--allow-outside` only after checking with the user that every listed file is meant to be public (it is copied into
+`_ext/`). Never use it to get past a refusal you have not read. Build in a scratch location, not the user's project, and
 leave working files (`parts/`, `shots/`, `kp-editor.html`) out.
 
 ## 3. Push and turn on Pages

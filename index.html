@@ -96,7 +96,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
     <span class="kicker">A Claude Code plugin</span>
     <h1>Presentations, <em>written in HTML.</em></h1>
     <p class="lead">Give Claude a topic, an outline, documents, data or links. Get a designed slide deck: one file that opens in any browser, presents itself, and prints to PDF.</p>
-    <div class="cta"><a class="btn primary" href="#install">Install the plugin</a><a class="btn" href="tour.html">Watch the tour</a></div>
+    <div class="cta"><a class="btn primary" href="#install">Install the plugin</a><a class="btn" href="tour.html">Watch the tour</a><a class="btn" href="https://github.com/hisham-abuella/present-in-html"><svg width="18" height="18" viewBox="0 0 16 16" aria-hidden="true" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38v-1.33c-2.23.48-2.7-1.07-2.7-1.07-.36-.92-.89-1.17-.89-1.17-.73-.5.06-.49.06-.49.8.06 1.23.83 1.23.83.72 1.22 1.87.87 2.33.66.07-.52.28-.87.5-1.07-1.78-.2-3.65-.89-3.65-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82a7.6 7.6 0 0 1 4 0c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48v2.2c0 .21.15.46.55.38A8 8 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>View on GitHub</a></div>
   </div>
   <a class="shot" href="tour.html" aria-label="Open the tour deck"><img src="gallery/thumbs/tour.jpg" alt="Title slide of the tour deck: Presentations, written in HTML"><span class="play">&#9654; Play the tour</span></a>
 </div>
@@ -127,7 +127,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
 
 <section id="install"><div class="wrap">
   <h2>Install</h2>
-  <p class="sub">Two commands in Claude Code, then ask for a presentation.</p>
+  <p class="sub">Two commands in Claude Code, then ask for a presentation. The skills and the source are on <a href="https://github.com/hisham-abuella/present-in-html">GitHub</a>.</p>
   <div class="install">
     <div class="step"><h3>As a plugin</h3><p>Recommended. Updates arrive with <code>/plugin update</code>.</p>
 <pre><button class="copy" type="button">Copy</button>/plugin marketplace add hisham-abuella/present-in-html
@@ -149,7 +149,7 @@ npm i playwright && npx playwright install chromium</pre></div>
   <p class="sub">Every deck here is one HTML file. Open one, press <b>F</b> for fullscreen, <b>P</b> for the presenter window, <b>S</b> to try another theme.</p>
   <div class="tools" role="group" aria-label="Filter templates">
     <button class="chip" data-k="all" aria-pressed="true">All<small>52</small></button>
-    <button class="chip" data-k="example" aria-pressed="false">Keynote Pro examples<small>13</small></button>
+    <button class="chip" data-k="example" aria-pressed="false">Example decks<small>13</small></button>
     <button class="chip" data-k="look" aria-pressed="false">Profession looks<small>26</small></button>
     <button class="chip" data-k="legacy" aria-pressed="false">Earlier formats<small>13</small></button>
     <input id="q" type="search" placeholder="Search: finance, Arabic, dark..." aria-label="Search templates">
