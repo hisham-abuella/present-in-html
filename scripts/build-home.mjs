@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// Writes the repo's landing page, index.html: what present-in-html is, the four skills, how to install, and the template
+// Writes the repo's landing page, index.html: what present-in-html is, the skills, how to install, and the template
 // library (example decks, the 26 profession looks from keynote-pro/tools/library-data.mjs, and the earlier formats).
 //   node scripts/build-home.mjs
 import fs from 'node:fs';
@@ -195,7 +195,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
     <div class="step"><h3>Then just ask</h3><p>Or call a skill directly, like <code>/present-in-html:review-deck</code>.</p>
 <pre><button class="copy" type="button">Copy</button>Make a 10-minute deck for our Q3 board review.
 Revenue was $4.2M, up 18%.</pre></div>
-    <div class="step"><h3>Without the plugin system</h3><p>Copies the four skills into <code>~/.claude/skills/</code>.</p>
+    <div class="step"><h3>Without the plugin system</h3><p>Copies the skills into <code>~/.claude/skills/</code>; the workflow needs the plugin.</p>
 <pre><button class="copy" type="button">Copy</button>git clone ${REPO}.git
 cd present-in-html && ./install-skill.sh</pre></div>
     <div class="step"><h3>For the checker</h3><p>Playwright, installed once outside the plugin folder.</p>

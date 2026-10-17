@@ -1,0 +1,2 @@
+{"label": "qwen-moe", "model": "qwen3.6:35b-a3b", "provider": "ollama", "started": 1792212021, "ended": 1792213228,
+ "wall_seconds": 1207, "exit_code": 0, "timed_out": false, "work_dir": "/var/folders/b3/5kpg6gn93ks629bn5bdr6ggw0000gn/T//pih-eval-20261016-214018-stats-101-planned.tO6P/qwen-moe"}

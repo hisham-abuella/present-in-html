@@ -12,7 +12,7 @@ pricing, the demo) and keep ids short, lowercase, unique and stable across edits
 ## Slides that run: live demos on a slide
 
 When a live demo beats a picture (product UI, calculator, simulation, sound, code to edit, a game, an embedded page, video,
-camera), build it on the slide. `keynote-pro/examples/beyond-slides.html` has one working pattern for each; copy from it.
+camera), build it on the slide. `assets/examples/beyond-slides.html` has one working pattern for each; copy from it.
 What those patterns get right, and why:
 - Slide: `data-layout="two-column" data-fit="off" data-demo`, a `.col.bx-text` (label, h2, short text) and a `.col.bx-stage.bx-ui`.
 - Wrap widgets in `.bx-ui` and stop `click` there, or every click inside the demo advances the deck. Text inputs stop
@@ -50,4 +50,4 @@ from the marker comments in `<style id="kp-themes">`.
 
 ## Old decks
 
-`node "$KP/tools/upgrade.mjs" deck.html` moves a deck made with an older engine onto the current one, keeping its slides and looks.
+`node "<skill base dir>/scripts/upgrade.mjs" deck.html` moves a deck made with an older engine onto the current one, keeping its slides and looks.

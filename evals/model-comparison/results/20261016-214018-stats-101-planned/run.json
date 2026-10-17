@@ -1,0 +1,11 @@
+{
+  "task": "stats-101-planned",
+  "title": "STATS 101 — Module 1: Data, Samples and Describing Data",
+  "run_id": "20261016-214018-stats-101-planned",
+  "claude_version": "2.1.302 (Claude Code)",
+  "ollama_version": "0.40.5",
+  "machine": "Apple M4 Max, 64 GB",
+  "plugin_version": "3.1.0",
+  "git_commit": "ae03c20",
+  "timeout_min": 240, "budget_usd": 20
+}

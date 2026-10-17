@@ -1,0 +1,178 @@
+<section class="slide" data-layout="formula" data-id="zscore">
+  <p class="label">What do the data say?</p>
+  <h2>A z-score counts standard deviations from the mean</h2>
+  <div class="eq"><i>z</i> = (<i>x</i> − mean) / <span class="hot">SD</span></div>
+  <dl class="terms">
+    <div><dt><i>z</i></dt><dd>SDs above (+) or below (−) the mean</dd></div>
+    <div><dt><i>x</i></dt><dd>the value</dd></div>
+    <div><dt>mean</dt><dd>the mean of the data</dd></div>
+    <div><dt>SD</dt><dd>the standard deviation</dd></div>
+  </dl>
+  <p class="example">Exam with mean 70, SD 8. A score of 86: z = (86 − 70) / 8 = 2, two SDs above the mean.</p>
+  <aside class="notes">
+    <p>How unusual is a value? A z-score answers that. z equals the value minus the mean, divided by the standard deviation.</p>
+    <p>It says how many standard deviations a value is above the mean, when it is positive, or below the mean, when it is negative.</p>
+    <p>Example: an exam has mean 70 and standard deviation 8. A score of 86 has z equal to 86 minus 70, divided by 8, which is 2: two standard deviations above the mean.</p>
+    <p>Because z-scores count in standard deviations, they let us compare values on different scales, for example a score on a hard test against a score on an easy one.</p>
+  </aside>
+</section>
+<section class="slide" data-layout="diagram" data-id="rule">
+  <p class="label">What do the data say?</p>
+  <h2>In a bell curve, 68% lie within 1 SD, 95% within 2, 99.7% within 3</h2>
+  <figure class="dg">
+<svg viewBox="0 100 1680 560" role="img" aria-label="Bell curve of exam scores, mean 70, SD 8: 68% between 62 and 78, 95% between 54 and 86, 99.7% between 46 and 94">
+      <g>
+        <path class="dg-line hot" d="M175 419.3 L185 419.2 L195 419.1 L205 418.9 L215 418.7 L225 418.4 L235 418.1 L245 417.8 L255 417.4 L265 416.9 L275 416.4 L285 415.8 L295 415.1 L305 414.3 L315 413.4 L325 412.4 L335 411.2 L345 409.9 L355 408.5 L365 406.8 L375 405 L385 402.9 L395 400.7 L405 398.2 L415 395.4 L425 392.4 L435 389.1 L445 385.4 L455 381.5 L465 377.2 L475 372.6 L485 367.6 L495 362.3 L505 356.6 L515 350.5 L525 344.1 L535 337.3 L545 330.1 L555 322.6 L565 314.7 L575 306.6 L585 298.1 L595 289.4 L605 280.4 L615 271.2 L625 261.8 L635 252.4 L645 242.8 L655 233.3 L665 223.7 L675 214.2 L685 204.9 L695 195.8 L705 186.9 L715 178.4 L725 170.2 L735 162.5 L745 155.3 L755 148.6 L765 142.5 L775 137.1 L785 132.3 L795 128.3 L805 125 L815 122.6 L825 120.9 L835 120.1 L845 120.1 L855 120.9 L865 122.6 L875 125 L885 128.3 L895 132.3 L905 137.1 L915 142.5 L925 148.6 L935 155.3 L945 162.5 L955 170.2 L965 178.4 L975 186.9 L985 195.8 L995 204.9 L1005 214.2 L1015 223.7 L1025 233.3 L1035 242.8 L1045 252.4 L1055 261.8 L1065 271.2 L1075 280.4 L1085 289.4 L1095 298.1 L1105 306.6 L1115 314.7 L1125 322.6 L1135 330.1 L1145 337.3 L1155 344.1 L1165 350.5 L1175 356.6 L1185 362.3 L1195 367.6 L1205 372.6 L1215 377.2 L1225 381.5 L1235 385.4 L1245 389.1 L1255 392.4 L1265 395.4 L1275 398.2 L1285 400.7 L1295 402.9 L1305 405 L1315 406.8 L1325 408.5 L1335 409.9 L1345 411.2 L1355 412.4 L1365 413.4 L1375 414.3 L1385 415.1 L1395 415.8 L1405 416.4 L1415 416.9 L1425 417.4 L1435 417.8 L1445 418.1 L1455 418.4 L1465 418.7 L1475 418.9 L1485 419.1 L1495 419.2 L1505 419.3"/>
+        <path class="dg-line" d="M175 420H1505"/>
+        <path class="dg-line" d="M270 420V434"/><text class="dg-m" x="270" y="470" text-anchor="middle">46</text><path class="dg-line" d="M460 420V434"/><text class="dg-m" x="460" y="470" text-anchor="middle">54</text><path class="dg-line" d="M650 420V434"/><text class="dg-m" x="650" y="470" text-anchor="middle">62</text><path class="dg-line" d="M840 420V434"/><text class="dg-m" x="840" y="470" text-anchor="middle">70</text><path class="dg-line" d="M1030 420V434"/><text class="dg-m" x="1030" y="470" text-anchor="middle">78</text><path class="dg-line" d="M1220 420V434"/><text class="dg-m" x="1220" y="470" text-anchor="middle">86</text><path class="dg-line" d="M1410 420V434"/><text class="dg-m" x="1410" y="470" text-anchor="middle">94</text>
+      </g>
+      <g data-build="fade" data-order="1"><path class="dg-line" stroke-dasharray="10 8" d="M650 238V420M1030 238V420"/></g>
+      <g data-build="draw" data-order="1"><path class="dg-line hot" d="M650 516V544M650 530H1030M1030 516V544"/></g>
+      <g data-build="fade" data-order="1"><text class="dg-b" x="840" y="516" text-anchor="middle">about 68%</text></g>
+      <g data-build="fade" data-order="2"><path class="dg-line" stroke-dasharray="10 8" d="M460 379.4V420M1220 379.4V420"/></g>
+      <g data-build="draw" data-order="2"><path class="dg-line hot" d="M460 576V604M460 590H1220M1220 576V604"/></g>
+      <g data-build="fade" data-order="2"><text class="dg-b" x="840" y="576" text-anchor="middle">about 95%</text></g>
+      <g data-build="fade" data-order="3"><path class="dg-line" stroke-dasharray="10 8" d="M270 416.7V420M1410 416.7V420"/></g>
+      <g data-build="draw" data-order="3"><path class="dg-line hot" d="M270 636V664M270 650H1410M1410 636V664"/></g>
+      <g data-build="fade" data-order="3"><text class="dg-b" x="840" y="636" text-anchor="middle">about 99.7%</text></g>
+      <g data-build="fade" data-order="4">
+        <circle class="dg-dot hot" cx="1220" cy="379.4" r="14"/>
+        <text class="dg-b" x="1250" y="309.4">86: z = 2</text>
+        <text class="dg-s" x="1250" y="349.4">better than about 97.5%</text>
+      </g>
+    </svg>
+    <figcaption>Exam scores, mean 70, SD 8. The rule needs roughly bell-shaped data; it does not fit skewed data like the commutes.</figcaption>
+  </figure>
+  <aside class="notes">
+    <p>For data with a roughly normal, bell-shaped distribution, there is a handy rule. Here are the exam scores again: mean 70, standard deviation 8.</p>
+    <p>About 68% of values lie within 1 SD of the mean: between 62 and 78.</p>
+    <p>About 95% lie within 2 SDs: between 54 and 86.</p>
+    <p>About 99.7% lie within 3 SDs: between 46 and 94.</p>
+    <p>So a score of 86, which is z equal to 2, is better than about 97.5% of the class: the 95% in the middle, plus half of the 5% left over, the lower tail.</p>
+    <p>One warning: the rule only applies to roughly bell-shaped data. It does not apply to strongly skewed data like our commute times.</p>
+  </aside>
+</section>
+<section class="slide" data-layout="diagram" data-id="correlation">
+  <p class="label">Correlation is not causation</p>
+  <h2>Ice-cream sales and drownings rise together, but hot weather drives both</h2>
+  <figure class="dg">
+<svg viewBox="0 20 1680 470" role="img" aria-label="Ice-cream sales and drownings rise together; hot weather drives both">
+      <g data-build="fade" data-order="1">
+        <rect class="dg-box" x="80" y="330" width="500" height="120" rx="6"/><text class="dg-t" x="330" y="403" text-anchor="middle">Ice-cream sales</text>
+        <rect class="dg-box" x="1100" y="330" width="500" height="120" rx="6"/><text class="dg-t" x="1350" y="403" text-anchor="middle">Drownings</text>
+        <text class="dg-s" x="840" y="370" text-anchor="middle">rise and fall together</text>
+        <path class="dg-line" stroke-dasharray="12 10" d="M590 390H1090"/>
+      </g>
+      <g data-build="fade" data-order="2">
+        <rect class="dg-hot" x="590" y="40" width="500" height="120" rx="6"/><text class="dg-b" x="840" y="113" text-anchor="middle">Hot weather</text>
+        <text class="dg-s" x="840" y="225" text-anchor="middle">confounding variable</text>
+      </g>
+      <g data-build="draw" data-order="2"><path class="dg-line hot" d="M700 165L400 322M422 306L400 322L428 323M980 165L1280 322M1252 323L1280 322L1258 306"/></g>
+      <g data-build="fade" data-order="3"><text class="dg-b" x="840" y="430" text-anchor="middle">not cause and effect</text></g>
+    </svg>
+    <figcaption>Other reasons for a correlation without causation: reverse causation, and coincidence when many variables are searched.</figcaption>
+  </figure>
+  <aside class="notes">
+    <p>The last idea of today. Two variables are associated, or correlated, when they tend to move together.</p>
+    <p>Across a year, ice-cream sales and drownings rise and fall together. Ask the room: does ice cream cause drowning?</p>
+    <p>No. Hot weather drives both. Hot weather is a confounding variable: a third variable that affects both of the variables we are studying.</p>
+    <p>So the link is real, but it is not cause and effect. Other reasons for a correlation without causation are reverse causation, and coincidence, especially when many variables are searched.</p>
+    <p>Only a randomised experiment, the kind we saw earlier, can show cause and effect.</p>
+  </aside>
+</section>
+<section class="slide" data-layout="quiz" data-id="quiz-1">
+  <p class="label">Check your understanding · 1 of 6</p>
+  <h2>Is "favourite colour" categorical or numerical, and at what level?</h2>
+  <ol class="opts" data-build="reveal">
+    <li data-correct>Categorical, nominal</li>
+    <li>Categorical, ordinal</li>
+    <li>Numerical, discrete</li>
+    <li>Numerical, continuous</li>
+  </ol>
+  <aside class="notes">
+    <p>Give the room about twenty seconds, then to reveal.</p>
+    <p>Answer: categorical, nominal. Colours are categories with no natural order.</p>
+  </aside>
+</section>
+<section class="slide" data-layout="quiz" data-id="quiz-2">
+  <p class="label">Check your understanding · 2 of 6</p>
+  <h2>A survey on exercise only asks people leaving a gym. What is the problem?</h2>
+  <ol class="opts" data-build="reveal">
+    <li>Response bias from the wording</li>
+    <li data-correct>Selection bias from a convenience sample</li>
+    <li>Non-response bias</li>
+    <li>The sample is too small</li>
+  </ol>
+  <aside class="notes">
+    <p>Give the room a moment, then to reveal.</p>
+    <p>Answer: selection bias from a convenience sample. Gym-goers exercise more than the population, so the survey overstates how much people exercise. And asking more people at the gym would not help.</p>
+  </aside>
+</section>
+<section class="slide" data-layout="quiz" data-id="quiz-3">
+  <p class="label">Check your understanding · 3 of 6</p>
+  <h2>Find the mean and median of 2, 4, 4, 5, 10.</h2>
+  <ol class="opts" data-build="reveal">
+    <li>Mean 4, median 5</li>
+    <li>Mean 5, median 5</li>
+    <li data-correct>Mean 5, median 4</li>
+    <li>Mean 4, median 4</li>
+  </ol>
+  <aside class="notes">
+    <p>Let them work it out on paper, then to reveal.</p>
+    <p>Answer: mean 5, median 4. The sum is 25 and there are 5 values, so the mean is 5. The middle of the ordered values is 4. The 10 pulls the mean above the median.</p>
+  </aside>
+</section>
+<section class="slide" data-layout="quiz" data-id="quiz-4">
+  <p class="label">Check your understanding · 4 of 6</p>
+  <h2>Which is resistant to outliers: the mean or the median?</h2>
+  <ol class="opts" data-build="reveal">
+    <li>The mean</li>
+    <li data-correct>The median</li>
+    <li>Both</li>
+    <li>Neither</li>
+  </ol>
+  <aside class="notes">
+    <p>Quick one: hands up for each option, then to reveal.</p>
+    <p>Answer: the median. Remember the commutes: removing the 76 moved the mean from 26 to about 20.4, but the median only from 21 to 20.</p>
+  </aside>
+</section>
+<section class="slide" data-layout="quiz" data-id="quiz-5">
+  <p class="label">Check your understanding · 5 of 6</p>
+  <h2>An exam has mean 70 and SD 8. What is the z-score of 82?</h2>
+  <ol class="opts" data-build="reveal">
+    <li>1</li>
+    <li data-correct>1.5</li>
+    <li>2</li>
+    <li>12</li>
+  </ol>
+  <aside class="notes">
+    <p>Give them twenty seconds, then to reveal.</p>
+    <p>Answer: 1.5. z equals 82 minus 70, divided by 8: 12 divided by 8 is 1.5. The score is one and a half standard deviations above the mean. If anyone chose 12, they forgot to divide by the SD.</p>
+  </aside>
+</section>
+<section class="slide" data-layout="quiz" data-id="quiz-6">
+  <p class="label">Check your understanding · 6 of 6</p>
+  <h2>Ice-cream sales and drownings are correlated. Does ice cream cause drowning?</h2>
+  <ol class="opts" data-build="reveal">
+    <li>Yes: the correlation is strong</li>
+    <li data-correct>No: hot weather drives both</li>
+    <li>Yes: sales come first</li>
+    <li>No: drowning causes sales</li>
+  </ol>
+  <aside class="notes">
+    <p>Last question. to reveal.</p>
+    <p>Answer: no. Hot weather is a confounding variable that drives both. Correlation is not causation.</p>
+  </aside>
+</section>
+<section class="slide" data-layout="two-column" data-id="summary">
+  <h2>You can now turn data into conclusions, despite variation</h2>
+  <div class="col"><h3>Collecting data</h3><ul><li>Population → parameter (μ, σ); sample → statistic (x̄, s)</li><li>Categorical or numerical; variable types and levels</li><li>Random samples + randomised experiments; bias matters</li></ul></div>
+  <div class="col"><h3>Describing data</h3><ul><li>Always plot first (Anscombe)</li><li>Centre: mean, median, mode. Spread: range, IQR, SD</li><li>Outliers: below Q1−1.5×IQR or above Q3+1.5×IQR</li><li>z = (x − mean) / SD; bell-shaped: 68–95–99.7</li><li>Correlation ≠ causation</li></ul></div>
+  <aside class="notes">
+    <p>Here is what you now have. Statistics turns data into conclusions in the presence of variation, and you can now ask the three questions.</p>
+    <p>Where do the data come from: a population described by parameters, a sample described by statistics, and whether the sample and the study were random. What kind of data are they: categorical or numerical, and at what level.</p>
+    <p>What do the data say: plot first, then centre and spread, outliers with the 1.5 times IQR rule, z-scores, and the 68, 95, 99.7 rule for bell-shaped data. And never read cause into a correlation without looking for a confounder.</p>
+    <p>Above all: how data are collected matters more than how much there is. A huge biased sample loses to a small, well-chosen one.</p>
+    <p>Next time, Module 2: probability, the language of uncertainty. You came in today with no statistics, and you leave able to question the next poll you read. Well done, all of you.</p>
+  </aside>
+</section>

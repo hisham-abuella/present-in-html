@@ -1,0 +1,244 @@
+{
+  "run": {
+    "task": "stats-101-planned",
+    "title": "STATS 101 — Module 1: Data, Samples and Describing Data",
+    "run_id": "20261016-214018-stats-101-planned",
+    "claude_version": "2.1.302 (Claude Code)",
+    "ollama_version": "0.40.5",
+    "machine": "Apple M4 Max, 64 GB",
+    "plugin_version": "3.1.0",
+    "git_commit": "ae03c20",
+    "timeout_min": 240,
+    "budget_usd": 20
+  },
+  "rows": [
+    {
+      "label": "gemma",
+      "model": "gemma4:26b-mlx",
+      "provider": "ollama",
+      "finished": true,
+      "timed_out": false,
+      "exit_code": 0,
+      "wall_seconds": 4354,
+      "api_seconds": 4353,
+      "turns": 18,
+      "tool_calls": 17,
+      "tools": {
+        "Bash": 2,
+        "Read": 2,
+        "Write": 13
+      },
+      "skills_used": [
+        "present-in-html:present-in-html (prompt)"
+      ],
+      "skill_used": true,
+      "cost_usd": 0,
+      "cost_note": "local (electricity only)",
+      "tokens": {
+        "input": 109280,
+        "output": 54053,
+        "cache_read": 1427479,
+        "cache_write": 0
+      },
+      "models_called": [
+        "gemma4:26b-mlx"
+      ],
+      "loaded": {
+        "plugins": [
+          "present-in-html",
+          "cc-plugin-agents-md",
+          "cc-plugin-telemetry",
+          "cc-plugin-plugin-authoring"
+        ],
+        "mcp_servers": []
+      },
+      "deck": null,
+      "checker": null,
+      "stats": {},
+      "judge": null
+    },
+    {
+      "label": "qwen-local",
+      "model": "qwen3.8:27b-mlx",
+      "provider": "ollama",
+      "finished": false,
+      "timed_out": false,
+      "exit_code": 1,
+      "wall_seconds": 3663,
+      "api_seconds": 3661,
+      "turns": 13,
+      "tool_calls": 9,
+      "tools": {
+        "Bash": 3,
+        "Read": 5,
+        "Write": 1
+      },
+      "skills_used": [
+        "present-in-html:present-in-html (prompt)"
+      ],
+      "skill_used": true,
+      "cost_usd": 0,
+      "cost_note": "local (electricity only)",
+      "tokens": {
+        "input": 522928,
+        "output": 11099,
+        "cache_read": 139284,
+        "cache_write": 0
+      },
+      "models_called": [
+        "qwen3.8:27b-mlx"
+      ],
+      "loaded": {
+        "plugins": [
+          "present-in-html",
+          "cc-plugin-agents-md",
+          "cc-plugin-telemetry",
+          "cc-plugin-plugin-authoring"
+        ],
+        "mcp_servers": []
+      },
+      "deck": null,
+      "checker": null,
+      "stats": {},
+      "judge": null
+    },
+    {
+      "label": "qwen-moe",
+      "model": "qwen3.6:35b-a3b",
+      "provider": "ollama",
+      "finished": true,
+      "timed_out": false,
+      "exit_code": 0,
+      "wall_seconds": 1207,
+      "api_seconds": 1177,
+      "turns": 31,
+      "tool_calls": 30,
+      "tools": {
+        "Read": 2,
+        "Bash": 14,
+        "Write": 6,
+        "Edit": 8
+      },
+      "skills_used": [
+        "present-in-html:present-in-html (prompt)"
+      ],
+      "skill_used": true,
+      "cost_usd": 0,
+      "cost_note": "local (electricity only)",
+      "tokens": {
+        "input": 102893,
+        "output": 70144,
+        "cache_read": 2988113,
+        "cache_write": 0
+      },
+      "models_called": [
+        "qwen3.6:35b-a3b"
+      ],
+      "loaded": {
+        "plugins": [
+          "present-in-html",
+          "cc-plugin-agents-md",
+          "cc-plugin-telemetry",
+          "cc-plugin-plugin-authoring"
+        ],
+        "mcp_servers": []
+      },
+      "deck": "output/deck.html",
+      "checker": {
+        "pass": true,
+        "slides": 30,
+        "issues": 0,
+        "warnings": 0
+      },
+      "stats": {
+        "slides": 30,
+        "slides_with_notes": 30,
+        "diagrams": 10,
+        "slides_with_animation": 20,
+        "images": 0,
+        "placeholders": 2,
+        "layouts": 12,
+        "words_on_slides": 1458,
+        "words_in_notes": 2830,
+        "has_quiz": true,
+        "deck_kb": 201
+      },
+      "judge": {
+        "scores": {
+          "accuracy": 5,
+          "coverage": 5,
+          "teaching": 5,
+          "visual": 4,
+          "diagrams": 4,
+          "notes": 4,
+          "requirements": 5
+        },
+        "overall": 9,
+        "incorrect_claims": [],
+        "invented_claims": [
+          {
+            "slide": 25,
+            "claim": "Gym-goers exercise more than the population, so the survey overstates how much people exercise. And asking more people at the gym would not help.",
+            "true": true
+          },
+          {
+            "slide": 22,
+            "claim": "the 95% in the middle, plus half of the 5% left over, the lower tail.",
+            "true": true
+          },
+          {
+            "slide": 2,
+            "claim": "If every student had exactly the same commute, we would not need it.",
+            "true": true
+          },
+          {
+            "slide": 11,
+            "claim": "think of them as the four years of study",
+            "true": true
+          }
+        ],
+        "ui_issues": [
+          {
+            "slide": 11,
+            "issue": "In the Systematic panel the third row is missing its hollow circles; only the one filled dot is drawn, so the panel doesn't match the caption \"the same 20 people in 4 groups\".",
+            "severity": "minor"
+          },
+          {
+            "slide": 2,
+            "issue": "The image placeholder is a decorative arc panel with no frame or caption. The caption text sits squeezed directly under the bullets in a small monospace font, so it reads like slide text.",
+            "severity": "minor"
+          },
+          {
+            "slide": 4,
+            "issue": "Same as slide 2: the left panel is decorative, and the placeholder caption is placed in the text column instead of on the image area.",
+            "severity": "minor"
+          },
+          {
+            "slide": 22,
+            "issue": "The 99.7% bracket sits very close to the caption at the bottom, so the lower part of the slide is cramped. The title also breaks awkwardly between \"1\" and \"SD\".",
+            "severity": "minor"
+          },
+          {
+            "slide": 10,
+            "issue": "The slide has no section kicker label, unlike the other content slides, even though the notes say \"Back to the first question\".",
+            "severity": "minor"
+          }
+        ],
+        "major_mistakes": [
+          "Speaker notes on every quiz slide (24 to 29) say \"then to reveal\" without the key or action, e.g. \"Give the room about twenty seconds, then to reveal.\" The presenter isn't told how to reveal the answer."
+        ],
+        "strengths": [
+          "All the numbers match the source: commute mean, median and mode; range, IQR and SD; the outlier cut-offs; z-scores; 68–95–99.7 intervals; Literary Digest and Gallup figures; Anscombe statistics.",
+          "Follows the module's sections in order across 30 slides, with all 6 quiz questions and a summary.",
+          "Strong diagrams that explain better than text: Digest vs Gallup bars to scale, population/sample loop, variable tree, sampling-method dot panels, Anscombe quartet, dot plot of mean vs median, box plot with cut-offs, bell curve with brackets, confounder diagram.",
+          "Quiz distractors are well chosen (e.g. 12 for forgetting to divide by the SD), and the notes explain each answer.",
+          "Speaker notes are full and conversational, with prompts to ask the room, and they add explanation rather than repeating the slide.",
+          "The checker passes with 0 issues, and the visual style is clean and consistent."
+        ],
+        "verdict": "This is an accurate, well-structured and nicely illustrated deck that could be taught from tomorrow. No factual errors were found, and the few points not in the source are harmless teaching remarks. Remaining issues are small: the reveal instruction in the quiz notes is missing its key, the systematic-sampling panel has a rendering glitch, and the image placeholders are weakly presented.",
+        "cost_usd": 0.7019542,
+        "model": "claude-opus-5-5"
+      }
+    }
+  ]
+}

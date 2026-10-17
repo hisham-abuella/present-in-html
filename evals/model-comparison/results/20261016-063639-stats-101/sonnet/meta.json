@@ -1,0 +1,2 @@
+{"label": "sonnet", "model": "claude-sonnet-5-5", "provider": "anthropic", "started": 1792158473, "ended": 1792158797,
+ "wall_seconds": 324, "exit_code": 0, "timed_out": false, "work_dir": "/var/folders/b3/5kpg6gn93ks629bn5bdr6ggw0000gn/T//pih-eval-20261016-063639-stats-101.0eiu/sonnet"}

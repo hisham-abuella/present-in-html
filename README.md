@@ -31,7 +31,7 @@ In Claude Code:
 
 Then ask for a presentation. That's it.
 
-## The four skills
+## The skills
 
 You don't need to name them: Claude picks the right one from what you ask.
 
@@ -41,6 +41,23 @@ You don't need to name them: Claude picks the right one from what you ask.
 | **edit-deck** | Opens your deck in a click-and-type editor in the browser, to fix wording and notes yourself. Save writes the same file. | "Let me fix the wording myself" |
 | **review-deck** | Reviews a deck against its audience and time slot: timing, jargon, story, sources. Gives a verdict and concrete fixes. | "Will this fit in 15 minutes for non-technical managers?" |
 | **publish-deck** | Publishes the deck and its images to GitHub Pages and gives you a link to share. | "Put my deck online so I can send a link" |
+| **deck-workflow** | Runs the whole thing: plan, build, review, fix, publish, or picks it up at any step. | "Plan, build and review a 12-minute board deck from q3.pdf" |
+
+## The workflow
+
+Each step is done by the agent and model that suit it, handing off through files in one folder:
+
+| Step | Agent | Model | Output |
+|---|---|---|---|
+| 1. Plan | deck-planner | Opus | `PLAN.md`: promise, story, look, one row per slide |
+| 2. Build | deck-builder | Sonnet | the deck, checked in every theme |
+| 3. Review | deck-reviewer | Opus | `REVIEW.md`: PASS or FIX (audience, time, Winston's speaking rules, errors) |
+| 3b. Fix | deck-builder | Sonnet | fixes the blocking items, then it is reviewed again (up to 2 rounds) |
+| 4. Publish | deck-publisher | Sonnet | a GitHub Pages link, only after you approve |
+
+Run it with `/present-in-html:make-deck` (plan to review) and `/present-in-html:publish-deck` (after your yes), or just ask.
+Start anywhere: with a request it plans, with a `PLAN.md` it builds, with a finished deck it reviews. Edit the wording
+yourself at any point with edit-deck. Without Claude Code's dynamic workflows, the same agents run one after another.
 
 ## What you get
 
@@ -66,8 +83,8 @@ example deck and look opens live in your browser.
 
 **From a local clone:** `/plugin marketplace add ./present-in-html`
 
-**Without the plugin system:** `./install-skill.sh` copies the four skills into `~/.claude/skills/` (or this project's
-`.claude/skills/`).
+**Without the plugin system:** `./install-skill.sh` copies the skills into `~/.claude/skills/` (or this project's
+`.claude/skills/`). The agents and workflows need the plugin install.
 
 **The slide checker** uses Playwright. Install it once, outside the plugin folder:
 
@@ -77,7 +94,7 @@ mkdir -p ~/.kp-tools && cd ~/.kp-tools && npm i playwright && npx playwright ins
 
 | Path | What it is |
 |------|------------|
-| `plugins/present-in-html/` | The plugin: the four skills. Only this folder is installed |
+| `plugins/present-in-html/` | The plugin: five skills, four agents (`agents/`) and two workflows (`workflows/`). Only this folder is installed |
 | `keynote-pro/` | The slide engine's source (Keynote Pro): build tools, themes, examples, profession library |
 | `scripts/build-plugin.sh` | Syncs the engine into the plugin (`--check` reports drift) |
 | `scripts/build-home.mjs` | Regenerates the website (`index.html`) |

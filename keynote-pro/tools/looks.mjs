@@ -3,7 +3,9 @@
    LIBRARY markers of its <style id="kp-themes">, and the settings panel (S) lists them under "Library". */
 import fs from 'node:fs';
 import path from 'node:path';
-export const here = path.join(path.dirname(new URL(import.meta.url).pathname), '..');
+// The folder holding template.html and library/: the engine root here (tools/..), or a skill's assets/ (scripts/../assets).
+const up = path.join(path.dirname(new URL(import.meta.url).pathname), '..');
+export const here = fs.existsSync(path.join(up, 'template.html')) ? up : path.join(up, 'assets');
 const L = path.join(here, 'library');
 export const looks = () => JSON.parse(fs.readFileSync(path.join(L, 'looks.json'), 'utf8'));
 const block = (name, body) => `/* LIBRARY:${name}:START */\n${body}\n/* LIBRARY:${name}:END */`;

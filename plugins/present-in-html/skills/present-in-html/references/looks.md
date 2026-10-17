@@ -1,12 +1,10 @@
 # Looks, layouts and features (summary)
 
-Pick from this page; you do not need to open sample decks. Full specs (colours, type, signatures) are in
-`keynote-pro/README.md` sections 4 and 14. Every deck in the gallery, live: https://github.com/hisham-abuella/present-in-html/tree/main/keynote-pro (open `index.html` and
-`library/index.html` there).
+Pick from this page; you do not need to open sample decks. The core themes' full specs (colours, type, signatures) are in
+`references/manual.md` section 4. Every example and profession deck, live in the browser: https://hisham-abuella.github.io/present-in-html/
 
-Model decks shipped with the skill: `keynote-pro/template.html` (every layout once, the starting point),
-`keynote-pro/examples/every-layout.html` (all layouts with photos, one story) and `keynote-pro/examples/beyond-slides.html`
-(live demos on slides). Copy patterns from those.
+Shipped with the skill: `assets/template.html` (every layout once: the starting point and the markup to copy) and
+`assets/examples/beyond-slides.html` (live demos on slides).
 
 ## Core themes (in the template)
 
@@ -22,7 +20,7 @@ Model decks shipped with the skill: `keynote-pro/template.html` (every layout on
 Core font pairings (`data-fonts`): inter, sora, grotesk, plex, fraunces, playfair, spectral, cormorant, system (offline).
 Empty `data-fonts` uses the theme's own pairing.
 
-## Library themes (add with `tools/add-look.mjs deck.html --theme <id>`)
+## Library themes (add with `scripts/add-look.mjs deck.html --theme <id>`)
 
 Each has its own font pairing (also usable with any theme as `data-fonts`). Recipe = layouts in order for a typical deck.
 
@@ -87,7 +85,7 @@ Fields: Engineering and data, Health and science, Education, Business, Law and d
 | `materials` | a board of swatches or samples |
 | `references` | sources and further reading |
 
-Markup for each is in `keynote-pro/README.md` section 2 (the cheat-sheet).
+Markup for each is in `references/manual.md` section 2 (the cheat-sheet).
 
 ## Features worth using
 

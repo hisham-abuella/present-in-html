@@ -1,0 +1,26 @@
+outline of deck.html:
+   1. Decks that look designed  [title]
+      2. Agenda  [agenda, NO NOTES]
+   3. Why this matters  [section, NO NOTES]
+      4. One sentence, set big, is a whole slide.  [statement, NO NOTES]
+      5. Five points at most  [bullets, 4 builds, NO NOTES]
+      6. Before and after  [two-column, NO NOTES]
+      7. Image left, text right  [image-left, NO NOTES]
+      8. And the mirror  [image-right, NO NOTES]
+      9. Let the picture carry it  [full-bleed, NO NOTES]
+     10. 98%  [big-number, 1 builds, NO NOTES]
+     11. Three numbers that matter  [stats, 3 builds, NO NOTES]
+     12. Revenue by quarter  [chart, 1 builds, NO NOTES]
+     13. Pick a plan  [comparison, NO NOTES]
+     14. Roadmap  [timeline, 4 builds, NO NOTES]
+     15. How it works  [process, 4 builds, NO NOTES]
+     16. Design is not how it looks. It is how it works.  [quote, NO NOTES]
+     17. Syntax-tinted, step by step  [code, 3 builds, NO NOTES]
+     18. The team  [team, NO NOTES]
+     19. Diagrams that draw themselves  [diagram, 3 builds]
+     20. Sources  [references]
+  21. Thank you  [closing, NO NOTES]
+ok   deck.html: 21 slides, 0 issues (2.2s)
+  warn  slide 2, 3, 4, 5, 6, 7, 8, 9 ... (18 total): no speaker notes
+           fix: add <aside class="notes"><p>what to say</p></aside>
+checker_exit=0

@@ -1,0 +1,12 @@
+Use the present-in-html skill to turn wireless-101-module-1.md (in this folder) into the slide deck for Module 1 of my Wireless 101 course: a 50-minute lecture for first-year undergraduates with no radio background.
+
+Requirements:
+- 20 to 30 slides that follow the module's sections in order.
+- Use only the facts, numbers and formulas in the file; do not invent any.
+- Add animated diagrams (diagrams that draw themselves) wherever they explain an idea better than text.
+- Where a photo or picture would help, put an image placeholder with a short caption saying what image should go there.
+- Speaker notes on every slide.
+- End with the quiz and a summary slide.
+- Save the deck as deck.html in this folder and run the skill's checker until it passes.
+
+Do not ask me any questions; make every decision yourself and finish the deck in one go.

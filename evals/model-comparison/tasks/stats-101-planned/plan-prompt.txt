@@ -1,0 +1,15 @@
+/present-in-html:present-in-html Plan only: do not build the deck and do not write any HTML file. Read stats-101-module-1.md (in this folder) and write PLAN.md in this folder for the slide deck for Module 1 of my STATS 101 course: a 50-minute lecture for first-year undergraduates with no statistics background.
+
+The plan must give the deck these properties:
+- 20 to 30 slides that follow the module's sections in order.
+- Only the facts, numbers and formulas in the file; nothing invented.
+- Animated diagrams (diagrams that draw themselves) wherever they explain an idea better than text: say exactly what each one draws, with its labels and numbers.
+- Image placeholders, each with a short caption saying what image should go there, where a photo or picture would help.
+- Speaker notes on every slide.
+- The quiz and then a summary slide at the end.
+
+The deck will be built from your plan by a smaller, much slower local model that has never used this skill. Make the plan complete enough that the builder never has to read the skill's reference files:
+1. Use the skill's PLAN.md format (header fields and the slide table).
+2. After the table, add a section "## Slides in full": for every slide, its exact on-slide text, its speaker notes written out in full, and for each diagram the exact SVG to paste.
+3. End with a section "## Build steps": numbered steps with the exact shell commands and full paths (the builder runs in a different, new folder: set D="$PWD" rather than this folder's path, and name the deck deck.html) (template, look, assembling parts of about 10 slides, checker), and a copy of the HTML markup for each layout the plan uses, so the builder only copies and fills in.
+4. Only write words that belong on the slides inside slide text and notes; plan field names such as "Fence" must not appear on slides or in notes.

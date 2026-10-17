@@ -1,0 +1,65 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["scores", "overall", "incorrect_claims", "invented_claims", "ui_issues", "major_mistakes", "strengths", "verdict"],
+  "properties": {
+    "scores": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["accuracy", "coverage", "teaching", "visual", "diagrams", "notes", "requirements"],
+      "properties": {
+        "accuracy": {"type": "integer", "minimum": 1, "maximum": 5},
+        "coverage": {"type": "integer", "minimum": 1, "maximum": 5},
+        "teaching": {"type": "integer", "minimum": 1, "maximum": 5},
+        "visual": {"type": "integer", "minimum": 1, "maximum": 5},
+        "diagrams": {"type": "integer", "minimum": 1, "maximum": 5},
+        "notes": {"type": "integer", "minimum": 1, "maximum": 5},
+        "requirements": {"type": "integer", "minimum": 1, "maximum": 5}
+      }
+    },
+    "overall": {"type": "integer", "minimum": 1, "maximum": 10},
+    "incorrect_claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["slide", "claim", "correction", "severity"],
+        "properties": {
+          "slide": {"type": "integer"},
+          "claim": {"type": "string"},
+          "correction": {"type": "string"},
+          "severity": {"type": "string", "enum": ["major", "minor"]}
+        }
+      }
+    },
+    "invented_claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["slide", "claim", "true"],
+        "properties": {
+          "slide": {"type": "integer"},
+          "claim": {"type": "string"},
+          "true": {"type": "boolean"}
+        }
+      }
+    },
+    "ui_issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["slide", "issue", "severity"],
+        "properties": {
+          "slide": {"type": "integer"},
+          "issue": {"type": "string"},
+          "severity": {"type": "string", "enum": ["major", "minor"]}
+        }
+      }
+    },
+    "major_mistakes": {"type": "array", "items": {"type": "string"}},
+    "strengths": {"type": "array", "items": {"type": "string"}},
+    "verdict": {"type": "string"}
+  }
+}

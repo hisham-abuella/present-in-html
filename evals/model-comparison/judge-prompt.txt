@@ -1,0 +1,27 @@
+You are grading a slide deck made by an AI model from a course module. Grade it strictly and fairly; you are not told which model made it.
+
+Files in this folder:
+- source.md: the module the deck had to be built from (the ground truth).
+- request.txt: the exact request the model was given.
+- slides.md: the text on every slide and its speaker notes, in order (layout, diagram, image and placeholder counts in brackets).
+- check.txt: output of the deck's automatic checker (layout, overflow, text size, contrast, missing notes).
+- shots/: a screenshot of every slide in order (slide-01.jpg, slide-02.jpg, ...), with all builds revealed.
+
+Do this:
+1. Read source.md, request.txt, slides.md and check.txt in full.
+2. Look at EVERY screenshot in shots/. Note any slide that is cut off, overlapping, unreadable, empty, broken, cramped, or whose diagram is wrong, mislabelled or does not match the text.
+3. Check every number, formula, unit, date, name and technical claim in slides.md (slide text, diagram labels and notes)
+   against source.md and against correct knowledge of the subject. Report each one that is wrong, and separately each claim
+   that is not in source.md (invented), even if it happens to be true.
+4. Score each criterion from 1 (poor) to 5 (excellent):
+   - accuracy: no wrong or invented facts; formulas and worked examples correct.
+   - coverage: follows the module's sections in order and keeps the key ideas, formulas and worked examples.
+   - teaching: clear for the audience named in request.txt; one idea per slide; good pacing for the time it gives.
+   - visual: from the screenshots: readable, well laid out, consistent, nothing cut off or overlapping.
+   - diagrams: animated diagrams used where they explain better than text, and correct; image placeholders captioned with what goes there.
+   - notes: speaker notes on every slide that tell the presenter what to say, not a copy of the slide.
+   - requirements: everything request.txt asks for (slide count, order, quiz and summary, file name, checker passing).
+5. Give an overall score from 1 to 10 for how ready this deck is to teach from tomorrow.
+
+Return only the structured result. Quote slide text exactly in "claim". Use severity "major" for anything that would teach
+students something wrong or embarrass the lecturer, "minor" otherwise.

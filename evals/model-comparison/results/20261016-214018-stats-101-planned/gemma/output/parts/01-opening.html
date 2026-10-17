@@ -1,0 +1,193 @@
+<section class="slide" data-layout="title" data-id="start">
+  <p class="label">STATS 101 · Module 1</p>
+  <h1 class="h1">Data, samples and <em class="em">describing data</em></h1>
+  <p class="sub">By the end of today you can say where data come from, what kind they are, and what they say.</p>
+  <aside class="notes">
+    <p>Welcome to STATS 101. Today is Module 1: data, samples and describing data. You need nothing beyond high-school algebra.</p>
+    <p>Here is what you get from the next fifty minutes. By-the-end you will be able to look at any set of numbers and ask three questions: where did these data come from, what kind of data are they, and what do they actually say?</p>
+    <p>We finish with a short quiz so you can check yourself, and a one-slide summary to take away.</p>
+  </aside>
+</section>
+<section class="slide" data-layout="image-right" data-id="why">
+  <figure></figure>
+  <p class="label">Why statistics?</p>
+  <h2 class="h2">Statistics draws conclusions from data that vary</h2>
+  <ul data-build="list">
+    <li class="li"><strong class="strong">Descriptive statistics</strong> summarise the data we have: tables, graphs, averages. Most of today.</li>
+    <li class="li"><strong class="strong">Inferential statistics</strong> use a sample to draw conclusions about a larger population, with a measure of uncertainty. Later modules.</li>
+  </ul>
+  <p class="src">Image: everyday statistics: an opinion poll, a weather forecast, a clinical trial</p>
+  <aside class="notes">
+    <p>So what is statistics? It is the science of collecting, describing and drawing conclusions from data in the presence of variation and uncertainty. If every student had exactly the same commute, we would not need it.</p>
+    <p>[click] There are two branches. Descriptive statistics summarise the data we have: tables, graphs, averages. That is most of today.</p>
+    <p>[click] Inferential statistics go a step further: they use a sample to draw conclusions about a larger population, and they come with a measure of uncertainty. That comes in later modules.</p>
+    <p>You meet statistics every day: opinion polls, clinical trials of new medicines, sports analytics, weather forecasts, and the A/B tests that websites run on you. Ask the room: which of these did you come across this week?</p>
+  </aside>
+</section>
+<section class="slide" data-layout="process" data-id="questions">
+  <p class="label">Today</p>
+  <h2 class="h2">Three questions run through today's lecture</h2>
+  <ol class="steps" data-build="list">
+    <li><h3>Where do the data come from?</h3><p>Populations, samples and study design</p></li>
+    <li><h3>What kind of data are they?</h3><p>Types of variables</p></li>
+    <li><h3>What do the data say?</h3><p>Graphs, centre, spread and shape</p></li>
+  </ol>
+  <aside class="notes">
+    <p>Three questions will run-run through the whole lecture.</p>
+    <p>[click] First: where do the data come from? That covers populations and samples, and how a study was designed.</p>
+    <p>[click] Second: what kind of data are they? Different types of variables need different tools.</p>
+    <p>[click] Third: what do the data say? Graphs, and numbers for centre, spread and shape.</p>
+    <p>Watch the small label at the top of each slide: it tells you which of the three questions we are on.</p>
+  </aside>
+</section>
+<section class="slide" data-layout="image-left" data-id="snow">
+  <figure></figure>
+  <p class="label">London, 1854</p>
+  <h2 class="h2">A map of deaths pointed to one water pump</h2>
+  <p>During a cholera outbreak in Soho, John Snow marked each death on a street map. The deaths clustered around one pump on Broad Street. The pump's handle was removed.</p>
+  <p class="src">Image: John Snow's 1854 map of cholera deaths around the Broad Street pump</p>
+  <aside class="notes">
+    <p>Let us start with two examples from history. London, 1854. There is a cholera outbreak in Soho.</p>
+    <p>[click] John Snow takes a street map and marks each death on it. Look at the map: the deaths cluster around one water pump on Broad street. The pump's handle was removed.</p>
+    <p>[click] A simple picture of data pointed to the cause. Keep that in mind: later today we will make a rule of it, always plot the data first.</p>
+  </aside>
+</section>
+<section class="slide" data-layout="diagram" data-id="digest">
+  <p class="label">United States, 1936</p>
+  <h2 class="h2">2.4 million replies lost to 50,000 well-chosen people</h2>
+  <figure class="dg">
+    <svg viewBox="0 0 1680 420" role="img" aria-label="Bar lengths to scale: about 10 million ballots mailed, about 2.4 million replies, about 50,000 in Gallup's sample">
+      <g data-build="fade" data-order="1">
+        <text class="dg-t" x="0" y="58">Digest mailed</text><text class="dg-s" x="0" y="96">phone books, car lists</text>
+        <text class="dg-t" x="1284.0" y="72">about 10 million</text>
+      </g>
+      <g data-build="draw" data-order="1"><rect class="dg-box" x="440" y="20" width="820" height="80" rx="4"/></g>
+      <g data-build="fade" data-order="2">
+        <text class="dg-t" x="0" y="208">Digest replies</text><text class="dg-s" x="0" y="246">predicted Landon</text>
+        <text class="dg-t" x="660.8" y="222">about 2.4 million: wrong</text>
+      </g>
+      <g data-build="draw" data-order="2"><rect class="dg-box" x="440" y="170" width="196.8" height="80" rx="4"/></g>
+      <g data-build="fade" data-order="3">
+        <text class="dg-t" x="0" y="358">Gallup's sample</text><text class="dg-s" x="0" y="396">predicted Roosevelt</text>
+        <text class="dg-b" x="470" y="372">about 50,000: right</text>
+      </g>
+      <g data-build="draw" data-order="3"><rect class="dg-hot" x="440" y="320" width="6" height="80" rx="4"/></g>
+    </svg>
+    <figcaption>Bars to scale. Roosevelt won about 61% of the popular vote and 46 of the 48 states.</figcaption>
+  </figure>
+  <aside class="notes">
+    <p>Second example: the United States, 1936. The Literary Digest magazine ran a huge poll on the presidential election.</p>
+    <p>[click] It mailed about 10 million ballots, drawn largely from telephone directories and car-registration lists.</p>
+    <p>[click] About 2.4 million came back, and the poll predicted that Alf Landon would beat Franklin D. Roosevelt.</p>
+    <p>[click] George Gallup used a much smaller but better-chosen sample, about 50,000 people, and correctly predicted a Roosevelt win. The bars are to scale: Gallup's sample is a sliver next to the Digest's replies.</p>
+    <p>Roosevelt won with about 61% of the popular vote and 46 of the 48 states. Ask the room: in 1936, who was missing from lists of telephone and car owners?</p>
+  </aside>
+</section>
+<section class="slide" data-layout="statement" data-id="lesson">
+  <p class="label">The lesson of 1936</p>
+  <h2 class="h2">A huge biased sample is worse than a <em class="em">small, well-chosen</em> one.</h2>
+  <aside class="notes">
+    <p>Here is the lesson, and it is the big idea of this whole module: a huge biased sample is worse than a small, well-chosen one. How data are collected matters more than how much data there is. More data does not rescue a bad method; it only gives you a confidently wrong answer. We will meet this again when we talk about bias.</p>
+  </aside>
+</section>
+<section class="slide" data-layout="diagram" data-id="population">
+  <p class="label">Where do the data come from?</p>
+  <h2 class="h2">We measure a sample to learn about a population</h2>
+  <figure class="dg">
+    <svg viewBox="0 0 1680 520" role="img" aria-label="A large population with parameters mu and sigma; a small sample with statistics x-bar and s; the statistic estimates the parameter">
+      <g data-build="fade" data-order="1">
+        <ellipse class="dg-box" cx="380" cy="260" rx="370" ry="230"/>
+        <text class="dg-t" x="380" y="180" text-anchor="middle">Population</text>
+        <text class="dg-s" x="380" y="228" text-anchor="middle">all students at the university</text>
+        <text class="dg-b" x="380" y="310" text-anchor="middle">Parameter: μ, σ</text>
+        <text class="s" x="380" y="354" text-anchor="middle">usually unknown</text>
+      </g>
+      <g data-build="fade" data-order="2">
+        <circle class="dg-box" cx="1430" cy="260" r="210"/>
+        <text class="dg-t" x="1430" y="180" text-anchor="middle">Sample</text>
+        <text class="dg-s" x="1430" y="228" text-anchor="middle">200 students who</text>
+        <text class="dg-s" x="1430" y="264" text-anchor="middle">answered a survey</text>
+        <text class="dg-b" x="1430" y="330" text-anchor="middle">Statistic: x̄, s</text>
+      </g>
+      <g data-build="draw" data-order="2"><path class="dg-line" d="M760 180Q985 100 1205 180M1185 164L1205 180L1182 190"/></g>
+      <g data-build="draw" data-order="3"><path class="dg-line hot" d="M1205 340Q985 420 760 340M780 356L760 340L783 330"/></g>
+      <g data-build="fade" data-order="3"><text class="dg-b" x="985" y="470" text-anchor="middle">the statistic estimates the parameter</text></g>
+    </svg>
+    <figcaption>Memory aid: Population goes with Parameter; Sample goes with Statistic.</figcaption>
+  </figure>
+  <aside class="notes">
+    <p>Now some vocabulary, and the first of our three questions: where do the data come from?</p>
+    <p>[click] The population is the entire group we want to know about, for example all students at the university. A number describing the population is a parameter: the population mean, written mu, and the population standard deviation, written sigma. We usually do not know them.</p>
+    <p>[click] The sample is the part of the population we actually collect data from, say 200 students who answered a survey. A number computed from the sample is a statistic: the sample mean, x-bar, and the sample standard deviation, s.</p>
+    <p>[click] We use the statistic to estimate the parameter. Memory aid: Population goes with Parameter, Sample goes with Statistic. P with P, S with S.</p>
+  </aside>
+</section>
+<section class="slide" data-layout="diagram" data-id="variables">
+  <p class="label">What kind of data are they?</p>
+  <h2 class="h2">Every variable is categorical or numerical</h2>
+  <figure class="dg">
+    <svg viewBox="0 570 1680 570" role="img" aria-label="Variables split into categorical (nominal, ordinal) and numerical (discrete, continuous)">
+      <g>
+        <rect class="dg-hot" x="690" y="0" width="300" height="90" rx="6"/><text class="dg-b" x="840" y="58" text-anchor="middle">Variable</text>
+        <rect class="dg-box" x="226" y="170" width="360" height="90" rx="6"/><text class="dg-t" x="406" y="228" text-anchor="middle">Categorical</text>
+        <rect class="dg-box" x="1093" y="170" width="360" height="90" rx="6"/><text class="dg-t" x="1273" y="228" text-anchor="middle">Numerical</text>
+        <path class="dg-line" d="M840 90L406 170M840 90L1273 170"/>
+      </g>
+      <g data-build="draw" data-order="1"><path class="dg-line" d="M406 260L190 340M406 260L623 340"/></g>
+      <g data-build="fade" data-order="1">
+        <rect class="dg-box" x="0" y="340" width="380" height="130" rx="6"/>
+        <text class="dg-t" x="190" y="395" text-anchor="middle">Nominal</text><text class="dg-s" x="190" y="440" text-anchor="middle">no order</text>
+        <text class="dg-s" x="190" y="520" text-anchor="middle">blood type, favourite</text><text class="dg-s" x="190" y="556" text-anchor="middle">colour, country</text>
+        <rect class="dg-box" x="433" y="340" width="380" height="130" rx="6"/>
+        <text class="dg-t" x="623" y="395" text-anchor="middle">Ordinal</text><text class="dg-s" x="623" y="440" text-anchor="middle">natural order</text>
+        <text class="dg-s" x="623" y="520" text-anchor="middle">satisfaction,</text><text class="dg-s" x="623" y="556" text-anchor="middle">year of study</text>
+      </g>
+      <g data-build="draw" data-order="2"><path class="dg-line" d="M1273 260L1056 340M1273 260L1490 340"/></g>
+      <g data-build="fade" data-order="2">
+        <rect class="dg-box" x="866" y="340" width="380" height="130" rx="6"/>
+        <text class="dg-t" x="1056" y="395" text-anchor="middle">Discrete</text><text class="dg-s" x="1056" y="440" text-anchor="middle">counts</text>
+        <text class="dg-s" x="1056" y="520" text-anchor="middle">number of siblings,</text><text class="dg-s" x="1056" y="556" text-anchor="middle">goals scored</text>
+        <rect class="dg-box" x="1300" y="340" width="380" height="130" rx="6"/>
+        <text class="dg-t" x="1490" y="395" text-anchor="middle">Continuous</text><text class="dg-s" x="1490" y="440" text-anchor="middle">measurements</text>
+        <text class="dg-s" x="1490" y="520" text-anchor="middle">height, time,</text><text class="dg-s" x="1490" y="556" text-anchor="middle">temperature</text>
+      </g>
+    </svg>
+    <figcaption>Watch out: a postcode or a student ID is categorical; averaging them means nothing.</figcaption>
+  </figure>
+  <aside class="notes">
+    <p>Second question: what kind of data are they? Every variable is either categorical or numerical.</p>
+    <p>[click] Categorical variables put individuals into categories. Nominal means the categories have no order: blood type, favourite colour, country. Ordinal means they have a natural order: satisfaction rated low, medium or high, or year of study.</p>
+    <p>[click] Numerical variables are numbers. Discrete ones are counts, whole numbers, like number of siblings or goals scored. Continuous ones are measurements on a scale: height, time, temperature.</p>
+    <p>Watch out: numbers are not always numerical data. A postcode or a student ID is categorical. Averaging them means nothing.</p>
+  </aside>
+</section>
+<section class="slide" data-layout="comparison" data-id="levels">
+  <p class="label">What kind of data are they?</p>
+  <h2 class="h2">20&nbsp;kg is twice 10&nbsp;kg, but 20&nbsp;°C is not twice as hot as 10&nbsp;°C</h2>
+  <table class="table">
+    <thead><tr><th></th><th>Nominal</th><th>Ordinal</th><th>Interval</th><th class="rec" data-tag="True zero">Ratio</th></tr></thead>
+    <tbody>
+      <tr><th>Order?</th><td>no</td><td>yes</td><td>yes</td><td>yes</td></tr>
+      <tr><th>Equal intervals?</th><td>no</td><td>no</td><td>yes</td><td>yes</td></tr>
+      <tr><th>True zero?</th><td>no</td><td>no</td><td>no</td><td>yes</td></tr>
+      <tr><th>Example</th><td>eye colour</td><td>race finishing position</td><td>temperature in °C</td><td>weight, income, time</td></tr>
+    </tbody>
+  </table>
+  <aside class="notes">
+    <p>Variables also have a level of measurement, and it decides which calculations make sense.</p>
+    <p>Nominal: no order, like eye colour. Ordinal: an order, but the gaps are not equal, like race finishing position. Interval: order and equal intervals, but no true zero, like temperature in degrees Celsius. Ratio: all three, including a true zero, like weight, income or time.</p>
+    <p>Ask the room: is 20 degrees Celsius twice as hot as 10 degrees? No. Celsius has no true zero, so twice makes no sense. But 20 kilograms really is twice 10 kilograms, because weight is ratio data.</p>
+  </aside>
+</section>
+<section class="slide" data-layout="two-column" data-id="studies">
+  <p class="label">Where do the data come from?</p>
+  <h2 class="h2">Only a randomised experiment can show cause and effect</h2>
+  <div class="col"><h3>Observational study</h3><p>Researchers observe and measure without assigning treatments, such as surveying students about sleep and grades. It can show an association, but not cause and effect.</p></div>
+  <div class="col"><h3>Experiment</h3><ul class="list"><li class="li">Researchers assign treatments and compare outcomes</li><li class="li">A control group for comparison</li><li class="li">Random assignment, so the groups are alike apart from the treatment</li><li class="li">A placebo where possible, and blinding</li</ul></div>
+  <aside class="notes">
+    <p>Back to the first question: where do the data come from? There are two kinds of study.</p>
+    <p>In an observational study, researchers observe and measure without assigning treatments, for example surveying students about their sleep and their grades. It can show an association, but not cause and effect.</p>
+    <p>[click] In an experiment, researchers assign the treatments and compare outcomes. A good experiment has a control group for comparison, random assignment so the groups are alike apart from the treatment, a placebo where possible, and blinding. Double-blind means that neither the subjects nor the researchers know who got what.</p>
+    <p>Only a well-designed randomised experiment can establish cause and effect. Hold on to that: we need it for the last idea of today.</p>
+  </aside>
+</section>

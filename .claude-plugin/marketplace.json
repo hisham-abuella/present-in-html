@@ -11,8 +11,8 @@
     {
       "name": "present-in-html",
       "source": "./plugins/present-in-html",
-      "description": "Keynote Pro HTML presentations: make, edit, review and publish one-file 16:9 decks (32 themes, presenter view, PDF, Arabic/RTL, built-in checker).",
-      "version": "3.0.0",
+      "description": "Presentations as one HTML file: plan, build, review (Winston's speaking rules), edit and publish decks, or run the whole workflow with Opus and Sonnet agents.",
+      "version": "3.1.0",
       "category": "productivity"
     }
   ]

@@ -1,14 +1,19 @@
 ---
 name: edit-deck
-description: Open a Keynote Pro HTML deck in the visual click-and-type editor so the user can fix wording, speaker notes and the title themselves, then save the same file back. Use this whenever the user wants to edit, tweak, proofread, retype or correct text in an existing HTML deck by hand, asks for "the editor", "the UI editor" or "let me edit it myself", or wants to change speaker notes directly, even if they don't name the editor.
+description: Open a present-in-html slide deck (one HTML file) in the visual click-and-type editor so the user can fix wording, speaker notes and the title themselves, then save the same file back. Use this whenever the user wants to edit, tweak, proofread, retype or correct text in an existing HTML deck by hand, asks for "the editor", "the UI editor" or "let me edit it myself", or wants to change speaker notes directly, even if they don't name the editor.
 license: MIT (see LICENSE)
+compatibility: Python 3 (local web server) and Chrome or Edge to save in place; the check after editing needs the present-in-html skill.
 ---
 
 # Edit a deck in the browser editor
 
-The Keynote Pro editor is one self-contained page. The user clicks text on a slide and types, edits speaker notes, finds and
+The editor (`assets/editor.html`) is one self-contained page. The user clicks text on a slide and types, edits speaker notes, finds and
 replaces across slides and renames the deck; Save writes only the changed words back into the same `.html` file, so the
 engine, theme and layout are untouched.
+
+**Part of the deck workflow** (plan, build, review, publish; the `deck-workflow` skill runs it end to end). Editing is
+the user's own step and can happen between any two: after the build, after a review, or before publishing. After their
+edits, offer a review (review-deck) if the wording changed a lot, then publishing (publish-deck).
 
 It edits **words**. New slides, layouts, charts, images and themes are structural: that is the `present-in-html` skill. If the
 user's request is really structural, say so and do it there instead of opening the editor.
@@ -43,7 +48,7 @@ file with **Open deck**.
 
 ```bash
 bash <skill base dir>/scripts/open-editor.sh --stop path/to/deck.html     # stops the server, removes kp-editor.html
-node <skill base dir>/../present-in-html/keynote-pro/check.mjs path/to/deck.html
+node <skill base dir>/../present-in-html/scripts/check.mjs path/to/deck.html
 ```
 
 Run the checker because longer wording can overflow a slide. If a slide now overflows, name it and offer to shorten the text or

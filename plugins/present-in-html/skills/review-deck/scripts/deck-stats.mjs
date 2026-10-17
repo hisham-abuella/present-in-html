@@ -1,9 +1,13 @@
 #!/usr/bin/env node
-// Per-slide numbers for reviewing a Keynote Pro deck against its audience and time slot. No dependencies.
+// Per-slide numbers for reviewing a present-in-html deck against its audience and time slot. No dependencies.
 //   node deck-stats.mjs deck.html [--wpm 130] [--json]
 // For each slide: layout, title, words on the slide, words in the notes, builds, and an estimated speaking time
 // (notes words / wpm; a slide without notes counts 45 s, and no slide counts under 20 s). Slides from the appendix on
 // and data-skip slides are listed but not timed. The deck's data-duration (minutes), if set, is printed as the target.
+// Then the speaking checks that can be measured (Patrick Winston's rules, see references/winston.md): wordy slides, notes
+// that repeat the slide (the speaker will read it), a "thank you" or "questions?" final slide, the team slide at the end,
+// signposts (agenda and section slides), and which slides fall in the first five minutes (where the promise and, for a
+// pitch or research talk, the vision and a result belong). They are heuristics that point at slides to read, not verdicts.
 import fs from 'node:fs';
 import path from 'node:path';
 
@@ -22,6 +26,7 @@ const attr = (tag, name) => { const m = tag.match(new RegExp(`\\s${name}(?:="([^
 const decode = s => s.replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'");
 const text = s => decode(s.replace(/<(script|style)\b[\s\S]*?<\/\1>/gi, ' ').replace(/<[^>]+>/g, ' ')).replace(/\s+/g, ' ').trim();
 const words = s => (s.match(/[\p{L}\p{N}][\p{L}\p{N}'’.,%$-]*/gu) || []).length;
+const content = s => new Set((s.toLowerCase().match(/[\p{L}\p{N}]{4,}/gu) || []));   // words of 4+ letters: skips "the", "and"
 
 const slides = [];
 const re = /<section\b([^>]*)>([\s\S]*?)<\/section>/gi;
@@ -37,10 +42,12 @@ while ((m = re.exec(body))) {
   const builds = [...visible.matchAll(/<(\w+)\b[^>]*\sdata-build="(\w+)"[^>]*>([\s\S]*?)<\/\1>/gi)]
     .reduce((n, b) => n + (/^(list|reveal)$/.test(b[2]) ? Math.max(1, (b[3].match(/<li\b/gi) || []).length) : 1), 0);
   const nw = words(text(notesHtml)), vw = words(text(visible));
+  const sw = content(text(visible)), nwSet = content(text(notesHtml));
+  const repeats = nwSet.size ? Math.round([...nwSet].filter(w => sw.has(w)).length / nwSet.size * 100) : 0;   // % of note words on the slide
   const skip = attr(tag, 'data-skip') !== null;
   const timed = !appendix && !skip;
   const seconds = timed ? Math.max(20, nw ? Math.round(nw / wpm * 60) : 45) : 0;
-  slides.push({ n: slides.length + 1, id: attr(tag, 'data-id') || '', layout: attr(tag, 'data-layout') || '?', title, slideWords: vw, notesWords: nw, builds, timed, seconds });
+  slides.push({ n: slides.length + 1, id: attr(tag, 'data-id') || '', layout: attr(tag, 'data-layout') || '?', title, slideWords: vw, notesWords: nw, repeats, builds, timed, seconds, text: text(visible) });
 }
 
 const timedSlides = slides.filter(s => s.timed);
@@ -52,7 +59,20 @@ const out = {
   slides: slides.length, timedSlides: timedSlides.length, backupOrSkipped: slides.length - timedSlides.length,
   estimatedMinutes: Math.round(total / 6) / 10, slidesWithoutNotes: timedSlides.filter(s => !s.notesWords).map(s => s.n),
   layouts: Object.fromEntries(Object.entries(slides.reduce((a, s) => (a[s.layout] = (a[s.layout] || 0) + 1, a), {})).sort((a, b) => b[1] - a[1])),
-  perSlide: slides,
+  perSlide: slides.map(({text: _, ...s}) => s),
+};
+
+// Speaking checks (Winston). Each lists the slide numbers to look at.
+const last = timedSlides[timedSlides.length - 1];
+const weakEnd = /\b(thank(s| you)|questions\??|q ?& ?a|any questions|the end)\b|شكر|أسئلة|اسئلة/i;
+out.speaking = {
+  wordySlides: timedSlides.filter(s => s.slideWords > 40 && !['comparison', 'references', 'code'].includes(s.layout)).map(s => s.n),
+  notesRepeatSlide: timedSlides.filter(s => s.notesWords >= 8 && s.repeats >= 60).map(s => s.n),
+  weakFinalSlide: last && weakEnd.test(last.title || last.text) && last.text.split(' ').length <= 25 ? last.n : null,
+  teamAtEnd: timedSlides.length > 5 ? timedSlides.slice(-3).filter(s => s.layout === 'team').map(s => s.n) : [],
+  signposts: timedSlides.filter(s => ['agenda', 'section'].includes(s.layout)).map(s => s.n),
+  questionSlides: timedSlides.filter(s => s.layout === 'quiz' || /\?\s*$/.test(s.title)).map(s => s.n),
+  firstFiveMinutes: (() => { let t = 0; return timedSlides.filter(s => { const inside = t < 300; t += s.seconds; return inside; }).map(s => s.n); })(),
 };
 if (asJson) { console.log(JSON.stringify(out, null, 2)); process.exit(0); }
 
@@ -64,3 +84,12 @@ console.log(`\n${out.timedSlides} timed slides (${out.backupOrSkipped} backup/sk
   (target ? `; target ${target}:00 (${total > target * 60 ? 'over' : 'under'} by ${mmss(Math.abs(total - target * 60))})` : '; no data-duration target set'));
 if (out.slidesWithoutNotes.length) console.log(`slides without notes (timed at 45 s): ${out.slidesWithoutNotes.join(', ')}`);
 console.log(`layouts: ${Object.entries(out.layouts).map(([k, v]) => `${k} ${v}`).join(', ')}`);
+const sp = out.speaking, list = a => a.length ? a.join(', ') : 'none';
+console.log(`\nspeaking checks (Winston; heuristics, read the slides they name):`);
+console.log(`  wordy slides (over 40 words):            ${list(sp.wordySlides)}`);
+console.log(`  notes repeat the slide (60%+ overlap):   ${list(sp.notesRepeatSlide)}`);
+console.log(`  final slide is thank-you / questions:    ${sp.weakFinalSlide ?? 'no'}`);
+console.log(`  team / collaborators slide at the end:   ${list(sp.teamAtEnd)}`);
+console.log(`  signposts (agenda, section):             ${list(sp.signposts)}${!sp.signposts.length && out.timedSlides > 10 ? '  <- none in a long deck' : ''}`);
+console.log(`  question slides:                         ${list(sp.questionSlides)}`);
+console.log(`  slides in the first five minutes:        ${list(sp.firstFiveMinutes)}`);

@@ -1,11 +1,11 @@
 #!/bin/bash
-# Open a Keynote Pro deck in the text editor, served from the deck's own folder so its images and fonts show.
+# Open a present-in-html deck in the text editor, served from the deck's own folder so its images and fonts show.
 #   open-editor.sh path/to/deck.html [port]    copy the editor beside the deck, start a local server, open the browser
 #   open-editor.sh --stop path/to/deck.html    stop that server and remove the temporary editor copy
 # The editor only opens ?deck= paths from its own folder, which is why it is copied next to the deck (as kp-editor.html).
 set -euo pipefail
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-EDITOR_SRC="$HERE/../../present-in-html/keynote-pro/editor.html"
+EDITOR_SRC="$HERE/../assets/editor.html"
 
 if [ "${1:-}" = "--stop" ]; then
     DIR="$(cd "$(dirname "${2:?usage: open-editor.sh --stop deck.html}")" && pwd)"
@@ -17,7 +17,7 @@ fi
 
 DECK="${1:?usage: open-editor.sh deck.html [port]}"
 [ -f "$DECK" ] || { echo "no such file: $DECK" >&2; exit 1; }
-grep -q 'SLIDES:START' "$DECK" || echo "warning: $DECK does not look like a Keynote Pro deck (no SLIDES:START marker)" >&2
+grep -q 'SLIDES:START' "$DECK" || echo "warning: $DECK does not look like a present-in-html deck (no SLIDES:START marker)" >&2
 DIR="$(cd "$(dirname "$DECK")" && pwd)"; NAME="$(basename "$DECK")"
 PORT="${2:-8765}"
 while lsof -nP -iTCP:"$PORT" -sTCP:LISTEN >/dev/null 2>&1; do PORT=$((PORT + 1)); done

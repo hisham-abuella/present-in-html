@@ -1,0 +1,110 @@
+<!-- ===== SLIDES 1-10 ===== -->
+
+<section class="slide" data-layout="title" data-id="start">
+  <p class="label">STATS 101 · Module 1 · 50-minute lecture</p>
+  <h1>Data, Samples &amp; <em>Describing Data</em></h1>
+  <p class="sub">By the end of the hour you can tell a sample from a population, choose a graph for any variable, and read the centre, spread and shape of a set of numbers.</p>
+  <p class="meta"><span>STATS 101</span><span>Introductory · no prior statistics</span><span>Prerequisite: high-school algebra</span></p>
+  <aside class="notes"><p>Open on the promise, not a joke: by the end of these 50 minutes every student can (1) tell a population from a sample and a parameter from a statistic, (2) classify a variable and its level of measurement, (3) spot how data are collected and where bias hides, (4) choose the right graph, and (5) compute and interpret the mean, median, mode, range, IQR, standard deviation, z-scores and the 68-95-99.7 rule. This is the first time most of them have met statistics — keep the energy up. The three questions on the next slide structure the whole hour.</p></aside>
+</section>
+
+<section class="slide" data-layout="agenda" data-id="roadmap">
+  <p class="label">The three questions</p>
+  <h2>How the hour is built</h2>
+  <ol>
+    <li>Where do the data come from? <small>~15 min</small></li>
+    <li>What kind of data are they? <small>~10 min</small></li>
+    <li>What do the data say? <small>~25 min</small></li>
+  </ol>
+  <aside class="notes"><p>Signpost the room. Everything today answers one of these three questions. "Where do the data come from?" covers the two opening stories, population vs sample, how data are collected, sampling methods and bias. "What kind of data?" covers the types and levels of variables. "What do the data say?" is the biggest part — graphs, shape, centre, spread, outliers, z-scores, the 68-95-99.7 rule and correlation. We'll return to this list at each section break.</p></aside>
+</section>
+
+<section class="slide" data-layout="statement" data-id="what-is-stats">
+  <p class="label">Why statistics?</p>
+  <h2>Statistics is the science of collecting, describing and drawing <em>conclusions from data</em> — in the presence of variation and uncertainty.</h2>
+  <aside class="notes"><p>This is the whole subject in one sentence, and we'll say it three ways today: now, at the section breaks, and again at the close. Hammer "variation and uncertainty" — that is exactly why statistics exists and why we need a sample and a measure of uncertainty. The two branches on the next slide are descriptive and inferential; most of this module is descriptive.</p></aside>
+</section>
+
+<section class="slide" data-layout="two-column" data-cols="3" data-id="two-branches">
+  <h2>Two branches, found everywhere</h2>
+  <div class="col"><h3>Descriptive</h3><p>Summarise the data we already have: tables, graphs, averages. Most of this module.</p></div>
+  <div class="col"><h3>Inferential</h3><p>Use a sample to draw conclusions about a larger population, with a measure of uncertainty. Later modules.</p></div>
+  <div class="col"><h3>In everyday life</h3><ul><li>Opinion polls</li><li>Clinical trials</li><li>Sports analytics</li><li>Weather forecasts</li><li>Website A/B tests</li></ul></div>
+  <aside class="notes"><p>Make the two branches concrete. Descriptive is what this module is — you summarise what you have. Inferential (later modules) uses a sample to say something about a population you can't measure fully, and always attaches a measure of uncertainty. The right-hand column shows they're everywhere: polls, medicine, sport, weather, the A/B tests behind the buttons you click. Point out that "descriptive" is the safe ground; inference is where things get subtle.</p></aside>
+</section>
+
+<section class="slide" data-layout="section" data-id="sec-where">
+  <p class="label">Question one</p>
+  <span class="num">1</span>
+  <h2>Where do the data come from?</h2>
+  <p>Two stories, then population, sample, and how data are collected.</p>
+</section>
+
+<section class="slide" data-layout="image-left" data-id="snow">
+  <figure></figure>
+  <p class="label">Story one · London, 1854</p>
+  <h2>John Snow maps cholera</h2>
+  <p>During a cholera outbreak in Soho, Snow marked each death on a street map. The deaths clustered around one water pump on Broad Street. The pump's handle was removed.</p>
+  <p class="src">Image placeholder: John Snow's 1854 cholera map of Soho — deaths marked as X's, clustered around the Broad Street pump.</p>
+  <aside class="notes"><p>Tell the story, not the dates. In 1854, during a cholera outbreak in Soho, John Snow did something radical: he drew the data. He marked each death on a street map, and the marks clustered around a single water pump on Broad Street. When the pump's handle was removed, the outbreak eased. The point is not the medicine — it's that a simple picture of data pointed straight to the cause. (Swap the empty frame for Snow's actual map image; caption is in the slide.)</p></aside>
+</section>
+
+<section class="slide" data-layout="two-column" data-id="digest">
+  <p class="label">Story two · US election, 1936</p>
+  <h2>The Literary Digest poll</h2>
+  <div class="col"><h3>The huge poll</h3><ul><li>About 10 million ballots mailed</li><li>About 2.4 million returned</li><li>Drawn from phone books &amp; car lists</li><li>Predicted: Alf Landon wins</li></ul></div>
+  <div class="col"><h3>The small poll</h3><ul><li>George Gallup, about 50,000 people</li><li>A better-chosen sample</li><li>Predicted: F. D. Roosevelt wins</li><li>Roosevelt won ~61% of the vote, 46 of 48 states</li></ul></div>
+  <aside class="notes"><p>The contrast that defines the whole hour. The Literary Digest mailed ~10 million ballots and got ~2.4 million back — an enormous sample — yet drew its lists from telephone directories and car registrations, which in 1936 left out poorer voters, and it predicted Alf Landon. George Gallup used a far smaller sample of about 50,000, better chosen, and correctly predicted Roosevelt, who won about 61% of the popular vote and 46 of the 48 states. The big poll lost; the small one won. Hold the numbers: 10 million vs 50,000.</p></aside>
+</section>
+
+<section class="slide" data-layout="statement" data-id="size-vs-quality">
+  <h2>A <em>huge biased</em> sample is worse than a small, well-chosen one.</h2>
+  <p>How data are collected matters more than how much there is.</p>
+  <aside class="notes"><p>State the takeaway plainly — this is the second way we say the story. Size is not quality. The Digest's 2.4 million were drawn from sources that systematically left out part of the electorate, so more data made the error look more confident, not less. Gallup's 50,000 were better chosen and beat it. Repeat it: more data does not fix a bad sample. Everything in this section (population, sampling, bias) exists to keep us from that trap.</p></aside>
+</section>
+
+<section class="slide" data-layout="diagram" data-id="pop-sample">
+  <p class="label">Population, sample, parameter, statistic</p>
+  <h2>From the whole group to one number</h2>
+  <figure class="dg">
+    <svg viewBox="0 60 1680 410" role="img" aria-hidden="true">
+      <g data-build="fade" data-order="1">
+        <text class="dg-b" x="840" y="112" text-anchor="middle">Memory aid:  P&#8594;P     S&#8594;S</text>
+        <rect class="dg-box" x="120" y="180" width="520" height="180" rx="12"/>
+        <text class="dg-t" x="380" y="262" text-anchor="middle">POPULATION</text>
+        <text class="dg-s" x="380" y="306" text-anchor="middle">the whole group we want to know about</text>
+        <g class="dg-dot">
+          <circle cx="210" cy="230" r="9"/><circle cx="310" cy="230" r="9"/><circle cx="410" cy="230" r="9"/><circle cx="510" cy="230" r="9"/>
+          <circle cx="210" cy="315" r="9"/><circle cx="310" cy="315" r="9"/><circle cx="410" cy="315" r="9"/><circle cx="510" cy="315" r="9"/>
+        </g>
+        <g class="dg-dot hot">
+          <circle cx="310" cy="230" r="9"/><circle cx="410" cy="315" r="9"/><circle cx="510" cy="230" r="9"/>
+        </g>
+        <rect class="dg-box" x="1040" y="180" width="520" height="180" rx="12"/>
+        <text class="dg-t" x="1300" y="262" text-anchor="middle">SAMPLE</text>
+        <text class="dg-s" x="1300" y="306" text-anchor="middle">the part we actually measure</text>
+        <g class="dg-dot hot"><circle cx="1230" cy="270" r="9"/><circle cx="1300" cy="270" r="9"/><circle cx="1370" cy="270" r="9"/></g>
+      </g>
+      <g data-build="draw" data-order="2">
+        <path class="dg-line" d="M640 270 H1030 M1014 258 L1030 270 L1014 282"/>
+        <path class="dg-line" d="M380 360 V410 M368 398 L380 410 L392 398"/>
+        <path class="dg-line" d="M1300 360 V410 M1288 398 L1300 410 L1312 398"/>
+      </g>
+      <g data-build="fade" data-order="3">
+        <text class="dg-t" x="380" y="438" text-anchor="middle">Parameter</text>
+        <text class="dg-s" x="380" y="466" text-anchor="middle">&#956;, &#963; &#8212; usually unknown</text>
+        <text class="dg-b" x="1300" y="438" text-anchor="middle">Statistic</text>
+        <text class="dg-s" x="1300" y="466" text-anchor="middle">x&#772;, s &#8212; estimates the parameter</text>
+      </g>
+    </svg>
+    <figcaption>Click 1: the two boxes and the chosen few. Click 2: the arrows. Click 3: the numbers they produce.</figcaption>
+  </figure>
+  <aside class="notes"><p>Four ideas on one picture. Population = the whole group (all students at the university); sample = the part we actually measure (say, 200 who answered a survey). The hot dots are the few chosen for the sample. A parameter (population mean μ, population standard deviation σ) describes the population and is usually unknown; a statistic (sample mean x̄, sample standard deviation s) is computed from the sample and is our estimate of the parameter. The memory aid: P→P, S→S. Three clicks: boxes, arrows, then the numbers.</p></aside>
+</section>
+
+<section class="slide" data-layout="two-column" data-id="param-stat">
+  <h2>Parameter vs statistic</h2>
+  <div class="col"><h3>Parameter</h3><p>A number describing the <strong>population</strong> — usually unknown. Notation: the mean <strong>&#956;</strong> and standard deviation <strong>&#963;</strong>.</p></div>
+  <div class="col"><h3>Statistic</h3><p>A number computed from the <strong>sample</strong>, used to estimate the parameter. Notation: the mean <strong>x&#772;</strong> and standard deviation <strong>s</strong>.</p></div>
+  <aside class="notes"><p>Keep the notation tight. Population quantities use Greek letters: μ for the population mean, σ for the population standard deviation. Sample quantities are the Latin versions: x̄ (x-bar) for the sample mean, s for the sample standard deviation. The statistic is the estimate; the parameter is the truth we're trying to reach. Reinforce the memory aid P→P, S→S — it survives the rest of the course.</p></aside>
+</section>

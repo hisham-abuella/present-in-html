@@ -1,0 +1,14 @@
+{
+  "planner": "claude-opus-5-5",
+  "wall_seconds": 1400,
+  "exit_code": 0,
+  "cost_usd": 5.045956000000001,
+  "turns": 51,
+  "tokens": {
+    "input": 86,
+    "output": 101973,
+    "cache_read": 6340320
+  },
+  "plan_kb": 94,
+  "patched": "after planning: D set to $PWD (was the planner temp folder) and the deck renamed deck.html, to match the build prompt"
+}

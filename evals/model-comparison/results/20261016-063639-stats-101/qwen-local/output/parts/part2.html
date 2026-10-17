@@ -1,0 +1,137 @@
+<!-- ===== SLIDES 11-20 ===== -->
+
+<section class="slide" data-layout="two-column" data-cols="3" data-id="var-types">
+  <h2>Two families of variables</h2>
+  <div class="col"><h3>Categorical</h3><ul><li><strong>Nominal</strong> &#8212; no order: blood type, favourite colour, country</li><li><strong>Ordinal</strong> &#8212; a natural order: satisfaction (low / med / high), year of study</li></ul></div>
+  <div class="col"><h3>Numerical</h3><ul><li><strong>Discrete</strong> &#8212; counts, whole numbers: siblings, goals scored</li><li><strong>Continuous</strong> &#8212; measured on a scale: height, time, temperature</li></ul></div>
+  <div class="col"><h3>Watch out</h3><p>Numbers aren't always numerical data. A postcode or a student ID is categorical &#8212; averaging them means nothing.</p></div>
+  <aside class="notes"><p>Every variable is either categorical or numerical. Categorical: nominal has no order (blood type, favourite colour, country); ordinal has a natural order (satisfaction low/medium/high, year of study). Numerical: discrete are counts of whole numbers (number of siblings, goals scored); continuous are measured on a scale (height, time, temperature). The "watch out" is the trap students fall into: a postcode or a student ID looks numerical but is categorical — you can't average them, it's meaningless. Ask the room which family each of a few examples belongs to.</p></aside>
+</section>
+
+<section class="slide" data-layout="comparison" data-id="levels">
+  <p class="label">Question two · what kind of data</p>
+  <h2>Levels of measurement</h2>
+  <table>
+    <thead><tr><th></th><th>Order?</th><th>Equal intervals?</th><th>True zero?</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><th>Nominal</th><td>No</td><td>No</td><td>No</td><td>eye colour</td></tr>
+      <tr><th>Ordinal</th><td>Yes</td><td>No</td><td>No</td><td>race finishing position</td></tr>
+      <tr><th>Interval</th><td>Yes</td><td>Yes</td><td>No</td><td>temperature in &#176;C</td></tr>
+      <tr><th>Ratio</th><td>Yes</td><td>Yes</td><td>Yes</td><td>weight, income, time</td></tr>
+    </tbody>
+  </table>
+  <aside class="notes"><p>The levels sharpen the two families. Nominal: no order, no equal intervals, no true zero (eye colour). Ordinal: order but no equal spacing and no true zero (race finishing position). Interval: order and equal intervals but no true zero (temperature in degrees Celsius). Ratio: all three (weight, income, time). Why it matters: 20&#176;C is not "twice as hot" as 10&#176;C because Celsius has no true zero (it's interval), but 20 kg is twice 10 kg because weight has a true zero (it's ratio). Don't let students take ratios for an interval scale.</p></aside>
+</section>
+
+<section class="slide" data-layout="section" data-id="sec-collect">
+  <p class="label">Collecting the data</p>
+  <span class="num">2</span>
+  <h2>How is the data collected?</h2>
+  <p>Observation or experiment, sampling methods, and the biases that mislead.</p>
+</section>
+
+<section class="slide" data-layout="two-column" data-id="obs-vs-exp">
+  <h2>Observation vs experiment</h2>
+  <div class="col"><h3>Observational study</h3><p>Observe and measure without assigning treatments &#8212; e.g. surveying students about sleep and grades. It can show an <strong>association</strong>, but not cause and effect.</p></div>
+  <div class="col"><h3>Experiment</h3><ul><li>A <strong>control group</strong> for comparison</li><li><strong>Random assignment</strong> &#8212; groups alike apart from the treatment</li><li>A <strong>placebo</strong> where possible, and <strong>blinding</strong> (double-blind)</li><li>Only a randomised experiment shows <strong>cause and effect</strong></li></ul></div>
+  <aside class="notes"><p>The distinction that protects us from false claims. An observational study (surveying students about sleep and grades) only reveals an association — it can't prove cause. An experiment assigns treatments and compares outcomes, and a good one uses four tools: a control group for comparison, random assignment so the groups are alike except for the treatment, a placebo where possible, and blinding (double-blind: neither subjects nor researchers know who got what). Only a well-designed randomised experiment can establish cause and effect — say that as a rule students can quote.</p></aside>
+</section>
+
+<section class="slide" data-layout="comparison" data-id="sampling">
+  <h2>Five ways to sample</h2>
+  <table>
+    <thead><tr><th>Method</th><th>How it works</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><th>Simple random</th><td>Every group of n has the same chance</td><td>draw 100 student IDs at random</td></tr>
+      <tr><th>Stratified</th><td>Split into groups (strata), sample each</td><td>25 students from each year of study</td></tr>
+      <tr><th>Cluster</th><td>Split into groups, choose whole groups</td><td>pick 5 lecture sections, survey all in them</td></tr>
+      <tr><th>Systematic</th><td>Every k-th from a list, after a random start</td><td>every 20th name on the class list</td></tr>
+      <tr><th>Convenience</th><td>Whoever is easiest to reach &#8212; not random, avoid</td><td>asking friends in the cafeteria</td></tr>
+    </tbody>
+  </table>
+  <aside class="notes"><p>Five sampling methods. Simple random: every group of n has the same chance of being chosen (draw 100 student IDs at random). Stratified: split into groups — strata — and take a random sample from each (25 students from each year of study). Cluster: split into groups and randomly choose whole groups (pick 5 lecture sections and survey everyone in them). Systematic: every k-th individual from a list after a random start (every 20th name on the class list). Convenience: whoever is easiest to reach — this is NOT random; avoid it (asking friends in the cafeteria). The first four are legitimate; convenience is the one to flag.</p></aside>
+</section>
+
+<section class="slide" data-layout="bullets" data-id="bias">
+  <h2>Bias: when a sample misleads</h2>
+  <ul data-build="list">
+    <li><strong>Selection bias</strong> &#8212; the way you choose the sample leaves out part of the population (the Digest's phone and car lists).</li>
+    <li><strong>Non-response bias</strong> &#8212; the people who don't respond differ from those who do.</li>
+    <li><strong>Response bias</strong> &#8212; the wording or setting pushes an answer ("Don't you agree that&#8230;?").</li>
+    <li><strong>Voluntary response bias</strong> &#8212; only people with strong opinions take part (online polls, call-in shows).</li>
+    <li>A bigger sample <strong>does not fix bias</strong> &#8212; it only makes a biased answer look more precise.</li>
+  </ul>
+  <aside class="notes"><p>Four biases, then the punchline. Selection bias: how the sample is chosen leaves out part of the population — the Digest's phone and car lists left out poorer voters. Non-response bias: those who don't respond differ from those who do. Response bias: the wording or setting pushes people toward an answer ("Don't you agree that…?"). Voluntary response bias: only people with strong opinions choose to take part — online polls, call-in shows. The punchline, repeated from the Digest: a bigger sample does not fix bias; it only makes a biased answer look more precise. Bias is about direction, not size.</p></aside>
+</section>
+
+<section class="slide" data-layout="section" data-id="sec-say">
+  <p class="label">Question three</p>
+  <span class="num">3</span>
+  <h2>What do the data say?</h2>
+  <p>Graphs, shape, centre, spread, outliers, z-scores and correlation.</p>
+</section>
+
+<section class="slide" data-layout="comparison" data-id="which-graph">
+  <h2>Choosing the right graph</h2>
+  <table>
+    <thead><tr><th>Data</th><th>Graph</th><th>What it shows</th></tr></thead>
+    <tbody>
+      <tr><th>One categorical</th><td>Bar chart (or pie)</td><td>counts or percentages per category</td></tr>
+      <tr><th>One numerical</th><td>Histogram</td><td>shape of the distribution</td></tr>
+      <tr><th>One numerical</th><td>Box plot</td><td>five-number summary &amp; outliers</td></tr>
+      <tr><th>Two numerical</th><td>Scatter plot</td><td>relationship: direction, form, strength</td></tr>
+      <tr><th>A variable over time</th><td>Line graph</td><td>trends</td></tr>
+    </tbody>
+  </table>
+  <aside class="notes"><p>Match the graph to the data. One categorical variable: a bar chart (or a pie chart) shows counts or percentages per category. One numerical variable: a histogram shows the shape of the distribution; a box plot shows the five-number summary and outliers. Two numerical variables: a scatter plot shows the relationship — its direction, form and strength. A variable over time: a line graph shows trends. The golden rule of the next slide: always plot the data before you compute anything.</p></aside>
+</section>
+
+<section class="slide" data-layout="diagram" data-id="anscombe">
+  <p class="label">Always plot the data first</p>
+  <h2>Four pictures, the same numbers</h2>
+  <figure class="dg">
+    <svg viewBox="0 80 1680 590" role="img" aria-hidden="true">
+      <g data-build="fade" data-order="1">
+        <!-- cell i: a line -->
+        <text class="dg-s" x="120" y="150">(i) a straight line</text>
+        <g class="dg-dot">
+          <circle cx="150" cy="330" r="8"/><circle cx="230" cy="300" r="8"/><circle cx="300" cy="312" r="8"/><circle cx="370" cy="270" r="8"/>
+          <circle cx="440" cy="250" r="8"/><circle cx="510" cy="222" r="8"/><circle cx="580" cy="244" r="8"/><circle cx="650" cy="200" r="8"/><circle cx="710" cy="180" r="8"/>
+        </g>
+        <!-- cell ii: a curve -->
+        <text class="dg-s" x="900" y="150">(ii) a curve</text>
+        <g class="dg-dot">
+          <circle cx="940" cy="200" r="8"/><circle cx="1010" cy="288" r="8"/><circle cx="1090" cy="330" r="8"/><circle cx="1180" cy="342" r="8"/>
+          <circle cx="1270" cy="330" r="8"/><circle cx="1350" cy="288" r="8"/><circle cx="1430" cy="205" r="8"/><circle cx="1510" cy="170" r="8"/>
+        </g>
+        <!-- cell iii: a line + one outlier -->
+        <text class="dg-s" x="120" y="430">(iii) a line + one outlier</text>
+        <g class="dg-dot">
+          <circle cx="150" cy="600" r="8"/><circle cx="230" cy="560" r="8"/><circle cx="300" cy="542" r="8"/><circle cx="380" cy="512" r="8"/>
+          <circle cx="450" cy="492" r="8"/><circle cx="530" cy="470" r="8"/><circle cx="610" cy="452" r="8"/>
+        </g>
+        <circle class="dg-dot hot" cx="700" cy="430" r="9"/>
+        <!-- cell iv: vertical stack + one far point -->
+        <text class="dg-s" x="900" y="430">(iv) a vertical stack</text>
+        <g class="dg-dot">
+          <circle cx="1080" cy="440" r="8"/><circle cx="1080" cy="485" r="8"/><circle cx="1080" cy="530" r="8"/><circle cx="1080" cy="575" r="8"/><circle cx="1080" cy="620" r="8"/>
+        </g>
+        <circle class="dg-dot hot" cx="1440" cy="530" r="9"/>
+      </g>
+      <g data-build="draw" data-order="2">
+        <path class="dg-line" d="M150 330 L710 180"/>
+        <path class="dg-line" d="M940 200 Q1180 400 1510 170"/>
+        <path class="dg-line" d="M150 600 L610 452"/>
+      </g>
+    </svg>
+    <figcaption>Anscombe's quartet (1973): four sets of 11 points each, x&#772; &#8776; 9, y&#772; &#8776; 7.50, r &#8776; 0.816, line y = 3 + 0.5x &#8212; yet four different pictures.</figcaption>
+  </figure>
+  <aside class="notes"><p>This is the reason to plot first. Anscombe's quartet, 1973: four small data sets, 11 points each, with almost the same mean of x (9), mean of y (about 7.50), correlation (about 0.816) and regression line (y = 3 + 0.5x). Yet the four scatter plots are completely different: a straight-line cloud, a curve, a line with a single outlier, and a vertical stack with one far point. Summary numbers can hide the story. Draw the two trend lines on click 2. Tell students: never trust the mean and correlation alone — always look at the plot.</p></aside>
+</section>
+
+<section class="slide" data-layout="two-column" data-id="describe">
+  <h2>Describe a distribution in four moves</h2>
+  <div class="col"><h3>The four moves</h3><ul><li><strong>Shape</strong> &#8212; symmetric or skewed; one or two peaks</li><li><strong>Centre</strong> &#8212; where the typical value sits</li><li><strong>Spread</strong> &#8212; how much values vary</li><li><strong>Unusual</strong> &#8212; outliers and gaps</li></ul></div>
+  <div class="col"><h3>Centre, three ways</h3><ul><li><strong>Mean</strong> &#8212; add the values, divide by n: x&#772; = &#931;x / n</li><li><strong>Median</strong> &#8212; the middle of the ordered data</li><li><strong>Mode</strong> &#8212; the most frequent value</li></ul></div>
+  <aside class="notes"><p>Every description of a numerical variable covers four moves: shape (symmetric, skewed right with a long right tail like incomes, or skewed left; one peak is unimodal, two is bimodal), centre (where the typical value is), spread (how much values vary), and unusual features (outliers and gaps). We start with centre, three ways: the mean, x̄ = Σx / n; the median, the middle value of the ordered data (average the two middle values if n is even); and the mode, the most frequent value. The next slides work a single example through all of this.</p></aside>
+</section>

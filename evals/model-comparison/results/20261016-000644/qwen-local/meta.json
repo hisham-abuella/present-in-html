@@ -1,0 +1,2 @@
+{"label": "qwen-local", "model": "qwen3.8:27b-mlx", "provider": "ollama", "started": 1792134906, "ended": 1792142106,
+ "wall_seconds": 7200, "exit_code": 143, "timed_out": true, "work_dir": "/var/folders/b3/5kpg6gn93ks629bn5bdr6ggw0000gn/T//pih-eval-20261016-000644.Uwq1/qwen-local"}

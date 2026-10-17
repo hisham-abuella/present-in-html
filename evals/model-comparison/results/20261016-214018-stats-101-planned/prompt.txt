@@ -1,0 +1,13 @@
+/present-in-html:present-in-html Build the slide deck for Module 1 of my STATS 101 course (a 50-minute lecture for first-year undergraduates with no statistics background) from PLAN.md in this folder. The source module is stats-101-module-1.md.
+
+PLAN.md was written for you: follow its "Build steps" in order and build every slide exactly as "Slides in full" describes (text, diagrams, image placeholders and speaker notes). Do not re-plan, and do not read the skill's reference files unless a build step tells you to.
+
+Requirements:
+- 20 to 30 slides that follow the module's sections in order.
+- Use only the facts, numbers and formulas in the file; do not invent any.
+- Animated diagrams where the plan has them; image placeholders with their captions.
+- Speaker notes on every slide.
+- End with the quiz and a summary slide.
+- Save the deck as deck.html in this folder and run the skill's checker until it passes.
+
+Do not ask me any questions; make every decision yourself and finish the deck in one go.

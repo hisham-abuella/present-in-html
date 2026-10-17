@@ -1,7 +1,7 @@
 {
   "name": "present-in-html",
-  "version": "3.0.0",
-  "description": "Keynote Pro presentations as one self-contained HTML file: make a deck from a topic, outline, documents, data or links (32 themes, presenter view, PDF, Arabic/RTL, built-in checker), edit its wording in a click-and-type editor, review it against the audience and time slot, and publish it to GitHub Pages.",
+  "version": "3.1.0",
+  "description": "Presentations as one self-contained HTML file: plan an outline, build the deck (32 themes, presenter view, PDF, Arabic/RTL, built-in checker), review it against the audience, time slot and Winston's speaking rules, edit its wording in a click-and-type editor, and publish it to GitHub Pages; or run the whole plan-build-review-publish workflow with Opus and Sonnet agents.",
   "author": {
     "name": "Hisham Abuella",
     "url": "https://github.com/hisham-abuella"
@@ -10,6 +10,7 @@
   "repository": "https://github.com/hisham-abuella/present-in-html",
   "license": "MIT",
   "keywords": [
+    "agents",
     "arabic",
     "github-pages",
     "html",
@@ -22,7 +23,8 @@
     "self-contained",
     "slide-deck",
     "slide-editor",
-    "slides"
+    "slides",
+    "workflow"
   ],
   "skills": "./skills/"
 }

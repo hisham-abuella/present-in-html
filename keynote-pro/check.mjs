@@ -59,7 +59,8 @@ catch (e) {
 
 /* layouts the template knows: every data-layout="x" in template.html (next to this file) */
 let LAYOUTS = null;
-try { LAYOUTS = [...new Set([...fs.readFileSync(path.join(HERE, 'template.html'), 'utf8').matchAll(/data-layout="([a-z0-9-]+)"/g)].map(m => m[1]))]; } catch {}
+const TEMPLATE = [path.join(HERE, 'template.html'), path.join(HERE, '..', 'assets', 'template.html')].find(f => fs.existsSync(f)) || '';
+try { LAYOUTS = [...new Set([...fs.readFileSync(TEMPLATE, 'utf8').matchAll(/data-layout="([a-z0-9-]+)"/g)].map(m => m[1]))]; } catch {}
 const MIN_PX = 28, MIN_SMALL = 20;   /* audience text 28px; kickers, sources, captions, chart and diagram labels 20px */
 
 /* ---- static authoring checks, run once per deck in the page ---- */

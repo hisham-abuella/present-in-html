@@ -1,13 +1,31 @@
 ---
 name: publish-deck
-description: Publish an HTML slide deck (Keynote Pro) with its images, video and narration to GitHub Pages so it has a public link to share, or update or take down a deck already published there. Use this whenever the user wants to publish, host, deploy, share online, send a link to, or put on GitHub Pages their slides or presentation, even if they only say "make it shareable" or "get me a URL".
+description: Publish an HTML slide deck (present-in-html) with its images, video and narration to GitHub Pages so it has a public link to share, or update or take down a deck already published there. Use this whenever the user wants to publish, host, deploy, share online, send a link to, or put on GitHub Pages their slides or presentation, even if they only say "make it shareable" or "get me a URL".
 license: MIT (see LICENSE)
+compatibility: Node.js 18+, git, and the GitHub CLI (gh) logged in to the user's GitHub account (scripts/check-gh.sh checks; references/install-gh.md installs it on macOS, Windows or Linux). Scripts are bash: Git Bash or WSL on Windows.
 ---
 
 # Publish a deck to GitHub Pages
 
-A Keynote Pro deck is a static HTML file plus the local files it points to, so GitHub Pages serves it as is, at
+A present-in-html deck is a static HTML file plus the local files it points to, so GitHub Pages serves it as is, at
 `https://<user>.github.io/<repo>/`, and every slide keeps its own link (`.../#pricing`).
+
+**Part of the deck workflow** (plan, build, review, publish; the `deck-workflow` skill runs it end to end). This is the
+last step. A user can start here with any deck; if it has not been reviewed, offer review-deck first (a published mistake
+is public), but publish if they say so.
+
+## 0. Check the user can publish
+
+Run this first, before asking the user anything, so they don't approve a publish their machine can't do:
+
+```bash
+bash <skill base dir>/scripts/check-gh.sh     # git, gh, logged in to github.com, allowed to create repositories
+```
+
+It changes nothing and prints, for each missing piece, the fix for this operating system. If it fails, stop and give the
+user the command it names: installing `gh` and logging in are theirs to run (in Claude Code: `! gh auth login`).
+`references/install-gh.md` has every install method for macOS, Windows and Linux, and logging in without a browser.
+Run the check again after they fix it.
 
 ## 1. Say what becomes public, and get a yes
 
@@ -22,7 +40,6 @@ Confirm the repository name too (default: the deck's name, lowercase with hyphen
 ## 2. Build the site folder
 
 ```bash
-gh auth status        # must be logged in; if not, ask the user to run:  ! gh auth login
 node <skill base dir>/scripts/build-site.mjs deck.html --out <scratch>/site [--strip-notes]
 node <skill base dir>/scripts/build-site.mjs a.html b.html --out <scratch>/site     # several decks + an index page
 ```

@@ -16,6 +16,14 @@
       "files": [
         "keynote-pro/examples/quarterly-review.html"
       ]
+    },
+    {
+      "id": 3,
+      "prompt": "review keynote-pro/examples/quarterly-review.html using the MIT speaking rules from Patrick Winston, it's for a 15 minute board meeting",
+      "expected_output": "Reads references/winston.md; scorecard by area (start, during, slides, memorable, persuading, stop); flags the 'Questions' final slide (13) and suggests a contributions/decision slide; checks for an empowerment promise in slides 1-2 and signposts (agenda slide 2, section 7); notes wordy slides 4, 10, 12; doesn't edit the deck.",
+      "files": [
+        "keynote-pro/examples/quarterly-review.html"
+      ]
     }
   ]
 }

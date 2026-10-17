@@ -1,0 +1,649 @@
+{
+  "run": {
+    "task": "stats-101",
+    "title": "STATS 101 — Module 1: Data, Samples and Describing Data",
+    "run_id": "20261016-063639-stats-101",
+    "claude_version": "2.1.301 (Claude Code)",
+    "ollama_version": "0.40.5",
+    "machine": "Apple M4 Max, 64 GB",
+    "plugin_version": "3.1.0",
+    "git_commit": "ae03c20",
+    "timeout_min": 120,
+    "budget_usd": 20
+  },
+  "rows": [
+    {
+      "label": "haiku",
+      "model": "claude-haiku-5-5",
+      "provider": "anthropic",
+      "finished": true,
+      "timed_out": false,
+      "exit_code": 0,
+      "wall_seconds": 524,
+      "api_seconds": 408,
+      "turns": 46,
+      "tool_calls": 45,
+      "tools": {
+        "Bash": 18,
+        "Read": 19,
+        "Edit": 7,
+        "Write": 1
+      },
+      "skills_used": [
+        "present-in-html:present-in-html (prompt)"
+      ],
+      "skill_used": true,
+      "cost_usd": 0.31625928,
+      "cost_note": "API list price",
+      "tokens": {
+        "input": 54,
+        "output": 90031,
+        "cache_read": 2885954,
+        "cache_write": 177043
+      },
+      "models_called": [
+        "claude-haiku-5-5"
+      ],
+      "loaded": {
+        "plugins": [
+          "present-in-html",
+          "cc-plugin-agents-md",
+          "cc-plugin-telemetry",
+          "cc-plugin-plugin-authoring"
+        ],
+        "mcp_servers": []
+      },
+      "deck": "output/deck.html",
+      "checker": {
+        "pass": true,
+        "slides": 29,
+        "issues": 0,
+        "warnings": 0
+      },
+      "stats": {
+        "slides": 29,
+        "slides_with_notes": 29,
+        "diagrams": 7,
+        "slides_with_animation": 10,
+        "images": 0,
+        "placeholders": 2,
+        "layouts": 10,
+        "words_on_slides": 1606,
+        "words_in_notes": 1973,
+        "has_quiz": true,
+        "deck_kb": 188
+      },
+      "judge": {
+        "scores": {
+          "accuracy": 4,
+          "coverage": 4,
+          "teaching": 4,
+          "visual": 3,
+          "diagrams": 4,
+          "notes": 5,
+          "requirements": 4
+        },
+        "overall": 7,
+        "incorrect_claims": [
+          {
+            "slide": 7,
+            "claim": "every person has the same chance",
+            "correction": "The source defines a simple random sample as one where every group of n individuals has the same chance of being chosen. Every person having the same chance is necessary but not sufficient: stratified and systematic samples also give each person an equal chance. Slide 8 itself uses the correct definition, so the two slides disagree.",
+            "severity": "minor"
+          }
+        ],
+        "invented_claims": [
+          {
+            "slide": 4,
+            "claim": "a public-domain reproduction is fine, and check the licence before using it",
+            "true": true
+          },
+          {
+            "slide": 13,
+            "claim": "zero degrees is not the absence of temperature",
+            "true": true
+          },
+          {
+            "slide": 2,
+            "claim": "Where do the data come from? about 15 min / What kind of data are they? about 7 min / What do the data say? about 22 min / Quiz and summary about 5 min",
+            "true": true
+          }
+        ],
+        "ui_issues": [
+          {
+            "slide": 17,
+            "issue": "The x̄ in the headline formula renders broken: the bar sits to the right of the x and next to the equals sign, so it reads like 'x ¯= Σx / n'. This is the key formula of the slide.",
+            "severity": "major"
+          },
+          {
+            "slide": 21,
+            "issue": "The x̄ in the SD formula renders as '(x − x)̄²': the bar lands on the closing bracket and merges with the ². The legend shows 'x⁻'. Students could read it as (x − x)², which is zero.",
+            "severity": "major"
+          },
+          {
+            "slide": 6,
+            "issue": "The 'statistic: x̄, s' label renders with a misplaced bar. The 'used to estimate' arrow ends in empty space instead of pointing at the parameter.",
+            "severity": "minor"
+          },
+          {
+            "slide": 15,
+            "issue": "The slide says 'four completely different pictures' but shows no pictures. There is no scatter-plot diagram or image placeholder for Anscombe's quartet, which is the slide's whole point.",
+            "severity": "minor"
+          },
+          {
+            "slide": 24,
+            "issue": "The three-line caption sits right on top of the footer and the axis label, which feels cramped.",
+            "severity": "minor"
+          },
+          {
+            "slide": 4,
+            "issue": "The image placeholder is a small box inside a decorative panel rather than a clear frame for the image, so the space set aside for the map is unclear.",
+            "severity": "minor"
+          }
+        ],
+        "major_mistakes": [
+          "The order of the module's sections is changed, although the request says to follow them in order. The source goes 3 Population, 4 Types of variables, 5 Levels of measurement, 6 Study design, 7 Sampling, 8 Bias. The deck goes Population (6), Sampling (7–8), Bias (9), Study design (10), Types of variables (11), Levels (12–13).",
+          "On the formula slides (17 and 21) the x̄ symbol renders broken. On slide 21 the SD formula looks like (x − x)², which could confuse first-year students on exactly the formula they need to learn."
+        ],
+        "strengths": [
+          "Every number checks out against the source and recomputes correctly: mean 26, median 21, mode 15, 20.4/20 without the outlier, range 64, Q1 15, Q3 27, IQR 12, variance 341.3, s ≈ 18.5 and ≈ 6.1, fences −3 and 45, z = 2 and 1.5, and the 62–78 / 54–86 / 46–94 bands.",
+          "The box-plot diagram is drawn to scale and correct: whiskers at 12 and 30, the 76 shown as an outlier dot, fences marked. The 68–95–99.7 bell has correctly placed brackets.",
+          "The confounding triangle, the variable-type tree and the skew diagram are clear, correct, animated diagrams that explain better than text.",
+          "Strong speaker notes on every slide, with timings and prompts to the room, and they add the detail the slides leave out (double-blind, variance, 97.5%).",
+          "The checker passes cleanly. 29 slides fall within the 20–30 range. The two required image placeholders have descriptive captions. All six quiz questions are kept, with click-to-reveal answers."
+        ],
+        "verdict": "This is an accurate, well-paced deck with very good speaker notes, and it is close to ready to teach from. It has two real flaws. First, it reorders the module's sections (sampling, bias and study design come before types of variables), which goes against the explicit 'in order' requirement. Second, x̄ renders broken on the mean and SD formula slides, and those need fixing before class. Anscombe's quartet would also benefit from an actual plot. Fix the glyphs and the order, and this deck could be used tomorrow.",
+        "cost_usd": 0.7397350000000001,
+        "model": "claude-opus-5-5"
+      }
+    },
+    {
+      "label": "opus",
+      "model": "claude-opus-5-5",
+      "provider": "anthropic",
+      "finished": true,
+      "timed_out": false,
+      "exit_code": 0,
+      "wall_seconds": 674,
+      "api_seconds": 531,
+      "turns": 32,
+      "tool_calls": 31,
+      "tools": {
+        "Bash": 21,
+        "Read": 9,
+        "Write": 1
+      },
+      "skills_used": [
+        "present-in-html:present-in-html (prompt)"
+      ],
+      "skill_used": true,
+      "cost_usd": 2.7853739999999996,
+      "cost_note": "API list price",
+      "tokens": {
+        "input": 56,
+        "output": 56857,
+        "cache_read": 2585890,
+        "cache_write": 141354
+      },
+      "models_called": [
+        "claude-opus-5-5"
+      ],
+      "loaded": {
+        "plugins": [
+          "present-in-html",
+          "cc-plugin-agents-md",
+          "cc-plugin-telemetry",
+          "cc-plugin-plugin-authoring"
+        ],
+        "mcp_servers": []
+      },
+      "deck": "output/deck.html",
+      "checker": {
+        "pass": true,
+        "slides": 30,
+        "issues": 0,
+        "warnings": 0
+      },
+      "stats": {
+        "slides": 30,
+        "slides_with_notes": 30,
+        "diagrams": 11,
+        "slides_with_animation": 20,
+        "images": 0,
+        "placeholders": 2,
+        "layouts": 12,
+        "words_on_slides": 1513,
+        "words_in_notes": 2962,
+        "has_quiz": true,
+        "deck_kb": 197
+      },
+      "judge": {
+        "scores": {
+          "accuracy": 5,
+          "coverage": 5,
+          "teaching": 5,
+          "visual": 4,
+          "diagrams": 5,
+          "notes": 5,
+          "requirements": 5
+        },
+        "overall": 9,
+        "incorrect_claims": [
+          {
+            "slide": 5,
+            "claim": "≈ 2.4 million returned (from phone books and car lists)",
+            "correction": "Per the source, the ~10 million mailed ballots were drawn from telephone directories and car-registration lists, and ~2.4 million came back. The label attaches the source lists to the returns, which slightly blurs the selection-bias point (the list) with the non-response point (the returns). The notes get it right.",
+            "severity": "minor"
+          }
+        ],
+        "invented_claims": [
+          {
+            "slide": 23,
+            "claim": "Hot weather drives both: more people buy ice cream and more people swim.",
+            "true": true
+          },
+          {
+            "slide": 8,
+            "claim": "but the gap between first and second need not equal the gap between second and third.",
+            "true": true
+          },
+          {
+            "slide": 15,
+            "claim": "Last click: the same fitted line drawn through all four. It describes the first set well and the other three badly.",
+            "true": true
+          },
+          {
+            "slide": 22,
+            "claim": "95% are between 54 and 86, so 5% are outside, half of that above: a score of 86 is better than about 97.5% of the class.",
+            "true": true
+          },
+          {
+            "slide": 3,
+            "claim": "if every person were identical we would not need statistics.",
+            "true": true
+          },
+          {
+            "slide": 19,
+            "claim": "Like the mean, the SD is not resistant.",
+            "true": true
+          }
+        ],
+        "ui_issues": [
+          {
+            "slide": 12,
+            "issue": "This is the only content slide without a section label (no '8 · Bias' above the title), so it breaks the numbering pattern every other section slide follows.",
+            "severity": "minor"
+          },
+          {
+            "slide": 2,
+            "issue": "The first agenda item 'Where do the data come from?' is squeezed into a narrow column and wraps over four lines, which looks cramped next to the other rows.",
+            "severity": "minor"
+          },
+          {
+            "slide": 30,
+            "issue": "In 'sample → statistic (x̄, s)' the 's' wraps onto a line by itself in the left column.",
+            "severity": "minor"
+          },
+          {
+            "slide": 18,
+            "issue": "The accent underline under the title stops partway, at '27 −', so it looks clipped and arbitrary in a title that includes a formula.",
+            "severity": "minor"
+          }
+        ],
+        "major_mistakes": [],
+        "strengths": [
+          "Every number and worked example matches the source and is arithmetically correct: commute mean 26, median 21, mode 15, Q1 15, Q3 27, IQR 12, range 64, fences −3 and 45, s ≈ 18.5 and 6.1, z = 2 and 1.5, and the 68–95–99.7 bounds.",
+          "The data diagrams are drawn to scale: the dot plot puts the mean and median lines at the right places, the box plot's whiskers stop at 12 and 30, the Literary Digest bars use the same scale for both polls, and the bell curve's axis is marked in steps of one SD.",
+          "It follows all 18 module sections in order, keeps one idea per slide, and uses section-divider slides that line up with the module's three questions.",
+          "Animated diagrams are used where they actually explain something: population and sample, the variable tree, experiment design, Anscombe's quartet, distribution shapes, the outlier pulling the mean, the IQR, the box plot, the normal curve and the confounder diagram.",
+          "The speaker notes are excellent. They tell the presenter what to say at each click, ask the room questions, point out quiz traps, and link back to earlier ideas (the Literary Digest comes back three times).",
+          "All six quiz questions are there with plausible wrong options and correct answers, followed by a summary slide. The deck has 30 slides, the checker passes with 0 issues, and both image placeholders are captioned."
+        ],
+        "verdict": "This deck is close to ready to teach tomorrow. I found no factual errors that would teach students anything wrong, the diagrams are accurate and drawn to scale, and the notes support the presenter well. The only problems are cosmetic: the bias slide is missing its section label, some lines wrap awkwardly, and one diagram label slightly mixes up which ballots came from the phone and car lists.",
+        "cost_usd": 0.6564674,
+        "model": "claude-opus-5-5"
+      }
+    },
+    {
+      "label": "qwen-local",
+      "model": "qwen3.8:27b-mlx",
+      "provider": "ollama",
+      "finished": false,
+      "timed_out": true,
+      "exit_code": 143,
+      "wall_seconds": 7200,
+      "api_seconds": null,
+      "turns": null,
+      "tool_calls": 22,
+      "tools": {
+        "Read": 12,
+        "Bash": 5,
+        "Edit": 3,
+        "Write": 2
+      },
+      "skills_used": [
+        "present-in-html:present-in-html (prompt)"
+      ],
+      "skill_used": true,
+      "cost_usd": 0,
+      "cost_note": "local (electricity only)",
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "models_called": [],
+      "loaded": {
+        "plugins": [
+          "present-in-html",
+          "cc-plugin-agents-md",
+          "cc-plugin-telemetry",
+          "cc-plugin-plugin-authoring"
+        ],
+        "mcp_servers": []
+      },
+      "deck": "output/deck.html",
+      "checker": {
+        "pass": true,
+        "slides": 21,
+        "issues": 0,
+        "warnings": 1
+      },
+      "stats": {
+        "slides": 21,
+        "slides_with_notes": 3,
+        "diagrams": 1,
+        "slides_with_animation": 7,
+        "images": 0,
+        "placeholders": 6,
+        "layouts": 21,
+        "words_on_slides": 455,
+        "words_in_notes": 53,
+        "has_quiz": false,
+        "deck_kb": 146
+      },
+      "judge": {
+        "scores": {
+          "accuracy": 1,
+          "coverage": 1,
+          "teaching": 1,
+          "visual": 2,
+          "diagrams": 1,
+          "notes": 1,
+          "requirements": 1
+        },
+        "overall": 1,
+        "incorrect_claims": [
+          {
+            "slide": 1,
+            "claim": "Decks that look designed",
+            "correction": "Title should be STATS 101 Module 1: Data, Samples and Describing Data. This is template boilerplate.",
+            "severity": "major"
+          },
+          {
+            "slide": 2,
+            "claim": "Why this matters 5 min",
+            "correction": "The agenda should list the module's sections (Why statistics, two stories, population/sample, variables, ... quiz) and how long each takes in a 50-minute class. It shows the template's 30-minute generic agenda instead.",
+            "severity": "major"
+          },
+          {
+            "slide": 10,
+            "claim": "98 %",
+            "correction": "This number is not in the module. Use real figures from it, such as Roosevelt's 61% or the 97.5% from the z = 2 example.",
+            "severity": "major"
+          },
+          {
+            "slide": 12,
+            "claim": "Revenue by quarter",
+            "correction": "A made-up revenue chart; the module has nothing like it. It should be a stats graph, such as a histogram or box plot of the commute times.",
+            "severity": "major"
+          },
+          {
+            "slide": 21,
+            "claim": "Your Name you@example.com example.com/deck",
+            "correction": "Placeholder contact details left unfilled. The request also wanted the deck to end with the quiz and summary, not a thank-you slide.",
+            "severity": "minor"
+          }
+        ],
+        "invented_claims": [
+          {
+            "slide": 11,
+            "claim": "4.2 M Users this quarter",
+            "true": false
+          },
+          {
+            "slide": 11,
+            "claim": "38 % Faster than last year",
+            "true": false
+          },
+          {
+            "slide": 11,
+            "claim": "12 Countries live",
+            "true": false
+          },
+          {
+            "slide": 12,
+            "claim": "Q4 closes the year at its highest point.",
+            "true": false
+          },
+          {
+            "slide": 13,
+            "claim": "Price $0 $12 per seat Talk to us",
+            "true": false
+          },
+          {
+            "slide": 14,
+            "claim": "Aug Launch Public release in six regions.",
+            "true": false
+          },
+          {
+            "slide": 16,
+            "claim": "Design is not how it looks. It is how it works .",
+            "true": false
+          },
+          {
+            "slide": 18,
+            "claim": "Amira Khalil Product",
+            "true": false
+          },
+          {
+            "slide": 20,
+            "claim": "Vendor quote, 14 August Installation cost for option B.",
+            "true": false
+          }
+        ],
+        "ui_issues": [
+          {
+            "slide": 1,
+            "issue": "The title slide shows template boilerplate ('present-in-html template', 'Your Name', 'Role or team') with no course title.",
+            "severity": "major"
+          },
+          {
+            "slide": 7,
+            "issue": "The image placeholder is a generic geometric shape. Its caption tells the author how to use the template instead of saying what picture belongs there (e.g. Snow's cholera map).",
+            "severity": "major"
+          },
+          {
+            "slide": 9,
+            "issue": "The slide shows raw HTML instructions ('Add <img class=\"bleed\" ...>') on screen.",
+            "severity": "major"
+          },
+          {
+            "slide": 17,
+            "issue": "A JavaScript code slide that has nothing to do with statistics.",
+            "severity": "major"
+          },
+          {
+            "slide": 19,
+            "issue": "The only animated diagram is the template's 'Input → Process → Result' demo, and the slide shows authoring instructions ('Author at viewBox width 1680...').",
+            "severity": "major"
+          },
+          {
+            "slide": 18,
+            "issue": "The team slide uses fake names and initials as placeholders.",
+            "severity": "major"
+          }
+        ],
+        "major_mistakes": [
+          "The deck is the unmodified present-in-html template. Apart from the footer it contains none of the STATS 101 Module 1 content.",
+          "None of the 17 module sections are covered: no population/sample, variable types, sampling, bias, graphs, centre and spread, the commute worked example, z-scores, the 68–95–99.7 rule, or correlation vs causation.",
+          "There is no quiz slide and no summary slide.",
+          "18 of 21 slides have no speaker notes, and the 3 that do contain template instructions.",
+          "The deck is full of made-up business content (revenue, pricing plans, roadmap, team, sources).",
+          "The only diagram is the template demo; there are no stats diagrams such as a box plot, normal curve or Anscombe scatter plots.",
+          "The checker passes only on layout; its notes warning is still there."
+        ],
+        "strengths": [
+          "The template looks clean: nothing overflows, contrast is good, and the 21 slides fall inside the 20–30 range.",
+          "The footer correctly reads 'STATS 101 · Module 1 — Data, Samples & Describing Data'."
+        ],
+        "verdict": "This deck can't be taught from. It is the skill's sample template with a stats footer added: no module content, no quiz, no summary, no real notes, and invented business placeholders on almost every slide. The whole deck has to be rebuilt.",
+        "cost_usd": 0.41942,
+        "model": "claude-opus-5-5"
+      }
+    },
+    {
+      "label": "sonnet",
+      "model": "claude-sonnet-5-5",
+      "provider": "anthropic",
+      "finished": true,
+      "timed_out": false,
+      "exit_code": 0,
+      "wall_seconds": 324,
+      "api_seconds": 232,
+      "turns": 22,
+      "tool_calls": 21,
+      "tools": {
+        "Read": 6,
+        "Bash": 15
+      },
+      "skills_used": [
+        "present-in-html:present-in-html (prompt)"
+      ],
+      "skill_used": true,
+      "cost_usd": 0.7012039999999999,
+      "cost_note": "API list price",
+      "tokens": {
+        "input": 34,
+        "output": 29603,
+        "cache_read": 972860,
+        "cache_write": 76955
+      },
+      "models_called": [
+        "claude-sonnet-5-5"
+      ],
+      "loaded": {
+        "plugins": [
+          "present-in-html",
+          "cc-plugin-agents-md",
+          "cc-plugin-telemetry",
+          "cc-plugin-plugin-authoring"
+        ],
+        "mcp_servers": []
+      },
+      "deck": "output/deck.html",
+      "checker": {
+        "pass": true,
+        "slides": 29,
+        "issues": 0,
+        "warnings": 0
+      },
+      "stats": {
+        "slides": 29,
+        "slides_with_notes": 29,
+        "diagrams": 7,
+        "slides_with_animation": 14,
+        "images": 0,
+        "placeholders": 2,
+        "layouts": 14,
+        "words_on_slides": 1392,
+        "words_in_notes": 1682,
+        "has_quiz": true,
+        "deck_kb": 173
+      },
+      "judge": {
+        "scores": {
+          "accuracy": 5,
+          "coverage": 5,
+          "teaching": 5,
+          "visual": 4,
+          "diagrams": 5,
+          "notes": 5,
+          "requirements": 5
+        },
+        "overall": 9,
+        "incorrect_claims": [],
+        "invented_claims": [
+          {
+            "slide": 3,
+            "claim": "no two students have the same commute, and no sample is a perfect copy of the whole group",
+            "true": true
+          },
+          {
+            "slide": 11,
+            "claim": "nobody assigned sleep, so students who sleep more may differ in many other ways",
+            "true": true
+          },
+          {
+            "slide": 16,
+            "claim": "which graph for the number of siblings each of you has? Answer: a histogram for a numerical variable.",
+            "true": true
+          },
+          {
+            "slide": 7,
+            "claim": "Image placeholder: a 1936 newspaper front page about the Roosevelt landslide.",
+            "true": true
+          }
+        ],
+        "ui_issues": [
+          {
+            "slide": 2,
+            "issue": "The eyebrow label 'The plan' sits on top of the title 'Three questions', so the two pieces of text overlap and are hard to read.",
+            "severity": "major"
+          },
+          {
+            "slide": 8,
+            "issue": "The x-bar symbol renders badly in 'Statistic: x̄, s': the bar sits over the comma instead of the x.",
+            "severity": "minor"
+          },
+          {
+            "slide": 29,
+            "issue": "Same x-bar problem in 'sample → x̄, s': the bar is misplaced.",
+            "severity": "minor"
+          },
+          {
+            "slide": 10,
+            "issue": "The table headers mix fonts: the first column header is in a small sans-serif and the others are in serif. The same happens on slides 13 and 16.",
+            "severity": "minor"
+          },
+          {
+            "slide": 6,
+            "issue": "The slide never says that the Digest predicted Landon would win (this is only in the notes), so the headline 'wrong winner' has no context on screen.",
+            "severity": "minor"
+          },
+          {
+            "slide": 21,
+            "issue": "The Q1/Q3 working (lower half and upper half) appears only in the notes, not on the slide. Students see the IQR without seeing how the quartiles were found.",
+            "severity": "minor"
+          }
+        ],
+        "major_mistakes": [
+          "Slide 2: the eyebrow label overlaps the title, which is a visible layout bug on the second slide."
+        ],
+        "strengths": [
+          "Every number checks out against the source: commute mean, median and mode, range, IQR, SD, the fences at −3 and 45, the z-scores, the 68–95–99.7 ranges, and the Anscombe figures.",
+          "Follows all 18 source sections in order and ends with both quiz slides and then a summary, as requested.",
+          "The box plot is drawn to scale: 12, 15, 21, 27, 30, the fence at 45 and the outlier at 76 all sit at the right positions. The normal-curve brackets are correctly labelled 46–94.",
+          "Good animated diagrams: population/sample, the variable-type tree, the Anscombe sketches, the distribution shapes, the box plot, the bell curve and the confounder triangle.",
+          "Speaker notes on every slide add the source detail, prompts to ask the room and transitions, rather than copying the slide.",
+          "Both image placeholders have clear captions saying what picture should go there.",
+          "The checker passes with 0 issues on 29 slides, which is within the 20–30 range."
+        ],
+        "verdict": "A very accurate deck that follows the source closely, with good diagrams and notes. No wrong facts were found; the few invented details are harmless teaching asides. Fix the overlapping title on slide 2 and the misplaced x-bar on slides 8 and 29, and it is ready to teach from.",
+        "cost_usd": 0.6106954000000001,
+        "model": "claude-opus-5-5"
+      }
+    }
+  ]
+}

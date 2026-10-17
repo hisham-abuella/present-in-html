@@ -1,0 +1,694 @@
+{
+  "run": {
+    "task": "wireless-101",
+    "title": "Wireless 101, Module 1",
+    "run_id": "20261016-000644",
+    "claude_version": "2.1.301 (Claude Code)",
+    "ollama_version": "0.40.5",
+    "machine": "Apple M4 Max, 64 GB",
+    "plugin_version": "3.1.0",
+    "git_commit": "ae03c20",
+    "timeout_min": 120,
+    "budget_usd": 20
+  },
+  "rows": [
+    {
+      "label": "haiku",
+      "model": "claude-haiku-5-5",
+      "provider": "anthropic",
+      "finished": true,
+      "timed_out": false,
+      "exit_code": 0,
+      "wall_seconds": 425,
+      "api_seconds": 322,
+      "turns": 37,
+      "tool_calls": 35,
+      "tools": {
+        "Skill": 1,
+        "Read": 11,
+        "Bash": 15,
+        "Write": 2,
+        "Edit": 6
+      },
+      "skills_used": [
+        "present-in-html:present-in-html"
+      ],
+      "skill_used": true,
+      "cost_usd": 0.24473493000000004,
+      "cost_note": "API list price",
+      "tokens": {
+        "input": 48,
+        "output": 68384,
+        "cache_read": 2154905,
+        "cache_write": 138806
+      },
+      "models_called": [
+        "claude-haiku-5-5"
+      ],
+      "loaded": {
+        "plugins": [
+          "present-in-html",
+          "cc-plugin-agents-md",
+          "cc-plugin-telemetry",
+          "cc-plugin-plugin-authoring"
+        ],
+        "mcp_servers": []
+      },
+      "deck": "output/deck.html",
+      "checker": {
+        "pass": true,
+        "slides": 29,
+        "issues": 0,
+        "warnings": 0
+      },
+      "stats": {
+        "slides": 29,
+        "slides_with_notes": 29,
+        "diagrams": 4,
+        "slides_with_animation": 14,
+        "images": 0,
+        "placeholders": 3,
+        "layouts": 14,
+        "words_on_slides": 1466,
+        "words_in_notes": 1763,
+        "has_quiz": true,
+        "deck_kb": 178
+      },
+      "judge": {
+        "scores": {
+          "accuracy": 4,
+          "coverage": 4,
+          "teaching": 4,
+          "visual": 3,
+          "diagrams": 3,
+          "notes": 5,
+          "requirements": 5
+        },
+        "overall": 7,
+        "incorrect_claims": [
+          {
+            "slide": 9,
+            "claim": "Fence: gain does not add energy. A directional antenna sends the same power into a narrower beam.",
+            "correction": "\"Fence:\" is a stray label, probably left over from a template or prompt. It means nothing to students. The bullet should read: \"Gain does not create energy: a directional antenna focuses the same power into a narrower beam.\"",
+            "severity": "major"
+          },
+          {
+            "slide": 6,
+            "claim": "Wi-Fi 5/6, radar",
+            "correction": "The source says \"Wi-Fi 5/6 GHz\". Without \"GHz\", the label reads as the Wi-Fi 5 and Wi-Fi 6 generations, not the 5 and 6 GHz bands.",
+            "severity": "minor"
+          },
+          {
+            "slide": 3,
+            "claim": "Note that Maxwell's 1865 equations to 2019 is about 150 years; the module's own takeaway says about 120, so quote the dates, not that number.",
+            "correction": "The arithmetic is right (1865 to 2019 is 154 years), but the note tells the lecturer to ignore the module's own takeaway when it should just restate it. It also leaves out the takeaway's main point about efficiency. Better wording: 'more than a century'.",
+            "severity": "minor"
+          },
+          {
+            "slide": 27,
+            "claim": "At high SNR, which raises capacity more: bandwidth or SNR?",
+            "correction": "The module asks about doubling bandwidth versus doubling SNR. The slide drops 'doubling', but the answer slide says 'Doubling bandwidth', so the question and answer no longer match.",
+            "severity": "minor"
+          },
+          {
+            "slide": 29,
+            "claim": "Summary: nine ideas to take away",
+            "correction": "The slide shows three rows. Summary point 4 (real channels reflect, diffract, scatter and fade; multipath is the main enemy) is missing, so it does not show nine ideas.",
+            "severity": "minor"
+          }
+        ],
+        "invented_claims": [
+          {
+            "slide": 9,
+            "claim": "A high-gain antenna is not an amplifier: it concentrates the same power into a narrower beam, like a torch with a focused lens.",
+            "true": true
+          },
+          {
+            "slide": 9,
+            "claim": "Ask: why does a home router not use a dish? Because the signal has to go in all directions to reach phones around the room.",
+            "true": true
+          },
+          {
+            "slide": 21,
+            "claim": "Ask: why is the 1G row a frequency split? Because each call got its own frequency channel.",
+            "true": true
+          },
+          {
+            "slide": 1,
+            "claim": "It is the promise for the next 45 minutes.",
+            "true": false
+          }
+        ],
+        "ui_issues": [
+          {
+            "slide": 3,
+            "issue": "In the Maxwell column, 'electromagnetic' runs into the Hertz column and overlaps 'radio waves'.",
+            "severity": "major"
+          },
+          {
+            "slide": 6,
+            "issue": "The band boxes are cramped. 'Wi-Fi 5/6, radar' runs past the SHF box border, and the range labels touch the box edges. The text is small for a projector.",
+            "severity": "minor"
+          },
+          {
+            "slide": 28,
+            "issue": "Each answer has both a number and a bullet ('1. • 6 cm'). The list is also pushed left of the title margin.",
+            "severity": "minor"
+          },
+          {
+            "slide": 9,
+            "issue": "The image placeholder caption sits on top of the decorative concentric lines, which makes it harder to read.",
+            "severity": "minor"
+          },
+          {
+            "slide": 12,
+            "issue": "The image placeholder caption sits on top of the decorative concentric lines, which makes it harder to read.",
+            "severity": "minor"
+          },
+          {
+            "slide": 23,
+            "issue": "The handover arc is a tiny curve near the A/B border and is easy to miss. It does not clearly show a user moving between cells.",
+            "severity": "minor"
+          },
+          {
+            "slide": 2,
+            "issue": "The question headings wrap into narrow columns of 4–5 lines while the left half of the slide is empty.",
+            "severity": "minor"
+          }
+        ],
+        "major_mistakes": [
+          "Slide 9 shows the stray label 'Fence:' in bold on a content bullet. Students would see it on screen and it would embarrass the lecturer.",
+          "Slide 3's timeline text overlaps between columns ('electromagnetic' runs into the Hertz column)."
+        ],
+        "strengths": [
+          "All the worked numbers match the source: λ examples, the dBm table, FSPL ≈ 80 dB, the link budget (−56 dBm, 34 dB margin), Shannon ≈ 199 Mbit/s, the Doppler shift of 200 Hz, and the quiz answers.",
+          "It follows the module's sections in order, and facts left off the slides (the full path-loss exponent table, ITU/FCC/Ofcom, the ISM and 6 GHz bands, the GSM/Bluetooth/LTE dates) are kept in the speaker notes.",
+          "The speaker notes are strong. They give click-by-click cues, questions to ask the room, and arithmetic to work aloud, and they do not just repeat the slide.",
+          "The animated link-budget chain and the bits-per-symbol chart show the key arithmetic clearly. The frequency-reuse hex grid uses a valid 3-cell pattern.",
+          "It meets the requirements: 29 slides, quiz then answers then summary at the end, and the checker passes with 0 issues."
+        ],
+        "verdict": "This is a solid deck that follows the module closely, gets the numbers right and has excellent speaker notes. Fix three things before teaching from it tomorrow: the stray 'Fence:' label on slide 9, the overlapping timeline text on slide 3, and the double markers on the answers slide. There are four animated diagrams (wave, spectrum, link-budget chain, hex grid). The ideas that would gain most from a picture have none: a QAM constellation, multipath or fading, and FDMA/TDMA/OFDMA. The deck also has no Part 1 or Part 3 section dividers to match the three-question structure.",
+        "cost_usd": 0.7055887999999999,
+        "model": "claude-opus-5-5"
+      }
+    },
+    {
+      "label": "opus",
+      "model": "claude-opus-5-5",
+      "provider": "anthropic",
+      "finished": true,
+      "timed_out": false,
+      "exit_code": 0,
+      "wall_seconds": 704,
+      "api_seconds": 597,
+      "turns": 34,
+      "tool_calls": 32,
+      "tools": {
+        "Skill": 1,
+        "Bash": 16,
+        "Read": 15
+      },
+      "skills_used": [
+        "present-in-html:present-in-html"
+      ],
+      "skill_used": true,
+      "cost_usd": 2.878559000000001,
+      "cost_note": "API list price",
+      "tokens": {
+        "input": 40,
+        "output": 63296,
+        "cache_read": 1918675,
+        "cache_write": 153593
+      },
+      "models_called": [
+        "claude-opus-5-5"
+      ],
+      "loaded": {
+        "plugins": [
+          "present-in-html",
+          "cc-plugin-agents-md",
+          "cc-plugin-telemetry",
+          "cc-plugin-plugin-authoring"
+        ],
+        "mcp_servers": []
+      },
+      "deck": "output/deck.html",
+      "checker": {
+        "pass": true,
+        "slides": 30,
+        "issues": 0,
+        "warnings": 0
+      },
+      "stats": {
+        "slides": 30,
+        "slides_with_notes": 30,
+        "diagrams": 13,
+        "slides_with_animation": 19,
+        "images": 0,
+        "placeholders": 3,
+        "layouts": 11,
+        "words_on_slides": 1616,
+        "words_in_notes": 3042,
+        "has_quiz": true,
+        "deck_kb": 218
+      },
+      "judge": {
+        "scores": {
+          "accuracy": 5,
+          "coverage": 5,
+          "teaching": 5,
+          "visual": 4,
+          "diagrams": 5,
+          "notes": 5,
+          "requirements": 5
+        },
+        "overall": 9,
+        "incorrect_claims": [
+          {
+            "slide": 21,
+            "claim": "Rate grows only logarithmically, so MIMO adds antennas for parallel streams.",
+            "correction": "The source says standards add both spectrum and antennas (MIMO adds parallel streams) because SNR is a weak lever. The slide's 'so' ties MIMO to the SNR column, which makes it sound as if MIMO raises SNR. It doesn't: it adds parallel streams. A slight distortion, not a factual error.",
+            "severity": "minor"
+          },
+          {
+            "slide": 6,
+            "claim": "Wi-Fi, Bluetooth, microwaves",
+            "correction": "The source says 'microwave ovens'. 'Microwaves' on its own could be read as microwave radiation in general.",
+            "severity": "minor"
+          }
+        ],
+        "invented_claims": [
+          {
+            "slide": 7,
+            "claim": "Click 1: the eight bands, each ten times higher than the last.",
+            "true": true
+          },
+          {
+            "slide": 20,
+            "claim": "That is a theoretical ceiling; no real radio reaches it.",
+            "true": true
+          },
+          {
+            "slide": 21,
+            "claim": "Slow symbols are long, so echoes from multipath do much less damage.",
+            "true": true
+          },
+          {
+            "slide": 14,
+            "claim": "It is why moving your phone a few centimetres can change the bars.",
+            "true": true
+          },
+          {
+            "slide": 11,
+            "claim": "Picture a balloon being blown up: the same paint spread over more surface.",
+            "true": true
+          }
+        ],
+        "ui_issues": [
+          {
+            "slide": 3,
+            "issue": "The agenda's left half is empty, while the three questions are squeezed into a narrow column and wrap onto 3–4 lines ('How many / users can / share the / air?'). The layout feels unbalanced and cramped.",
+            "severity": "minor"
+          },
+          {
+            "slide": 15,
+            "issue": "Bullets wrap too early in a narrow column even though the right half of the slide is empty. It is also missing the 'Part 1 · How far' label that the slides around it carry.",
+            "severity": "minor"
+          },
+          {
+            "slide": 17,
+            "issue": "In the link-budget staircase, the +2 dBi transmit and receive antenna gains show no visible step up, so the diagram doesn't show the gains being added. Only the −80 dB drop and the margin bracket read clearly.",
+            "severity": "minor"
+          },
+          {
+            "slide": 30,
+            "issue": "The summary leaves out the FSPL ≈ 80 dB figure and the 'multipath is the main enemy' point from the module's summary list. They appear only in the notes.",
+            "severity": "minor"
+          }
+        ],
+        "major_mistakes": [],
+        "strengths": [
+          "Every number checks out against the source: wavelengths, dBm table, FSPL worked example (−20.0 + 67.6 + 32.44 ≈ 80 dB), link budget (−56 dBm, 34 dB margin), Doppler 200 Hz, Shannon 199 Mbit/s, bits per symbol, history dates, band edges and regulatory figures.",
+          "Follows the module's sections 1–18 in order, and the three-question framing (how far / how fast / how many) runs through the whole deck as Part labels.",
+          "The diagrams are accurate and add real value. The dB ruler is drawn to a consistent linear scale. The ASK/FSK/PSK waveforms actually encode 1 0 1 1 0, with phase flips where the bit changes. The QPSK/16-QAM/64-QAM constellations have the right point counts. The hex frequency-reuse grid has no two adjacent cells with the same letter. The path-loss exponent bars are placed correctly on the axis.",
+          "Speaker notes are detailed and timed, give click-by-click cues, add analogies and audience prompts, and link back to the quiz questions without just repeating the slide.",
+          "Image placeholders carry specific captions saying what picture should go there.",
+          "30 slides, quiz (3 slides) then summary at the end, and the checker passes with 0 issues."
+        ],
+        "verdict": "The deck is accurate, faithful to the source and ready to teach from, with no factual errors and correct, well-built animated diagrams. The only problems are small layout ones: a cramped agenda slide, a narrow bullet column on slide 15, faint antenna-gain steps in the link-budget diagram, and a summary slide that is slightly thinner than the module's own summary.",
+        "cost_usd": 0.7094304,
+        "model": "claude-opus-5-5"
+      }
+    },
+    {
+      "label": "qwen-local",
+      "model": "qwen3.8:27b-mlx",
+      "provider": "ollama",
+      "finished": false,
+      "timed_out": true,
+      "exit_code": 143,
+      "wall_seconds": 7200,
+      "api_seconds": null,
+      "turns": null,
+      "tool_calls": 19,
+      "tools": {
+        "Read": 7,
+        "Skill": 1,
+        "Bash": 7,
+        "TaskStop": 1,
+        "Edit": 2,
+        "Write": 1
+      },
+      "skills_used": [
+        "present-in-html:present-in-html"
+      ],
+      "skill_used": true,
+      "cost_usd": 0,
+      "cost_note": "local (electricity only)",
+      "tokens": {
+        "input": 0,
+        "output": 0,
+        "cache_read": 0,
+        "cache_write": 0
+      },
+      "models_called": [],
+      "loaded": {
+        "plugins": [
+          "present-in-html",
+          "cc-plugin-agents-md",
+          "cc-plugin-telemetry",
+          "cc-plugin-plugin-authoring"
+        ],
+        "mcp_servers": []
+      },
+      "deck": "output/deck.html",
+      "checker": {
+        "pass": true,
+        "slides": 21,
+        "issues": 0,
+        "warnings": 1
+      },
+      "stats": {
+        "slides": 21,
+        "slides_with_notes": 3,
+        "diagrams": 1,
+        "slides_with_animation": 7,
+        "images": 0,
+        "placeholders": 6,
+        "layouts": 21,
+        "words_on_slides": 455,
+        "words_in_notes": 53,
+        "has_quiz": false,
+        "deck_kb": 143
+      },
+      "judge": {
+        "scores": {
+          "accuracy": 1,
+          "coverage": 1,
+          "teaching": 1,
+          "visual": 2,
+          "diagrams": 1,
+          "notes": 1,
+          "requirements": 1
+        },
+        "overall": 1,
+        "incorrect_claims": [
+          {
+            "slide": 1,
+            "claim": "Decks that look designed",
+            "correction": "The title slide should introduce 'Wireless 101 — Module 1: How Wireless Communication Works'. This is template text that was never replaced.",
+            "severity": "major"
+          },
+          {
+            "slide": 2,
+            "claim": "Why this matters 5 min What we built 10 min What we learned 10 min Questions 5 min",
+            "correction": "The agenda should list the module's sections (why wireless matters, history, waves, spectrum, decibels, antennas, path loss, link budget, modulation, Shannon, multiple access, cells, regulation). It also adds up to 30 minutes, not 50.",
+            "severity": "major"
+          },
+          {
+            "slide": 12,
+            "claim": "Revenue by quarter",
+            "correction": "Made-up template finance data that has nothing to do with wireless communication.",
+            "severity": "major"
+          },
+          {
+            "slide": 19,
+            "claim": "Input Process Result",
+            "correction": "This is the template's placeholder diagram. It should be a wireless diagram, for example a wave or wavelength, a link budget chain or multipath.",
+            "severity": "major"
+          }
+        ],
+        "invented_claims": [
+          {
+            "slide": 10,
+            "claim": "98 %",
+            "true": false
+          },
+          {
+            "slide": 11,
+            "claim": "4.2 M Users this quarter",
+            "true": false
+          },
+          {
+            "slide": 11,
+            "claim": "38 % Faster than last year",
+            "true": false
+          },
+          {
+            "slide": 11,
+            "claim": "12 Countries live",
+            "true": false
+          },
+          {
+            "slide": 12,
+            "claim": "Q1 12 Q2 18 Q3 21 Q4 29",
+            "true": false
+          },
+          {
+            "slide": 13,
+            "claim": "Price $0 $12 per seat Talk to us",
+            "true": false
+          },
+          {
+            "slide": 14,
+            "claim": "Aug Launch Public release in six regions.",
+            "true": false
+          },
+          {
+            "slide": 16,
+            "claim": "Design is not how it looks. It is how it works .",
+            "true": false
+          },
+          {
+            "slide": 18,
+            "claim": "Amira Khalil Product",
+            "true": false
+          },
+          {
+            "slide": 20,
+            "claim": "Vendor quote, 14 August Installation cost for option B.",
+            "true": false
+          }
+        ],
+        "ui_issues": [
+          {
+            "slide": 1,
+            "issue": "Placeholder text on the title slide ('Your Name', 'Role or team', 'present-in-html template').",
+            "severity": "major"
+          },
+          {
+            "slide": 3,
+            "issue": "Section slide shows the placeholder line 'A one-line promise for this section.'",
+            "severity": "major"
+          },
+          {
+            "slide": 7,
+            "issue": "Image placeholder has no caption saying what image should go there; the text describes how the template works.",
+            "severity": "major"
+          },
+          {
+            "slide": 8,
+            "issue": "Image placeholder has no caption; the text is template filler.",
+            "severity": "major"
+          },
+          {
+            "slide": 9,
+            "issue": "Full-bleed slide shows raw HTML in the text ('<img class=\"bleed\" ...>').",
+            "severity": "major"
+          },
+          {
+            "slide": 17,
+            "issue": "A JavaScript code slide in a wireless lecture.",
+            "severity": "major"
+          },
+          {
+            "slide": 18,
+            "issue": "A team slide with made-up people.",
+            "severity": "major"
+          },
+          {
+            "slide": 21,
+            "issue": "Closing slide shows the placeholder 'you@example.com'.",
+            "severity": "major"
+          }
+        ],
+        "major_mistakes": [
+          "The deck is the unmodified present-in-html template. Only the footer was changed to 'Wireless 101 — Module 1'. None of the module content is on any slide.",
+          "No coverage at all: no λ = c/f, no decibels or dBm, no FSPL, no link budget, no modulation, no Shannon, no multiple access, no cells, no regulation.",
+          "No quiz and no summary slide at the end, both of which were required.",
+          "20 of 21 slides have no speaker notes, or only template notes. The checker warns about this, and the deck was presented as passing anyway.",
+          "The only diagram is the template's Input→Process→Result placeholder. There are no wireless diagrams.",
+          "The slides show made-up business data (revenue, users, pricing, a team), which would embarrass the lecturer."
+        ],
+        "strengths": [
+          "21 slides, inside the 20–30 range.",
+          "The template looks clean, with good contrast and nothing cut off or overlapping.",
+          "The footer was updated with the course and module title."
+        ],
+        "verdict": "This deck can't be used. It is the stock template with only the footer changed. It has no wireless content, no quiz, no summary, no relevant diagrams or captioned image placeholders, and almost no speaker notes. It would have to be rebuilt from scratch.",
+        "cost_usd": 0.44834040000000003,
+        "model": "claude-opus-5-5"
+      }
+    },
+    {
+      "label": "sonnet",
+      "model": "claude-sonnet-5-5",
+      "provider": "anthropic",
+      "finished": true,
+      "timed_out": false,
+      "exit_code": 0,
+      "wall_seconds": 327,
+      "api_seconds": 264,
+      "turns": 29,
+      "tool_calls": 27,
+      "tools": {
+        "Skill": 1,
+        "Read": 15,
+        "Bash": 11
+      },
+      "skills_used": [
+        "present-in-html:present-in-html"
+      ],
+      "skill_used": true,
+      "cost_usd": 0.8991745000000001,
+      "cost_note": "API list price",
+      "tokens": {
+        "input": 26,
+        "output": 38188,
+        "cache_read": 733465,
+        "cache_write": 110974
+      },
+      "models_called": [
+        "claude-sonnet-5-5"
+      ],
+      "loaded": {
+        "plugins": [
+          "present-in-html",
+          "cc-plugin-agents-md",
+          "cc-plugin-telemetry",
+          "cc-plugin-plugin-authoring"
+        ],
+        "mcp_servers": []
+      },
+      "deck": "output/deck.html",
+      "checker": {
+        "pass": true,
+        "slides": 30,
+        "issues": 0,
+        "warnings": 0
+      },
+      "stats": {
+        "slides": 30,
+        "slides_with_notes": 30,
+        "diagrams": 10,
+        "slides_with_animation": 14,
+        "images": 0,
+        "placeholders": 2,
+        "layouts": 11,
+        "words_on_slides": 1419,
+        "words_in_notes": 2236,
+        "has_quiz": true,
+        "deck_kb": 193
+      },
+      "judge": {
+        "scores": {
+          "accuracy": 5,
+          "coverage": 5,
+          "teaching": 4,
+          "visual": 4,
+          "diagrams": 4,
+          "notes": 5,
+          "requirements": 5
+        },
+        "overall": 9,
+        "incorrect_claims": [],
+        "invented_claims": [
+          {
+            "slide": 25,
+            "claim": "Same letter = same frequencies, reused by cells far enough apart (illustrative labels).",
+            "true": true
+          },
+          {
+            "slide": 2,
+            "claim": "Fence: we are not studying one product or one standard such as Wi-Fi or 5G. We study the shared physics underneath all of them.",
+            "true": true
+          },
+          {
+            "slide": 7,
+            "claim": "notice that each decade of frequency has typical uses.",
+            "true": true
+          }
+        ],
+        "ui_issues": [
+          {
+            "slide": 12,
+            "issue": "The 'Isotropic: 0 dBi' label sits on top of the outer circle, and 'equal in all directions' overlaps the bottom of the circle.",
+            "severity": "minor"
+          },
+          {
+            "slide": 15,
+            "issue": "The reflected ray bounces off the building back toward the 'Reflected' label rather than reaching Rx. Scattering is only a text label with nothing drawn. The 'absorbed' ray just stops inside the box. The diagram shows the four mechanisms only loosely.",
+            "severity": "minor"
+          },
+          {
+            "slide": 18,
+            "issue": "The large stat '10s of m' almost touches 'ISI' in the next column, so the row looks cramped.",
+            "severity": "minor"
+          },
+          {
+            "slide": 21,
+            "issue": "The x-axis labels '1024-QAM' and '4096-QAM' run into each other.",
+            "severity": "minor"
+          },
+          {
+            "slide": 25,
+            "issue": "The hex grid is ragged: the bottom row has 10 cells and the top row has 9. The handover arrow runs off the grid into empty space.",
+            "severity": "minor"
+          },
+          {
+            "slide": 6,
+            "issue": "Table headers mix fonts: 'Frequency' is in a sans font and 'Use'/'Wavelength' are in a serif. The same thing happens in every comparison table (slides 7, 8, 11, 16, 23, 27).",
+            "severity": "minor"
+          },
+          {
+            "slide": 27,
+            "issue": "The speaker notes contain two paragraphs that each start with 'Notes:', which looks like a generation artefact.",
+            "severity": "minor"
+          }
+        ],
+        "major_mistakes": [],
+        "strengths": [
+          "Every number, formula and worked example checks out against the source: λ table, dBm table, FSPL 80 dB, link budget −56 dBm with a 34 dB margin, Shannon 199 Mbit/s, Doppler 200 Hz and the path-loss exponents.",
+          "The slides follow all 16 source sections in order, with the quiz (6 questions over 2 slides) and then the summary at the end, as the request asked.",
+          "The 'how far / how fast / how many' theme opens the deck, comes back mid-deck and closes it in the summary.",
+          "The diagrams that build up on click are well chosen: the wave with a λ bracket, the doubling-distance arcs, the link-budget chain, the AM/FM/PSK waveforms, FDD vs TDD and the hex reuse grid. The reuse lettering never puts the same letter in adjacent cells.",
+          "The speaker notes are full scripts. Details moved off the slides (the extra timeline dates, the 2.15 dBi dipole, the ITU/FCC/Ofcom regulators, the ISM band and the 6 GHz band) are kept in the notes, and the notes point ahead to the matching quiz questions.",
+          "The checker passes with 0 issues on 30 slides, and the image placeholder on slide 3 has a caption."
+        ],
+        "verdict": "This deck is accurate, complete and faithful to the module, and it is essentially ready to teach from. There are no wrong or invented facts. What needs fixing is small layout polish: the overlapping label on slide 12, the loose reflection and scattering diagram on slide 15, the cramped stats on slide 18, the touching chart labels on slide 21, and the mixed fonts in the table headers. A few source details, such as the regulators and the ISM and 6 GHz bands, appear only in the notes. The summary slide also leaves out the decibel and fading points.",
+        "cost_usd": 0.6843408,
+        "model": "claude-opus-5-5"
+      }
+    }
+  ]
+}
