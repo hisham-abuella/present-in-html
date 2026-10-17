@@ -268,31 +268,31 @@ We compared three cloud LLMs and one local LLM on building a 50-minute lecture d
 All links are relative to the `paper/` folder.
 
 **Prompts.**
-- Wireless 101 build prompt: [`../study/tasks/wireless-101/prompt.txt`](../tasks/wireless-101/prompt.txt)
-- STATS 101 build prompt: [`../study/tasks/stats-101/prompt.txt`](../tasks/stats-101/prompt.txt)
-- STATS 101 planned build prompt: [`../study/tasks/stats-101-planned/prompt.txt`](../tasks/stats-101-planned/prompt.txt)
-- Plan-only prompt (revised version, see Section III-F): [`../study/tasks/stats-101-planned/plan-prompt.txt`](../tasks/stats-101-planned/plan-prompt.txt)
-- Judge prompt: [`../study/scripts/judge-prompt.txt`](../judge-prompt.txt)
-- Judge output schema: [`../study/scripts/judge-schema.json`](../judge-schema.json)
+- Wireless 101 build prompt: [`../tasks/wireless-101/prompt.txt`](../tasks/wireless-101/prompt.txt)
+- STATS 101 build prompt: [`../tasks/stats-101/prompt.txt`](../tasks/stats-101/prompt.txt)
+- STATS 101 planned build prompt: [`../tasks/stats-101-planned/prompt.txt`](../tasks/stats-101-planned/prompt.txt)
+- Plan-only prompt (revised version, see Section III-F): [`../tasks/stats-101-planned/plan-prompt.txt`](../tasks/stats-101-planned/plan-prompt.txt)
+- Judge prompt: [`../judge-prompt.txt`](../judge-prompt.txt)
+- Judge output schema: [`../judge-schema.json`](../judge-schema.json)
 
 **Input modules.**
-- Wireless 101, Module 1: [`../study/tasks/wireless-101/wireless-101-module-1.md`](../tasks/wireless-101/wireless-101-module-1.md)
-- STATS 101, Module 1: [`../study/tasks/stats-101/stats-101-module-1.md`](../tasks/stats-101/stats-101-module-1.md)
-- STATS 101, Module 1 (copy used by the planned task): [`../study/tasks/stats-101-planned/stats-101-module-1.md`](../tasks/stats-101-planned/stats-101-module-1.md)
+- Wireless 101, Module 1: [`../tasks/wireless-101/wireless-101-module-1.md`](../tasks/wireless-101/wireless-101-module-1.md)
+- STATS 101, Module 1: [`../tasks/stats-101/stats-101-module-1.md`](../tasks/stats-101/stats-101-module-1.md)
+- STATS 101, Module 1 (copy used by the planned task): [`../tasks/stats-101-planned/stats-101-module-1.md`](../tasks/stats-101-planned/stats-101-module-1.md)
 
 **Shared plan.**
-- The plan as built from (after the two hand patches): [`../study/tasks/stats-101-planned/PLAN.md`](../tasks/stats-101-planned/PLAN.md)
-- Planner time, cost and patch note: [`../study/tasks/stats-101-planned/plan.json`](../tasks/stats-101-planned/plan.json)
-- Planner transcript: [`../study/tasks/stats-101-planned/plan-transcript.jsonl`](../tasks/stats-101-planned/plan-transcript.jsonl)
+- The plan as built from (after the two hand patches): [`../tasks/stats-101-planned/PLAN.md`](../tasks/stats-101-planned/PLAN.md)
+- Planner time, cost and patch note: [`../tasks/stats-101-planned/plan.json`](../tasks/stats-101-planned/plan.json)
+- Planner transcript: [`../tasks/stats-101-planned/plan-transcript.jsonl`](../tasks/stats-101-planned/plan-transcript.jsonl)
 
 **Scripts.**
-- Run harness: [`../study/scripts/run.sh`](../run.sh)
-- Planner: [`../study/scripts/plan.sh`](../plan.sh)
-- Checker, counts and judge: [`../study/scripts/evaluate.sh`](../evaluate.sh)
-- Slide and notes extraction: [`../study/scripts/extract-slides.mjs`](../extract-slides.mjs)
-- Report generator: [`../study/scripts/report.mjs`](../report.mjs)
+- Run harness: [`../run.sh`](../run.sh)
+- Planner: [`../plan.sh`](../plan.sh)
+- Checker, counts and judge: [`../evaluate.sh`](../evaluate.sh)
+- Slide and notes extraction: [`../extract-slides.mjs`](../extract-slides.mjs)
+- Report generator: [`../report.mjs`](../report.mjs)
 - Figures and data tables for this paper: [`make-figures.mjs`](make-figures.mjs), [`data/tables.md`](data/tables.md), [`data/study-data.json`](data/study-data.json)
-- Study design and results notes: [`../study/README-original.md`](../README.md), [`../study/RESULTS.md`](../RESULTS.md)
+- Study design and results notes: [`../README.md`](../README.md), [`../RESULTS.md`](../RESULTS.md)
 
 **Per-run results** (each folder holds the prompt, source, `run.json`, `results.json`, and per model the transcript, checker output, screenshots, slide text and `judge.json`).
 - Wireless 101: [`../results/20261016-000644/REPORT.md`](../results/20261016-000644/REPORT.md)

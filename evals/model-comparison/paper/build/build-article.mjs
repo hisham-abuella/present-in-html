@@ -78,7 +78,7 @@ while (i < lines.length) {
     lastWasTable = false; i++; continue;
   }
   // Table caption: **TABLE N** then **CAPTION**
-  if ((m = l.match(/^\*\*(TABLE [IVX]+)\*\*$/))) {
+  if ((m = l.match(/^\*\*(TABLE (?:A-)?[IVX]+)\*\*$/))) {
     const cap = lines[i + 1].replace(/^\*\*|\*\*$/g, '');
     pendingCaption = { label: m[1], cap };
     i += 2; continue;
@@ -169,6 +169,7 @@ ${css}
 <a class="skip" href="#sec-1">Skip to the article</a>
 <article>
   <header class="masthead">
+    <p class="lang-switch" style="margin:0 0 1rem;font-family:var(--sans);font-size:0.9rem"><a href="article.ar.html" lang="ar" dir="rtl" hreflang="ar">عربي</a></p>
     <h1>${inline(title)}</h1>
     <p class="byline"><span class="author">${inline(author)}</span><br><span class="affil">${inline(affiliation)}</span></p>
     <p class="dateline"><time datetime="2026-10">October 2026</time></p>

@@ -1,0 +1,46 @@
+/* RTL overrides for article.ar.html; appended after article.css. Same black-and-white design. */
+:root {
+  --arabic: "IBM Plex Sans Arabic", "Noto Naskh Arabic", "Geeza Pro", Tahoma, sans-serif;
+  --serif: var(--arabic);
+  --sans: var(--arabic);
+}
+body { text-align: start; line-height: 1.85; font-size: 18px; }
+@media (max-width: 600px) { body { font-size: 17.5px; } }
+[dir="ltr"] { unicode-bidi: isolate; }
+code { direction: ltr; unicode-bidi: isolate; }
+
+/* No italics, letter-spacing or caps on Arabic */
+em, h3, .status, .affil { font-style: normal; }
+em { font-weight: 600; }
+h1 { letter-spacing: 0; line-height: 1.4; }
+.dateline, .toc .toc-h, .abstract h2, .callout-label { letter-spacing: 0; text-transform: none; }
+.toc .toc-h, .callout-label, .abstract h2 { font-size: 0.85rem; }
+figure.table figcaption { font-variant: normal; letter-spacing: 0; }
+.tlabel { letter-spacing: 0; }
+
+/* Language switch and English subtitle */
+.lang-switch { margin: 0 0 1rem; font-family: var(--sans); font-size: 0.9rem; }
+.subtitle {
+  margin: -0.6rem 0 1.25rem; text-align: right; color: var(--ink-2);
+  font-family: Georgia, "Times New Roman", serif; font-style: italic; font-size: 1rem; line-height: 1.45;
+}
+
+/* Skip link: hidden without pushing content off to the scrollable side */
+.skip { left: auto; right: 0; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.skip:focus { right: 16px; width: auto; height: auto; clip-path: none; }
+
+/* Mirror lists, numbers and tables */
+ul, ol { padding-left: 0; padding-right: 1.5rem; }
+h2 .num, h3 .num { margin-right: 0; margin-left: 0.15em; }
+.toc .num { text-align: right; padding-left: 0.4em; }
+th, td { text-align: right; }
+td.n, th.n { text-align: left; }
+td:first-child, th:first-child { padding-left: 0.6rem; padding-right: 0.4rem; }
+td:last-child, th:last-child { padding-right: 0.6rem; padding-left: 0.4rem; }
+.table-note, figure.fig figcaption { line-height: 1.7; }
+@media (max-width: 640px) {
+  figure.decks td, figure.decks td.n { text-align: right; }
+}
+
+/* References stay English, left to right */
+ol.refs { padding: 0; text-align: left; font-family: Georgia, "Times New Roman", serif; }
