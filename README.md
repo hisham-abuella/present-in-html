@@ -45,10 +45,11 @@ You don't need to name them: Claude picks the right one from what you ask.
 ## What you get
 
 One `.html` file. Open it in Chrome and press **F** for fullscreen, **P** for the presenter window (notes, next slide,
-timer), **G** for an overview of every slide, **S** to try another theme. Print to PDF with Cmd/Ctrl+P.
+timer), **G** for an overview of every slide, **S** to try another theme, **A** to play its narration when the deck has
+voice clips. Print to PDF with Cmd/Ctrl+P.
 
 32 themes (26 made for a profession, from clinician to lawyer to founder), 28 layouts, charts from your data, builds and
-Magic Move, and Arabic/RTL. See them all on the **[website](https://hisham-abuella.github.io/present-in-html/)**: every
+Magic Move, narration (one voice clip per slide; the How it works and Slides that run examples are narrated), and Arabic/RTL. See them all on the **[website](https://hisham-abuella.github.io/present-in-html/)**: every
 example deck and look opens live in your browser.
 
 ## Feedback, bugs and ideas

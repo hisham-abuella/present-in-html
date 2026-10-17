@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 /* Regenerates examples/*.html from template.html + examples/src/<name>.html.
-   Each source file starts with <!--meta {"theme":"…","title":"…"} --> followed by the slides.
+   Each source file starts with <!--meta {"theme":"…","title":"…"} --> followed by the slides
+   (optional "narration":"audio/<deck>/" turns on per-slide narration).
    Diagrams ({{PIPE}}, {{ARCH1}} …) come from examples/src/gen_diagrams.py. Authors of a new deck can skip this:
    just copy template.html and replace the slides. */
 import fs from 'node:fs';
@@ -17,6 +18,7 @@ for (const [srcDir, outDir] of [['examples/src', 'examples'], ['library/src', 'l
   let out = tpl.replace(/(<!-- SLIDES:START -->)[\s\S]*(<!-- SLIDES:END -->)/, (_, a, b) => `${a}\n${src}\n${b}`)
     .replace('data-theme="keynote-white"', `data-theme="${meta.theme}"`).replace('data-fonts=""', `data-fonts="${meta.fonts || ''}"`)
     .replace('<title>present-in-html template</title>', `<title>${meta.pageTitle || meta.title}</title>`).replace('data-title="present-in-html template"', `data-title="${meta.title}"`);
+  if (meta.narration) out = out.replace('<main class="deck"', `<main class="deck" data-narration="${meta.narration}"`); // one MP3 per slide in that folder, named by data-id
   if (meta.lang) out = out.replace('<html lang="en"', `<html lang="${meta.lang}"${meta.dir ? ` dir="${meta.dir}"` : ''}`); // Arabic decks: lang and dir come from the meta line
   out = addLooks(out, {themes: meta.looks === 'all' ? 'all' : meta.looks || [], fonts: meta.looks === 'all' ? 'all' : [], keep: false}); // meta.looks: 'all' or [theme ids]; the deck's own theme and fonts are always added
   fs.writeFileSync(path.join(here, outDir, f), out); console.log('built ' + outDir + '/' + f);
