@@ -1,7 +1,7 @@
 # Cloud vs. Local LLM Agents for Generating Lecture Slides with an Agent Skill: A Preliminary Cost–Time–Quality Study
 
 **Hisham Abuella**
-*[Affiliation placeholder]*
+*Cellular Systems Engineer | Opinions are my own*
 
 ---
 
