@@ -77,6 +77,16 @@ pre .c{color:#9d9184}
 .tags em{font:500 11.5px/1 var(--f-m);font-style:normal;color:var(--ink2);border:1px solid var(--rule);border-radius:6px;padding:5px 7px}
 .sw{display:inline-flex;margin-right:2px}.sw i{width:14px;height:14px;border-radius:50%;margin-right:-4px;box-shadow:0 0 0 1.5px var(--card)}
 .empty{color:var(--ink2);display:none}
+.wip{display:inline-block;vertical-align:middle;margin-left:12px;font:500 12px/1 var(--f-m);letter-spacing:.06em;text-transform:uppercase;color:var(--accent);border:1.5px solid var(--accent);border-radius:999px;padding:6px 10px}
+.evals p{max-width:70ch}
+.tablewrap{overflow-x:auto;margin:8px 0 18px;border:1px solid var(--rule);border-radius:14px;background:var(--card)}
+.evals table{width:100%;border-collapse:collapse;font-size:15px;font-variant-numeric:tabular-nums;min-width:640px}
+.evals th,.evals td{text-align:left;padding:11px 16px;border-bottom:1px solid var(--rule);white-space:nowrap}
+.evals th{font:600 13px/1.2 var(--f-b);color:var(--ink2);background:var(--bg2)}
+.evals tr:last-child td{border-bottom:0}
+.evals td b{font-family:var(--f-d)}
+.note{color:var(--ink2);font-size:14.5px;margin:0 0 24px}
+@media (max-width:600px){.evals table{min-width:0;font-size:14px}.evals th,.evals td{white-space:normal;padding:10px 10px}.evals th:nth-child(2),.evals td:nth-child(2){display:none}}
 footer{border-top:1px solid var(--rule);padding:36px 0 56px;color:var(--ink2);font-size:14.5px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
 @media (max-width:960px){.hero{grid-template-columns:1fr;padding-top:56px}.skills{grid-template-columns:1fr 1fr}.feats{grid-template-columns:1fr 1fr}.install{grid-template-columns:minmax(0,1fr)}}
@@ -87,7 +97,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
 <body>
 <header><div class="wrap">
   <a class="brand" href="#top"><img src="assets/logo.svg" alt="" width="34" height="34">present-in-html</a>
-  <nav><a href="#skills">Skills</a><a href="#install">Install</a><a href="#library">Template library</a><a href="https://github.com/hisham-abuella/present-in-html/issues/new/choose">Feedback</a><a href="https://github.com/hisham-abuella/present-in-html">GitHub</a></nav>
+  <nav><a href="#skills">Skills</a><a href="#install">Install</a><a href="#library">Template library</a><a href="#evals">Evals</a><a href="https://github.com/hisham-abuella/present-in-html/issues/new/choose">Feedback</a><a href="https://github.com/hisham-abuella/present-in-html">GitHub</a></nav>
 </div></header>
 
 <main id="top">
@@ -429,6 +439,29 @@ npm i playwright && npx playwright install chromium</pre></div>
     </a>
   </div>
   <p class="empty">Nothing matches. Try another word.</p>
+</div></section>
+
+<section id="evals" class="evals"><div class="wrap">
+  <h2>Evals <span class="wip">Work in progress</span></h2>
+  <p class="sub">How well, how fast and at what cost do different models build a deck with this skill? Each model got the same one-shot prompt and the same course module, in its own empty folder, through the Claude Code CLI. The skill's checker and a blind judge (Opus 5.5) scored every deck: wrong claims, UI issues and seven criteria.</p>
+  <div class="tablewrap"><table>
+    <thead><tr><th>Model</th><th>Runs on</th><th>Judge /10</th><th>Time</th><th>Cost</th></tr></thead>
+    <tbody>
+      <tr><td><b>Opus 5.5</b></td><td>Anthropic API</td><td>9 / 9</td><td>11m 44s / 11m 14s</td><td>$2.88 / $2.79</td></tr>
+      <tr><td><b>Sonnet 5.5</b></td><td>Anthropic API</td><td>9 / 9</td><td>5m 27s / 5m 24s</td><td>$0.90 / $0.70</td></tr>
+      <tr><td><b>Haiku 5.5</b></td><td>Anthropic API</td><td>7 / 7</td><td>7m 05s / 8m 44s</td><td>$0.24 / $0.32</td></tr>
+      <tr><td><b>qwen3.8 27B</b></td><td>Mac Studio M4 Max, Ollama</td><td>unfinished</td><td>timed out at 120 min</td><td>$0 (local)</td></tr>
+    </tbody>
+  </table></div>
+  <p class="note">Each cell is Wireless 101 / STATS 101, Module 1: judge score out of 10, wall-clock time, and API list-price cost.</p>
+  <p>So far, Sonnet 5.5 matches Opus 5.5 at about half the time and a quarter to a third of the cost, and Haiku 5.5 is a usable first draft. The local model was too slow to finish on its own. In a separate experiment, not ranked against these runs, a local MoE model (qwen3.6 35B-A3B) finished a 30-slide deck in 20 minutes, scored 9/10, by building from a plan Opus wrote once.</p>
+  <p class="note">Preliminary: one run per model per task. Small differences may be noise, and more repeated tests are planned before drawing firm conclusions.</p>
+  <div class="cta">
+    <a class="btn primary" href="evals/model-comparison/paper/article.html">Read the article</a>
+    <a class="btn" href="evals/model-comparison/paper/paper-ieee.html">IEEE paper</a>
+    <a class="btn" href="evals/model-comparison/paper/article.html#artifacts">Generated decks</a>
+    <a class="btn" href="https://github.com/hisham-abuella/present-in-html/tree/main/evals/model-comparison">Prompts, scripts and data</a>
+  </div>
 </div></section>
 </main>
 

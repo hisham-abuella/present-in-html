@@ -23,7 +23,7 @@ function inline(s, { autolink = false } = {}) {
   return s;
 }
 
-const romanToNum = { I: 1, II: 2, III: 3, IV: 4, V: 5, VI: 6, VII: 7, VIII: 8 };
+const romanToNum = { I: 1, II: 2, III: 3, IV: 4, V: 5, VI: 6, VII: 7, VIII: 8, IX: 9, X: 10, XI: 11, XII: 12 };
 const toc = [];
 let out = [];
 let i = 0;
@@ -61,6 +61,7 @@ while (i < lines.length) {
     let id, cls = '';
     if (rm) id = `sec-${romanToNum[rm[1]]}`;
     else if (/^Artifacts/.test(text)) { id = 'artifacts'; cls = ' class="artifacts"'; }
+    else if (/^Appendix/.test(text)) id = 'appendix';
     else if (/^References/.test(text)) { id = 'references'; cls = ' class="references"'; inRefs = true; }
     section = id; subNum = 0;
     toc.push({ id, text });
