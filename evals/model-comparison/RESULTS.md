@@ -1,7 +1,8 @@
 # Results
 
-Two tasks, four models, one run each, plus a third run where three local models build from a plan written by Opus. Same conditions throughout: Claude Code 2.1.301, plugin 3.1.0 (commit ae03c20),
-Apple M4 Max 64 GB, Ollama 0.40.5, 120-minute limit per run (the planned run: Claude Code 2.1.302, 240 minutes), judged blind by `claude-opus-5-5`.
+Two tasks, four models, one run each. A separate experiment, where three local models build from a plan written by
+Opus, is reported at the end and is not ranked against these runs. Same conditions throughout: Claude Code 2.1.301, plugin 3.1.0 (commit ae03c20),
+Mac Studio (Apple M4 Max), 64 GB, Ollama 0.40.5, 120-minute limit per run (the planned run: Claude Code 2.1.302, 240 minutes), judged blind by `claude-opus-5-5`.
 
 ## STATS 101, Module 1
 
@@ -22,33 +23,6 @@ so every model had the skill loaded before its first turn.
   the formula slides, so the SD formula reads (x − x)².
 - **Qwen:** read the skill, set up the `chalk` theme and wrote slides 1–20 (in `output/parts/`, 17 of 20 with notes).
   It was writing the last part when the limit stopped it, so the judged `deck.html` is still the template (scored 1/10).
-
-## STATS 101, Module 1, built from an Opus plan (local models)
-
-Run [`20261016-214018-stats-101-planned`](results/20261016-214018-stats-101-planned/REPORT.md) ·
-[decks side by side](results/20261016-214018-stats-101-planned/index.html). Opus wrote one detailed
-[`PLAN.md`](tasks/stats-101-planned/PLAN.md) once (23m 20s, $5.05, 94 KB): every slide's exact text and notes, 10
-ready-to-paste SVGs, and the build commands. Each local model got that plan and only had to build from it
-(240-minute limit, Claude Code 2.1.302). Two paths in the plan were fixed by hand before the run (the planner's own temp
-folder and the deck's file name); `plan-prompt.txt` now asks for both.
-
-| Model | Time | Cost | Slides | Checker | Notes | Diagrams | Wrong claims (major) | UI issues (major) | **Judge /10** |
-|---|---|---|---|---|---|---|---|---|---|
-| qwen3.6 35B-A3B (local, MoE) | 20m 07s | $0 (+ $5.05 plan) | 30 | pass | 30/30 | 10 | 0 (0) | 5 (0) | **9** |
-| gemma4 26B (local) | 72m 34s, stopped early | $0 | 10 of 30 | – | – | – | – | – | **unfinished** |
-| qwen3.8 27B (local) | 61m 03s, API error | $0 | 10 of 30 | – | – | – | – | – | **unfinished** |
-
-- **qwen3.6 35B-A3B finished the whole deck in 20 minutes, and the judge scored it 9/10**, level with the cloud Opus
-  and Sonnet decks: no wrong claims, every number right, all sections in order. Its one major finding is in the speaker
-  notes of the quiz slides, which say "then to reveal" without saying how. The plan plus the fast MoE model make a
-  free local build practical.
-- **gemma4 26B** wrote part 1 (slides 1–10, all with notes) but rewrote the same file 8 times (4 more Write calls failed for lack of a file path), then ended its turn with
-  "I will now proceed to build Part 2", which in a one-shot run ends the run. It never assembled `deck.html`.
-- **qwen3.8 27B** read the plan carefully, wrote part 1 (10 slides with notes) and was writing part 2 when the
-  stream from Ollama stopped ("API Error: The response stopped arriving") after 61 minutes. The dense 27B model is still
-  too slow for a 30-slide deck even with the plan.
-- **The plan is what made the difference.** Without it, qwen3.8 27B spent about 80 minutes reading the skill and
-  ran out of time; with it, the MoE model needed no reference files at all.
 
 ## Wireless 101, Module 1
 
@@ -79,9 +53,34 @@ Costs are the CLI's API list-price figures; judging cost a further $0.61–$0.74
 - **The local model is too slow for this task, not unable to do it.** On the M4 Max, qwen3.8 27B spent about 80 minutes
   reading the skill and setting up, then wrote about 10 slides every 20 minutes. A full deck would take roughly 2.5–3 hours
   (`TIMEOUT_MIN=200`).
-- **A local model can match the cloud when Opus plans for it.** Given Opus's full plan ($5.05, once), `qwen3.6:35b-a3b`
-  built a 9/10 deck in 20 minutes for $0. The plan costs about as much as two Opus decks, so it pays off when the
-  same plan is built more than once, or built locally for privacy.
+
+## Experiment: STATS 101, Module 1, built from an Opus plan (local models only)
+
+A separate experiment to help local models finish, not part of the comparison above. Its input (the plan) and settings
+(240 minutes, Claude Code 2.1.302) differ, so it is not a like-for-like comparison and is not ranked against the other runs.
+
+Run [`20261016-214018-stats-101-planned`](results/20261016-214018-stats-101-planned/REPORT.md) ·
+[decks side by side](results/20261016-214018-stats-101-planned/index.html). Opus wrote one detailed
+[`PLAN.md`](tasks/stats-101-planned/PLAN.md) once (23m 20s, $5.05, 94 KB): every slide's exact text and notes, 10
+ready-to-paste SVGs, and the build commands. Each local model got that plan and only had to build from it
+(240-minute limit, Claude Code 2.1.302). Two paths in the plan were fixed by hand before the run (the planner's own temp
+folder and the deck's file name); `plan-prompt.txt` now asks for both.
+
+| Model | Time | Cost | Slides | Checker | Notes | Diagrams | Wrong claims (major) | UI issues (major) | **Judge /10** |
+|---|---|---|---|---|---|---|---|---|---|
+| qwen3.6 35B-A3B (local, MoE) | 20m 07s | $0 (+ $5.05 plan) | 30 | pass | 30/30 | 10 | 0 (0) | 5 (0) | **9** |
+| gemma4 26B (local) | 72m 34s, stopped early | $0 | 10 of 30 | – | – | – | – | – | **unfinished** |
+| qwen3.8 27B (local) | 61m 03s, API error | $0 | 10 of 30 | – | – | – | – | – | **unfinished** |
+
+- **qwen3.6 35B-A3B finished the whole deck in 20 minutes, and the judge scored it 9/10**: no wrong claims, every number right, all sections in order. Its one major finding is in the speaker
+  notes of the quiz slides, which say "then to reveal" without saying how. It is an indication that a plan from a
+  strong model can make a local build feasible.
+- **gemma4 26B** wrote part 1 (slides 1–10, all with notes) but rewrote the same file 8 times (4 more Write calls failed for lack of a file path), then ended its turn with
+  "I will now proceed to build Part 2", which in a one-shot run ends the run. It never assembled `deck.html`.
+- **qwen3.8 27B** read the plan carefully, wrote part 1 (10 slides with notes) and was writing part 2 when the
+  stream from Ollama stopped ("API Error: The response stopped arriving") after 61 minutes. The dense 27B model is still
+  too slow for a 30-slide deck even with the plan.
+- **The plan removed most of the reading and design work:** the MoE model needed no reference files at all.
 
 ## What it shows about the skill
 

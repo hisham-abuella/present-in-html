@@ -100,3 +100,11 @@ before drawing firm conclusions.
 ## Results
 
 See [`RESULTS.md`](RESULTS.md) for every task's latest run.
+
+## Paper
+
+The study is written up as a short paper, in two editions built from [`paper/paper.md`](paper/paper.md): IEEE two-column
+([`paper/paper-ieee.html`](paper/paper-ieee.html)) and a single-column article ([`paper/article.html`](paper/article.html)).
+Its figures and data come from `results/` through `paper/make-figures.mjs`. The number audit and the reference check are
+in `paper/AUDIT.md` and `paper/REFERENCES-CHECK.md`. Every generated deck, ready to open, is in [`decks/`](decks/); the
+`PARTIAL_*` files were assembled afterwards from the slide parts of unfinished local runs and were not judged.
