@@ -253,8 +253,10 @@ Needs Playwright: `npm i playwright && npx playwright install chromium`. Or set 
 ## 12a. Narration (recorded voice per slide)
 
 Add `data-narration="audio/my-deck/"` to `<main class="deck">` and put one MP3 per slide in that folder, named after the
-slide's link id (`data-id`, for example `audio/my-deck/pricing.mp3`). A speaker button appears in the toolbar once the first
-slide's clip loads (key **A**, also from the presenter window). While narration is on, each slide plays its clip, shows all
+slide's link id (`data-id`, for example `audio/my-deck/pricing.mp3`). Once the first slide's clip loads, the deck says so:
+a "This deck has sound" marker with a **Play with sound** button appears in the top corner (Arabic labels when
+`lang="ar"`), and a speaker button joins the toolbar (key **A**, also from the presenter window). Browsers only play sound
+after a click, so the button is how a visitor starts it; starting on the last slide goes back to the first. While narration is on, each slide plays its clip, shows all
 its builds, and moves to the next slide when the clip ends; navigating by hand keeps narrating from where you land.
 Until the files exist the deck shows no button at all, so a deck can ship first and get its voice later.
 
