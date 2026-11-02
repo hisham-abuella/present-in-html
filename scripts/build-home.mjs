@@ -247,6 +247,8 @@ npm i playwright && npx playwright install chromium</pre></div>
   }));
 })();
 </script>
+<script data-goatcounter="https://hishamabuella.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 </body>
 </html>
 `;
