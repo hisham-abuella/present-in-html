@@ -974,7 +974,7 @@ table.cmp{margin-block:auto}
 .slide .timeline{list-style:none;padding:0;display:flex;margin-block:auto;position:relative}
 .timeline li{flex:1;min-width:0;display:grid;grid-template-rows:auto 56px auto 1fr;padding-inline-end:40px;position:relative}
 .timeline li::before{content:"";grid-row:2;align-self:center;width:24px;height:24px;border-radius:50%;background:var(--brand);position:relative;z-index:1;box-shadow:0 0 0 8px var(--bg)}
-.timeline li::after{content:"";position:absolute;top:calc(1.4em + 28px);inset-inline:0;height:2px;background:var(--rule-strong);margin-top:-1px}
+.timeline li::after{content:"";position:absolute;top:calc(var(--t-small)*1.4 + 28px);inset-inline:0;height:2px;background:var(--rule-strong);margin-top:-1px}
 .timeline li:last-child::after{inset-inline-end:auto;width:24px}
 .timeline time{grid-row:1;font:500 var(--t-small)/1.4 var(--f-mono);color:var(--brand-text)}
 .timeline h3{grid-row:3;margin-bottom:12px;font-size:calc(46px*var(--fit))}

@@ -34,6 +34,8 @@ Treat `$S` as read-only: copy the template into the user's folder and work on th
 | `references/manual.md` | the engine manual; section 2 is the layout cheat-sheet with markup for every layout |
 | `references/outline.md` | the `PLAN.md` format: the outline every deck is built from |
 | `references/engine.md` | slide links, live demos, narration, the `window.kp` API, slide attributes |
+| `references/design-refs.md` | mood recipes (paste-ready theme blocks), craft rules, and a DESIGN.md template for the user's own brand |
+| `references/figures-and-motion.md` | isometric line figures in inline SVG, and slide-safe effects (backgrounds, reveals, beams) with fallbacks |
 
 ## 1. Start from the user's material
 
@@ -62,6 +64,8 @@ then build. A questionnaire costs the user more than a decision they can change.
 Read `references/looks.md` and match the need: a profession look when one fits (a lawyer gets `chambers`, a finance team
 `ledger`), else a core theme by occasion (launch `keynote-black`/`keynote-white`, board `boardroom`, tech talk `swiss`,
 teaching `studio`, essay or weekly update `editorial`). Each library look comes with a recipe: the layouts in a good order.
+When no look fits, or the user brings a brand or a mood ("like a terminal", "warm editorial"), read `references/design-refs.md`.
+For an illustration or one effect on a title, section or closing slide, read `references/figures-and-motion.md`.
 
 `data-theme` and `data-fonts` go on `<html>` (empty `data-fonts` = the theme's own pairing). The template carries the 6 core
 themes; library themes are copied into the deck, so it stays one file:
