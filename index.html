@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#fbf7f0;--bg2:#f3ece0;--card:#fffdf9;--ink:#1a1612;--ink2:#5e554b;--rule:#e4dacb;--accent:#d9542f;--accent-ink:#fff;--code:#1f1b17;--code-ink:#f3ede4;
+:root{--bg:#fbf7f0;--bg2:#f3ece0;--card:#fffdf9;--ink:#1a1612;--ink2:#5e554b;--rule:#e4dacb;--accent:#c2481f;--accent-ink:#fff;--code:#1f1b17;--code-ink:#f3ede4;
   --f-d:"Bricolage Grotesque",system-ui,sans-serif;--f-b:Inter,system-ui,sans-serif;--f-m:"JetBrains Mono",ui-monospace,monospace;color-scheme:light}
 @media (prefers-color-scheme:dark){:root{--bg:#13110f;--bg2:#1b1815;--card:#1e1a17;--ink:#f3ede4;--ink2:#b3a899;--rule:#332d27;--accent:#f0805f;--accent-ink:#1a1612;--code:#0c0b0a;--code-ink:#f3ede4;color-scheme:dark}}
 *{box-sizing:border-box}
@@ -24,7 +24,8 @@ header .wrap{display:flex;align-items:center;gap:24px;height:64px}
 .brand img{width:34px;height:34px}
 nav{display:flex;gap:22px;margin-left:auto;font-size:15px}
 nav a{text-decoration:none;color:var(--ink2)}nav a:hover{color:var(--ink)}
-.hero{padding:88px 0 72px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+.hero{padding-block:88px 72px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;background:radial-gradient(55% 60% at 78% 50%,color-mix(in srgb,var(--accent) 9%,transparent),transparent 70%)}
+section[id]{scroll-margin-top:72px}
 .kicker{font:500 13px/1 var(--f-m);letter-spacing:.06em;text-transform:uppercase;color:var(--accent)}
 h1{font:800 clamp(44px,6.4vw,84px)/.98 var(--f-d);letter-spacing:-.035em;margin:18px 0 22px}
 h1 em{font-style:normal;color:var(--accent)}
@@ -33,43 +34,62 @@ h1 em{font-style:normal;color:var(--accent)}
 .btn{display:inline-flex;align-items:center;gap:8px;min-height:48px;padding:0 22px;border-radius:999px;font-weight:600;text-decoration:none;border:1.5px solid var(--ink)}
 .btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
 .btn:hover{transform:translateY(-1px)}
-.shot{position:relative;display:block;border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(40,20,0,.35),0 0 0 1px var(--rule);aspect-ratio:16/9;background:#000}
-.shot img{width:100%;height:100%;object-fit:cover;display:block}
-.shot .play{position:absolute;right:16px;bottom:16px;background:var(--accent);color:var(--accent-ink);font:600 14px/1 var(--f-b);padding:11px 16px;border-radius:999px}
+.shot{position:relative;display:block;border-radius:18px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(40,20,0,.35),0 0 0 1px var(--rule);padding-top:30px;background:#1b1815}
+.shot::before{content:"tour.html";position:absolute;inset:0 0 auto;height:30px;font:500 11.5px/30px var(--f-m);color:#9d9184;text-align:center;
+  background:radial-gradient(circle at 16px 15px,#5e554b 4px,transparent 4.5px),radial-gradient(circle at 32px 15px,#5e554b 4px,transparent 4.5px),radial-gradient(circle at 48px 15px,#5e554b 4px,transparent 4.5px)}
+.shot img{width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;display:block}
+.shot .play{position:absolute;right:8px;top:3px;background:var(--accent);color:var(--accent-ink);font:600 12.5px/1 var(--f-b);padding:6px 11px;border-radius:999px}
+@media (prefers-color-scheme:dark){.shot{box-shadow:0 30px 80px -30px color-mix(in srgb,var(--accent) 35%,transparent),0 0 0 1px var(--rule)}}
 section{padding:72px 0;border-top:1px solid var(--rule)}
+main{counter-reset:s}
+section > .wrap > h2::before{counter-increment:s;content:counter(s,decimal-leading-zero);display:block;font:500 12px/1 var(--f-m);letter-spacing:.08em;color:var(--accent);margin:0 0 14px}
+@media (min-width:961px){section{padding:96px 0}}
 h2{font:700 clamp(32px,4vw,48px)/1.05 var(--f-d);letter-spacing:-.025em;margin:0 0 12px}
 .sub{color:var(--ink2);margin:0 0 40px;max-width:60ch}
-.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.skills{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+.skill{grid-column:span 2}.skill:nth-child(n+4){grid-column:span 3}
 .skill{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:24px;display:flex;flex-direction:column;gap:10px}
 .skill .n{font:500 13px/1 var(--f-m);color:var(--accent)}
 .skill h3{font:700 22px/1.1 var(--f-d);margin:0}
 .skill code{font:500 13px/1 var(--f-m);color:var(--ink2)}
 .skill p{margin:0;color:var(--ink2);font-size:15.5px}
 .skill q{margin-top:auto;font-size:14.5px;border-top:1px dashed var(--rule);padding-top:12px;color:var(--ink)}
-.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 40px}
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:0 40px;counter-reset:f;border-top:1px solid var(--rule)}
+.feat{padding:22px 28px 26px 0;border-bottom:1px solid var(--rule)}
 .feat b{display:block;font:700 19px/1.2 var(--f-d);margin-bottom:6px}
+.feat b::before{counter-increment:f;content:counter(f,decimal-leading-zero);display:block;font:500 12px/1 var(--f-m);letter-spacing:.06em;color:var(--accent);margin-bottom:12px}
+.feat:first-child{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto auto 1fr;column-gap:32px}.feat:first-child .fig{grid-row:1 / -1;grid-column:2;width:240px;margin:-12px 0}
+@media (min-width:961px){.feat:first-child,.feat:last-child{grid-column:span 2}.feat:first-child b{font-size:28px;letter-spacing:-.02em}}
 .feat span{color:var(--ink2);font-size:15.5px}
+.fig{aspect-ratio:5/4;width:min(260px,100%);--hairline-plate:var(--bg);--hairline-hi:var(--ink);--hairline-edge:#b3a899;--hairline-mid:#d6cbbb;--hairline-lo:var(--rule);--hairline-stroke:.9}
+@media (prefers-color-scheme:dark){.fig{--hairline-edge:#7d7368;--hairline-mid:#4a423a}}
+#library .wrap{position:relative}
+#fig-riffle{position:absolute;top:0;right:24px;width:220px}
 .install{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .step{background:var(--card);border:1px solid var(--rule);border-radius:16px;padding:24px}
 .step h3{font:700 20px/1.2 var(--f-d);margin:0 0 6px}
 .step p{margin:0 0 14px;color:var(--ink2);font-size:15.5px}
-pre{position:relative;margin:0;background:var(--code);color:var(--code-ink);border-radius:12px;padding:44px 18px 16px;font:14px/1.7 var(--f-m);overflow-x:auto}
+pre{position:relative;margin:0;background:var(--code);color:var(--code-ink);border-radius:12px;padding:46px 18px 16px;font:14px/1.7 var(--f-m);white-space:pre-wrap;overflow-wrap:anywhere}
+pre::before{content:attr(data-label);position:absolute;top:0;left:0;right:0;height:34px;padding:0 18px;font:500 11px/34px var(--f-m);letter-spacing:.08em;text-transform:uppercase;color:#9d9184;border-bottom:1px solid #ffffff14}
 pre .c{color:#9d9184}
-.copy{position:absolute;top:10px;right:10px;font:500 12px/1 var(--f-b);background:#ffffff1a;color:var(--code-ink);border:0;border-radius:8px;padding:7px 10px;cursor:pointer}
+.copy{position:absolute;top:5px;right:10px;font:500 12px/1 var(--f-b);background:#ffffff1a;color:var(--code-ink);border:0;border-radius:8px;padding:7px 10px;cursor:pointer}
 .copy:hover{background:#ffffff33}
-.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 0 14px}
+.tools{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:0 0 14px;position:sticky;top:64px;z-index:4;background:var(--bg);padding-block:10px}
 .chip{font:500 14px/1 var(--f-b);min-height:38px;padding:0 15px;border-radius:999px;border:1px solid var(--rule);background:var(--card);color:var(--ink);cursor:pointer}
 .chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
 .chip small{opacity:.6;margin-left:4px}
+.chip:hover{border-color:color-mix(in srgb,var(--ink) 35%,var(--rule))}
 #q{margin-left:auto;min-height:40px;min-width:min(260px,100%);border:1px solid var(--rule);border-radius:999px;padding:0 16px;background:var(--card);color:var(--ink);font:inherit;font-size:15px}
 .fields{display:none;flex-wrap:wrap;gap:8px;margin:0 0 22px}.fields.on{display:flex}
 .fields .chip{min-height:32px;font-size:13px;padding:0 12px}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px}
 .card{display:flex;flex-direction:column;background:var(--card);border:1px solid var(--rule);border-radius:14px;overflow:hidden;text-decoration:none;transition:transform .15s,box-shadow .15s}
 .card:hover{transform:translateY(-3px);box-shadow:0 18px 36px -18px rgba(40,20,0,.4)}
 .card[hidden]{display:none}
 .thumb{aspect-ratio:16/9;background:var(--bg2);overflow:hidden;border-bottom:1px solid var(--rule)}
-.thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s ease}
+.card:hover .thumb img{transform:scale(1.03)}
+.card:focus-visible{outline-offset:2px}
 .body{display:flex;flex-direction:column;gap:6px;padding:14px 16px 16px;flex:1}
 .body b{font:700 17px/1.25 var(--f-d)}
 .desc{color:var(--ink2);font-size:14px;line-height:1.45}
@@ -85,13 +105,25 @@ pre .c{color:#9d9184}
 .evals th{font:600 13px/1.2 var(--f-b);color:var(--ink2);background:var(--bg2)}
 .evals tr:last-child td{border-bottom:0}
 .evals td b{font-family:var(--f-d)}
+.evals td:nth-child(n+3),.evals th:nth-child(n+3){text-align:right}
+.evals td:nth-child(n+3){font-family:var(--f-m);font-size:14px}
+.evals tbody tr:last-child td{color:var(--ink2)}
+.evals tbody tr:hover td{background:var(--bg2)}
 .note{color:var(--ink2);font-size:14.5px;margin:0 0 24px}
-@media (max-width:600px){.evals table{min-width:0;font-size:14px}.evals th,.evals td{white-space:normal;padding:10px 10px}.evals th:nth-child(2),.evals td:nth-child(2){display:none}}
+@media (max-width:600px){.evals table{min-width:0;font-size:14px}.evals th,.evals td{white-space:normal;padding:10px 10px}.evals th:nth-child(2),.evals td:nth-child(2){display:none}.evals td:nth-child(n+3){font-family:inherit}}
 footer{border-top:1px solid var(--rule);padding:36px 0 56px;color:var(--ink2);font-size:14.5px}
 footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between}
-@media (max-width:960px){.hero{grid-template-columns:1fr;padding-top:56px}.skills{grid-template-columns:1fr 1fr}.feats{grid-template-columns:1fr 1fr}.install{grid-template-columns:minmax(0,1fr)}}
-@media (max-width:600px){.wrap{padding:0 16px}nav{display:none}.skills,.feats{grid-template-columns:1fr}#q{margin-left:0;width:100%}section{padding:56px 0}}
-@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.btn:hover,.card:hover{transform:none}}
+@media (max-width:960px){.hero{grid-template-columns:1fr;padding-top:56px}.skills{grid-template-columns:1fr 1fr}.skill,.skill:nth-child(n+4){grid-column:auto}.skill:last-child{grid-column:1 / -1}.feats{grid-template-columns:1fr 1fr}.feat:first-child{grid-column:span 2}#fig-riffle{display:none}.install{grid-template-columns:minmax(0,1fr)}}
+@media (max-width:600px){.wrap{padding-inline:16px}
+  header .wrap{flex-wrap:wrap;height:auto;padding-block:10px;row-gap:6px}
+  nav{order:3;width:100%;margin:0;overflow-x:auto;gap:18px;font-size:14px;white-space:nowrap;scrollbar-width:none;padding-bottom:2px;mask-image:linear-gradient(90deg,#000 85%,transparent)}
+  nav::-webkit-scrollbar{display:none}
+  section[id]{scroll-margin-top:96px}
+  .skills,.feats{grid-template-columns:1fr}.feat:first-child{grid-column:auto;display:block}.fig{display:none}
+  section{padding:56px 0}
+  .grid{grid-template-columns:1fr 1fr;gap:12px}.desc,.tags em{display:none}.body{padding:10px 12px 12px}.body b{font-size:14.5px}
+  .tools{top:84px;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}.tools::-webkit-scrollbar{display:none}.tools .chip{flex:none}#q{order:-1;flex:0 0 170px;min-width:0;margin-left:0}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.btn:hover,.card:hover,.card:hover .thumb img{transform:none}}
 </style>
 </head>
 <body>
@@ -112,13 +144,14 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
 </div>
 
 <section id="skills"><div class="wrap">
-  <h2>Four skills, one deck</h2>
-  <p class="sub">Claude picks the right one from what you ask. Each loads only when it is needed, so the plugin adds about 734 tokens to a session.</p>
+  <h2>Five skills, one deck</h2>
+  <p class="sub">Claude picks the right one from what you ask. Each loads only when it is needed, so the plugin adds about 1,000 tokens to a session.</p>
   <div class="skills">
     <div class="skill"><span class="n">01 / make</span><h3>Make</h3><code>present-in-html</code><p>Writes the deck from your material in a look chosen for your audience, with speaker notes, then runs the checker.</p><q>Turn q3-report.pdf into a 10-minute board deck</q></div>
     <div class="skill"><span class="n">02 / edit</span><h3>Edit</h3><code>edit-deck</code><p>Opens a click-and-type editor for wording and notes. Save writes the same file back.</p><q>Let me fix the wording myself</q></div>
     <div class="skill"><span class="n">03 / review</span><h3>Review</h3><code>review-deck</code><p>Checks timing, jargon, story and sources against the audience and the time slot.</p><q>Will this fit in 15 minutes for managers?</q></div>
     <div class="skill"><span class="n">04 / publish</span><h3>Publish</h3><code>publish-deck</code><p>Puts the deck and its images on GitHub Pages and returns a link to share.</p><q>Put my deck online so I can send a link</q></div>
+    <div class="skill"><span class="n">05 / workflow</span><h3>Workflow</h3><code>deck-workflow</code><p>Runs all of it: plans the outline, builds the deck, reviews and fixes it, then publishes. It can also pick up at any step.</p><q>Plan, build, review and publish a deck for my Monday talk</q></div>
   </div>
 </div></section>
 
@@ -126,7 +159,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
   <h2>What every deck can do</h2>
   <p class="sub">The engine, the theme and the slides live in one HTML file. Nothing to install to present it.</p>
   <div class="feats">
-    <div class="feat"><b>32 themes</b><span>Six core looks and 26 made for a profession, each with fonts and a slide recipe.</span></div>
+    <div class="feat"><b>32 themes</b><span>Six core looks and 26 made for a profession, each with fonts and a slide recipe.</span><div class="fig" id="fig-exploded" aria-label="Line drawing: an app window taken apart into its layers, like the engine, theme and slides in one file"></div></div>
     <div class="feat"><b>28 layouts</b><span>From title and chart to case review, quiz, ask and materials board. Text fits itself.</span></div>
     <div class="feat"><b>Presenter window</b><span>Notes, the next build, a timer or countdown. Press P.</span></div>
     <div class="feat"><b>Builds and Magic Move</b><span>Lists reveal, numbers count, charts draw, objects morph between slides.</span></div>
@@ -141,21 +174,22 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-bet
   <p class="sub">Two commands in Claude Code, then ask for a presentation. The skills and the source are on <a href="https://github.com/hisham-abuella/present-in-html">GitHub</a>.</p>
   <div class="install">
     <div class="step"><h3>As a plugin</h3><p>Recommended. Updates arrive with <code>/plugin update</code>.</p>
-<pre><button class="copy" type="button">Copy</button>/plugin marketplace add hisham-abuella/present-in-html
+<pre data-label="Claude Code"><button class="copy" type="button">Copy</button>/plugin marketplace add hisham-abuella/present-in-html
 /plugin install present-in-html@present-in-html-marketplace</pre></div>
     <div class="step"><h3>Then just ask</h3><p>Or call a skill directly, like <code>/present-in-html:review-deck</code>.</p>
-<pre><button class="copy" type="button">Copy</button>Make a 10-minute deck for our Q3 board review.
+<pre data-label="Prompt"><button class="copy" type="button">Copy</button>Make a 10-minute deck for our Q3 board review.
 Revenue was $4.2M, up 18%.</pre></div>
     <div class="step"><h3>Without the plugin system</h3><p>Copies the skills into <code>~/.claude/skills/</code>; the workflow needs the plugin.</p>
-<pre><button class="copy" type="button">Copy</button>git clone https://github.com/hisham-abuella/present-in-html.git
+<pre data-label="Terminal"><button class="copy" type="button">Copy</button>git clone https://github.com/hisham-abuella/present-in-html.git
 cd present-in-html && ./install-skill.sh</pre></div>
     <div class="step"><h3>For the checker</h3><p>Playwright, installed once outside the plugin folder.</p>
-<pre><button class="copy" type="button">Copy</button>mkdir -p ~/.kp-tools && cd ~/.kp-tools
+<pre data-label="Terminal"><button class="copy" type="button">Copy</button>mkdir -p ~/.kp-tools && cd ~/.kp-tools
 npm i playwright && npx playwright install chromium</pre></div>
   </div>
 </div></section>
 
 <section id="library"><div class="wrap">
+  <div class="fig" id="fig-riffle" aria-label="Line drawing: a tray of eight cards. Hover or use the arrow keys to pull a card."></div>
   <h2>Template library</h2>
   <p class="sub">Every deck here is one HTML file. Open one, press <b>F</b> for fullscreen, <b>P</b> for the presenter window, <b>S</b> to try another theme.</p>
   <div class="tools" role="group" aria-label="Filter templates">
@@ -438,7 +472,7 @@ npm i playwright && npx playwright install chromium</pre></div>
         <span class="tags"><em>Stories</em></span></span>
     </a>
   </div>
-  <p class="empty">Nothing matches. Try another word.</p>
+  <p class="empty" aria-live="polite">Nothing matches. Try another word.</p>
 </div></section>
 
 <section id="evals" class="evals"><div class="wrap">
@@ -487,6 +521,13 @@ npm i playwright && npx playwright install chromium</pre></div>
     setTimeout(() => b.textContent = 'Copy', 1600);
   }));
 })();
+</script>
+<script type="module">
+import { exploded, riffle } from "./assets/vendor/hairline/hairline-0.5.1.mjs";
+const show = matchMedia("(min-width:601px)").matches;
+const a = document.getElementById("fig-exploded"), b = document.getElementById("fig-riffle");
+if (show && a) exploded(a, { intensity: .45 });
+if (show && b) riffle(b, { intensity: .45 });
 </script>
 <script data-goatcounter="https://hishamabuella.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>
